@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
+<body ng-controller="BMainCtrl as ctrl">
 
 <header>
 	<div class="wrap">
@@ -19,7 +19,6 @@
 
 		<div class="right">
 			<h1><small>stats.</small>Bower</h1>
-			<br/>
 			<a target="_blank"
 			   href="https://github.com/rayshan/stats.bower.io"
 			   class="btn btn-primary btn-lg">
@@ -27,12 +26,14 @@
 			</a>
 		</div>
 
-
 	</div>
 </header>
 
 <section>
-	<div class="wrap">content</div>
+	<div class="wrap">
+		{{ctrl.test}}
+		<traffic></traffic>
+	</div>
 </section>
 
 <footer>
@@ -44,8 +45,12 @@
 <!--AngularJS-->
 <script src="bower_components/angular/angular.js"></script>
 
+<!--Other Vendors-->
+<script src="bower_components/d3/d3.js"></script>
+
 <!--Custom-->
 <script src="js/app.js"></script>
+<script src="bapp-charts-traffic/module.js"></script>
 
 </body>
 </html>

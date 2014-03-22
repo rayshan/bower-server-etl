@@ -3,17 +3,12 @@
 @fa-font-path: "../bower_components/font-awesome/fonts";
 
 @font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
-@line-height-base: 2;
+//@line-height-base: 2;
 @headings-font-weight: bold;
 @brand-primary: #2BAF2B;
 
-html, body {
-	height: 100%;
-}
-
 body {
 	.make-row();
-
 	color: #222;
 }
 
@@ -34,9 +29,8 @@ header {
 	.make-row();
 
 	background: #FFCC2F;
-	line-height: 1.2;
 	color: #543729;
-	padding: 40px 0 60px;
+	padding: 40px 0 40px;
 
 	.left {
 		.make-lg-column(3, 0);
@@ -49,9 +43,18 @@ header {
 		.make-lg-column(9, 0);
 		.make-md-column(9, 0);
 		text-align: right;
+//		width: 50%;
+		height: 50%;
+		margin: auto;
+		position: absolute;
+		top: 0; bottom: 0; right: 0;
 	}
 
 	h1 {
+		color: #EF5734;
+		font-size: 8em;
+		letter-spacing: -0.04em;
+
 		small {
 			color: #543729;
 			font-weight: bold;
@@ -60,23 +63,4 @@ header {
 	}
 }
 
-
-header h1 {
-	display: inline-block;
-	margin: 0;
-	color: #EF5734;
-	font-size: 110px;
-	line-height: 1;
-}
-
-header h1,
-header h3 {
-	letter-spacing: -0.04em;
-}
-
-header .tagline {
-	font-size: 54px;
-	line-height: 1;
-}
-
-footer {	background: #FFCC2F }
+footer { background: #FFCC2F }
