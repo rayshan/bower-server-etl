@@ -1,0 +1,82 @@
+@import "../bower_components/bootstrap/less/bootstrap.less";
+@import "../bower_components/font-awesome/less/font-awesome.less";
+@fa-font-path: "../bower_components/font-awesome/fonts";
+
+@font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@line-height-base: 2;
+@headings-font-weight: bold;
+@brand-primary: #2BAF2B;
+
+html, body {
+	height: 100%;
+}
+
+body {
+	.make-row();
+
+	color: #222;
+}
+
+/* wrap
+================================================== */
+
+.wrap {
+	.make-lg-column(8, 0);
+	.make-md-column(8, 0);
+	.make-lg-column-offset(2);
+	.make-md-column-offset(2);
+}
+
+/* Hero
+================================================== */
+
+header {
+	.make-row();
+
+	background: #FFCC2F;
+	line-height: 1.2;
+	color: #543729;
+	padding: 40px 0 60px;
+
+	.left {
+		.make-lg-column(3, 0);
+		.make-md-column(3, 0);
+
+		.b-logo {width: 100%}
+	}
+
+	.right {
+		.make-lg-column(9, 0);
+		.make-md-column(9, 0);
+		text-align: right;
+	}
+
+	h1 {
+		small {
+			color: #543729;
+			font-weight: bold;
+			letter-spacing: normal;
+		}
+	}
+}
+
+
+header h1 {
+	display: inline-block;
+	margin: 0;
+	color: #EF5734;
+	font-size: 110px;
+	line-height: 1;
+}
+
+header h1,
+header h3 {
+	letter-spacing: -0.04em;
+}
+
+header .tagline {
+	font-size: 54px;
+	line-height: 1;
+}
+
+footer {	background: #FFCC2F }
