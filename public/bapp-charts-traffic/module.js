@@ -4,13 +4,11 @@
 
   module = angular.module('BApp.Charts.Traffic', []);
 
-  module.directive("traffic", function(d3) {
+  module.directive("traffic", function(d3, ga) {
     return {
       templateUrl: 'bapp-charts-traffic/partial.html',
       restrict: 'E',
-      link: function(scope, ele) {
-        console.log(d3);
-      }
+      link: function(scope, ele) {}
     };
   });
 

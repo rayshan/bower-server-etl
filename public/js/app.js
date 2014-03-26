@@ -2,12 +2,19 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ["BApp.Charts.Traffic"]);
+  app = angular.module('BApp', ['BApp.Charts.Traffic', 'ngResource']);
 
   app.controller('BMainCtrl', function() {});
 
   app.factory('d3', function() {
     return d3;
+  });
+
+  app.factory('ga', function($http) {
+    var cb;
+    cb = function() {
+      $rootScope.$broadcast('gaLoaded');
+    };
   });
 
 }).call(this);

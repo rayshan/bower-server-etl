@@ -1,0 +1,24 @@
+{
+  "name": "stats.bower.io",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rayshan/stats.bower.io.git"
+  },
+  "author": "Ray Shan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rayshan/stats.bower.io/issues"
+  },
+  "homepage": "https://github.com/rayshan/stats.bower.io",
+  "dependencies": {
+    "express": "^4.x.x",
+    "googleapis": "^0.6.1",
+    "rsvp": "^3.0.6"
+  }
+}
