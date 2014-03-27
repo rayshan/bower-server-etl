@@ -6,7 +6,7 @@
 
   module.directive("traffic", function(d3, ga) {
     return {
-      templateUrl: 'bapp-charts-traffic/partial.html',
+      templateUrl: 'b-charts-traffic/partial.html',
       restrict: 'E',
       link: function(scope, ele) {}
     };

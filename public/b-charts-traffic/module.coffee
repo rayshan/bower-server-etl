@@ -1,7 +1,7 @@
 module = angular.module('BApp.Charts.Traffic', [])
 
 module.directive "traffic", (d3, ga) ->
-	templateUrl: 'bapp-charts-traffic/partial.html'
+	templateUrl: 'b-charts-traffic/partial.html'
 	restrict: 'E'
 	link: (scope, ele) ->
 #		executeQuery = ->
