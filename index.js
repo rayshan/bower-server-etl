@@ -80,7 +80,10 @@
     }
   });
 
-  dataApi.route('/data/:type').get(function(req, res, next) {
+  dataApi.route('/data/:type').all(function(req, res, next) {
+    console.log(req.method, req.type, req.path);
+    next();
+  }).get(function(req, res, next) {
     authPromise.then(fetch).then(function(result) {
       res.json(result);
     })["catch"](function(err) {

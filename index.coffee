@@ -53,8 +53,8 @@ fetch = ->
     return
 
 #transform = ->
-#	new rsvp.Promise (resolve, reject) ->
-#   return
+#  new rsvp.Promise (resolve, reject) ->
+#    return
 
 ###
 # Server & API
@@ -68,14 +68,16 @@ dataApi.param 'type', (req, res, next, id) ->
     req.type = id
     next(); return
 
-dataApi.route('/data/:type').get (req, res, next) ->
-  authPromise.then fetch
-    .then (result) -> res.json(result); return
-    .catch (err) -> console.log "error: ", err; return
-  return
-
-# req logger
-#app.all '*', (req, res, next) -> console.log req.method, req.path; next(); return
+dataApi.route '/data/:type'
+  .all (req, res, next) -> # req logger
+    console.log req.method, req.type, req.path
+    next()
+    return
+  .get (req, res, next) ->
+    authPromise.then fetch
+      .then (result) -> res.json(result); return
+      .catch (err) -> console.log "error: ", err; return
+    return
 
 app.use dataApi
 app.use express.static('public')
