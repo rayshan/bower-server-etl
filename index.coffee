@@ -48,13 +48,18 @@ fetch = ->
         'dimensions': 'ga:visitorType,ga:date'
       }
       .withAuthClient authClient
-      .execute (err, result) -> if err? then reject(err) else resolve(result); return
+      .execute (err, result) -> if err? then reject(err) else resolve result; return
       return
     return
 
-#transform = ->
-#  new rsvp.Promise (resolve, reject) ->
-#    return
+transform = (data) ->
+  new rsvp.Promise (resolve, reject) ->
+    result = data.rows
+    result.forEach (d) ->
+      d[0] = if d[0] is 'New Visitor' then 'N' else 'E'
+      return
+    resolve result
+    return
 
 ###
 # Server & API
@@ -74,8 +79,8 @@ dataApi.route '/data/:type'
     next()
     return
   .get (req, res, next) ->
-    authPromise.then fetch
-      .then (result) -> res.json(result); return
+    authPromise.then(fetch).then transform
+      .then (data) -> res.json(data); return
       .catch (err) -> console.log "error: ", err; return
     return
 
