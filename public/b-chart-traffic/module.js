@@ -11,7 +11,7 @@
       link: function(scope, ele, attrs) {
         var render;
         render = function(data) {
-          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, parseDate, svg, w, wOrig, x, xAxis, y;
+          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, parseDate, stack, svg, w, wOrig, x, xAxis, y;
           parseDate = d3.time.format("%Y%m%d").parse;
           data.forEach(function(d) {
             d[1] = parseDate(d[1]);
@@ -36,8 +36,8 @@
           x = d3.time.scale().range([0, w]).domain(d3.extent(data[1].values, function(d) {
             return d[1];
           }));
-          maxUsers = d3.max(data, function(d) {
-            return d3.max(d.values, function(d) {
+          maxUsers = d3.max(data[0].values, function(d) {
+            return d[2] + d3.max(data[1].values, function(d) {
               return d[2];
             });
           });
@@ -45,16 +45,24 @@
           xAxis = d3.svg.axis().scale(x).orient("bottom");
           area = d3.svg.area().x(function(d) {
             return x(d[1]);
-          }).y0(h).y1(function(d) {
-            return y(d[2]);
+          }).y0(function(d) {
+            return y(d.y0);
+          }).y1(function(d) {
+            return y(d.y0 + d.y);
           }).interpolate("cardinal");
+          stack = d3.layout.stack().values(function(d) {
+            return d.values;
+          }).x(function(d) {
+            return d[1];
+          }).y(function(d) {
+            return d[2];
+          }).order("reverse");
           svg = d3.select(canvas).append("svg").attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
-          areas = svg.selectAll(".traffic").data(data, function(d) {
-            return d.key;
-          }).enter().append("g").attr("class", "traffic");
+          areas = svg.selectAll(".traffic").data(stack(data)).enter().append("g").attr("class", "traffic");
           areas.append("path").attr("class", function(d) {
             return "area " + d.key;
           }).attr("d", function(d) {
+            console.log(d);
             return area(d.values);
           });
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);

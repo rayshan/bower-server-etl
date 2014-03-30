@@ -42,7 +42,7 @@ fetch = ->
     gapi.discover('analytics', 'v3').execute (err, client) ->
       client.analytics.data.ga.get {
         'ids': "ga:" + config.ga.profile
-        'start-date': '2014-03-01'
+        'start-date': '2014-03-15'
         'end-date': 'yesterday'
         'metrics': 'ga:visits'
         'dimensions': 'ga:visitorType,ga:date'

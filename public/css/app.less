@@ -6,6 +6,7 @@
 
 // custom var
 @b-yellow: #FFCC2F;
+@b-yellow-2: lighten(@b-yellow, 35%);
 @b-brown: #543729;
 @b-red: #EF5734;
 @b-green: #2BAF2B;
@@ -17,9 +18,10 @@
 //@line-height-base: 2;
 @headings-font-weight: bold;
 @brand-primary: @b-green;
+@grid-gutter-width: 0;
 
 body {
-  .make-row();
+//  .make-row();
   color: #222;
 }
 
@@ -43,25 +45,21 @@ header {
   padding: 40px 0 40px;
 
   .left {
-    .make-lg-column(3, 0);
-    .make-md-column(3, 0);
+//    .make-lg-column(3, 0);
+//    .make-md-column(3, 0);
 
-    .b-logo {width: 100%}
+    .b-logo { width: 100px }
   }
 
   .right {
-    .make-lg-column(9, 0);
-    .make-md-column(9, 0);
+//    .make-lg-column(9, 0);
+//    .make-md-column(9, 0);
     text-align: right;
-    height: 50%;
-    margin: auto;
-    position: absolute;
-    top: 0; bottom: 0; right: 0;
   }
 
   h1 {
     color: @b-red;
-    font-size: 8em;
+    font-size: 4em;
     letter-spacing: -0.04em;
 
     small {
@@ -72,9 +70,15 @@ header {
   }
 }
 
+section { .make-row() }
+
 footer {
-  background: @b-yellow;
+  .make-row();
   color: @b-brown;
+  text-align: center;
+  border-top: 1px solid @b-yellow-2;
+  margin-top: 20px;
+  padding: 5px 0 20px;
 }
 
 

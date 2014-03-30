@@ -31,7 +31,7 @@ module.directive "bChartTraffic", (d3, bGaSvc) ->
       x = d3.time.scale()
         .range [0, w]
         .domain d3.extent data[1].values, (d) -> d[1]
-      maxUsers = d3.max data, (d) -> d3.max d.values, (d) -> d[2]
+      maxUsers = d3.max data[0].values, (d) -> d[2] + d3.max data[1].values, (d) -> d[2]
       y = d3.scale.linear()
         .range [h, 0]
         .domain [0, maxUsers]
@@ -40,25 +40,30 @@ module.directive "bChartTraffic", (d3, bGaSvc) ->
 
       area = d3.svg.area()
         .x (d) -> x d[1]
-        .y0 h
-        .y1 (d) -> y d[2]
+        .y0 (d) -> y d.y0
+        .y1 (d) -> y d.y0 + d.y
         .interpolate "cardinal"
 
-      svg = d3.select canvas
-        .append "svg"
-        .attr "width", w + margin.l + margin.r
-        .attr "height", h + margin.t + margin.b
+      stack = d3.layout.stack()
+        .values (d) -> d.values
+        .x (d) -> d[1]
+        .y (d) -> d[2]
+        .order "reverse"
+
+      svg = d3.select(canvas).append "svg"
+          .attr "width", w + margin.l + margin.r
+          .attr "height", h + margin.t + margin.b
         .append "g"
-        .attr "transform", "translate(#{ margin.l }, #{ margin.t })"
+          .attr "transform", "translate(#{ margin.l }, #{ margin.t })"
 
       areas = svg.selectAll ".traffic"
-          .data data, (d) -> d.key
+          .data stack data # , (d) -> d.key
         .enter().append "g"
           .attr "class", "traffic"
 
       areas.append "path"
         .attr "class", (d) -> "area " + d.key
-        .attr "d", (d) -> area(d.values)
+        .attr "d", (d) -> console.log d; area(d.values)
 
       svg.append "g"
         .attr "class", "axis x"
