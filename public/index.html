@@ -2,44 +2,43 @@
 <html ng-app="BApp" lang="en">
 
 <head>
-	<title>Stats for Bower - A package manager for the web</title>
-	<meta charset="utf-8">
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="css/app.css">
+  <title>Stats for Bower - A package manager for the web</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body ng-controller="BMainCtrl as ctrl">
+<body>
 
 <header>
-	<div class="wrap">
+  <div class="wrap">
 
-		<div class="left">
-			<a href="http://bower.io"><img src="img/bower-logo.png" class="b-logo" alt="Bower logo" /></a>
-		</div>
+    <div class="left">
+      <a href="http://bower.io"><img src="img/bower-logo.png" class="b-logo" alt="Bower logo" /></a>
+    </div>
 
-		<div class="right">
-			<h1><small>stats.</small>Bower</h1>
-			<a target="_blank"
-			   href="https://github.com/rayshan/stats.bower.io"
-			   class="btn btn-primary btn-lg">
-				Improve on Github <i class="fa fa-github-alt"></i>
-			</a>
-		</div>
+    <div class="right">
+      <h1><small>stats.</small>Bower</h1>
+      <a target="_blank"
+         href="https://github.com/rayshan/stats.bower.io"
+         class="btn btn-primary btn-lg">
+        Improve on Github <i class="fa fa-github-alt"></i>
+      </a>
+    </div>
 
-	</div>
+  </div>
 </header>
 
 <section>
-	<div class="wrap">
-		{{ctrl.test}}
-		<traffic></traffic>
-	</div>
+  <div class="wrap">
+    <b-chart-traffic></b-chart-traffic>
+  </div>
 </section>
 
-<footer>
-	<div class="wrap">
-		© 2014 Twitter and contributors. MIT Licensed.
-	</div>
+<footer class="small">
+  <div class="wrap">
+    © 2014 Twitter and contributors. MIT Licensed.
+  </div>
 </footer>
 
 <!--AngularJS-->
@@ -51,18 +50,18 @@
 
 <!--Custom-->
 <script src="js/app.js"></script>
-<script src="bapp-charts-traffic/module.js"></script>
+<script src="b-chart-traffic/module.js"></script>
 
 <!--GA tracking-->
 <!--TODO: to be swapped out w/ Bower's after setting up separate tracking path-->
 <script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	ga('create', 'UA-47116686-1', 'shan.io');
-	ga('send', 'pageview');
+  ga('create', 'UA-47116686-1', 'shan.io');
+  ga('send', 'pageview');
 
 </script>
 

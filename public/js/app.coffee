@@ -1,5 +1,5 @@
 app = angular.module 'BApp', [
-  'B.Charts.Traffic'
+  'B.Chart.Traffic'
   'ngResource'
 ]
 
@@ -13,10 +13,10 @@ app.factory 'bGaSvc', ($resource, $rootScope) ->
     getTraffic: {
       method: 'GET'
       params: {type: 'traffic'}
+      isArray: true
     }
   }
 
   fetchPromise = ga.getTraffic().$promise
-  console.log "fetched"
 
   fetch: fetchPromise

@@ -1,66 +1,108 @@
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
+@import "../bower_components/lesshat/build/lesshat-prefixed.less";
 @fa-font-path: "../bower_components/font-awesome/fonts";
 
+
+// custom var
+@b-yellow: #FFCC2F;
+@b-brown: #543729;
+@b-red: #EF5734;
+@b-green: #2BAF2B;
+@b-blue: #00acee;
+@b-gray: #cecece;
+
+// bs var override
 @font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
 //@line-height-base: 2;
 @headings-font-weight: bold;
-@brand-primary: #2BAF2B;
+@brand-primary: @b-green;
 
 body {
-	.make-row();
-	color: #222;
+  .make-row();
+  color: #222;
 }
 
 /* wrap
 ================================================== */
 
 .wrap {
-	.make-lg-column(8, 0);
-	.make-md-column(8, 0);
-	.make-lg-column-offset(2);
-	.make-md-column-offset(2);
+  .make-lg-column(8, 0);
+  .make-md-column(8, 0);
+  .make-lg-column-offset(2);
+  .make-md-column-offset(2);
 }
 
 /* Hero
 ================================================== */
 
 header {
-	.make-row();
+  .make-row();
 
-	background: #FFCC2F;
-	color: #543729;
-	padding: 40px 0 40px;
+  background: @b-yellow;
+  padding: 40px 0 40px;
 
-	.left {
-		.make-lg-column(3, 0);
-		.make-md-column(3, 0);
+  .left {
+    .make-lg-column(3, 0);
+    .make-md-column(3, 0);
 
-		.b-logo {width: 100%}
-	}
+    .b-logo {width: 100%}
+  }
 
-	.right {
-		.make-lg-column(9, 0);
-		.make-md-column(9, 0);
-		text-align: right;
-//		width: 50%;
-		height: 50%;
-		margin: auto;
-		position: absolute;
-		top: 0; bottom: 0; right: 0;
-	}
+  .right {
+    .make-lg-column(9, 0);
+    .make-md-column(9, 0);
+    text-align: right;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+  }
 
-	h1 {
-		color: #EF5734;
-		font-size: 8em;
-		letter-spacing: -0.04em;
+  h1 {
+    color: @b-red;
+    font-size: 8em;
+    letter-spacing: -0.04em;
 
-		small {
-			color: #543729;
-			font-weight: bold;
-			letter-spacing: normal;
-		}
-	}
+    small {
+      color: @b-brown;
+      font-weight: bold;
+      letter-spacing: normal;
+    }
+  }
 }
 
-footer { background: #FFCC2F }
+footer {
+  background: @b-yellow;
+  color: @b-brown;
+}
+
+
+
+
+
+
+
+
+.b-chart-traffic {
+  height: 500px;
+  background: lighten(@b-yellow, 35%);
+
+  .area {
+    stroke: none;
+//    shape-rendering: crispEdges; // worse in Chrome
+    &.N { fill: @b-blue }
+    &.E { fill: @b-yellow }
+  }
+
+  .axis {
+    path, line {
+      fill: none;
+      stroke: @b-gray;
+      shape-rendering: crispEdges;
+    }
+    text { font-size: 10px }
+  }
+
+  text { .lh-user-select(none) }
+}

@@ -1,284 +1,84 @@
-{
-	"kind": "analytics#gaData",
-	"id": "https://www.googleapis.com/analytics/v3/data/ga?ids=ga:75972512&dimensions=ga:visitorType,ga:date&metrics=ga:visits&start-date=2014-03-01&end-date=yesterday",
-	"query": {
-		"start-date": "2014-03-01",
-		"end-date": "yesterday",
-		"ids": "ga:75972512",
-		"dimensions": "ga:visitorType,ga:date",
-		"metrics": [
-			"ga:visits"
-		],
-		"start-index": 1,
-		"max-results": 1000
-	},
-	"itemsPerPage": 1000,
-	"totalResults": 47,
-	"selfLink": "https://www.googleapis.com/analytics/v3/data/ga?ids=ga:75972512&dimensions=ga:visitorType,ga:date&metrics=ga:visits&start-date=2014-03-01&end-date=yesterday",
-	"profileInfo": {
-		"profileId": "75972512",
-		"accountId": "43531210",
-		"webPropertyId": "UA-43531210-1",
-		"internalWebPropertyId": "73579121",
-		"profileName": "bower CLI - insight instrumentation",
-		"tableId": "ga:75972512"
-	},
-	"containsSampledData": false,
-	"columnHeaders": [
-		{
-			"name": "ga:visitorType",
-			"columnType": "DIMENSION",
-			"dataType": "STRING"
-		},
-		{
-			"name": "ga:date",
-			"columnType": "DIMENSION",
-			"dataType": "STRING"
-		},
-		{
-			"name": "ga:visits",
-			"columnType": "METRIC",
-			"dataType": "INTEGER"
-		}
-	],
-	"totalsForAllResults": {
-		"ga:visits": "38470"
-	},
-	"rows": [
-		[
-			"New Visitor",
-			"20140301",
-			"1"
-		],
-		[
-			"New Visitor",
-			"20140302",
-			"1"
-		],
-		[
-			"New Visitor",
-			"20140303",
-			"3"
-		],
-		[
-			"New Visitor",
-			"20140304",
-			"3"
-		],
-		[
-			"New Visitor",
-			"20140305",
-			"2"
-		],
-		[
-			"New Visitor",
-			"20140306",
-			"5"
-		],
-		[
-			"New Visitor",
-			"20140307",
-			"1"
-		],
-		[
-			"New Visitor",
-			"20140309",
-			"1"
-		],
-		[
-			"New Visitor",
-			"20140310",
-			"4"
-		],
-		[
-			"New Visitor",
-			"20140311",
-			"1075"
-		],
-		[
-			"New Visitor",
-			"20140312",
-			"1445"
-		],
-		[
-			"New Visitor",
-			"20140313",
-			"1292"
-		],
-		[
-			"New Visitor",
-			"20140314",
-			"1115"
-		],
-		[
-			"New Visitor",
-			"20140315",
-			"791"
-		],
-		[
-			"New Visitor",
-			"20140316",
-			"881"
-		],
-		[
-			"New Visitor",
-			"20140317",
-			"1420"
-		],
-		[
-			"New Visitor",
-			"20140318",
-			"1374"
-		],
-		[
-			"New Visitor",
-			"20140319",
-			"1359"
-		],
-		[
-			"New Visitor",
-			"20140320",
-			"1266"
-		],
-		[
-			"New Visitor",
-			"20140321",
-			"1045"
-		],
-		[
-			"New Visitor",
-			"20140322",
-			"809"
-		],
-		[
-			"New Visitor",
-			"20140323",
-			"782"
-		],
-		[
-			"New Visitor",
-			"20140324",
-			"1183"
-		],
-		[
-			"Returning Visitor",
-			"20140301",
-			"3"
-		],
-		[
-			"Returning Visitor",
-			"20140302",
-			"9"
-		],
-		[
-			"Returning Visitor",
-			"20140303",
-			"16"
-		],
-		[
-			"Returning Visitor",
-			"20140304",
-			"19"
-		],
-		[
-			"Returning Visitor",
-			"20140305",
-			"21"
-		],
-		[
-			"Returning Visitor",
-			"20140306",
-			"14"
-		],
-		[
-			"Returning Visitor",
-			"20140307",
-			"18"
-		],
-		[
-			"Returning Visitor",
-			"20140308",
-			"5"
-		],
-		[
-			"Returning Visitor",
-			"20140309",
-			"8"
-		],
-		[
-			"Returning Visitor",
-			"20140310",
-			"15"
-		],
-		[
-			"Returning Visitor",
-			"20140311",
-			"351"
-		],
-		[
-			"Returning Visitor",
-			"20140312",
-			"930"
-		],
-		[
-			"Returning Visitor",
-			"20140313",
-			"1292"
-		],
-		[
-			"Returning Visitor",
-			"20140314",
-			"1260"
-		],
-		[
-			"Returning Visitor",
-			"20140315",
-			"837"
-		],
-		[
-			"Returning Visitor",
-			"20140316",
-			"1090"
-		],
-		[
-			"Returning Visitor",
-			"20140317",
-			"1909"
-		],
-		[
-			"Returning Visitor",
-			"20140318",
-			"2099"
-		],
-		[
-			"Returning Visitor",
-			"20140319",
-			"2312"
-		],
-		[
-			"Returning Visitor",
-			"20140320",
-			"2362"
-		],
-		[
-			"Returning Visitor",
-			"20140321",
-			"2124"
-		],
-		[
-			"Returning Visitor",
-			"20140322",
-			"1365"
-		],
-		[
-			"Returning Visitor",
-			"20140323",
-			"1729"
-		],
-		[
-			"Returning Visitor",
-			"20140324",
-			"2824"
-		]
-	]
-}
+{"kind": "analytics#gaData", "id": "https://www.googleapis.com/analytics/v3/data/ga?ids=ga:75972512&dimensions=ga:visitorType,ga:date&metrics=ga:visits&start-date=2014-03-01&end-date=yesterday", "query": {
+  "start-date": "2014-03-01",
+  "end-date": "yesterday",
+  "ids": "ga:75972512",
+  "dimensions": "ga:visitorType,ga:date",
+  "metrics": ["ga:visits"],
+  "start-index": 1,
+  "max-results": 1000
+}, "itemsPerPage": 1000, "totalResults": 49, "selfLink": "https://www.googleapis.com/analytics/v3/data/ga?ids=ga:75972512&dimensions=ga:visitorType,ga:date&metrics=ga:visits&start-date=2014-03-01&end-date=yesterday", "profileInfo": {
+  "profileId": "75972512",
+  "accountId": "43531210",
+  "webPropertyId": "UA-43531210-1",
+  "internalWebPropertyId": "73579121",
+  "profileName": "bower CLI - insight instrumentation",
+  "tableId": "ga:75972512"
+}, "containsSampledData": false, "columnHeaders": [
+  {
+    "name": "ga:visitorType",
+    "columnType": "DIMENSION",
+    "dataType": "STRING"
+  },
+  {
+    "name": "ga:date",
+    "columnType": "DIMENSION",
+    "dataType": "STRING"
+  },
+  {
+    "name": "ga:visits",
+    "columnType": "METRIC",
+    "dataType": "INTEGER"
+  }
+], "totalsForAllResults": {
+  "ga:visits": "42491"
+}, "rows": [
+  ["New Visitor", "20140301", "1"],
+  ["New Visitor", "20140302", "1"],
+  ["New Visitor", "20140303", "3"],
+  ["New Visitor", "20140304", "3"],
+  ["New Visitor", "20140305", "2"],
+  ["New Visitor", "20140306", "5"],
+  ["New Visitor", "20140307", "1"],
+  ["New Visitor", "20140309", "1"],
+  ["New Visitor", "20140310", "4"],
+  ["New Visitor", "20140311", "1075"],
+  ["New Visitor", "20140312", "1445"],
+  ["New Visitor", "20140313", "1292"],
+  ["New Visitor", "20140314", "1115"],
+  ["New Visitor", "20140315", "791"],
+  ["New Visitor", "20140316", "881"],
+  ["New Visitor", "20140317", "1420"],
+  ["New Visitor", "20140318", "1374"],
+  ["New Visitor", "20140319", "1359"],
+  ["New Visitor", "20140320", "1266"],
+  ["New Visitor", "20140321", "1045"],
+  ["New Visitor", "20140322", "809"],
+  ["New Visitor", "20140323", "782"],
+  ["New Visitor", "20140324", "1183"],
+  ["New Visitor", "20140325", "1205"],
+  ["Returning Visitor", "20140301", "3"],
+  ["Returning Visitor", "20140302", "9"],
+  ["Returning Visitor", "20140303", "16"],
+  ["Returning Visitor", "20140304", "19"],
+  ["Returning Visitor", "20140305", "21"],
+  ["Returning Visitor", "20140306", "14"],
+  ["Returning Visitor", "20140307", "18"],
+  ["Returning Visitor", "20140308", "5"],
+  ["Returning Visitor", "20140309", "8"],
+  ["Returning Visitor", "20140310", "15"],
+  ["Returning Visitor", "20140311", "351"],
+  ["Returning Visitor", "20140312", "930"],
+  ["Returning Visitor", "20140313", "1292"],
+  ["Returning Visitor", "20140314", "1260"],
+  ["Returning Visitor", "20140315", "837"],
+  ["Returning Visitor", "20140316", "1090"],
+  ["Returning Visitor", "20140317", "1909"],
+  ["Returning Visitor", "20140318", "2099"],
+  ["Returning Visitor", "20140319", "2312"],
+  ["Returning Visitor", "20140320", "2362"],
+  ["Returning Visitor", "20140321", "2124"],
+  ["Returning Visitor", "20140322", "1365"],
+  ["Returning Visitor", "20140323", "1729"],
+  ["Returning Visitor", "20140324", "2824"],
+  ["Returning Visitor", "20140325", "2816"]
+]}

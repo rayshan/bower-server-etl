@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['BApp.Charts.Traffic', 'ngResource']);
+  app = angular.module('BApp', ['B.Chart.Traffic', 'ngResource']);
 
   app.controller('BMainCtrl', function() {});
 
@@ -10,10 +10,20 @@
     return d3;
   });
 
-  app.factory('ga', function($http) {
-    var cb;
-    cb = function() {
-      $rootScope.$broadcast('gaLoaded');
+  app.factory('bGaSvc', function($resource, $rootScope) {
+    var fetchPromise, ga;
+    ga = $resource('/data/:type', null, {
+      getTraffic: {
+        method: 'GET',
+        params: {
+          type: 'traffic'
+        },
+        isArray: true
+      }
+    });
+    fetchPromise = ga.getTraffic().$promise;
+    return {
+      fetch: fetchPromise
     };
   });
 

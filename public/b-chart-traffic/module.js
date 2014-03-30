@@ -11,9 +11,55 @@
       link: function(scope, ele, attrs) {
         var render;
         render = function(data) {
+          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, parseDate, svg, w, wOrig, x, xAxis, y;
+          parseDate = d3.time.format("%Y%m%d").parse;
+          data.forEach(function(d) {
+            d[1] = parseDate(d[1]);
+            d[2] = +d[2];
+          });
+          data = d3.nest().key(function(d) {
+            return d[0];
+          }).entries(data);
           console.log(data);
+          canvas = ele[0].querySelector(".b-chart-traffic").children[0];
+          wOrig = d3.select(canvas).node().offsetWidth;
+          hOrig = d3.select(canvas).node().offsetHeight;
+          marginBase = 30;
+          margin = {
+            t: marginBase,
+            l: marginBase,
+            r: marginBase,
+            b: marginBase
+          };
+          w = wOrig - margin.l - margin.r;
+          h = hOrig - margin.t - margin.b;
+          x = d3.time.scale().range([0, w]).domain(d3.extent(data[1].values, function(d) {
+            return d[1];
+          }));
+          maxUsers = d3.max(data, function(d) {
+            return d3.max(d.values, function(d) {
+              return d[2];
+            });
+          });
+          y = d3.scale.linear().range([h, 0]).domain([0, maxUsers]);
+          xAxis = d3.svg.axis().scale(x).orient("bottom");
+          area = d3.svg.area().x(function(d) {
+            return x(d[1]);
+          }).y0(h).y1(function(d) {
+            return y(d[2]);
+          }).interpolate("cardinal");
+          svg = d3.select(canvas).append("svg").attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
+          areas = svg.selectAll(".traffic").data(data, function(d) {
+            return d.key;
+          }).enter().append("g").attr("class", "traffic");
+          areas.append("path").attr("class", function(d) {
+            return "area " + d.key;
+          }).attr("d", function(d) {
+            return area(d.values);
+          });
+          svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
         };
-        gaSvc.fetch.then(render);
+        bGaSvc.fetch.then(render);
       }
     };
   });

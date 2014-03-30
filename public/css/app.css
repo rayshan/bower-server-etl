@@ -7158,8 +7158,7 @@ body {
 header {
   margin-left: -15px;
   margin-right: -15px;
-  background: #FFCC2F;
-  color: #543729;
+  background: #ffcc2f;
   padding: 40px 0 40px;
 }
 header .left {
@@ -7209,7 +7208,7 @@ header .right {
   }
 }
 header h1 {
-  color: #EF5734;
+  color: #ef5734;
   font-size: 8em;
   letter-spacing: -0.04em;
 }
@@ -7220,4 +7219,33 @@ header h1 small {
 }
 footer {
   background: #ffcc2f;
+  color: #543729;
+}
+.b-chart-traffic {
+  height: 500px;
+  background: #fff8e2;
+}
+.b-chart-traffic .area {
+  stroke: none;
+}
+.b-chart-traffic .area.N {
+  fill: #00acee;
+}
+.b-chart-traffic .area.E {
+  fill: #ffcc2f;
+}
+.b-chart-traffic .axis path,
+.b-chart-traffic .axis line {
+  fill: none;
+  stroke: #cecece;
+  shape-rendering: crispEdges;
+}
+.b-chart-traffic .axis text {
+  font-size: 10px;
+}
+.b-chart-traffic text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
