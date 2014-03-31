@@ -42,29 +42,22 @@ header {
   .make-row();
 
   background: @b-yellow;
-  padding: 40px 0 40px;
+  padding: 20px 0 20px;
 
   .left {
-//    .make-lg-column(3, 0);
-//    .make-md-column(3, 0);
-
     .b-logo { width: 100px }
   }
 
-  .right {
-//    .make-lg-column(9, 0);
-//    .make-md-column(9, 0);
-    text-align: right;
-  }
+  .right {text-align: right}
 
-  h1 {
+  span {
     color: @b-red;
     font-size: 4em;
     letter-spacing: -0.04em;
+    font-weight: bold;
 
     small {
       color: @b-brown;
-      font-weight: bold;
       letter-spacing: normal;
     }
   }
@@ -76,7 +69,7 @@ footer {
   .make-row();
   color: @b-brown;
   text-align: center;
-  border-top: 1px solid @b-yellow-2;
+//  border-top: 1px solid @b-brown;
   margin-top: 20px;
   padding: 5px 0 20px;
 }
@@ -87,16 +80,21 @@ footer {
 
 
 
+.b-chart {
+  cursor: default;
+  margin: 10px 0 10px;
+}
 
-.b-chart-traffic {
-  height: 500px;
+.b-chart.b-users {
+  height: 300px;
   background: lighten(@b-yellow, 35%);
 
-  .area {
-    stroke: none;
-//    shape-rendering: crispEdges; // worse in Chrome
-    &.N { fill: @b-blue }
-    &.E { fill: @b-yellow }
+  .area {stroke: none}
+
+  text {
+    .lh-user-select(none);
+    font-size: 0.8em;
+    fill: @b-brown;
   }
 
   .axis {
@@ -105,8 +103,31 @@ footer {
       stroke: @b-gray;
       shape-rendering: crispEdges;
     }
-    text { font-size: 10px }
   }
 
-  text { .lh-user-select(none) }
+  .users {
+    text {
+      text-anchor: middle;
+      font-size: 1.2em;
+    }
+    &.N {
+      .area {fill: @b-blue}
+      text {fill: @b-blue}
+      circle {
+        stroke: @b-blue;
+        fill: white;
+        stroke-width: 2;
+      }
+    }
+
+    &.E {
+      .area {fill: @b-yellow}
+      circle {
+        stroke: @b-yellow;
+        fill: white;
+        stroke-width: 2;
+      }
+    }
+  }
+
 }

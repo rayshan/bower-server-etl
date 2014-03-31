@@ -3,7 +3,7 @@ module = angular.module 'B.Chart.Users', []
 module.directive "bChartUsers", (d3, bGaSvc) ->
   templateUrl: 'b-chart-users/partial.html'
   restrict: 'E'
-  link: (scope, ele, attrs) ->
+  link: (scope, ele) ->
     render = (data) ->
       parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
       data.forEach (d) ->
@@ -27,7 +27,7 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
       minUsersDayI = null
       totalUsersByDay.filter (ele, i) -> ele.users is minUsers && minUsersDayI = i
 
-      canvas = ele[0].querySelector(".b-chart.b-traffic").children[0]
+      canvas = ele[0].querySelector(".b-chart.b-users").children[0]
       wOrig = d3.select(canvas).node().offsetWidth
       hOrig = d3.select(canvas).node().offsetHeight
       marginBase = 30
@@ -65,37 +65,40 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
         .append "g"
           .attr "transform", "translate(#{ margin.l }, #{ margin.t })"
 
-      areas = svg.selectAll ".traffic"
+      users = svg.selectAll ".users"
           .data stack data # , (d) -> d.key
         .enter().append "g"
-          .attr "class", "traffic"
+          .attr "class", (d) -> "users " + d.key
 
-      areas.append "path"
-        .attr "class", (d) -> "area " + d.key
+      users.append "path"
+        .attr "class", "area"
         .attr "d", (d) -> area(d.values)
+        .attr "data-legend", (d) -> d.key
 
-      areas.selectAll "text"
+      users.selectAll "text"
           .data (d) -> d.values.filter (ele, i) -> i is maxUsersDayI or i is minUsersDayI
         .enter().append "text"
           .attr "x", (d) -> x d[1]
           .attr "y", (d) -> y d.y + d.y0
-          .style "text-anchor", "middle"
           .attr "transform", "translate(0, -15)"
-          .attr "dy", ".35em"
           .text (d) -> d3.format('0,000') d[2]
 
-      areas.selectAll "circle"
+      users.selectAll "circle"
           .data (d) -> d.values.filter (ele, i) -> i is maxUsersDayI or i is minUsersDayI
         .enter().append "circle"
           .attr "cx", (d) -> x d[1]
           .attr "cy", (d) -> y d.y + d.y0
           .attr "r", "0.4em"
-          .style "fill", "black"
 
       svg.append "g"
         .attr "class", "axis x"
         .attr "transform", "translate(0, #{ h })"
         .call xAxis
+
+      legend = svg.append "g"
+        .attr "class", "legend"
+#        .attr "transform", "translate(50,30)"
+        .call d3.legend
 
       return
 

@@ -8,10 +8,10 @@
     return {
       templateUrl: 'b-chart-users/partial.html',
       restrict: 'E',
-      link: function(scope, ele, attrs) {
+      link: function(scope, ele) {
         var render;
         render = function(data) {
-          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, maxUsersDayI, minUsers, minUsersDayI, parseDate, stack, svg, totalUsersByDay, w, wOrig, x, xAxis, y;
+          var area, canvas, h, hOrig, legend, margin, marginBase, maxUsers, maxUsersDayI, minUsers, minUsersDayI, parseDate, stack, svg, totalUsersByDay, users, w, wOrig, x, xAxis, y;
           parseDate = d3.time.format("%Y%m%d").parse;
           data.forEach(function(d) {
             d[1] = parseDate(d[1]);
@@ -41,7 +41,7 @@
           totalUsersByDay.filter(function(ele, i) {
             return ele.users === minUsers && (minUsersDayI = i);
           });
-          canvas = ele[0].querySelector(".b-chart.b-traffic").children[0];
+          canvas = ele[0].querySelector(".b-chart.b-users").children[0];
           wOrig = d3.select(canvas).node().offsetWidth;
           hOrig = d3.select(canvas).node().offsetHeight;
           marginBase = 30;
@@ -73,13 +73,15 @@
             return d[2];
           }).order("reverse");
           svg = d3.select(canvas).append("svg").attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
-          areas = svg.selectAll(".traffic").data(stack(data)).enter().append("g").attr("class", "traffic");
-          areas.append("path").attr("class", function(d) {
-            return "area " + d.key;
-          }).attr("d", function(d) {
-            return area(d.values);
+          users = svg.selectAll(".users").data(stack(data)).enter().append("g").attr("class", function(d) {
+            return "users " + d.key;
           });
-          areas.selectAll("text").data(function(d) {
+          users.append("path").attr("class", "area").attr("d", function(d) {
+            return area(d.values);
+          }).attr("data-legend", function(d) {
+            return d.key;
+          });
+          users.selectAll("text").data(function(d) {
             return d.values.filter(function(ele, i) {
               return i === maxUsersDayI || i === minUsersDayI;
             });
@@ -87,10 +89,10 @@
             return x(d[1]);
           }).attr("y", function(d) {
             return y(d.y + d.y0);
-          }).style("text-anchor", "middle").attr("transform", "translate(0, -15)").attr("dy", ".35em").text(function(d) {
+          }).attr("transform", "translate(0, -15)").text(function(d) {
             return d3.format('0,000')(d[2]);
           });
-          areas.selectAll("circle").data(function(d) {
+          users.selectAll("circle").data(function(d) {
             return d.values.filter(function(ele, i) {
               return i === maxUsersDayI || i === minUsersDayI;
             });
@@ -98,8 +100,9 @@
             return x(d[1]);
           }).attr("cy", function(d) {
             return y(d.y + d.y0);
-          }).attr("r", "0.4em").style("fill", "black");
+          }).attr("r", "0.4em");
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
+          legend = svg.append("g").attr("class", "legend").call(d3.legend);
         };
         bGaSvc.fetch.then(render);
       }

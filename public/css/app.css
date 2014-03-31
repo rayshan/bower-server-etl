@@ -7160,7 +7160,7 @@ header {
   margin-left: 0;
   margin-right: 0;
   background: #ffcc2f;
-  padding: 40px 0 40px;
+  padding: 20px 0 20px;
 }
 header .left .b-logo {
   width: 100px;
@@ -7168,14 +7168,14 @@ header .left .b-logo {
 header .right {
   text-align: right;
 }
-header h1 {
+header span {
   color: #ef5734;
   font-size: 4em;
   letter-spacing: -0.04em;
-}
-header h1 small {
-  color: #543729;
   font-weight: bold;
+}
+header span small {
+  color: #543729;
   letter-spacing: normal;
 }
 section {
@@ -7187,35 +7187,54 @@ footer {
   margin-right: 0;
   color: #543729;
   text-align: center;
-  border-top: 1px solid #fff8e2;
   margin-top: 20px;
   padding: 5px 0 20px;
 }
-.b-chart-traffic {
-  height: 500px;
+.b-chart {
+  cursor: default;
+  margin: 10px 0 10px;
+}
+.b-chart.b-users {
+  height: 300px;
   background: #fff8e2;
 }
-.b-chart-traffic .area {
+.b-chart.b-users .area {
   stroke: none;
 }
-.b-chart-traffic .area.N {
-  fill: #00acee;
-}
-.b-chart-traffic .area.E {
-  fill: #ffcc2f;
-}
-.b-chart-traffic .axis path,
-.b-chart-traffic .axis line {
-  fill: none;
-  stroke: #cecece;
-  shape-rendering: crispEdges;
-}
-.b-chart-traffic .axis text {
-  font-size: 10px;
-}
-.b-chart-traffic text {
+.b-chart.b-users text {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-size: 0.8em;
+  fill: #543729;
+}
+.b-chart.b-users .axis path,
+.b-chart.b-users .axis line {
+  fill: none;
+  stroke: #cecece;
+  shape-rendering: crispEdges;
+}
+.b-chart.b-users .users text {
+  text-anchor: middle;
+  font-size: 1.2em;
+}
+.b-chart.b-users .users.N .area {
+  fill: #00acee;
+}
+.b-chart.b-users .users.N text {
+  fill: #00acee;
+}
+.b-chart.b-users .users.N circle {
+  stroke: #00acee;
+  fill: white;
+  stroke-width: 2;
+}
+.b-chart.b-users .users.E .area {
+  fill: #ffcc2f;
+}
+.b-chart.b-users .users.E circle {
+  stroke: #ffcc2f;
+  fill: white;
+  stroke-width: 2;
 }
