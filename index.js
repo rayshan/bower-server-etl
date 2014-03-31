@@ -20,10 +20,9 @@
   config = {
     ga: {
       clientEmail: "1068634003933-b8cijec64sti0if00mnrbqfnrt7vaa7a@developer.gserviceaccount.com",
-      privateKeyPath: process.env.GA_KEY_PATH,
+      privateKeyPath: process.env.GA_KEY_PATH || null,
       profile: "75972512",
-      scopeUri: "https://www.googleapis.com/auth/analytics.readonly",
-      impersonatedUser: "stats.bower.io"
+      scopeUri: "https://www.googleapis.com/auth/analytics.readonly"
     },
     types: ['traffic', 'ranking', 'geo']
   };
@@ -33,17 +32,26 @@
    * GA
    */
 
-  authClient = new gapi.auth.JWT(config.ga.clientEmail, config.ga.privateKeyPath, null, [config.ga.scopeUri], config.ga.impersonatedUser);
+  authClient = new gapi.auth.JWT(config.ga.clientEmail, config.ga.privateKeyPath, null, [config.ga.scopeUri]);
 
   authPromise = new rsvp.Promise(function(resolve, reject) {
-    authClient.authorize(function(err, token) {
-      if (err != null) {
-        return reject(err);
-      } else {
-        resolve(token);
-      }
-    });
-    console.log("Server authed w/ GA.");
+    var msg;
+    if (process.env.GA_KEY_PATH == null) {
+      msg = "Error: process.env.GA_KEY_PATH is " + process.env.GA_KEY_PATH;
+      console.log(msg);
+      reject(new Error(msg));
+    } else {
+      authClient.authorize(function(err, token) {
+        console.log("WIP: OAuthing w/ GA...");
+        if (err != null) {
+          console.log("Error: OAuth - ", err);
+          return reject(err);
+        } else {
+          resolve(token);
+          return console.log("Success: server OAuthed w/ GA");
+        }
+      });
+    }
   });
 
   fetch = function() {
@@ -83,8 +91,13 @@
    */
 
   dataApi.param('type', function(req, res, next, id) {
+    var err;
     if (config.types.indexOf(id) === -1) {
-      throw "Wrong request data type.";
+      err = new Error("Wrong request data type.");
+      console.log("Error: " + err.message);
+      res.json(500, {
+        error: err.message
+      });
     } else {
       req.type = id;
       next();
@@ -94,11 +107,11 @@
   dataApi.route('/data/:type').all(function(req, res, next) {
     console.log(req.method, req.type, req.path);
     next();
-  }).get(function(req, res, next) {
+  }).get(function(req, res) {
     authPromise.then(fetch).then(transform).then(function(data) {
       res.json(data);
     })["catch"](function(err) {
-      console.log("error: ", err);
+      console.log("Error: ", err);
     });
   });
 
