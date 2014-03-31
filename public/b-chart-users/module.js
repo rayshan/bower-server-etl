@@ -2,16 +2,16 @@
 (function() {
   var module;
 
-  module = angular.module('B.Chart.Traffic', []);
+  module = angular.module('B.Chart.Users', []);
 
-  module.directive("bChartTraffic", function(d3, bGaSvc) {
+  module.directive("bChartUsers", function(d3, bGaSvc) {
     return {
-      templateUrl: 'b-chart-traffic/partial.html',
+      templateUrl: 'b-chart-users/partial.html',
       restrict: 'E',
       link: function(scope, ele, attrs) {
         var render;
         render = function(data) {
-          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, parseDate, stack, svg, w, wOrig, x, xAxis, y;
+          var area, areas, canvas, h, hOrig, margin, marginBase, maxUsers, maxUsersDayI, minUsers, minUsersDayI, parseDate, stack, svg, totalUsersByDay, w, wOrig, x, xAxis, y;
           parseDate = d3.time.format("%Y%m%d").parse;
           data.forEach(function(d) {
             d[1] = parseDate(d[1]);
@@ -20,8 +20,28 @@
           data = d3.nest().key(function(d) {
             return d[0];
           }).entries(data);
-          console.log(data);
-          canvas = ele[0].querySelector(".b-chart-traffic").children[0];
+          totalUsersByDay = data[0].values.map(function(ele, i, arr) {
+            var res;
+            return res = {
+              day: arr[i][1],
+              users: ele[2] + data[1].values[i][2]
+            };
+          });
+          maxUsers = d3.max(totalUsersByDay, function(d) {
+            return d.users;
+          });
+          maxUsersDayI = null;
+          totalUsersByDay.filter(function(ele, i) {
+            return ele.users === maxUsers && (maxUsersDayI = i);
+          });
+          minUsers = d3.min(totalUsersByDay, function(d) {
+            return d.users;
+          });
+          minUsersDayI = null;
+          totalUsersByDay.filter(function(ele, i) {
+            return ele.users === minUsers && (minUsersDayI = i);
+          });
+          canvas = ele[0].querySelector(".b-chart.b-traffic").children[0];
           wOrig = d3.select(canvas).node().offsetWidth;
           hOrig = d3.select(canvas).node().offsetHeight;
           marginBase = 30;
@@ -36,11 +56,6 @@
           x = d3.time.scale().range([0, w]).domain(d3.extent(data[1].values, function(d) {
             return d[1];
           }));
-          maxUsers = d3.max(data[0].values, function(d) {
-            return d[2] + d3.max(data[1].values, function(d) {
-              return d[2];
-            });
-          });
           y = d3.scale.linear().range([h, 0]).domain([0, maxUsers]);
           xAxis = d3.svg.axis().scale(x).orient("bottom");
           area = d3.svg.area().x(function(d) {
@@ -62,9 +77,28 @@
           areas.append("path").attr("class", function(d) {
             return "area " + d.key;
           }).attr("d", function(d) {
-            console.log(d);
             return area(d.values);
           });
+          areas.selectAll("text").data(function(d) {
+            return d.values.filter(function(ele, i) {
+              return i === maxUsersDayI || i === minUsersDayI;
+            });
+          }).enter().append("text").attr("x", function(d) {
+            return x(d[1]);
+          }).attr("y", function(d) {
+            return y(d.y + d.y0);
+          }).style("text-anchor", "middle").attr("transform", "translate(0, -15)").attr("dy", ".35em").text(function(d) {
+            return d3.format('0,000')(d[2]);
+          });
+          areas.selectAll("circle").data(function(d) {
+            return d.values.filter(function(ele, i) {
+              return i === maxUsersDayI || i === minUsersDayI;
+            });
+          }).enter().append("circle").attr("cx", function(d) {
+            return x(d[1]);
+          }).attr("cy", function(d) {
+            return y(d.y + d.y0);
+          }).attr("r", "0.4em").style("fill", "black");
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
         };
         bGaSvc.fetch.then(render);

@@ -1,7 +1,7 @@
-module = angular.module 'B.Chart.Traffic', []
+module = angular.module 'B.Chart.Users', []
 
-module.directive "bChartTraffic", (d3, bGaSvc) ->
-  templateUrl: 'b-chart-traffic/partial.html'
+module.directive "bChartUsers", (d3, bGaSvc) ->
+  templateUrl: 'b-chart-users/partial.html'
   restrict: 'E'
   link: (scope, ele, attrs) ->
     render = (data) ->
@@ -15,9 +15,19 @@ module.directive "bChartTraffic", (d3, bGaSvc) ->
         .key (d) -> d[0] # group by this key
         .entries data # apply to this data
 
-      console.log data
+      totalUsersByDay = data[0].values.map (ele, i, arr) ->
+        res =
+          day: arr[i][1]
+          users: ele[2] + data[1].values[i][2]
 
-      canvas = ele[0].querySelector(".b-chart-traffic").children[0]
+      maxUsers = d3.max totalUsersByDay, (d) -> d.users
+      maxUsersDayI = null
+      totalUsersByDay.filter (ele, i) -> ele.users is maxUsers && maxUsersDayI = i
+      minUsers = d3.min totalUsersByDay, (d) -> d.users
+      minUsersDayI = null
+      totalUsersByDay.filter (ele, i) -> ele.users is minUsers && minUsersDayI = i
+
+      canvas = ele[0].querySelector(".b-chart.b-traffic").children[0]
       wOrig = d3.select(canvas).node().offsetWidth
       hOrig = d3.select(canvas).node().offsetHeight
       marginBase = 30
@@ -31,7 +41,6 @@ module.directive "bChartTraffic", (d3, bGaSvc) ->
       x = d3.time.scale()
         .range [0, w]
         .domain d3.extent data[1].values, (d) -> d[1]
-      maxUsers = d3.max data[0].values, (d) -> d[2] + d3.max data[1].values, (d) -> d[2]
       y = d3.scale.linear()
         .range [h, 0]
         .domain [0, maxUsers]
@@ -63,7 +72,25 @@ module.directive "bChartTraffic", (d3, bGaSvc) ->
 
       areas.append "path"
         .attr "class", (d) -> "area " + d.key
-        .attr "d", (d) -> console.log d; area(d.values)
+        .attr "d", (d) -> area(d.values)
+
+      areas.selectAll "text"
+          .data (d) -> d.values.filter (ele, i) -> i is maxUsersDayI or i is minUsersDayI
+        .enter().append "text"
+          .attr "x", (d) -> x d[1]
+          .attr "y", (d) -> y d.y + d.y0
+          .style "text-anchor", "middle"
+          .attr "transform", "translate(0, -15)"
+          .attr "dy", ".35em"
+          .text (d) -> d3.format('0,000') d[2]
+
+      areas.selectAll "circle"
+          .data (d) -> d.values.filter (ele, i) -> i is maxUsersDayI or i is minUsersDayI
+        .enter().append "circle"
+          .attr "cx", (d) -> x d[1]
+          .attr "cy", (d) -> y d.y + d.y0
+          .attr "r", "0.4em"
+          .style "fill", "black"
 
       svg.append "g"
         .attr "class", "axis x"
