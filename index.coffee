@@ -1,8 +1,13 @@
 gapi = require "googleapis"
 rsvp = require "rsvp"
+
 express = require 'express'
 app = express()
 dataApi = express.Router()
+
+redis = require 'redis'
+db = redis.createClient("/tmp/redis.sock")
+db.on "error", (err) -> console.log err; return
 
 ###
 # Config
