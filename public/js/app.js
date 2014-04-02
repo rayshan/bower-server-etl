@@ -65,7 +65,7 @@
       getTraffic: {
         method: 'GET',
         params: {
-          type: 'traffic'
+          type: 'users'
         },
         isArray: true
       }

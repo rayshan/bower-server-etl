@@ -64,7 +64,7 @@ app.factory 'bGaSvc', ($resource) ->
   ga = $resource '/data/:type', null, {
     getTraffic: {
       method: 'GET'
-      params: {type: 'traffic'}
+      params: {type: 'users'}
       isArray: true
     }
   }
