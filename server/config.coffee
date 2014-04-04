@@ -5,7 +5,6 @@ config =
     privateKeyPath: process.env.GA_KEY_PATH || null
     profile : "75972512"
     scopeUri : "https://www.googleapis.com/auth/analytics.readonly"
-  types: ['users', 'ranking', 'geo']
   db:
     socket: '/tmp/redis.sock'
 
