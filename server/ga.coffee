@@ -38,9 +38,10 @@ authPromise = new rsvp.Promise (resolve, reject) ->
 
 fetch = (key) ->
   ->
-    queryObjs = queries[key].queryObjs
+    query = queries[key]
     promises = []
-    queryObjs.forEach (queryObj) ->
+
+    query.queryObjs.forEach (queryObj) ->
       promise = new rsvp.Promise (resolve, reject) ->
         gapi.discover('analytics', 'v3').execute (err, client) ->
           if err? then reject err
@@ -53,52 +54,53 @@ fetch = (key) ->
       promises.push promise
       return
 
-    rsvp.all promises
-
-transform = (data) ->
-  new rsvp.Promise (resolve, reject) ->
-    result = data.rows
-    result.forEach (d) ->
-      d[0] = if d[0] is 'New Visitor' then 'N' else 'E'
-      return
-    resolve result
-    return
+    rsvp.all(promises).then query.transform
 
 ###
 # define queries
 ###
 
-queries =
-  users:
-    queryObjs: [
-      {
-        'ids': 'ga:' + config.ga.profile
-        'start-date': '2014-03-15'
-        'end-date': 'yesterday'
-        'metrics': 'ga:visits'
-        'dimensions': 'ga:visitorType,ga:date'
-      }
-    ]
-  commands:
-    queryObjs: [
-      {
-        'ids': 'ga:' + config.ga.profile
-        'start-date': '7daysAgo'
-        'end-date': 'yesterday'
-        'metrics': 'ga:visitors,ga:pageviews'
-        'dimensions': 'ga:pagePathLevel1,ga:date'
-      }
-      {
-        'ids': 'ga:' + config.ga.profile
-        'start-date': '14daysAgo'
-        'end-date': '8daysAgo'
-        'metrics': 'ga:visitors,ga:pageviews'
-        'dimensions': 'ga:pagePathLevel1,ga:date'
-      }
-    ]
+queries = {}
+queries.users =
+  queryObjs: [
+    {
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '2014-03-15'
+      'end-date': 'yesterday'
+      'metrics': 'ga:visits'
+      'dimensions': 'ga:visitorType,ga:date'
+    }
+  ]
+  transform: (data) ->
+    new rsvp.Promise (resolve, reject) ->
+      result = data[0].rows
+      result.forEach (d) ->
+        d[0] = if d[0] is 'New Visitor' then 'N' else 'E'
+        return
+      resolve result
+      return
 
-
-
+queries.commands =
+  queryObjs: [
+    {
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '7daysAgo'
+      'end-date': 'yesterday'
+      'metrics': 'ga:visitors,ga:pageviews'
+      'dimensions': 'ga:pagePathLevel1,ga:date'
+    }
+    {
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '14daysAgo'
+      'end-date': '8daysAgo'
+      'metrics': 'ga:visitors,ga:pageviews'
+      'dimensions': 'ga:pagePathLevel1,ga:date'
+    }
+  ]
+  transform: (data) ->
+    new rsvp.Promise (resolve, reject) ->
+      resolve [data[0].rows, data[1].rows]
+      return
 
 
 
