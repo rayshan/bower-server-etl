@@ -15,7 +15,6 @@
           parseDate = d3.time.format("%Y%m%d").parse;
           data.forEach(function(d) {
             d[1] = parseDate(d[1]);
-            d[2] = +d[2];
           });
           data = d3.nest().key(function(d) {
             return d[0];

@@ -8,7 +8,6 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
       parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
       data.forEach (d) ->
         d[1] = parseDate(d[1]) # date
-        d[2] = +d[2] # users
         return
 
       data = d3.nest()

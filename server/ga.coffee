@@ -76,32 +76,65 @@ queries.users =
       result = data[0].rows
       result.forEach (d) ->
         d[0] = if d[0] is 'New Visitor' then 'N' else 'E'
+        d[2] = +d[2]
         return
       resolve result
       return
 
 queries.commands =
   queryObjs: [
-    {
+    { # current week
       'ids': 'ga:' + config.ga.profile
       'start-date': '7daysAgo'
       'end-date': 'yesterday'
       'metrics': 'ga:visitors,ga:pageviews'
-      'dimensions': 'ga:pagePathLevel1,ga:date'
+      'dimensions': 'ga:pagePathLevel1'
     }
-    {
+    { # prior week
       'ids': 'ga:' + config.ga.profile
       'start-date': '14daysAgo'
       'end-date': '8daysAgo'
       'metrics': 'ga:visitors,ga:pageviews'
-      'dimensions': 'ga:pagePathLevel1,ga:date'
+      'dimensions': 'ga:pagePathLevel1'
     }
   ]
   transform: (data) ->
     new rsvp.Promise (resolve, reject) ->
-      resolve [data[0].rows, data[1].rows]
-      return
+      current = data[0].rows
+      prior = data[1].rows
 
+      current.forEach (d) ->
+        d[0] = d[0].replace /\//g, ''
+        d[1] = +d[1]
+        d[2] = +d[2]
+        return
+      prior.forEach (d) ->
+        d[0] = d[0].replace /\//g, ''
+        d[1] = +d[1]
+        d[2] = +d[2]
+        return
+
+      result = current.filter (d) -> d[0].indexOf("ed") is -1
+        .map (d) ->
+          command: d[0]
+          current: {uses: +d[1], packages: +d[2]}
+
+      result.forEach (command) ->
+        command.prior =
+          uses: prior.filter((d) -> d[0] is command.command)[0][1]
+          packages: prior.filter((d) -> d[0] is command.command)[0][2]
+        command.delta =
+          uses: command.current.uses / command.prior.uses - 1
+          packages: command.current.packages / command.prior.packages - 1
+
+        switch command.command
+          when "install", "uninstall", "register", "unregister"
+            command.current.successes = current.filter((d) -> d[0] is command.command + 'ed')[0][2]
+            command.prior.successes = prior.filter((d) -> d[0] is command.command + 'ed')[0][2]
+            command.delta.successes = command.current.successes / command.prior.successes - 1
+        return
+
+      resolve result
 
 
 
