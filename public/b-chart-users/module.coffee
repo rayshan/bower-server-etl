@@ -101,6 +101,6 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
 
       return
 
-    bGaSvc.fetch.then render
+    bGaSvc.fetchUsers.then render
     return
 

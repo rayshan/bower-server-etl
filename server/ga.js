@@ -111,55 +111,59 @@
     ],
     transform: function(data) {
       return new rsvp.Promise(function(resolve, reject) {
-        var current, prior, result;
+        var commandCheck, current, getValue, prior, result, _transform;
         current = data[0].rows;
         prior = data[1].rows;
-        current.forEach(function(d) {
-          d[0] = d[0].replace(/\//g, '');
+        _transform = function(d) {
+          var command;
+          command = d[0].replace(/\//g, '');
+          command = command.charAt(0).toUpperCase() + command.slice(1);
+          d[0] = command;
           d[1] = +d[1];
           d[2] = +d[2];
-        });
-        prior.forEach(function(d) {
-          d[0] = d[0].replace(/\//g, '');
-          d[1] = +d[1];
-          d[2] = +d[2];
-        });
+        };
+        current.forEach(_transform);
+        prior.forEach(_transform);
+        commandCheck = function(d) {
+          return d[0].indexOf("ed") === -1 && d[0] !== "Searched";
+        };
         result = current.filter(function(d) {
-          return d[0].indexOf("ed") === -1;
+          return commandCheck(d);
         }).map(function(d) {
           return {
             command: d[0],
             current: {
-              uses: +d[1],
-              packages: +d[2]
+              uses: d[1],
+              packages: d[2]
             }
           };
         });
+        getValue = function(command, period, ed, valueType) {
+          var error, i;
+          ed = ed ? 'ed' : '';
+          i = valueType === 'uses' ? 1 : 2;
+          try {
+            return period.filter(function(d) {
+              return d[0] === command.command + ed;
+            })[0][i];
+          } catch (_error) {
+            error = _error;
+            return 0;
+          }
+        };
         result.forEach(function(command) {
           command.prior = {
-            uses: prior.filter(function(d) {
-              return d[0] === command.command;
-            })[0][1],
-            packages: prior.filter(function(d) {
-              return d[0] === command.command;
-            })[0][2]
+            uses: getValue(command, prior, false, 'uses'),
+            packages: getValue(command, prior, false, 'packages')
           };
           command.delta = {
             uses: command.current.uses / command.prior.uses - 1,
             packages: command.current.packages / command.prior.packages - 1
           };
-          switch (command.command) {
-            case "install":
-            case "uninstall":
-            case "register":
-            case "unregister":
-              command.current.successes = current.filter(function(d) {
-                return d[0] === command.command + 'ed';
-              })[0][2];
-              command.prior.successes = prior.filter(function(d) {
-                return d[0] === command.command + 'ed';
-              })[0][2];
-              command.delta.successes = command.current.successes / command.prior.successes - 1;
+          if (["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) !== -1) {
+            command.current.successes = getValue(command, current, true, 'successes');
+            command.prior.successes = getValue(command, prior, true, 'successes');
+            command.delta.successes = command.current.successes / command.prior.successes - 1;
           }
         });
         return resolve(result);

@@ -1,5 +1,6 @@
 app = angular.module 'BApp', [
   'B.Chart.Users'
+  'B.Table.Commands'
   'ngResource'
 ]
 
@@ -62,13 +63,18 @@ app.factory 'd3', ->
 
 app.factory 'bGaSvc', ($resource) ->
   ga = $resource '/data/:type', null, {
-    getTraffic: {
+    getUsers:
       method: 'GET'
       params: {type: 'users'}
       isArray: true
-    }
+    getCommands:
+      method: 'GET'
+      params: {type: 'commands'}
+      isArray: true
   }
 
-  fetchPromise = ga.getTraffic().$promise
+  fetchUsersP = ga.getUsers().$promise
+  fetchCommandsP = ga.getCommands().$promise
 
-  fetch: fetchPromise
+  fetchUsers: fetchUsersP
+  fetchCommands: fetchCommandsP

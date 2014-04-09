@@ -1,0 +1,8 @@
+<table class="table table-striped">
+  <tr ng-repeat="command in commands">
+    <td>{{ command.command }}</td>
+    <td>{{ command.current.uses }}<span class="label label-default">{{ command.delta.uses }}</span></td>
+    <td>{{ command.current.packages }}, {{ command.delta.packages }}</td>
+    <td>{{ command.current.successes }}, {{ command.delta.successes }}</td>
+  </tr>
+</table>

@@ -103,35 +103,44 @@ queries.commands =
       current = data[0].rows
       prior = data[1].rows
 
-      current.forEach (d) ->
-        d[0] = d[0].replace /\//g, ''
+      _transform = (d) ->
+        command = d[0].replace /\//g, ''
+        command = command.charAt(0).toUpperCase() + command.slice 1
+        d[0] = command
         d[1] = +d[1]
         d[2] = +d[2]
         return
-      prior.forEach (d) ->
-        d[0] = d[0].replace /\//g, ''
-        d[1] = +d[1]
-        d[2] = +d[2]
-        return
+      current.forEach _transform
+      prior.forEach _transform
 
-      result = current.filter (d) -> d[0].indexOf("ed") is -1
+      commandCheck = (d) -> d[0].indexOf("ed") is -1 and d[0] != "Searched"
+      # keep only commands that isn't called on success; searched is deprecated
+      result = current.filter (d) -> commandCheck(d)
         .map (d) ->
           command: d[0]
-          current: {uses: +d[1], packages: +d[2]}
+          current: { uses: d[1], packages: d[2] }
+
+      getValue = (command, period, ed, valueType) ->
+        ed = if ed then 'ed' else ''
+        i = if valueType is 'uses' then 1 else 2
+        # catch edge case in case new command tracked and no prior history
+        try
+          return period.filter((d) -> d[0] is command.command + ed)[0][i]
+        catch error
+          return 0
 
       result.forEach (command) ->
         command.prior =
-          uses: prior.filter((d) -> d[0] is command.command)[0][1]
-          packages: prior.filter((d) -> d[0] is command.command)[0][2]
+          uses: getValue command, prior, false, 'uses'
+          packages: getValue command, prior, false, 'packages'
         command.delta =
           uses: command.current.uses / command.prior.uses - 1
           packages: command.current.packages / command.prior.packages - 1
 
-        switch command.command
-          when "install", "uninstall", "register", "unregister"
-            command.current.successes = current.filter((d) -> d[0] is command.command + 'ed')[0][2]
-            command.prior.successes = prior.filter((d) -> d[0] is command.command + 'ed')[0][2]
-            command.delta.successes = command.current.successes / command.prior.successes - 1
+        if ["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) != -1
+          command.current.successes = getValue command, current, true, 'successes'
+          command.prior.successes = getValue command, prior, true, 'successes'
+          command.delta.successes = command.current.successes / command.prior.successes - 1
         return
 
       resolve result

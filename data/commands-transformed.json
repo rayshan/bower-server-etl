@@ -1,88 +1,103 @@
 [
   {
-    "command": "info",
+    "command": "Info",
     "current": {
-      "uses": 530,
-      "packages": 1259
+      "uses": 518,
+      "packages": 1208
     },
     "prior": {
-      "uses": 524,
-      "packages": 1426
+      "uses": 512,
+      "packages": 1432
     },
     "delta": {
-      "uses": 0.011450381679389388,
-      "packages": -0.11711079943899017
+      "uses": 0.01171875,
+      "packages": -0.15642458100558654
     }
   },
   {
-    "command": "install",
+    "command": "Install",
     "current": {
-      "uses": 7992,
-      "packages": 32776,
-      "successes": 181727
+      "uses": 8104,
+      "packages": 32896,
+      "successes": 184095
     },
     "prior": {
-      "uses": 7169,
-      "packages": 30031,
-      "successes": 161132
+      "uses": 7285,
+      "packages": 30528,
+      "successes": 162741
     },
     "delta": {
-      "uses": 0.11479983261263782,
-      "packages": 0.09140554760081243,
-      "successes": 0.12781446267656338
+      "uses": 0.11242278654770077,
+      "packages": 0.07756813417190767,
+      "successes": 0.1312146293804266
     }
   },
   {
-    "command": "register",
+    "command": "Register",
     "current": {
-      "uses": 123,
-      "packages": 239,
-      "successes": 137
+      "uses": 114,
+      "packages": 257,
+      "successes": 135
     },
     "prior": {
-      "uses": 105,
-      "packages": 175,
-      "successes": 94
+      "uses": 108,
+      "packages": 167,
+      "successes": 101
     },
     "delta": {
-      "uses": 0.17142857142857149,
-      "packages": 0.36571428571428566,
-      "successes": 0.45744680851063824
+      "uses": 0.05555555555555558,
+      "packages": 0.5389221556886228,
+      "successes": 0.3366336633663367
     }
   },
   {
-    "command": "uninstall",
+    "command": "Search",
     "current": {
-      "uses": 1176,
-      "packages": 3070,
-      "successes": 3225
+      "uses": 194,
+      "packages": 431
     },
     "prior": {
-      "uses": 1131,
-      "packages": 2974,
-      "successes": 3442
+      "uses": 0,
+      "packages": 0
     },
     "delta": {
-      "uses": 0.039787798408488007,
-      "packages": 0.0322797579018157,
-      "successes": -0.06304474142940153
+      "uses": null,
+      "packages": null
     }
   },
   {
-    "command": "unregister",
+    "command": "Uninstall",
     "current": {
-      "uses": 2,
-      "packages": 27,
+      "uses": 1177,
+      "packages": 3130,
+      "successes": 3323
+    },
+    "prior": {
+      "uses": 1151,
+      "packages": 3072,
+      "successes": 3511
+    },
+    "delta": {
+      "uses": 0.022589052997393555,
+      "packages": 0.01888020833333326,
+      "successes": -0.053545998291085195
+    }
+  },
+  {
+    "command": "Unregister",
+    "current": {
+      "uses": 1,
+      "packages": 21,
       "successes": 4
     },
     "prior": {
-      "uses": 1,
-      "packages": 3,
+      "uses": 2,
+      "packages": 9,
       "successes": 1
     },
     "delta": {
-      "uses": 1,
-      "packages": 8,
+      "uses": -0.5,
+      "packages": 1.3333333333333335,
       "successes": 3
     }
   }

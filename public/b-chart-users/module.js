@@ -103,7 +103,7 @@
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
           legend = svg.append("g").attr("class", "legend").call(d3.legend);
         };
-        bGaSvc.fetch.then(render);
+        bGaSvc.fetchUsers.then(render);
       }
     };
   });
