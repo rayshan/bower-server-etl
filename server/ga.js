@@ -132,9 +132,11 @@
         }).map(function(d) {
           return {
             command: d[0],
-            current: {
-              uses: d[1],
-              packages: d[2]
+            uses: {
+              current: d[1]
+            },
+            packages: {
+              current: d[2]
             }
           };
         });
@@ -152,18 +154,16 @@
           }
         };
         result.forEach(function(command) {
-          command.prior = {
-            uses: getValue(command, prior, false, 'uses'),
-            packages: getValue(command, prior, false, 'packages')
-          };
-          command.delta = {
-            uses: command.current.uses / command.prior.uses - 1,
-            packages: command.current.packages / command.prior.packages - 1
-          };
+          command.uses.prior = getValue(command, prior, false, 'uses');
+          command.packages.prior = getValue(command, prior, false, 'packages');
+          command.uses.delta = command.uses.current / command.uses.prior - 1;
+          command.packages.delta = command.packages.current / command.packages.prior - 1;
           if (["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) !== -1) {
-            command.current.successes = getValue(command, current, true, 'successes');
-            command.prior.successes = getValue(command, prior, true, 'successes');
-            command.delta.successes = command.current.successes / command.prior.successes - 1;
+            command.successes = {
+              current: getValue(command, current, true, 'successes'),
+              prior: getValue(command, prior, true, 'successes')
+            };
+            command.successes.delta = command.successes.current / command.successes.prior - 1;
           }
         });
         return resolve(result);
