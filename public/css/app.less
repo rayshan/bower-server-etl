@@ -1,6 +1,8 @@
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
 @import "../bower_components/lesshat/build/lesshat-prefixed.less";
+@import "../b-chart-users/module.less";
+@import "../b-table-commands/module.less";
 @fa-font-path: "../bower_components/font-awesome/fonts";
 
 
@@ -74,60 +76,14 @@ footer {
   padding: 5px 0 20px;
 }
 
-
-
-
-
-
-
 .b-chart {
   cursor: default;
   margin: 10px 0 10px;
 }
 
-.b-chart.b-users {
-  height: 300px;
-  background: lighten(@b-yellow, 35%);
-
-  .area {stroke: none}
-
-  text {
-    .lh-user-select(none);
-    font-size: 0.8em;
-    fill: @b-brown;
-  }
-
-  .axis {
-    path, line {
-      fill: none;
-      stroke: @b-gray;
-      shape-rendering: crispEdges;
-    }
-  }
-
-  .users {
-    text {
-      text-anchor: middle;
-      font-size: 1.2em;
-    }
-    &.N {
-      .area {fill: @b-blue}
-      text {fill: @b-blue}
-      circle {
-        stroke: @b-blue;
-        fill: white;
-        stroke-width: 2;
-      }
-    }
-
-    &.E {
-      .area {fill: @b-yellow}
-      circle {
-        stroke: @b-yellow;
-        fill: white;
-        stroke-width: 2;
-      }
-    }
-  }
-
+h1, h2, h3, h4, h5, h6 > .b-title {
+  text-align: center;
+  color: @b-brown;
+  span {border-bottom: 1px dashed @b-yellow}
+  i {color: @b-yellow}
 }

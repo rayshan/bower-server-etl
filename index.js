@@ -47,7 +47,7 @@
   app.use(express["static"]('public'));
 
   server = app.listen(3000, function() {
-    console.log("Listening on port " + (server.address().port));
+    console.log("INFO: listening on port " + (server.address().port) + ".");
   });
 
 }).call(this);

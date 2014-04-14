@@ -1,104 +1,128 @@
 [
   {
     "command": "Info",
-    "current": {
-      "uses": 518,
-      "packages": 1208
-    },
-    "prior": {
-      "uses": 512,
-      "packages": 1432
-    },
-    "delta": {
-      "uses": 0.01171875,
-      "packages": -0.15642458100558654
-    }
+    "order": 4,
+    "icon": "info",
+    "metrics": [
+      {
+        "type": "users",
+        "order": 1,
+        "current": 538,
+        "prior": 542,
+        "delta": -0.0073800738007380184
+      },
+      {
+        "type": "uses",
+        "order": 2,
+        "current": 1383,
+        "prior": 1359,
+        "delta": 0.017660044150110465
+      }
+    ]
   },
   {
     "command": "Install",
-    "current": {
-      "uses": 8104,
-      "packages": 32896,
-      "successes": 184095
-    },
-    "prior": {
-      "uses": 7285,
-      "packages": 30528,
-      "successes": 162741
-    },
-    "delta": {
-      "uses": 0.11242278654770077,
-      "packages": 0.07756813417190767,
-      "successes": 0.1312146293804266
-    }
+    "order": 1,
+    "icon": "download",
+    "metrics": [
+      {
+        "type": "users",
+        "order": 1,
+        "current": 8421,
+        "prior": 7918,
+        "delta": 0.06352614296539527
+      },
+      {
+        "type": "uses",
+        "order": 2,
+        "current": 34527,
+        "prior": 32301,
+        "delta": 0.06891427509984216
+      },
+      {
+        "type": "packages",
+        "order": 3,
+        "current": 201464,
+        "prior": 178959,
+        "delta": 0.12575506121513857
+      }
+    ]
   },
   {
     "command": "Register",
-    "current": {
-      "uses": 114,
-      "packages": 257,
-      "successes": 135
-    },
-    "prior": {
-      "uses": 108,
-      "packages": 167,
-      "successes": 101
-    },
-    "delta": {
-      "uses": 0.05555555555555558,
-      "packages": 0.5389221556886228,
-      "successes": 0.3366336633663367
-    }
+    "order": 3,
+    "icon": "pencil",
+    "metrics": [
+      {
+        "type": "users",
+        "order": 1,
+        "current": 108,
+        "prior": 128,
+        "delta": -0.15625
+      },
+      {
+        "type": "uses",
+        "order": 2,
+        "current": 250,
+        "prior": 241,
+        "delta": 0.03734439834024905
+      },
+      {
+        "type": "packages",
+        "order": 3,
+        "current": 133,
+        "prior": 141,
+        "delta": -0.05673758865248224
+      }
+    ]
   },
   {
     "command": "Search",
-    "current": {
-      "uses": 194,
-      "packages": 431
-    },
-    "prior": {
-      "uses": 0,
-      "packages": 0
-    },
-    "delta": {
-      "uses": null,
-      "packages": null
-    }
+    "order": 5,
+    "icon": "search",
+    "metrics": [
+      {
+        "type": "users",
+        "order": 1,
+        "current": 1308,
+        "prior": 0,
+        "delta": null
+      },
+      {
+        "type": "uses",
+        "order": 2,
+        "current": 3450,
+        "prior": 0,
+        "delta": null
+      }
+    ]
   },
   {
     "command": "Uninstall",
-    "current": {
-      "uses": 1177,
-      "packages": 3130,
-      "successes": 3323
-    },
-    "prior": {
-      "uses": 1151,
-      "packages": 3072,
-      "successes": 3511
-    },
-    "delta": {
-      "uses": 0.022589052997393555,
-      "packages": 0.01888020833333326,
-      "successes": -0.053545998291085195
-    }
-  },
-  {
-    "command": "Unregister",
-    "current": {
-      "uses": 1,
-      "packages": 21,
-      "successes": 4
-    },
-    "prior": {
-      "uses": 2,
-      "packages": 9,
-      "successes": 1
-    },
-    "delta": {
-      "uses": -0.5,
-      "packages": 1.3333333333333335,
-      "successes": 3
-    }
+    "order": 2,
+    "icon": "trash-o",
+    "metrics": [
+      {
+        "type": "users",
+        "order": 1,
+        "current": 1213,
+        "prior": 1190,
+        "delta": 0.019327731092436906
+      },
+      {
+        "type": "uses",
+        "order": 2,
+        "current": 3060,
+        "prior": 3083,
+        "delta": -0.007460265974699953
+      },
+      {
+        "type": "packages",
+        "order": 3,
+        "current": 3370,
+        "prior": 3274,
+        "delta": 0.029321930360415305
+      }
+    ]
   }
 ]

@@ -78,3 +78,18 @@ app.factory 'bGaSvc', ($resource) ->
 
   fetchUsers: fetchUsersP
   fetchCommands: fetchCommandsP
+
+app.filter 'pct', ->
+  (input) ->
+    input *= 100
+    inputAbs = Math.abs input
+    neg = if input < 0 then '- ' else '' # force a space b/t sign & num
+    decimal = if inputAbs < 10 then 1 else 0
+    if input is 0 then null
+    else neg + inputAbs.toFixed(decimal) + ' %'
+
+app.filter 'round', ->
+  (input) ->
+    if input >= 1000
+      (input / 1000).toFixed(1) + ' k'
+    else input.toFixed(1)

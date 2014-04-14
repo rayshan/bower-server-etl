@@ -99,13 +99,26 @@ queries.commands =
     }
   ]
   transform: (data) ->
+    order =
+      Install: 1
+      Uninstall: 2
+      Register: 3
+      Info: 4
+      Search: 5
+    icon =
+      Install: 'download'
+      Uninstall: 'trash-o'
+      Register: 'pencil'
+      Info: 'info'
+      Search: 'search'
+
     new rsvp.Promise (resolve, reject) ->
       current = data[0].rows
       prior = data[1].rows
 
       _transform = (d) ->
-        command = d[0].replace /\//g, ''
-        command = command.charAt(0).toUpperCase() + command.slice 1
+        command = d[0].replace /\//g, '' # remove leading & trailing /
+        command = command.charAt(0).toUpperCase() + command.slice 1 # Cap Case
         d[0] = command
         d[1] = +d[1]
         d[2] = +d[2]
@@ -118,30 +131,47 @@ queries.commands =
       result = current.filter (d) -> commandCheck(d)
         .map (d) ->
           command: d[0]
-          uses: current: d[1]
-          packages: current: d[2]
-#          current: { uses: d[1], packages: d[2] }
+          order: order[d[0]]
+          icon: icon[d[0]]
+          metrics: [
+            {
+              type: 'users'
+              order: 1
+              current: d[1]
+            }
+            {
+              type: 'uses'
+              order: 2
+              current: d[2]
+            }
+          ]
 
       getValue = (command, period, ed, valueType) ->
         ed = if ed then 'ed' else ''
-        i = if valueType is 'uses' then 1 else 2
+        i = if valueType is 'users' then 1 else 2
         # catch edge case in case new command tracked and no prior history
         try
-          return period.filter((d) -> d[0] is command.command + ed)[0][i]
+          period.filter((d) -> d[0] is command.command + ed)[0][i]
         catch error
-          return 0
+          0
+
+      getMetric = (command, type) ->
+        command.metrics.filter (d) -> d.type is type
 
       result.forEach (command) ->
-        command.uses.prior = getValue command, prior, false, 'uses'
-        command.packages.prior = getValue command, prior, false, 'packages'
-        command.uses.delta = command.uses.current / command.uses.prior - 1
-        command.packages.delta = command.packages.current / command.packages.prior - 1
-
+        # command with packages count ('-ed')
         if ["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) != -1
-          command.successes =
-            current: getValue command, current, true, 'successes'
-            prior: getValue command, prior, true, 'successes'
-          command.successes.delta = command.successes.current / command.successes.prior - 1
+          command.metrics.push {
+            type: 'packages'
+            order: 3
+            current: getValue command, current, true, 'packages'
+          }
+
+        command.metrics.forEach (metric) ->
+          metric.prior = getValue command, prior, (if metric.type is 'packages' then true else false), metric.type
+          metric.delta = metric.current / metric.prior - 1
+          return
+
         return
 
       resolve result

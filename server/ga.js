@@ -110,8 +110,23 @@
       }
     ],
     transform: function(data) {
+      var icon, order;
+      order = {
+        Install: 1,
+        Uninstall: 2,
+        Register: 3,
+        Info: 4,
+        Search: 5
+      };
+      icon = {
+        Install: 'download',
+        Uninstall: 'trash-o',
+        Register: 'pencil',
+        Info: 'info',
+        Search: 'search'
+      };
       return new rsvp.Promise(function(resolve, reject) {
-        var commandCheck, current, getValue, prior, result, _transform;
+        var commandCheck, current, getMetric, getValue, prior, result, _transform;
         current = data[0].rows;
         prior = data[1].rows;
         _transform = function(d) {
@@ -132,18 +147,25 @@
         }).map(function(d) {
           return {
             command: d[0],
-            uses: {
-              current: d[1]
-            },
-            packages: {
-              current: d[2]
-            }
+            order: order[d[0]],
+            icon: icon[d[0]],
+            metrics: [
+              {
+                type: 'users',
+                order: 1,
+                current: d[1]
+              }, {
+                type: 'uses',
+                order: 2,
+                current: d[2]
+              }
+            ]
           };
         });
         getValue = function(command, period, ed, valueType) {
           var error, i;
           ed = ed ? 'ed' : '';
-          i = valueType === 'uses' ? 1 : 2;
+          i = valueType === 'users' ? 1 : 2;
           try {
             return period.filter(function(d) {
               return d[0] === command.command + ed;
@@ -153,18 +175,23 @@
             return 0;
           }
         };
+        getMetric = function(command, type) {
+          return command.metrics.filter(function(d) {
+            return d.type === type;
+          });
+        };
         result.forEach(function(command) {
-          command.uses.prior = getValue(command, prior, false, 'uses');
-          command.packages.prior = getValue(command, prior, false, 'packages');
-          command.uses.delta = command.uses.current / command.uses.prior - 1;
-          command.packages.delta = command.packages.current / command.packages.prior - 1;
           if (["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) !== -1) {
-            command.successes = {
-              current: getValue(command, current, true, 'successes'),
-              prior: getValue(command, prior, true, 'successes')
-            };
-            command.successes.delta = command.successes.current / command.successes.prior - 1;
+            command.metrics.push({
+              type: 'packages',
+              order: 3,
+              current: getValue(command, current, true, 'packages')
+            });
           }
+          command.metrics.forEach(function(metric) {
+            metric.prior = getValue(command, prior, (metric.type === 'packages' ? true : false), metric.type);
+            metric.delta = metric.current / metric.prior - 1;
+          });
         });
         return resolve(result);
       });

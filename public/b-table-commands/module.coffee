@@ -6,4 +6,7 @@ module.directive "bTableCommands", (bGaSvc) ->
   link: (scope, ele) ->
     bGaSvc.fetchCommands.then (data) ->
       scope.commands = data
+
+    customSort =
+      command = (command) ->
     return

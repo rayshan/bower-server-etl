@@ -85,6 +85,31 @@
     };
   });
 
+  app.filter('pct', function() {
+    return function(input) {
+      var decimal, inputAbs, neg;
+      input *= 100;
+      inputAbs = Math.abs(input);
+      neg = input < 0 ? '- ' : '';
+      decimal = inputAbs < 10 ? 1 : 0;
+      if (input === 0) {
+        return null;
+      } else {
+        return neg + inputAbs.toFixed(decimal) + ' %';
+      }
+    };
+  });
+
+  app.filter('round', function() {
+    return function(input) {
+      if (input >= 1000) {
+        return (input / 1000).toFixed(1) + ' k';
+      } else {
+        return input.toFixed(1);
+      }
+    };
+  });
+
 }).call(this);
 
 //# sourceMappingURL=app.map

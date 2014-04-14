@@ -1,8 +1,31 @@
-<table class="table table-striped">
-  <tr ng-repeat="command in commands">
-    <td>{{ command.command }}</td>
-    <td>{{ command.current.uses }}<span class="label label-default">{{ command.delta.uses }}</span></td>
-    <td>{{ command.current.packages }}, {{ command.delta.packages }}</td>
-    <td>{{ command.current.successes }}, {{ command.delta.successes }}</td>
-  </tr>
+<h2>Command usage over past <span>7 days <i class="fa fa-caret-down"></i></span></h2>
+
+<table class="table table-condensed b-table">
+
+  <thead>
+    <tr>
+      <td>Command</td>
+      <td>Users</td>
+      <td>Uses <span class="pull-right">per user</span></td>
+      <td>Packages <span class="pull-right">per use</span></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="command in commands | orderBy: 'order'">
+      <td><i class="fa fa-fw" ng-class="'fa-' + command.icon"></i> {{ command.command }}</td>
+      <td ng-repeat="metric in command.metrics | orderBy: 'order'">
+        {{ metric.current | round }}
+        <span class="label"
+              ng-class="'label-' + (metric.delta > 0 ? 'success' : 'danger')"
+              ng-if="metric.delta !== null">
+          {{ metric.delta | pct }}
+        </span>
+        <span ng-if="metric.type !== 'users'" class="pull-right">
+          {{ metric.current / command.metrics[$index - 1].current | round}}
+        </span>
+      </td>
+    </tr>
+  </tbody>
+
 </table>
