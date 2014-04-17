@@ -2,7 +2,7 @@
   "name": "stats.bower.io",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.coffee",
   "scripts": {
     "start": "./scripts/start.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,5 +23,8 @@
     "googleapis": "^0.7.0",
     "redis": "^0.10.1",
     "rsvp": "^3.0.6"
+  },
+  "devDependencies": {
+    "flightplan": "^0.3.1"
   }
 }
