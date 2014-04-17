@@ -9,12 +9,8 @@ fi
 
 redis-server ./scripts/redis.conf
 
-printf "\n"
-
-redis-cli ping
-
 printf "start script complete, starting server..."
 
 printf "\n"
 
-node-dev index.coffee
+node-dev bower.coffee

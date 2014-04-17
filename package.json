@@ -2,7 +2,7 @@
   "name": "stats.bower.io",
   "version": "0.0.0",
   "description": "",
-  "main": "index.coffee",
+  "main": "bower.coffee",
   "scripts": {
     "start": "./scripts/start.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
