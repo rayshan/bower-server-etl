@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/rayshan/stats.bower.io",
   "dependencies": {
+    "compression": "^1.0.1",
     "d3": "^3.4.4",
     "express": "^4.0.0-rc4",
     "googleapis": "^0.7.0",
