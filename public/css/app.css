@@ -7173,13 +7173,15 @@ footer:after {
   font-weight: normal;
 }
 .b-table thead > tr td:nth-child(1) {
-  background-color: #543729;
+  background-color: #cecece;
+  color: #543729;
 }
 .b-table thead > tr td:nth-child(2) {
-  background-color: #ef5734;
+  background-color: #ffcc2f;
+  color: #543729;
 }
 .b-table thead > tr td:nth-child(3) {
-  background-color: #2baf2b;
+  background-color: #543729;
 }
 .b-table thead > tr td:nth-child(4) {
   background-color: #00acee;
@@ -7248,6 +7250,8 @@ section {
   margin-left: 0;
   margin-right: 0;
 }
+/* Footer
+================================================== */
 footer {
   margin-left: 0;
   margin-right: 0;
