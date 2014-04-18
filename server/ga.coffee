@@ -134,16 +134,8 @@ queries.commands =
           order: order[d[0]]
           icon: icon[d[0]]
           metrics: [
-            {
-              type: 'users'
-              order: 1
-              current: d[1]
-            }
-            {
-              type: 'uses'
-              order: 2
-              current: d[2]
-            }
+            {type: 'users', order: 1, current: d[1]} # ga:visitors
+            {type: 'uses', order: 2, current: d[2]} # ga:pageviews
           ]
 
       getValue = (command, period, ed, valueType) ->
@@ -162,8 +154,7 @@ queries.commands =
         # command with packages count ('-ed')
         if ["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) != -1
           command.metrics.push {
-            type: 'packages'
-            order: 3
+            type: 'packages', order: 3
             current: getValue command, current, true, 'packages'
           }
 
@@ -176,10 +167,33 @@ queries.commands =
 
       resolve result
 
-
-
-
-
+queries.packages =
+  # only want to pull packages w/ >= 5 installs, which is around the 3500th package sorted by installs
+  # hence max-results = 5000
+  queryObjs: [
+    { # current week
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '7daysAgo'
+      'end-date': 'yesterday'
+      'metrics': 'ga:visitors,ga:pageviews'
+      'dimensions': 'ga:pagePathLevel2'
+      'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring
+      'sort': '-ga:pageviews'
+      'max-results': 3500
+    }
+    { # prior week
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '14daysAgo'
+      'end-date': '8daysAgo'
+      'metrics': 'ga:visitors,ga:pageviews'
+      'dimensions': 'ga:pagePathLevel2'
+      'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring
+      'sort': '-ga:pageviews'
+      'max-results': 3500
+    }
+  ]
+  transform: (data) ->
+    data
 
 # ==========
 

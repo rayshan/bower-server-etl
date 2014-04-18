@@ -10,9 +10,7 @@ config = require "./config"
 
 # cache GA response via redis
 
-cache = {}
-
-cache.fetch = (key) ->
+fetch = (key) ->
   new rsvp.Promise (resolve, reject) ->
     db.exists key, (err, res) ->
       if err # redis err
@@ -37,16 +35,18 @@ cache.fetch = (key) ->
             return
           .catch (err) -> console.log "ERROR: ", err; return
 
-cache.init = ->
+init = ->
   # for testing
   ga.validQueryTypes.forEach (key) -> db.del key; return
 
   console.log "SUCCESS: Connected to Redis."
-  ga.validQueryTypes.forEach (key) -> cache.fetch key; return
+  ga.validQueryTypes.forEach (key) -> fetch key; return
   return
 
 db = redis.createClient config.db.socket
-db.on "connect", cache.init
 db.on "error", (err) -> console.log err; return
 
-module.exports = cache
+module.exports =
+  init: init
+  fetch: fetch
+  db: db
