@@ -18,7 +18,7 @@
         {{ metric.current | round }}
         <span class="label"
               ng-class="'label-' + (metric.delta > 0 ? 'success' : 'danger')"
-              ng-if="metric.delta !== null">
+              ng-if="metric.delta !== null && metric.delta !== 0">
           {{ metric.delta | pct }}
         </span>
         <span ng-if="metric.type !== 'users'" class="pull-right">
