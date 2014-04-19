@@ -1,6 +1,7 @@
 # Vendor
 gapi = require "googleapis"
 rsvp = require "rsvp"
+_find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
 
 # Custom
 config = require "./config"
@@ -81,6 +82,9 @@ queries.users =
       resolve result
       return
 
+util =
+  removeSlash: (input) -> input.replace /\//g, '' # remove leading & trailing /
+
 queries.commands =
   queryObjs: [
     { # current week
@@ -117,7 +121,7 @@ queries.commands =
       prior = data[1].rows
 
       _transform = (d) ->
-        command = d[0].replace /\//g, '' # remove leading & trailing /
+        command = util.removeSlash(d[0])
         command = command.charAt(0).toUpperCase() + command.slice 1 # Cap Case
         d[0] = command
         d[1] = +d[1]
@@ -134,32 +138,29 @@ queries.commands =
           order: order[d[0]]
           icon: icon[d[0]]
           metrics: [
-            {type: 'users', order: 1, current: d[1]} # ga:visitors
-            {type: 'uses', order: 2, current: d[2]} # ga:pageviews
+            {metric: 'users', order: 1, current: d[1]} # ga:visitors
+            {metric: 'uses', order: 2, current: d[2]} # ga:pageviews
           ]
 
       getValue = (command, period, ed, valueType) ->
         ed = if ed then 'ed' else ''
-        i = if valueType is 'users' then 1 else 2
+        i = if valueType is 'users' then 1 else 2 # else pkgs
         # catch edge case in case new command tracked and no prior history
         try
-          period.filter((d) -> d[0] is command.command + ed)[0][i]
+          _find(period, (d) -> d[0] is command.command + ed)[i]
         catch error
-          0
-
-      getMetric = (command, type) ->
-        command.metrics.filter (d) -> d.type is type
+          0 # if not found, command tracking wasn't implemented
 
       result.forEach (command) ->
-        # command with packages count ('-ed')
+        # command with pkgs count ('-ed')
         if ["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) != -1
           command.metrics.push {
-            type: 'packages', order: 3
-            current: getValue command, current, true, 'packages'
+            metric: 'pkgs', order: 3
+            current: getValue command, current, true, 'pkgs'
           }
 
         command.metrics.forEach (metric) ->
-          metric.prior = getValue command, prior, (if metric.type is 'packages' then true else false), metric.type
+          metric.prior = getValue command, prior, (if metric.metric is 'pkgs' then true else false), metric.metric
           metric.delta = metric.current / metric.prior - 1
           return
 
@@ -167,8 +168,9 @@ queries.commands =
 
       resolve result
 
-queries.packages =
-  # only want to pull packages w/ >= 5 installs, which is around the 3500th package sorted by installs
+queries.pkgs =
+  # 'package' is a reserved word in JS
+  # only want to pull pkgs w/ >= 5 installs, which is around the 3500th pkg sorted by installs
   # hence max-results = 5000
   queryObjs: [
     { # current week
@@ -193,7 +195,33 @@ queries.packages =
     }
   ]
   transform: (data) ->
-    data
+    new rsvp.Promise (resolve, reject) ->
+      current = data[0].rows[..19] # TODO: from / to as arg
+      prior = data[1].rows[..19]
+
+      _transform = (d, i) ->
+        d[0] = util.removeSlash(d[0])
+        d[1] = +d[1]; d[2] = +d[2]
+        d.push i + 1 # rank
+        return
+      current.forEach _transform
+      prior.forEach _transform
+
+      result = current.map (d) ->
+        name: d[0]
+        rank: current: d[3]
+        users: current: d[1] # ga:visitors
+        pkgs: current: d[2] # ga:pageviews
+
+      result.forEach (pkg) ->
+        priorPkg = _find prior, (d) -> d[0] is pkg.name
+        if priorPkg?
+          pkg.rank.prior = priorPkg[3]
+          pkg.users.prior = priorPkg[1]
+          pkg.pkgs.prior = priorPkg[2]
+        return
+
+      resolve result
 
 # ==========
 

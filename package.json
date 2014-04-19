@@ -22,7 +22,9 @@
     "d3": "^3.4.4",
     "express": "^4.0.0-rc4",
     "googleapis": "^0.7.0",
+    "lodash-node": "^2.4.1",
     "redis": "^0.10.1",
+    "request": "^2.34.0",
     "rsvp": "^3.0.6"
   },
   "devDependencies": {

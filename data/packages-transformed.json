@@ -1,0 +1,167 @@
+[
+  {
+    "name": "jquery",
+    "rank": {
+      "current": 1,
+      "prior": 1
+    },
+    "users": {
+      "current": 9043,
+      "prior": 8714
+    },
+    "pkgs": {
+      "current": 18673,
+      "prior": 18286
+    }
+  },
+  {
+    "name": "angular",
+    "rank": {
+      "current": 2,
+      "prior": 2
+    },
+    "users": {
+      "current": 6130,
+      "prior": 5845
+    },
+    "pkgs": {
+      "current": 12172,
+      "prior": 11545
+    }
+  },
+  {
+    "name": "bootstrap",
+    "rank": {
+      "current": 3,
+      "prior": 3
+    },
+    "users": {
+      "current": 5270,
+      "prior": 5175
+    },
+    "pkgs": {
+      "current": 8990,
+      "prior": 8885
+    }
+  },
+  {
+    "name": "angular-mocks",
+    "rank": {
+      "current": 4,
+      "prior": 4
+    },
+    "users": {
+      "current": 4609,
+      "prior": 4333
+    },
+    "pkgs": {
+      "current": 8657,
+      "prior": 8212
+    }
+  },
+  {
+    "name": "angular-route",
+    "rank": {
+      "current": 5,
+      "prior": 5
+    },
+    "users": {
+      "current": 4458,
+      "prior": 4257
+    },
+    "pkgs": {
+      "current": 7952,
+      "prior": 7553
+    }
+  },
+  {
+    "name": "angular-resource",
+    "rank": {
+      "current": 6,
+      "prior": 6
+    },
+    "users": {
+      "current": 3951,
+      "prior": 3728
+    },
+    "pkgs": {
+      "current": 7056,
+      "prior": 6801
+    }
+  },
+  {
+    "name": "angular-cookies",
+    "rank": {
+      "current": 7,
+      "prior": 8
+    },
+    "users": {
+      "current": 2975,
+      "prior": 2788
+    },
+    "pkgs": {
+      "current": 5702,
+      "prior": 5299
+    }
+  },
+  {
+    "name": "angular-sanitize",
+    "rank": {
+      "current": 8,
+      "prior": 7
+    },
+    "users": {
+      "current": 2840,
+      "prior": 2696
+    },
+    "pkgs": {
+      "current": 5498,
+      "prior": 5315
+    }
+  },
+  {
+    "name": "angular-scenario",
+    "rank": {
+      "current": 9,
+      "prior": 9
+    },
+    "users": {
+      "current": 2683,
+      "prior": 2589
+    },
+    "pkgs": {
+      "current": 5326,
+      "prior": 5261
+    }
+  },
+  {
+    "name": "es5-shim",
+    "rank": {
+      "current": 10,
+      "prior": 10
+    },
+    "users": {
+      "current": 2650,
+      "prior": 2519
+    },
+    "pkgs": {
+      "current": 5152,
+      "prior": 4965
+    }
+  },
+  {
+    "name": "json3",
+    "rank": {
+      "current": 11,
+      "prior": 11
+    },
+    "users": {
+      "current": 2570,
+      "prior": 2463
+    },
+    "pkgs": {
+      "current": 5013,
+      "prior": 4874
+    }
+  }
+]

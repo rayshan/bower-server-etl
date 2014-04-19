@@ -89,7 +89,7 @@ app.filter 'pct', ->
     else neg + inputAbs.toFixed(decimal) + ' %'
 
 app.filter 'round', ->
-  (input) ->
+  (input, decimals) ->
     if input >= 1000
-      (input / 1000).toFixed(1) + ' k'
-    else input.toFixed(1)
+      (input / 1000).toFixed(1) + ' k' # e.g. 206.1 k
+    else input.toFixed decimals

@@ -101,11 +101,11 @@
   });
 
   app.filter('round', function() {
-    return function(input) {
+    return function(input, decimals) {
       if (input >= 1000) {
         return (input / 1000).toFixed(1) + ' k';
       } else {
-        return input.toFixed(1);
+        return input.toFixed(decimals);
       }
     };
   });
