@@ -1,6 +1,7 @@
 # Vendor
 redis = require 'redis'
-rsvp = require "rsvp"
+rsvp = require 'rsvp'
+request = require 'request'
 
 # Custom
 ga = require './ga'
@@ -26,21 +27,35 @@ fetch = (key) ->
           else resolve JSON.parse res
           return
         return
-      else
+      else # not cached
         console.info "INFO: not cached / fetching [#{ key }] from GA."
-        ga.authPromise.then(ga.fetch key) # .then transform
-          .then (data) ->
-            db.set key, JSON.stringify(data)
-            resolve data
+        if key is 'overview'
+          request {url: 'https://bower.herokuapp.com/packages', json: true}, (err, res, body) ->
+            if err
+              console.error "ERROR: can't fetch package count from bower registry, err = #{ err }"
+              reject err
+            else
+              data = totalPkgs: body.length
+              db.set key, JSON.stringify data
+              resolve data
             return
-          .catch (err) -> console.error "ERROR: ", err; return
+        else
+          ga.authPromise.then(ga.fetch key) # .then transform
+            .then (data) ->
+              db.set key, JSON.stringify data
+              resolve data
+              return
+            .catch (err) -> console.error "ERROR: ", err; return
 
 init = ->
-  # for testing
-  ga.validQueryTypes.forEach (key) -> db.del key; return
-
   console.info "SUCCESS: Connected to Redis."
+
+  # for dev; comment out for prod
+  ga.validQueryTypes.forEach (key) -> db.del key; return
+  db.del 'overview'
+
   ga.validQueryTypes.forEach (key) -> fetch key; return
+  fetch 'overview'
   return
 
 db = redis.createClient config.db.socket
