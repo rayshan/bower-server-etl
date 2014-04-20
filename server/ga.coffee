@@ -197,8 +197,8 @@ queries.pkgs =
   ]
   transform: (data) ->
     new rsvp.Promise (resolve, reject) ->
-      current = data[0].rows[..9] # TODO: from / to as arg
-      prior = data[1].rows[..19]
+      current = data[0].rows[..19] # TODO: from / to as arg
+      prior = data[1].rows[..29]
 
       _transform = (d, i) ->
         d[0] = util.removeSlash(d[0])

@@ -28,6 +28,7 @@ console.error "ERROR: GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
 _gh = new Octokit.new {token: _token}
 
 # get github repo info from bower register
+# raw data @ http://bower.herokuapp.com/packages
 getRepoNames = (pkgName) ->
   new rsvp.Promise (resolve, reject) ->
     registry.lookup pkgName, (err, entry) ->
@@ -45,14 +46,18 @@ getRepoNames = (pkgName) ->
 appendData = (pkg) ->
   getRepoNames(pkg.bName).then (repo) ->
     repo.getInfo().then (data) ->
-      pkg.ghFullName = data.full_name
-      pkg.ghUrl = data.html_url
-      pkg.ghDesc = data.description
-      pkg.ghStars = data.stargazers_count
-      pkg.ghForks = data.forks_count
-      pkg.ghIssues = data.open_issues_count
-      pkg.ghUpdated = data.pushed_at
-      pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
+      if data.message is 'Not Found' or !data.owner.login?
+        err = new Error "ERROR: github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ data.message }"
+        console.error err
+      else
+        pkg.ghOwner = data.owner.login
+        pkg.ghOwnerAvatar = data.owner.avatar_url
+        pkg.ghUrl = data.html_url
+        pkg.ghDesc = data.description
+        pkg.ghStars = data.stargazers_count
+        pkg.ghIssues = data.open_issues_count
+        pkg.ghUpdated = data.pushed_at
+        pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
       return
 
 module.exports =
