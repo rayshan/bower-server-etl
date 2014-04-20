@@ -1,6 +1,7 @@
 app = angular.module 'BApp', [
   'B.Chart.Users'
   'B.Table.Commands'
+  'B.Table.Pkgs'
   'ngResource'
 ]
 
@@ -71,13 +72,19 @@ app.factory 'bGaSvc', ($resource) ->
       method: 'GET'
       params: {type: 'commands'}
       isArray: true
+    getPkgs:
+      method: 'GET'
+      params: {type: 'pkgs'}
+      isArray: true
   }
 
   fetchUsersP = ga.getUsers().$promise
   fetchCommandsP = ga.getCommands().$promise
+  fetchPkgsP = ga.getPkgs().$promise
 
   fetchUsers: fetchUsersP
   fetchCommands: fetchCommandsP
+  fetchPkgs: fetchPkgsP
 
 app.filter 'pct', ->
   (input) ->

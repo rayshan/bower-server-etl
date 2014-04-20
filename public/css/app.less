@@ -3,6 +3,7 @@
 @import "../bower_components/lesshat/build/lesshat-prefixed.less";
 @import "../b-chart-users/module.less";
 @import "../b-table-commands/module.less";
+@import "../b-table-pkgs/b-table-pkgs.less";
 @fa-font-path: "../bower_components/font-awesome/fonts";
 
 
@@ -21,6 +22,7 @@
 @headings-font-weight: bold;
 @brand-primary: @b-green;
 @grid-gutter-width: 0;
+@link-color: @b-blue;
 
 body {
   color: #222;
@@ -88,4 +90,30 @@ h1, h2, h3, h4, h5, h6 > .b-title {
   color: @b-brown;
   span {border-bottom: 1px dashed @b-yellow}
   i {color: @b-yellow}
+}
+
+
+.b-table-pkgs {
+  td:nth-child(2) {
+//    .make-lg-column(10, 0);
+//    .make-md-column(10, 0);
+    max-width: 400px;
+  }
+
+  thead > tr {
+    color: white;
+    font-weight: bold;
+    td:nth-child(-n+4) { background-color: @b-yellow; color: @b-brown } // bower columns
+    td:nth-child(n+5) { background-color: @b-blue } // gh columns
+  }
+  tbody > tr {
+    &:hover {background-color: @b-yellow-2}
+    i {color: @b-gray}
+  }
+
+  .b-hide {cursor: pointer}
+  img {
+    max-width: 48px;
+    height: auto;
+  }
 }

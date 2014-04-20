@@ -1,0 +1,87 @@
+<h2>Top packages over past <span>7 days <i class="fa fa-caret-down"></i></span></h2>
+
+<table class="table table-condensed b-table-pkgs">
+
+  <thead>
+  <tr>
+    <td>Rank</td>
+    <td>Package</td>
+    <td>Users</td>
+    <td>Installs</td>
+    <td><i class="fa fa-github-alt"></i> Owner</td>
+    <td>
+      <i class="fa fa-star"></i> •
+      <i class="fa fa-exclamation-circle"></i>
+    </td>
+    <td>Last Push</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr ng-repeat="pkg in pkgs" ng-hide="pkg.bName.indexOf('angular-') !== -1 && hideAngular">
+    <td>
+      {{ pkg.bRank.current }}
+      <br/>
+      <span class="label"
+            ng-class="'label-' + (pkg.bRank.current - pkg.bRank.prior > 0 ? 'success' : 'danger')"
+            ng-if="pkg.bRank.current - pkg.bRank.prior !== 0">
+        {{ pkg.bRank.current - pkg.bRank.prior }}
+      </span>
+    </td>
+
+    <td>
+      <span class="pull-right b-hide"
+            ng-if="pkg.bName === 'angular'"
+            ng-click="toggleHideAngular()">
+        <i class="fa" ng-class="'fa-' + ($parent.hideAngular ? 'plus' : 'minus') + '-square'"></i>
+        <small ng-switch on="$parent.hideAngular">
+          <span ng-switch-when="true">Show</span>
+          <span ng-switch-when="false">Hide</span>
+          Core Modules
+        </small>
+      </span>
+      <a href="{{ pkg.ghUrl }}">{{ pkg.bName }}</a>
+      <br/>
+      <small>{{ pkg.ghDesc }}</small>
+    </td>
+
+    <td>
+      {{ pkg.bUsers.current | round }}
+      <br/>
+      <span class="label"
+            ng-class="'label-' + (pkg.bUsers.current - pkg.bUsers.prior > 0 ? 'success' : 'danger')">
+        {{ pkg.bUsers.current / pkg.bUsers.prior - 1 | pct}}
+      </span>
+    </td>
+
+    <td>
+      {{ pkg.bInstalls.current | round }}
+      <br/>
+      <span class="label"
+            ng-class="'label-' + (pkg.bInstalls.current - pkg.bInstalls.prior > 0 ? 'success' : 'danger')">
+        {{ pkg.bInstalls.current / pkg.bInstalls.prior - 1 | pct }}
+      </span>
+    </td>
+
+    <td>
+      <a href="{{ pkg.ghUrl }}">{{ pkg.ghOwner }}</a>
+      <br/>
+      <img src="{{ pkg.ghOwnerAvatar }}" alt="" class="img-rounded"/>
+    </td>
+
+    <td>
+      <span ng-show="pkg.ghStars && pkg.ghStars !== 0">
+        <i class="fa fa-star"></i> {{ pkg.ghStars | round }}
+      </span>
+      <br/>
+      <span ng-show="pkg.ghIssues && pkg.ghIssues !== 0">
+        <i class="fa fa-exclamation-circle"></i> {{ pkg.ghIssues | round }}
+      </span>
+    </td>
+
+    <td><small>{{ pkg.ghUpdatedHuman }}</small></td>
+
+  </tr>
+  </tbody>
+
+</table>

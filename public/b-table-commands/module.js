@@ -8,12 +8,10 @@
     return {
       templateUrl: 'b-table-commands/partial.html',
       restrict: 'E',
-      link: function(scope, ele) {
-        var command, customSort;
+      link: function(scope) {
         bGaSvc.fetchCommands.then(function(data) {
           return scope.commands = data;
         });
-        customSort = command = function(command) {};
       }
     };
   });

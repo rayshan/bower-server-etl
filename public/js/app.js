@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'ngResource']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'ngResource']);
 
   app.controller('BMainCtrl', function() {});
 
@@ -60,7 +60,7 @@
   });
 
   app.factory('bGaSvc', function($resource) {
-    var fetchCommandsP, fetchUsersP, ga;
+    var fetchCommandsP, fetchPkgsP, fetchUsersP, ga;
     ga = $resource('/data/:type', null, {
       getUsers: {
         method: 'GET',
@@ -75,13 +75,22 @@
           type: 'commands'
         },
         isArray: true
+      },
+      getPkgs: {
+        method: 'GET',
+        params: {
+          type: 'pkgs'
+        },
+        isArray: true
       }
     });
     fetchUsersP = ga.getUsers().$promise;
     fetchCommandsP = ga.getCommands().$promise;
+    fetchPkgsP = ga.getPkgs().$promise;
     return {
       fetchUsers: fetchUsersP,
-      fetchCommands: fetchCommandsP
+      fetchCommands: fetchCommandsP,
+      fetchPkgs: fetchPkgsP
     };
   });
 
