@@ -26,7 +26,7 @@ authPromise = new rsvp.Promise (resolve, reject) ->
   # returns expires_in: 1395623939 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
   if !config.ga.privateKeyPath?
     msg = "ERROR: process.env.APP_GA_KEY_PATH mismatch or #{ config.ga.privateKeyPath }"
-    console.log msg
+    console.error msg
     reject new Error msg
   else
     authClient.authorize (err, token) ->
@@ -197,7 +197,7 @@ queries.pkgs =
   ]
   transform: (data) ->
     new rsvp.Promise (resolve, reject) ->
-      current = data[0].rows[..19] # TODO: from / to as arg
+      current = data[0].rows[..9] # TODO: from / to as arg
       prior = data[1].rows[..19]
 
       _transform = (d, i) ->
@@ -221,7 +221,9 @@ queries.pkgs =
           pkg.bRank.prior = priorPkg[3]
           pkg.bUsers.prior = priorPkg[1]
           pkg.bInstalls.prior = priorPkg[2]
-        else console.log pkg.bName
+        else
+          err = new Error "ERROR: no prior period data for package #{ pkg.bName }"
+          console.error err
         ghPromises.push gh.appendData pkg
         return
 
