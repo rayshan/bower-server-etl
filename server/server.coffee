@@ -21,7 +21,7 @@ dataApi = express.Router()
 dataApi.param 'type', (req, res, next, id) ->
   if ga.validQueryTypes.indexOf(id) is -1
     err = new Error "Wrong request data type."
-    console.log "ERROR: #{ err.message }"
+    console.error "ERROR: #{ err.message }"
     res.json 500, {error: err.message}
   else
     req.type = id
@@ -45,4 +45,4 @@ module.exports =
   start: ->
     port = process.env.APP_PORT
     app.listen port, ->
-      console.log "INFO: listening on port #{ port }."; return
+      console.info "INFO: listening on port #{ port }."; return

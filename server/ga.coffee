@@ -2,6 +2,7 @@
 gapi = require "googleapis"
 rsvp = require "rsvp"
 _find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
+gh = require './github'
 
 # Custom
 config = require "./config"
@@ -30,10 +31,10 @@ authPromise = new rsvp.Promise (resolve, reject) ->
   else
     authClient.authorize (err, token) ->
       console.log "WIP: OAuthing w/ GA..."
-      if err? then console.log "ERROR: OAuth, err = ", err; reject err
+      if err then console.error "ERROR: OAuth, err = ", err; reject err
       else
         resolve(token)
-        console.log "SUCCESS: server OAuthed w/ GA."
+        console.info "SUCCESS: server OAuthed w/ GA."
       return
   return
 
@@ -45,11 +46,11 @@ fetch = (key) ->
     query.queryObjs.forEach (queryObj) ->
       promise = new rsvp.Promise (resolve, reject) ->
         gapi.discover('analytics', 'v3').execute (err, client) ->
-          if err? then reject err
+          if err then reject err
           else
             client.analytics.data.ga.get queryObj
               .withAuthClient authClient
-              .execute (err, result) -> if err? then reject err else resolve result; return
+              .execute (err, result) -> if err then reject err else resolve result; return
           return
         return
       promises.push promise
@@ -208,20 +209,23 @@ queries.pkgs =
       prior.forEach _transform
 
       result = current.map (d) ->
-        name: d[0]
-        rank: current: d[3]
-        users: current: d[1] # ga:visitors
-        pkgs: current: d[2] # ga:pageviews
+        bName: d[0]
+        bRank: current: d[3]
+        bUsers: current: d[1] # ga:visitors
+        bInstalls: current: d[2] # ga:pageviews
 
+      ghPromises = []
       result.forEach (pkg) ->
-        priorPkg = _find prior, (d) -> d[0] is pkg.name
+        priorPkg = _find prior, (d) -> d[0] is pkg.bName
         if priorPkg?
-          pkg.rank.prior = priorPkg[3]
-          pkg.users.prior = priorPkg[1]
-          pkg.pkgs.prior = priorPkg[2]
+          pkg.bRank.prior = priorPkg[3]
+          pkg.bUsers.prior = priorPkg[1]
+          pkg.bInstalls.prior = priorPkg[2]
+        else console.log pkg.bName
+        ghPromises.push gh.appendData pkg
         return
 
-      resolve result
+      rsvp.all(ghPromises).then -> resolve result
 
 # ==========
 

@@ -10,6 +10,7 @@ if [[ "$HOSTNAME" = "shan.io" ]]; then
   export APP_GA_KEY_PATH=/var/www/apps.shan.io/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   forever -c coffee index.coffee
 else
+  source ./scripts/dev.sh
   export NODE_ENV=dev
   export APP_GA_KEY_PATH=~/=Projects=/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   node-dev index.coffee

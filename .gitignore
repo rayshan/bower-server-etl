@@ -19,3 +19,5 @@ bower_components
 .idea
 
 *.rdb
+
+dev.sh

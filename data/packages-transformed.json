@@ -1,167 +1,452 @@
 [
   {
-    "name": "jquery",
-    "rank": {
+    "bName": "jquery",
+    "bRank": {
       "current": 1,
       "prior": 1
     },
-    "users": {
+    "bUsers": {
       "current": 9043,
       "prior": 8714
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 18673,
       "prior": 18286
-    }
+    },
+    "ghFullName": "jquery/jquery",
+    "ghUrl": "https://github.com/jquery/jquery",
+    "ghDesc": "jQuery JavaScript Library",
+    "ghStars": 30391,
+    "ghForks": 6741,
+    "ghIssues": 11,
+    "ghUpdated": "2014-04-18T21:19:12Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular",
-    "rank": {
+    "bName": "angular",
+    "bRank": {
       "current": 2,
       "prior": 2
     },
-    "users": {
+    "bUsers": {
       "current": 6130,
       "prior": 5845
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 12172,
       "prior": 11545
-    }
+    },
+    "ghFullName": "angular/bower-angular",
+    "ghUrl": "https://github.com/angular/bower-angular",
+    "ghDesc": "Bower package for the stable branch of AngularJS",
+    "ghStars": 44,
+    "ghForks": 73,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:01:34Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "bootstrap",
-    "rank": {
+    "bName": "bootstrap",
+    "bRank": {
       "current": 3,
       "prior": 3
     },
-    "users": {
+    "bUsers": {
       "current": 5270,
       "prior": 5175
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 8990,
       "prior": 8885
-    }
+    },
+    "ghFullName": "twbs/bootstrap",
+    "ghUrl": "https://github.com/twbs/bootstrap",
+    "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+    "ghStars": 66923,
+    "ghForks": 24356,
+    "ghIssues": 179,
+    "ghUpdated": "2014-04-20T01:53:25Z",
+    "ghUpdatedHuman": "5 hours ago"
   },
   {
-    "name": "angular-mocks",
-    "rank": {
+    "bName": "angular-mocks",
+    "bRank": {
       "current": 4,
       "prior": 4
     },
-    "users": {
+    "bUsers": {
       "current": 4609,
       "prior": 4333
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 8657,
       "prior": 8212
-    }
+    },
+    "ghFullName": "angular/bower-angular-mocks",
+    "ghUrl": "https://github.com/angular/bower-angular-mocks",
+    "ghDesc": "angular-mocks.js bower repo",
+    "ghStars": 12,
+    "ghForks": 44,
+    "ghIssues": 1,
+    "ghUpdated": "2014-04-19T00:01:52Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular-route",
-    "rank": {
+    "bName": "angular-route",
+    "bRank": {
       "current": 5,
       "prior": 5
     },
-    "users": {
+    "bUsers": {
       "current": 4458,
       "prior": 4257
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 7952,
       "prior": 7553
-    }
+    },
+    "ghFullName": "angular/bower-angular-route",
+    "ghUrl": "https://github.com/angular/bower-angular-route",
+    "ghDesc": "angular-route bower repo",
+    "ghStars": 16,
+    "ghForks": 34,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:01:55Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular-resource",
-    "rank": {
+    "bName": "angular-resource",
+    "bRank": {
       "current": 6,
       "prior": 6
     },
-    "users": {
+    "bUsers": {
       "current": 3951,
       "prior": 3728
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 7056,
       "prior": 6801
-    }
+    },
+    "ghFullName": "angular/bower-angular-resource",
+    "ghUrl": "https://github.com/angular/bower-angular-resource",
+    "ghDesc": "angular-resource bower repo",
+    "ghStars": 8,
+    "ghForks": 58,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:01:59Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular-cookies",
-    "rank": {
+    "bName": "angular-cookies",
+    "bRank": {
       "current": 7,
       "prior": 8
     },
-    "users": {
+    "bUsers": {
       "current": 2975,
       "prior": 2788
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 5702,
       "prior": 5299
-    }
+    },
+    "ghFullName": "angular/bower-angular-cookies",
+    "ghUrl": "https://github.com/angular/bower-angular-cookies",
+    "ghDesc": "angular-cookies bower repo",
+    "ghStars": 7,
+    "ghForks": 19,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:01:40Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular-sanitize",
-    "rank": {
+    "bName": "angular-sanitize",
+    "bRank": {
       "current": 8,
       "prior": 7
     },
-    "users": {
+    "bUsers": {
       "current": 2840,
       "prior": 2696
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 5498,
       "prior": 5315
-    }
+    },
+    "ghFullName": "angular/bower-angular-sanitize",
+    "ghUrl": "https://github.com/angular/bower-angular-sanitize",
+    "ghDesc": "angular-sanitize bower repo",
+    "ghStars": 7,
+    "ghForks": 28,
+    "ghIssues": 1,
+    "ghUpdated": "2014-04-19T00:02:03Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "angular-scenario",
-    "rank": {
+    "bName": "angular-scenario",
+    "bRank": {
       "current": 9,
       "prior": 9
     },
-    "users": {
+    "bUsers": {
       "current": 2683,
       "prior": 2589
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 5326,
       "prior": 5261
-    }
+    },
+    "ghFullName": "angular/bower-angular-scenario",
+    "ghUrl": "https://github.com/angular/bower-angular-scenario",
+    "ghDesc": "bower repo for angular-scenario.js",
+    "ghStars": 6,
+    "ghForks": 6,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:02:07Z",
+    "ghUpdatedHuman": "a day ago"
   },
   {
-    "name": "es5-shim",
-    "rank": {
+    "bName": "es5-shim",
+    "bRank": {
       "current": 10,
       "prior": 10
     },
-    "users": {
+    "bUsers": {
       "current": 2650,
       "prior": 2519
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 5152,
       "prior": 4965
-    }
+    },
+    "ghFullName": "es-shims/es5-shim",
+    "ghUrl": "https://github.com/es-shims/es5-shim",
+    "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
+    "ghStars": 2502,
+    "ghForks": 354,
+    "ghIssues": 16,
+    "ghUpdated": "2014-04-20T04:48:50Z",
+    "ghUpdatedHuman": "2 hours ago"
   },
   {
-    "name": "json3",
-    "rank": {
+    "bName": "json3",
+    "bRank": {
       "current": 11,
       "prior": 11
     },
-    "users": {
+    "bUsers": {
       "current": 2570,
       "prior": 2463
     },
-    "pkgs": {
+    "bInstalls": {
       "current": 5013,
       "prior": 4874
-    }
+    },
+    "ghFullName": "bestiejs/json3",
+    "ghUrl": "https://github.com/bestiejs/json3",
+    "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
+    "ghStars": 549,
+    "ghForks": 69,
+    "ghIssues": 4,
+    "ghUpdated": "2014-04-17T05:30:42Z",
+    "ghUpdatedHuman": "3 days ago"
+  },
+  {
+    "bName": "modernizr",
+    "bRank": {
+      "current": 12,
+      "prior": 13
+    },
+    "bUsers": {
+      "current": 1871,
+      "prior": 1833
+    },
+    "bInstalls": {
+      "current": 3495,
+      "prior": 3441
+    },
+    "ghFullName": "Modernizr/Modernizr",
+    "ghUrl": "https://github.com/Modernizr/Modernizr",
+    "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the userâs browser.",
+    "ghStars": 11916,
+    "ghForks": 1435,
+    "ghIssues": 113,
+    "ghUpdated": "2014-04-20T03:42:04Z",
+    "ghUpdatedHuman": "3 hours ago"
+  },
+  {
+    "bName": "underscore",
+    "bRank": {
+      "current": 13,
+      "prior": 12
+    },
+    "bUsers": {
+      "current": 1927,
+      "prior": 1858
+    },
+    "bInstalls": {
+      "current": 3305,
+      "prior": 3550
+    },
+    "ghFullName": "jashkenas/underscore",
+    "ghUrl": "https://github.com/jashkenas/underscore",
+    "ghDesc": "JavaScript's utility _ belt",
+    "ghStars": 11088,
+    "ghForks": 2326,
+    "ghIssues": 29,
+    "ghUpdated": "2014-04-18T16:07:52Z",
+    "ghUpdatedHuman": "2 days ago"
+  },
+  {
+    "bName": "angular-bootstrap",
+    "bRank": {
+      "current": 14,
+      "prior": 14
+    },
+    "bUsers": {
+      "current": 1806,
+      "prior": 1686
+    },
+    "bInstalls": {
+      "current": 2971,
+      "prior": 2838
+    },
+    "ghFullName": "angular-ui/bootstrap-bower",
+    "ghUrl": "https://github.com/angular-ui/bootstrap-bower",
+    "ghDesc": "A repository to hold bootstrap releases for twitter's bower",
+    "ghStars": 19,
+    "ghForks": 47,
+    "ghIssues": 3,
+    "ghUpdated": "2014-01-13T20:21:37Z",
+    "ghUpdatedHuman": "3 months ago"
+  },
+  {
+    "bName": "requirejs",
+    "bRank": {
+      "current": 15,
+      "prior": 15
+    },
+    "bUsers": {
+      "current": 1472,
+      "prior": 1411
+    },
+    "bInstalls": {
+      "current": 2743,
+      "prior": 2794
+    },
+    "ghFullName": "jrburke/requirejs-bower",
+    "ghUrl": "https://github.com/jrburke/requirejs-bower",
+    "ghDesc": "Repo hold assets for publishing to the bower package manager.",
+    "ghStars": 6,
+    "ghForks": 2,
+    "ghIssues": 0,
+    "ghUpdated": "2014-02-17T06:09:34Z",
+    "ghUpdatedHuman": "2 months ago"
+  },
+  {
+    "bName": "bootstrap-sass",
+    "bRank": {
+      "current": 16,
+      "prior": 17
+    },
+    "bUsers": {
+      "current": 1507,
+      "prior": 1340
+    },
+    "bInstalls": {
+      "current": 2736,
+      "prior": 2448
+    },
+    "ghUpdatedHuman": "a few seconds ago"
+  },
+  {
+    "bName": "angular-animate",
+    "bRank": {
+      "current": 17,
+      "prior": 16
+    },
+    "bUsers": {
+      "current": 1751,
+      "prior": 1685
+    },
+    "bInstalls": {
+      "current": 2650,
+      "prior": 2518
+    },
+    "ghFullName": "angular/bower-angular-animate",
+    "ghUrl": "https://github.com/angular/bower-angular-animate",
+    "ghDesc": "",
+    "ghStars": 11,
+    "ghForks": 20,
+    "ghIssues": 0,
+    "ghUpdated": "2014-04-19T00:01:37Z",
+    "ghUpdatedHuman": "a day ago"
+  },
+  {
+    "bName": "chai",
+    "bRank": {
+      "current": 18,
+      "prior": 18
+    },
+    "bUsers": {
+      "current": 1239,
+      "prior": 1208
+    },
+    "bInstalls": {
+      "current": 2386,
+      "prior": 2347
+    },
+    "ghFullName": "chaijs/chai",
+    "ghUrl": "https://github.com/chaijs/chai",
+    "ghDesc": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
+    "ghStars": 1084,
+    "ghForks": 125,
+    "ghIssues": 21,
+    "ghUpdated": "2014-03-19T16:22:11Z",
+    "ghUpdatedHuman": "a month ago"
+  },
+  {
+    "bName": "mocha",
+    "bRank": {
+      "current": 19,
+      "prior": 19
+    },
+    "bUsers": {
+      "current": 1243,
+      "prior": 1204
+    },
+    "bInstalls": {
+      "current": 2326,
+      "prior": 2298
+    },
+    "ghFullName": "visionmedia/mocha",
+    "ghUrl": "https://github.com/visionmedia/mocha",
+    "ghDesc": "mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)",
+    "ghStars": 4376,
+    "ghForks": 740,
+    "ghIssues": 200,
+    "ghUpdated": "2014-04-17T15:43:30Z",
+    "ghUpdatedHuman": "3 days ago"
+  },
+  {
+    "bName": "angular-ui-router",
+    "bRank": {
+      "current": 20
+    },
+    "bUsers": {
+      "current": 1381
+    },
+    "bInstalls": {
+      "current": 2306
+    },
+    "ghFullName": "angular-ui/ui-router",
+    "ghUrl": "https://github.com/angular-ui/ui-router",
+    "ghDesc": "The de-facto solution to flexible routing with nested views",
+    "ghStars": 2723,
+    "ghForks": 648,
+    "ghIssues": 178,
+    "ghUpdated": "2014-04-20T01:00:49Z",
+    "ghUpdatedHuman": "5 hours ago"
   }
 ]
