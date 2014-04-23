@@ -2,9 +2,15 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'ngResource']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Delta', 'ngResource']);
 
-  app.controller('BMainCtrl', function() {});
+  app.controller('BHeaderCtrl', function(bGaSvc) {
+    bGaSvc.fetchOverview.then((function(_this) {
+      return function(data) {
+        return _this.totalPkgs = data.totalPkgs;
+      };
+    })(this));
+  });
 
   app.factory('d3', function() {
     d3.legend = function() {
@@ -60,7 +66,7 @@
   });
 
   app.factory('bGaSvc', function($resource) {
-    var fetchCommandsP, fetchPkgsP, fetchUsersP, ga;
+    var fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
     ga = $resource('/data/:type', null, {
       getUsers: {
         method: 'GET',
@@ -82,36 +88,50 @@
           type: 'pkgs'
         },
         isArray: true
+      },
+      getOverview: {
+        method: 'GET',
+        params: {
+          type: 'overview'
+        }
       }
     });
     fetchUsersP = ga.getUsers().$promise;
     fetchCommandsP = ga.getCommands().$promise;
     fetchPkgsP = ga.getPkgs().$promise;
+    fetchOverviewP = ga.getOverview().$promise;
     return {
       fetchUsers: fetchUsersP,
       fetchCommands: fetchCommandsP,
-      fetchPkgs: fetchPkgsP
+      fetchPkgs: fetchPkgsP,
+      fetchOverview: fetchOverviewP
     };
   });
 
   app.filter('pct', function() {
     return function(input) {
       var decimal, inputAbs, neg;
-      input *= 100;
-      inputAbs = Math.abs(input);
-      neg = input < 0 ? '- ' : '';
-      decimal = inputAbs < 10 ? 1 : 0;
-      if (input === 0) {
-        return null;
+      if (input == null) {
+        return void 0;
       } else {
-        return neg + inputAbs.toFixed(decimal) + ' %';
+        input *= 100;
+        inputAbs = Math.abs(input);
+        neg = input < 0 ? '- ' : '';
+        decimal = inputAbs < 10 ? 1 : 0;
+        if (input === 0) {
+          return null;
+        } else {
+          return neg + inputAbs.toFixed(decimal) + ' %';
+        }
       }
     };
   });
 
   app.filter('round', function() {
     return function(input, decimals) {
-      if (input >= 1000) {
+      if (input == null) {
+        return void 0;
+      } else if (input >= 1000) {
         return (input / 1000).toFixed(1) + ' k';
       } else {
         return input.toFixed(decimals);

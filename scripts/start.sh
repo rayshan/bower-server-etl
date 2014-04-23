@@ -7,7 +7,7 @@ export APP_PORT=3000
 printf "host is $HOSTNAME\n"
 if [[ "$HOSTNAME" = "shan.io" ]]; then
   export NODE_ENV=prod
-  export APP_GA_KEY_PATH=/var/www/apps.shan.io/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
+  export APP_GA_KEY_PATH=/var/www/_keys/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   forever -c coffee index.coffee
 else
   source ./scripts/dev.sh

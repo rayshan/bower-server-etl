@@ -2,10 +2,13 @@ app = angular.module 'BApp', [
   'B.Chart.Users'
   'B.Table.Commands'
   'B.Table.Pkgs'
+  'B.Delta'
   'ngResource'
 ]
 
-app.controller 'BMainCtrl', () ->
+app.controller 'BHeaderCtrl', (bGaSvc) ->
+  bGaSvc.fetchOverview.then (data) =>
+    @totalPkgs = data.totalPkgs
   return
 
 app.factory 'd3', ->
@@ -76,27 +79,37 @@ app.factory 'bGaSvc', ($resource) ->
       method: 'GET'
       params: {type: 'pkgs'}
       isArray: true
+    getOverview:
+      method: 'GET'
+      params: {type: 'overview'}
   }
 
   fetchUsersP = ga.getUsers().$promise
   fetchCommandsP = ga.getCommands().$promise
   fetchPkgsP = ga.getPkgs().$promise
+  fetchOverviewP = ga.getOverview().$promise
 
   fetchUsers: fetchUsersP
   fetchCommands: fetchCommandsP
   fetchPkgs: fetchPkgsP
+  fetchOverview: fetchOverviewP
 
 app.filter 'pct', ->
   (input) ->
-    input *= 100
-    inputAbs = Math.abs input
-    neg = if input < 0 then '- ' else '' # force a space b/t sign & num
-    decimal = if inputAbs < 10 then 1 else 0
-    if input is 0 then null
-    else neg + inputAbs.toFixed(decimal) + ' %'
+    if !input?
+      undefined
+    else
+      input *= 100
+      inputAbs = Math.abs input
+      neg = if input < 0 then '- ' else '' # force a space b/t sign & num
+      decimal = if inputAbs < 10 then 1 else 0
+      if input is 0 then null
+      else neg + inputAbs.toFixed(decimal) + ' %'
 
 app.filter 'round', ->
   (input, decimals) ->
-    if input >= 1000
+    if !input?
+      undefined
+    else if input >= 1000
       (input / 1000).toFixed(1) + ' k' # e.g. 206.1 k
     else input.toFixed decimals

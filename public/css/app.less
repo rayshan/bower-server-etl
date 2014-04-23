@@ -1,11 +1,14 @@
+// vendor
 @import "../bower_components/bootstrap/less/bootstrap.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
 @import "../bower_components/lesshat/build/lesshat-prefixed.less";
+@import "../bower_components/github-fork-ribbon-css/gh-fork-ribbon.css";
+@fa-font-path: "../bower_components/font-awesome/fonts";
+
+// custom
 @import "../b-chart-users/module.less";
 @import "../b-table-commands/module.less";
 @import "../b-table-pkgs/b-table-pkgs.less";
-@fa-font-path: "../bower_components/font-awesome/fonts";
-
 
 // custom var
 @b-yellow: #FFCC2F;
@@ -31,7 +34,7 @@ body {
 /* wrap
 ================================================== */
 
-.wrap {
+.b-wrap {
   .make-lg-column(8, 0);
   .make-md-column(8, 0);
   .make-lg-column-offset(2);
@@ -41,28 +44,43 @@ body {
 /* Hero
 ================================================== */
 
+.github-fork-ribbon { background-color: @b-green }
+
 header {
   .make-row();
 
   background: @b-yellow;
-  padding: 20px 0 20px;
+  height: 130px;
+  padding: 10px 0 10px;
+  color: @b-brown;
+  .b-wrap { height: 100% }
 
-  .left {
-    .b-logo { width: 100px }
+  .b-left {
+    .make-lg-column(4, 0);
+    .make-md-column(4, 0);
+
+    height: 100%;
+
+    .b-logo { height: 100%; width: auto }
   }
 
-  .right {text-align: right}
+  .b-right {
+    .make-lg-column(8, 0);
+    .make-md-column(8, 0);
 
-  span {
-    color: @b-red;
-    font-size: 4em;
-    letter-spacing: -0.04em;
-    font-weight: bold;
+    height: 100%;
+    .lh-display(flex);
+    .lh-justify-content(flex-end);
+    .lh-align-items(center); // vertical
+    text-align: right;
 
-    small {
-      color: @b-brown;
-      letter-spacing: normal;
+    .b-brand {
+      font-weight: bold;
+      line-height: 2em;
+      .b-1 { font-size: 3em }
+      .b-2 { letter-spacing: -0.04em; font-size: 4em; color: @b-red; }
     }
+    .b-stat { font-weight: bold; color: @b-brown; font-size: 2em; }
   }
 }
 
@@ -90,30 +108,4 @@ h1, h2, h3, h4, h5, h6 > .b-title {
   color: @b-brown;
   span {border-bottom: 1px dashed @b-yellow}
   i {color: @b-yellow}
-}
-
-
-.b-table-pkgs {
-  td:nth-child(2) {
-//    .make-lg-column(10, 0);
-//    .make-md-column(10, 0);
-    max-width: 400px;
-  }
-
-  thead > tr {
-    color: white;
-    font-weight: bold;
-    td:nth-child(-n+4) { background-color: @b-yellow; color: @b-brown } // bower columns
-    td:nth-child(n+5) { background-color: @b-blue } // gh columns
-  }
-  tbody > tr {
-    &:hover {background-color: @b-yellow-2}
-    i {color: @b-gray}
-  }
-
-  .b-hide {cursor: pointer}
-  img {
-    max-width: 48px;
-    height: auto;
-  }
 }

@@ -1,0 +1,20 @@
+.b-table-pkgs {
+  td:nth-child(2) { max-width: 400px }
+
+  thead > tr {
+    color: white;
+    font-weight: bold;
+    td:nth-child(-n+4) { background-color: @b-yellow; color: @b-brown } // bower columns
+    td:nth-child(n+5) { background-color: @b-blue } // gh columns
+  }
+  tbody > tr {
+    &:hover {background-color: @b-yellow-2}
+    i {color: @b-gray}
+  }
+
+  .b-hide {cursor: pointer}
+  img {
+    max-width: 48px;
+    height: auto;
+  }
+}
