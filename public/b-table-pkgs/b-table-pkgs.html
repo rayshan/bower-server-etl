@@ -10,8 +10,8 @@
     <td>Installs</td>
     <td><i class="fa fa-github-alt"></i> Owner</td>
     <td>
-      <i class="fa fa-star"></i> •
-      <i class="fa fa-exclamation-circle"></i>
+      <i class="fa fa-star b-gh"></i> •
+      <i class="fa fa-exclamation-circle b-gh"></i>
     </td>
     <td>Last Push</td>
   </tr>
@@ -22,18 +22,14 @@
     <td>
       {{ pkg.bRank.current }}
       <br/>
-      <span class="label"
-            ng-class="'label-' + (pkg.bRank.current - pkg.bRank.prior > 0 ? 'success' : 'danger')"
-            ng-if="pkg.bRank.current - pkg.bRank.prior !== 0">
-        {{ pkg.bRank.current - pkg.bRank.prior }}
-      </span>
+      <b-delta delta="{{pkg.bRank.current - pkg.bRank.prior}}" type="num"></b-delta>
     </td>
 
     <td>
       <span class="pull-right b-hide"
             ng-if="pkg.bName === 'angular'"
             ng-click="toggleHideAngular()">
-        <i class="fa" ng-class="'fa-' + ($parent.hideAngular ? 'plus' : 'minus') + '-square'"></i>
+        <i class="fa b-gh" ng-class="'fa-' + ($parent.hideAngular ? 'plus' : 'minus') + '-square'"></i>
         <small ng-switch on="$parent.hideAngular">
           <span ng-switch-when="true">Show</span>
           <span ng-switch-when="false">Hide</span>
@@ -45,22 +41,18 @@
       <small>{{ pkg.ghDesc }}</small>
     </td>
 
+    <!--users-->
     <td>
       {{ pkg.bUsers.current | round }}
       <br/>
-      <span class="label"
-            ng-class="'label-' + (pkg.bUsers.current - pkg.bUsers.prior > 0 ? 'success' : 'danger')">
-        {{ pkg.bUsers.current / pkg.bUsers.prior - 1 | pct}}
-      </span>
+      <b-delta delta="{{ pkg.bUsers.current / pkg.bUsers.prior - 1 }}" type="pct"></b-delta>
     </td>
 
+    <!--installs-->
     <td>
       {{ pkg.bInstalls.current | round }}
       <br/>
-      <span class="label"
-            ng-class="'label-' + (pkg.bInstalls.current - pkg.bInstalls.prior > 0 ? 'success' : 'danger')">
-        {{ pkg.bInstalls.current / pkg.bInstalls.prior - 1 | pct }}
-      </span>
+      <b-delta delta="{{ pkg.bInstalls.current / pkg.bInstalls.prior - 1 }}" type="pct"></b-delta>
     </td>
 
     <td>
@@ -71,11 +63,11 @@
 
     <td>
       <span ng-show="pkg.ghStars && pkg.ghStars !== 0">
-        <i class="fa fa-star"></i> {{ pkg.ghStars | round }}
+        <i class="fa fa-star b-gh"></i> {{ pkg.ghStars | round }}
       </span>
       <br/>
       <span ng-show="pkg.ghIssues && pkg.ghIssues !== 0">
-        <i class="fa fa-exclamation-circle"></i> {{ pkg.ghIssues | round }}
+        <i class="fa fa-exclamation-circle b-gh"></i> {{ pkg.ghIssues | round }}
       </span>
     </td>
 

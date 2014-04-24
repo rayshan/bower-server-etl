@@ -108,25 +108,6 @@
     };
   });
 
-  app.filter('pct', function() {
-    return function(input) {
-      var decimal, inputAbs, neg;
-      if (input == null) {
-        return void 0;
-      } else {
-        input *= 100;
-        inputAbs = Math.abs(input);
-        neg = input < 0 ? '- ' : '';
-        decimal = inputAbs < 10 ? 1 : 0;
-        if (input === 0) {
-          return null;
-        } else {
-          return neg + inputAbs.toFixed(decimal) + ' %';
-        }
-      }
-    };
-  });
-
   app.filter('round', function() {
     return function(input, decimals) {
       if (input == null) {

@@ -6,21 +6,21 @@
       "prior": 1
     },
     "bUsers": {
-      "current": 9043,
-      "prior": 8714
+      "current": 8782,
+      "prior": 9121
     },
     "bInstalls": {
-      "current": 18673,
-      "prior": 18286
+      "current": 17918,
+      "prior": 19298
     },
-    "ghFullName": "jquery/jquery",
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
     "ghUrl": "https://github.com/jquery/jquery",
     "ghDesc": "jQuery JavaScript Library",
-    "ghStars": 30391,
-    "ghForks": 6741,
+    "ghStars": 30420,
     "ghIssues": 11,
-    "ghUpdated": "2014-04-18T21:19:12Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T16:06:02Z",
+    "ghUpdatedHuman": "6 hours"
   },
   {
     "bName": "angular",
@@ -29,21 +29,21 @@
       "prior": 2
     },
     "bUsers": {
-      "current": 6130,
-      "prior": 5845
+      "current": 5899,
+      "prior": 6122
     },
     "bInstalls": {
-      "current": 12172,
-      "prior": 11545
+      "current": 11645,
+      "prior": 12321
     },
-    "ghFullName": "angular/bower-angular",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular",
     "ghDesc": "Bower package for the stable branch of AngularJS",
     "ghStars": 44,
-    "ghForks": 73,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:01:34Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:17Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "bootstrap",
@@ -52,21 +52,21 @@
       "prior": 3
     },
     "bUsers": {
-      "current": 5270,
-      "prior": 5175
+      "current": 5097,
+      "prior": 5317
     },
     "bInstalls": {
-      "current": 8990,
-      "prior": 8885
+      "current": 8665,
+      "prior": 9190
     },
-    "ghFullName": "twbs/bootstrap",
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
     "ghUrl": "https://github.com/twbs/bootstrap",
     "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-    "ghStars": 66923,
-    "ghForks": 24356,
-    "ghIssues": 179,
-    "ghUpdated": "2014-04-20T01:53:25Z",
-    "ghUpdatedHuman": "5 hours ago"
+    "ghStars": 67032,
+    "ghIssues": 190,
+    "ghUpdated": "2014-04-23T21:44:24Z",
+    "ghUpdatedHuman": "6 minutes"
   },
   {
     "bName": "angular-mocks",
@@ -75,21 +75,21 @@
       "prior": 4
     },
     "bUsers": {
-      "current": 4609,
-      "prior": 4333
+      "current": 4442,
+      "prior": 4587
     },
     "bInstalls": {
-      "current": 8657,
-      "prior": 8212
+      "current": 8349,
+      "prior": 8826
     },
-    "ghFullName": "angular/bower-angular-mocks",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-mocks",
     "ghDesc": "angular-mocks.js bower repo",
     "ghStars": 12,
-    "ghForks": 44,
     "ghIssues": 1,
-    "ghUpdated": "2014-04-19T00:01:52Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:36Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-route",
@@ -98,21 +98,21 @@
       "prior": 5
     },
     "bUsers": {
-      "current": 4458,
-      "prior": 4257
+      "current": 4303,
+      "prior": 4465
     },
     "bInstalls": {
-      "current": 7952,
-      "prior": 7553
+      "current": 7671,
+      "prior": 8058
     },
-    "ghFullName": "angular/bower-angular-route",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-route",
     "ghDesc": "angular-route bower repo",
     "ghStars": 16,
-    "ghForks": 34,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:01:55Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:40Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-resource",
@@ -121,67 +121,67 @@
       "prior": 6
     },
     "bUsers": {
-      "current": 3951,
-      "prior": 3728
+      "current": 3788,
+      "prior": 3978
     },
     "bInstalls": {
-      "current": 7056,
-      "prior": 6801
+      "current": 6831,
+      "prior": 7309
     },
-    "ghFullName": "angular/bower-angular-resource",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-resource",
     "ghDesc": "angular-resource bower repo",
     "ghStars": 8,
-    "ghForks": 58,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:01:59Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:44Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-cookies",
     "bRank": {
       "current": 7,
-      "prior": 8
+      "prior": 7
     },
     "bUsers": {
-      "current": 2975,
-      "prior": 2788
+      "current": 2832,
+      "prior": 3017
     },
     "bInstalls": {
-      "current": 5702,
-      "prior": 5299
+      "current": 5452,
+      "prior": 5858
     },
-    "ghFullName": "angular/bower-angular-cookies",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-cookies",
     "ghDesc": "angular-cookies bower repo",
-    "ghStars": 7,
-    "ghForks": 19,
+    "ghStars": 8,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:01:40Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:25Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-sanitize",
     "bRank": {
       "current": 8,
-      "prior": 7
+      "prior": 8
     },
     "bUsers": {
-      "current": 2840,
-      "prior": 2696
+      "current": 2612,
+      "prior": 2946
     },
     "bInstalls": {
-      "current": 5498,
-      "prior": 5315
+      "current": 5144,
+      "prior": 5711
     },
-    "ghFullName": "angular/bower-angular-sanitize",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-sanitize",
     "ghDesc": "angular-sanitize bower repo",
     "ghStars": 7,
-    "ghForks": 28,
     "ghIssues": 1,
-    "ghUpdated": "2014-04-19T00:02:03Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:48Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-scenario",
@@ -190,21 +190,21 @@
       "prior": 9
     },
     "bUsers": {
-      "current": 2683,
-      "prior": 2589
+      "current": 2469,
+      "prior": 2764
     },
     "bInstalls": {
-      "current": 5326,
-      "prior": 5261
+      "current": 4995,
+      "prior": 5638
     },
-    "ghFullName": "angular/bower-angular-scenario",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-scenario",
     "ghDesc": "bower repo for angular-scenario.js",
     "ghStars": 6,
-    "ghForks": 6,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:02:07Z",
-    "ghUpdatedHuman": "a day ago"
+    "ghUpdated": "2014-04-23T21:02:53Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "es5-shim",
@@ -213,21 +213,21 @@
       "prior": 10
     },
     "bUsers": {
-      "current": 2650,
-      "prior": 2519
+      "current": 2446,
+      "prior": 2709
     },
     "bInstalls": {
-      "current": 5152,
-      "prior": 4965
+      "current": 4805,
+      "prior": 5271
     },
-    "ghFullName": "es-shims/es5-shim",
+    "ghOwner": "es-shims",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6288429?",
     "ghUrl": "https://github.com/es-shims/es5-shim",
     "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
-    "ghStars": 2502,
-    "ghForks": 354,
+    "ghStars": 2509,
     "ghIssues": 16,
     "ghUpdated": "2014-04-20T04:48:50Z",
-    "ghUpdatedHuman": "2 hours ago"
+    "ghUpdatedHuman": "4 days"
   },
   {
     "bName": "json3",
@@ -236,67 +236,67 @@
       "prior": 11
     },
     "bUsers": {
-      "current": 2570,
-      "prior": 2463
+      "current": 2362,
+      "prior": 2644
     },
     "bInstalls": {
-      "current": 5013,
-      "prior": 4874
+      "current": 4665,
+      "prior": 5207
     },
-    "ghFullName": "bestiejs/json3",
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
     "ghUrl": "https://github.com/bestiejs/json3",
     "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
-    "ghStars": 549,
-    "ghForks": 69,
+    "ghStars": 552,
     "ghIssues": 4,
-    "ghUpdated": "2014-04-17T05:30:42Z",
-    "ghUpdatedHuman": "3 days ago"
+    "ghUpdated": "2014-04-22T05:23:07Z",
+    "ghUpdatedHuman": "2 days"
   },
   {
     "bName": "modernizr",
     "bRank": {
       "current": 12,
-      "prior": 13
+      "prior": 12
     },
     "bUsers": {
-      "current": 1871,
-      "prior": 1833
+      "current": 1839,
+      "prior": 1877
     },
     "bInstalls": {
-      "current": 3495,
-      "prior": 3441
+      "current": 3324,
+      "prior": 3600
     },
-    "ghFullName": "Modernizr/Modernizr",
+    "ghOwner": "Modernizr",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/131060?",
     "ghUrl": "https://github.com/Modernizr/Modernizr",
     "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the userâs browser.",
-    "ghStars": 11916,
-    "ghForks": 1435,
-    "ghIssues": 113,
-    "ghUpdated": "2014-04-20T03:42:04Z",
-    "ghUpdatedHuman": "3 hours ago"
+    "ghStars": 11948,
+    "ghIssues": 115,
+    "ghUpdated": "2014-04-23T03:42:00Z",
+    "ghUpdatedHuman": "18 hours"
   },
   {
     "bName": "underscore",
     "bRank": {
       "current": 13,
-      "prior": 12
+      "prior": 13
     },
     "bUsers": {
-      "current": 1927,
-      "prior": 1858
+      "current": 1849,
+      "prior": 1962
     },
     "bInstalls": {
-      "current": 3305,
-      "prior": 3550
+      "current": 3161,
+      "prior": 3566
     },
-    "ghFullName": "jashkenas/underscore",
+    "ghOwner": "jashkenas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
     "ghUrl": "https://github.com/jashkenas/underscore",
     "ghDesc": "JavaScript's utility _ belt",
-    "ghStars": 11088,
-    "ghForks": 2326,
-    "ghIssues": 29,
-    "ghUpdated": "2014-04-18T16:07:52Z",
-    "ghUpdatedHuman": "2 days ago"
+    "ghStars": 11123,
+    "ghIssues": 27,
+    "ghUpdated": "2014-04-23T19:46:08Z",
+    "ghUpdatedHuman": "2 hours"
   },
   {
     "bName": "angular-bootstrap",
@@ -305,21 +305,21 @@
       "prior": 14
     },
     "bUsers": {
-      "current": 1806,
-      "prior": 1686
+      "current": 1820,
+      "prior": 1791
     },
     "bInstalls": {
-      "current": 2971,
-      "prior": 2838
+      "current": 2904,
+      "prior": 3129
     },
-    "ghFullName": "angular-ui/bootstrap-bower",
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
     "ghUrl": "https://github.com/angular-ui/bootstrap-bower",
     "ghDesc": "A repository to hold bootstrap releases for twitter's bower",
-    "ghStars": 19,
-    "ghForks": 47,
+    "ghStars": 20,
     "ghIssues": 3,
     "ghUpdated": "2014-01-13T20:21:37Z",
-    "ghUpdatedHuman": "3 months ago"
+    "ghUpdatedHuman": "3 months"
   },
   {
     "bName": "requirejs",
@@ -328,125 +328,127 @@
       "prior": 15
     },
     "bUsers": {
-      "current": 1472,
-      "prior": 1411
+      "current": 1431,
+      "prior": 1541
     },
     "bInstalls": {
-      "current": 2743,
-      "prior": 2794
+      "current": 2669,
+      "prior": 2896
     },
-    "ghFullName": "jrburke/requirejs-bower",
+    "ghOwner": "jrburke",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/73359?",
     "ghUrl": "https://github.com/jrburke/requirejs-bower",
     "ghDesc": "Repo hold assets for publishing to the bower package manager.",
     "ghStars": 6,
-    "ghForks": 2,
     "ghIssues": 0,
     "ghUpdated": "2014-02-17T06:09:34Z",
-    "ghUpdatedHuman": "2 months ago"
+    "ghUpdatedHuman": "2 months"
   },
   {
     "bName": "bootstrap-sass",
     "bRank": {
       "current": 16,
-      "prior": 17
+      "prior": 16
     },
     "bUsers": {
-      "current": 1507,
-      "prior": 1340
+      "current": 1427,
+      "prior": 1486
     },
     "bInstalls": {
-      "current": 2736,
-      "prior": 2448
-    },
-    "ghUpdatedHuman": "a few seconds ago"
+      "current": 2640,
+      "prior": 2737
+    }
   },
   {
     "bName": "angular-animate",
     "bRank": {
       "current": 17,
-      "prior": 16
+      "prior": 17
     },
     "bUsers": {
-      "current": 1751,
-      "prior": 1685
+      "current": 1744,
+      "prior": 1759
     },
     "bInstalls": {
-      "current": 2650,
-      "prior": 2518
+      "current": 2615,
+      "prior": 2691
     },
-    "ghFullName": "angular/bower-angular-animate",
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
     "ghUrl": "https://github.com/angular/bower-angular-animate",
     "ghDesc": "",
     "ghStars": 11,
-    "ghForks": 20,
     "ghIssues": 0,
-    "ghUpdated": "2014-04-19T00:01:37Z",
-    "ghUpdatedHuman": "a day ago"
-  },
-  {
-    "bName": "chai",
-    "bRank": {
-      "current": 18,
-      "prior": 18
-    },
-    "bUsers": {
-      "current": 1239,
-      "prior": 1208
-    },
-    "bInstalls": {
-      "current": 2386,
-      "prior": 2347
-    },
-    "ghFullName": "chaijs/chai",
-    "ghUrl": "https://github.com/chaijs/chai",
-    "ghDesc": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
-    "ghStars": 1084,
-    "ghForks": 125,
-    "ghIssues": 21,
-    "ghUpdated": "2014-03-19T16:22:11Z",
-    "ghUpdatedHuman": "a month ago"
-  },
-  {
-    "bName": "mocha",
-    "bRank": {
-      "current": 19,
-      "prior": 19
-    },
-    "bUsers": {
-      "current": 1243,
-      "prior": 1204
-    },
-    "bInstalls": {
-      "current": 2326,
-      "prior": 2298
-    },
-    "ghFullName": "visionmedia/mocha",
-    "ghUrl": "https://github.com/visionmedia/mocha",
-    "ghDesc": "mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)",
-    "ghStars": 4376,
-    "ghForks": 740,
-    "ghIssues": 200,
-    "ghUpdated": "2014-04-17T15:43:30Z",
-    "ghUpdatedHuman": "3 days ago"
+    "ghUpdated": "2014-04-23T21:02:21Z",
+    "ghUpdatedHuman": "an hour"
   },
   {
     "bName": "angular-ui-router",
     "bRank": {
-      "current": 20
+      "current": 18,
+      "prior": 20
     },
     "bUsers": {
-      "current": 1381
+      "current": 1422,
+      "prior": 1326
     },
     "bInstalls": {
-      "current": 2306
+      "current": 2391,
+      "prior": 2254
     },
-    "ghFullName": "angular-ui/ui-router",
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
     "ghUrl": "https://github.com/angular-ui/ui-router",
     "ghDesc": "The de-facto solution to flexible routing with nested views",
-    "ghStars": 2723,
-    "ghForks": 648,
-    "ghIssues": 178,
-    "ghUpdated": "2014-04-20T01:00:49Z",
-    "ghUpdatedHuman": "5 hours ago"
+    "ghStars": 2752,
+    "ghIssues": 173,
+    "ghUpdated": "2014-04-22T13:34:56Z",
+    "ghUpdatedHuman": "a day"
+  },
+  {
+    "bName": "chai",
+    "bRank": {
+      "current": 19,
+      "prior": 18
+    },
+    "bUsers": {
+      "current": 1218,
+      "prior": 1214
+    },
+    "bInstalls": {
+      "current": 2322,
+      "prior": 2432
+    },
+    "ghOwner": "chaijs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1515293?",
+    "ghUrl": "https://github.com/chaijs/chai",
+    "ghDesc": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
+    "ghStars": 1090,
+    "ghIssues": 22,
+    "ghUpdated": "2014-03-19T16:22:11Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "bName": "mocha",
+    "bRank": {
+      "current": 20,
+      "prior": 19
+    },
+    "bUsers": {
+      "current": 1207,
+      "prior": 1211
+    },
+    "bInstalls": {
+      "current": 2241,
+      "prior": 2368
+    },
+    "ghOwner": "visionmedia",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/25254?",
+    "ghUrl": "https://github.com/visionmedia/mocha",
+    "ghDesc": "mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)",
+    "ghStars": 4399,
+    "ghIssues": 202,
+    "ghUpdated": "2014-04-17T15:43:30Z",
+    "ghUpdatedHuman": "6 days"
   }
 ]

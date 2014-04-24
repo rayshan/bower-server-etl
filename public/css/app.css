@@ -7122,6 +7122,17 @@ footer:after {
 .fa-plus-square-o:before {
   content: "\f196";
 }
+.b-delta {
+  display: inline;
+  font-size: 75%;
+  line-height: 1;
+}
+.b-delta.b-up {
+  color: #2baf2b;
+}
+.b-delta.b-down {
+  color: #ef5734;
+}
 .b-chart.b-users {
   height: 300px;
   background: #fff8e2;
@@ -7207,7 +7218,7 @@ footer:after {
 .b-table-pkgs tbody > tr:hover {
   background-color: #fff8e2;
 }
-.b-table-pkgs tbody > tr i {
+.b-table-pkgs tbody > tr i.b-gh {
   color: #cecece;
 }
 .b-table-pkgs .b-hide {

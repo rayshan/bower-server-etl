@@ -16,11 +16,10 @@
       <td><i class="fa fa-fw" ng-class="'fa-' + command.icon"></i> {{ command.command }}</td>
       <td ng-repeat="metric in command.metrics | orderBy: 'order'">
         {{ metric.current | round: 0 }}
-        <span class="label"
-              ng-class="'label-' + (metric.delta > 0 ? 'success' : 'danger')"
-              ng-if="metric.delta !== null && metric.delta !== 0">
-          {{ metric.delta | pct }}
-        </span>
+
+        <b-delta delta="{{ metric.delta }}" type="pct"></b-delta>
+
+        <!--per use-->
         <span ng-if="metric.metric !== 'users'" class="pull-right">
           {{ metric.current / command.metrics[$index - 1].current | round: 1 }}
         </span>
