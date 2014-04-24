@@ -8,5 +8,5 @@ redis-cli shutdown
 
 printf "WIP: $APP_NAME node app stopping...\n"
 if [[ "$HOSTNAME" = "shan.io" ]]; then
-  forever stop index.coffee >> $APP_LOG
+  exec forever stop index.coffee >> $APP_LOG
 fi

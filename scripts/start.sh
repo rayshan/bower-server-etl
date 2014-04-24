@@ -12,7 +12,7 @@ printf "host is $HOSTNAME\n"
 if [[ "$HOSTNAME" = "shan.io" ]]; then
   export NODE_ENV=prod
   export APP_GA_KEY_PATH=/var/www/_keys/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
-  forever start \
+  exec forever start \
     --append -l $APP_LOG \
     --minUptime 1000 --spinSleepTime 10000 \
     -c coffee index.coffee >> $APP_LOG

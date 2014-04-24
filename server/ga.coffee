@@ -23,6 +23,7 @@ authClient = new gapi.auth.JWT(
 
 # auth on bootstrap
 authPromise = new rsvp.Promise (resolve, reject) ->
+  console.log "console.log config.ga.privateKeyPath = " + config.ga.privateKeyPath
   # returns expires_in: 1395623939 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
   if !config.ga.privateKeyPath?
     msg = "ERROR: process.env.APP_GA_KEY_PATH mismatch or #{ config.ga.privateKeyPath }"
