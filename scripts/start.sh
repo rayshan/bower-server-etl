@@ -13,9 +13,9 @@ if [[ "$HOSTNAME" = "shan.io" ]]; then
   export NODE_ENV=prod
   export APP_GA_KEY_PATH=/var/www/_keys/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   exec forever start \
-    --append -l $APP_LOG \
+    --append -l $APP_DIR/$APP_LOG \
     --minUptime 1000 --spinSleepTime 10000 \
-    -c coffee index.coffee >> $APP_LOG
+    -c coffee index.coffee >> $APP_DIR/$APP_LOG
 else
   source ./scripts/dev.sh
   export NODE_ENV=dev
