@@ -27,8 +27,9 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
       totalUsersByDay.filter (ele, i) -> ele.users is minUsers && minUsersDayI = i
 
       canvas = ele[0].querySelector(".b-chart.b-users").children[0]
-      wOrig = d3.select(canvas).node().offsetWidth
-      hOrig = d3.select(canvas).node().offsetHeight
+      # d3.select(canvas).node().offsetWidth doesn't work in FF
+      wOrig = ele.children()[1].clientWidth
+      hOrig = ele.children()[1].clientHeight
       marginBase = 30
       margin =
         t: marginBase
@@ -58,7 +59,7 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
         .y (d) -> d[2]
         .order "reverse"
 
-      svg = d3.select(canvas).append "svg"
+      svg = d3.select(canvas)
           .attr "width", w + margin.l + margin.r
           .attr "height", h + margin.t + margin.b
         .append "g"

@@ -41,8 +41,8 @@
             return ele.users === minUsers && (minUsersDayI = i);
           });
           canvas = ele[0].querySelector(".b-chart.b-users").children[0];
-          wOrig = d3.select(canvas).node().offsetWidth;
-          hOrig = d3.select(canvas).node().offsetHeight;
+          wOrig = ele.children()[1].clientWidth;
+          hOrig = ele.children()[1].clientHeight;
           marginBase = 30;
           margin = {
             t: marginBase,
@@ -71,7 +71,7 @@
           }).y(function(d) {
             return d[2];
           }).order("reverse");
-          svg = d3.select(canvas).append("svg").attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
+          svg = d3.select(canvas).attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
           users = svg.selectAll(".users").data(stack(data)).enter().append("g").attr("class", function(d) {
             return "users " + d.key;
           });
