@@ -70,14 +70,17 @@ header {
     .make-md-column(8, 0);
 
     height: 100%;
-    .lh-display(flex);
-    .lh-justify-content(flex-end);
-    .lh-align-items(center); // vertical
     text-align: right;
+    position: absolute;
+    bottom: -20%;
+    right: 0;
+//    .lh-display(flex);
+//    .lh-justify-content(flex-end);
+//    .lh-align-items(center); // vertical
 
     .b-brand {
       font-weight: bold;
-      line-height: 2em;
+      line-height: 1.5em;
       .b-1 { font-size: 3em }
       .b-2 { letter-spacing: -0.04em; font-size: 4em; color: @b-red; }
     }
