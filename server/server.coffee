@@ -11,10 +11,19 @@ cache = require './cache'
 # ==========
 
 ###
-# Server & API
+# Middleware
 ###
 
-app = express()
+rewriter = express.Router()
+rewriter.use (req, res, next) ->
+  req.url = '/bower' + req.url;
+  next()
+  return
+
+###
+# API
+###
+
 dataApi = express.Router()
 
 # invoked when /:type present in path
@@ -38,9 +47,21 @@ dataApi.route '/data/:type'
     cache.fetch(req.type).then (data) -> res.json data; return
     return
 
+###
+# Server
+###
+
+app = express()
+
+# Only for prod env
+if process.env.NODE_ENV is 'prod'
+  app.enable 'trust proxy' # tell express it's behind nginx reverse proxy & trust X-Forwarded-* headers
+  app.use rewriter # serve requests on shan.io/bower
+
+# prod & dev env
 app.use compress # gzip static content
 app.use dataApi
-app.use express.static p.join __dirname, '../public'
+app.use express.static p.join __dirname, '../public' # serve static assets
 
 module.exports =
   start: ->
