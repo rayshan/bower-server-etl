@@ -17,6 +17,7 @@ cache = require './cache'
 rewriter = express.Router()
 rewriter.use (req, res, next) ->
   req.url = '/bower' + req.url;
+  console.log req.url
   next()
   return
 
@@ -54,6 +55,7 @@ dataApi.route '/data/:type'
 app = express()
 
 # Only for prod env
+console.log process.env.NODE_ENV
 if process.env.NODE_ENV is 'prod'
   app.enable 'trust proxy' # tell express it's behind nginx reverse proxy & trust X-Forwarded-* headers
   app.use rewriter # serve requests on shan.io/bower
