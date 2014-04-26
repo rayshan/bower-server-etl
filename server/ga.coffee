@@ -70,15 +70,15 @@ queries.users =
       'ids': 'ga:' + config.ga.profile
       'start-date': '2014-03-15'
       'end-date': 'yesterday'
-      'metrics': 'ga:visits'
-      'dimensions': 'ga:visitorType,ga:date'
+      'metrics': 'ga:users'
+      'dimensions': 'ga:userType,ga:date'
     }
   ]
   transform: (data) ->
     new rsvp.Promise (resolve, reject) ->
       result = data[0].rows
       result.forEach (d) ->
-        d[0] = if d[0] is 'New Visitor' then 'N' else 'E'
+        d[0] = if d[0].indexOf('New') != -1 then 'N' else 'E'
         d[2] = +d[2]
         return
       resolve result
@@ -93,14 +93,14 @@ queries.commands =
       'ids': 'ga:' + config.ga.profile
       'start-date': '7daysAgo'
       'end-date': 'yesterday'
-      'metrics': 'ga:visitors,ga:pageviews'
+      'metrics': 'ga:users,ga:pageviews'
       'dimensions': 'ga:pagePathLevel1'
     }
     { # prior week
       'ids': 'ga:' + config.ga.profile
       'start-date': '14daysAgo'
       'end-date': '8daysAgo'
-      'metrics': 'ga:visitors,ga:pageviews'
+      'metrics': 'ga:users,ga:pageviews'
       'dimensions': 'ga:pagePathLevel1'
     }
   ]
@@ -140,7 +140,7 @@ queries.commands =
           order: order[d[0]]
           icon: icon[d[0]]
           metrics: [
-            {metric: 'users', order: 1, current: d[1]} # ga:visitors
+            {metric: 'users', order: 1, current: d[1]} # ga:users
             {metric: 'uses', order: 2, current: d[2]} # ga:pageviews
           ]
 
@@ -179,7 +179,7 @@ queries.pkgs =
       'ids': 'ga:' + config.ga.profile
       'start-date': '7daysAgo'
       'end-date': 'yesterday'
-      'metrics': 'ga:visitors,ga:pageviews'
+      'metrics': 'ga:users,ga:pageviews'
       'dimensions': 'ga:pagePathLevel2'
       'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring
       'sort': '-ga:pageviews'
@@ -189,7 +189,7 @@ queries.pkgs =
       'ids': 'ga:' + config.ga.profile
       'start-date': '14daysAgo'
       'end-date': '8daysAgo'
-      'metrics': 'ga:visitors,ga:pageviews'
+      'metrics': 'ga:users,ga:pageviews'
       'dimensions': 'ga:pagePathLevel2'
       'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring
       'sort': '-ga:pageviews'
@@ -212,7 +212,7 @@ queries.pkgs =
       result = current.map (d) ->
         bName: d[0]
         bRank: current: d[3]
-        bUsers: current: d[1] # ga:visitors
+        bUsers: current: d[1] # ga:users
         bInstalls: current: d[2] # ga:pageviews
 
       ghPromises = []
