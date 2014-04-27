@@ -5,6 +5,7 @@
   "main": "index.coffee",
   "scripts": {
     "start": "./scripts/start.sh",
+    "stop": "./scripts/stop.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
