@@ -16,9 +16,9 @@ cache = require './cache'
 
 rewriter = express.Router()
 rewriter.use (req, res, next) ->
-  console.info "INFO: rewriting #{ req.url } to:"
+#  console.info "INFO: rewriting #{ req.url } to:"
   req.url = req.url.replace '/bower', ''
-  console.info req.url
+#  console.info req.url
   next()
   return
 
@@ -41,7 +41,7 @@ dataApi.param 'type', (req, res, next, id) ->
   return
 
 dataApi.route '/data/:type'
-  .all (req, res, next) -> # req logger
+  .all (req, res, next) -> # req logger for api only
     console.log req.method, req.type, req.path
     next()
     return
