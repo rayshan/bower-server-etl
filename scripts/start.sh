@@ -4,6 +4,7 @@ set -o errexit
 set -o pipefail
 
 export APP_PORT=3000
+
 if [[ "$HOSTNAME" = "shan.io" ]]; then
   printf "WIP: redis for $APP_NAME node app starting...\n"
   redis-server $APP_DIR/scripts/redis.conf
@@ -19,3 +20,4 @@ else
   redis-server ./scripts/redis.conf
   node-dev index.coffee
 fi
+
