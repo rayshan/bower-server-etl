@@ -16,8 +16,9 @@ cache = require './cache'
 
 rewriter = express.Router()
 rewriter.use (req, res, next) ->
-  req.url = '/bower' + req.url;
-  console.log req.url
+  console.info "INFO: rewriting #{ req.url } to:"
+  req.url = req.url.replace '/bower', ''
+  console.info req.url
   next()
   return
 
