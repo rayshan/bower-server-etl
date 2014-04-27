@@ -65,8 +65,10 @@ app.factory 'd3', ->
 
   d3
 
-app.factory 'bGaSvc', ($resource) ->
-  ga = $resource '/data/:type', null, {
+app.factory 'bGaSvc', ($resource, $location) ->
+
+  apiRoot = if $location.path().indexOf("/bower") != -1 then "/bower/data/:type" else "/data/:type"
+  ga = $resource apiRoot, null, {
     getUsers:
       method: 'GET'
       params: {type: 'users'}

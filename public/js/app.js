@@ -65,9 +65,10 @@
     return d3;
   });
 
-  app.factory('bGaSvc', function($resource) {
-    var fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
-    ga = $resource('/data/:type', null, {
+  app.factory('bGaSvc', function($resource, $location) {
+    var apiRoot, fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
+    apiRoot = $location.path().indexOf("/bower") !== -1 ? "/bower/data/:type" : "/data/:type";
+    ga = $resource(apiRoot, null, {
       getUsers: {
         method: 'GET',
         params: {
