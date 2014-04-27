@@ -66,16 +66,15 @@
   });
 
   app.factory('bApiRoot', function($location) {
-    var apiRoot;
-    console.log("host = " + $location.host());
-    apiRoot = $location.host() === 'localhost' ? "/data/:type" : "/bower/data/:type";
-    console.log("apiRoot = " + apiRoot);
-    return apiRoot;
+    if ($location.host() === 'localhost') {
+      return "/data/:type";
+    } else {
+      return "/bower/data/:type";
+    }
   });
 
   app.factory('bGaSvc', function($resource, bApiRoot) {
     var fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
-    console.log(bApiRoot);
     ga = $resource(bApiRoot, null, {
       getUsers: {
         method: 'GET',

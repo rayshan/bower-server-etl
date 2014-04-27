@@ -66,13 +66,9 @@ app.factory 'd3', ->
   d3
 
 app.factory 'bApiRoot', ($location) ->
-  console.log "host = " + $location.host()
-  apiRoot = if $location.host() is 'localhost' then "/data/:type" else "/bower/data/:type"
-  console.log "apiRoot = " + apiRoot
-  apiRoot
+  if $location.host() is 'localhost' then "/data/:type" else "/bower/data/:type"
 
 app.factory 'bGaSvc', ($resource, bApiRoot) ->
-  console.log bApiRoot
   ga = $resource bApiRoot, null, {
     getUsers:
       method: 'GET'

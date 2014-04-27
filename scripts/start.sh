@@ -1,7 +1,7 @@
 #!/bin/bash
 
-set -o errexit
-set -o pipefail
+#set -o errexit
+#set -o pipefail
 
 export APP_PORT=3000
 
