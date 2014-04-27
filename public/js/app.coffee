@@ -66,8 +66,9 @@ app.factory 'd3', ->
   d3
 
 app.factory 'bApiRoot', ($location) ->
-  apiRoot = if $location.path().indexOf("/bower") != -1 then "/bower/data/:type" else "/data/:type"
-  console.log apiRoot
+  console.log "host = " + $location.host()
+  apiRoot = if $location.host() is 'localhost' then "/data/:type" else "/bower/data/:type"
+  console.log "apiRoot = " + apiRoot
   apiRoot
 
 app.factory 'bGaSvc', ($resource, bApiRoot) ->

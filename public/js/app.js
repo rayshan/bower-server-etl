@@ -67,8 +67,9 @@
 
   app.factory('bApiRoot', function($location) {
     var apiRoot;
-    apiRoot = $location.path().indexOf("/bower") !== -1 ? "/bower/data/:type" : "/data/:type";
-    console.log(apiRoot);
+    console.log("host = " + $location.host());
+    apiRoot = $location.host() === 'localhost' ? "/data/:type" : "/bower/data/:type";
+    console.log("apiRoot = " + apiRoot);
     return apiRoot;
   });
 
