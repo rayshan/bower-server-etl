@@ -65,17 +65,17 @@
     return d3;
   });
 
-  app.factory('apiRoot', function($location) {
+  app.factory('bApiRoot', function($location) {
     var apiRoot;
     apiRoot = $location.path().indexOf("/bower") !== -1 ? "/bower/data/:type" : "/data/:type";
     console.log(apiRoot);
     return apiRoot;
   });
 
-  app.factory('bGaSvc', function($resource, apiRoot) {
+  app.factory('bGaSvc', function($resource, bApiRoot) {
     var fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
-    console.log(apiRoot);
-    ga = $resource(apiRoot, null, {
+    console.log(bApiRoot);
+    ga = $resource(bApiRoot, null, {
       getUsers: {
         method: 'GET',
         params: {

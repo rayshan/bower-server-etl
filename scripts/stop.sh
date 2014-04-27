@@ -3,8 +3,8 @@
 set -o errexit
 set -o pipefail
 
-printf "WIP: redis for $APP_NAME node app stopping...\n"
-redis-cli shutdown
+#printf "WIP: redis for $APP_NAME node app stopping...\n"
+#redis-cli shutdown
 
 printf "WIP: $APP_NAME node app stopping...\n"
 if [[ "$HOSTNAME" = "shan.io" ]]; then
