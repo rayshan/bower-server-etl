@@ -1,4 +1,6 @@
 # vendor
+if process.env.NODE_ENV is 'prod'
+  require 'newrelic'
 
 # custom
 server = require './server/server'

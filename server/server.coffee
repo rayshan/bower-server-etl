@@ -57,6 +57,7 @@ app = express()
 
 # Only for prod env
 if process.env.NODE_ENV is 'prod'
+  app.disable 'x-powered-by' # don't broadcast it's an express app
   app.enable 'trust proxy' # tell express it's behind nginx reverse proxy & trust X-Forwarded-* headers
   app.use rewriter # serve requests on shan.io/bower
 
