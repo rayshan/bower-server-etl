@@ -18,6 +18,11 @@ bower_components
 
 .idea
 
+# redis db dump
 *.rdb
 
+# contains api secrets & tokens
 dev.sh
+
+# pm2 conf, contains api secrets & tokens, need manual upload
+processes.json

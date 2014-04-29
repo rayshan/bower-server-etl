@@ -6,6 +6,6 @@ config =
     profile : "75972512"
     scopeUri : "https://www.googleapis.com/auth/analytics.readonly"
   db:
-    socket: '/tmp/redis.sock'
+    socket: '/tmp/redis-stats.bower.io.sock'
 
 module.exports = config

@@ -1,18 +1,23 @@
 #!/bin/bash
 
-#set -o errexit
-#set -o pipefail
+set -o errexit
+set -o pipefail
 
 export APP_PORT=3000
+export APP_DIR=/var/www/stats.bower.io
+export APP_NAME=stats.bower.io
+export APP_REDIS=redis-bower
+export APP_PM2=scripts/processes.json
 
 if [[ "$HOSTNAME" = "shan.io" ]]; then
-  printf "WIP: redis for $APP_NAME node app starting...\n"
-  redis-server $APP_DIR/scripts/redis.conf
   export NODE_ENV=prod
-  export APP_GA_KEY_PATH=/var/www/_keys/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
+
+  printf "WIP: redis for $APP_NAME node app starting...\n"
+  sudo start $APP_REDIS
+
   printf "WIP: $APP_NAME node app starting...\n"
-  forever start --append -l $APP_DIR/$APP_LOG --minUptime 1000 --spinSleepTime 10000 -c coffee index.coffee >> $APP_DIR/$APP_LOG
-  forever list >> $APP_DIR/$APP_LOG
+  pm2 restart $APP_NAME
+
 else
   source ./scripts/dev.sh
   export NODE_ENV=dev
@@ -20,4 +25,3 @@ else
   redis-server ./scripts/redis.conf
   node-dev index.coffee
 fi
-
