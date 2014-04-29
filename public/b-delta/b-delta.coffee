@@ -6,10 +6,6 @@ module.directive "bDelta", (bGaSvc) ->
   scope:
     delta: "@" # 1-way bind
     type: "@" # num or pct
-  controller: ($scope) ->
-    return
-  link: (scope, ele, attr) ->
-    return
 
 module.filter 'pct', ->
   (input) ->
@@ -18,7 +14,11 @@ module.filter 'pct', ->
     else
       input *= 100
       inputAbs = Math.abs input
+      inputAbs = if inputAbs < 1 then 1 else inputAbs
       # neg = if input < 0 then '- ' else '' # force a space b/t sign & num
-      decimal = if inputAbs < 10 then 1 else 0
       if input is 0 then null
-      else inputAbs.toFixed(decimal) + '%'
+      else inputAbs.toFixed(0) + '%'
+
+module.filter 'abs', ->
+  (input) ->
+    Math.abs input

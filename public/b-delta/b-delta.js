@@ -11,27 +11,31 @@
       scope: {
         delta: "@",
         type: "@"
-      },
-      controller: function($scope) {},
-      link: function(scope, ele, attr) {}
+      }
     };
   });
 
   module.filter('pct', function() {
     return function(input) {
-      var decimal, inputAbs;
+      var inputAbs;
       if (input == null) {
         return void 0;
       } else {
         input *= 100;
         inputAbs = Math.abs(input);
-        decimal = inputAbs < 10 ? 1 : 0;
+        inputAbs = inputAbs < 1 ? 1 : inputAbs;
         if (input === 0) {
           return null;
         } else {
-          return inputAbs.toFixed(decimal) + '%';
+          return inputAbs.toFixed(0) + '%';
         }
       }
+    };
+  });
+
+  module.filter('abs', function() {
+    return function(input) {
+      return Math.abs(input);
     };
   });
 
