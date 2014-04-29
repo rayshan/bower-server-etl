@@ -36,6 +36,7 @@
           Core Modules
         </small>
       </span>
+      <i ng-if="$index < 3" class="fa fa-trophy"></i>
       <a href="{{ pkg.ghUrl }}">{{ pkg.bName }}</a>
       <br/>
       <small>{{ pkg.ghDesc }}</small>
@@ -56,9 +57,10 @@
     </td>
 
     <td>
-      <a href="{{ pkg.ghUrl }}">{{ pkg.ghOwner }}</a>
-      <br/>
-      <img ng-src="{{ pkg.ghOwnerAvatar }}" alt="" class="img-rounded"/>
+      <a href="{{ pkg.ghUrl }}">
+        <img ng-src="{{ pkg.ghOwnerAvatar }}" alt="" class="img-rounded"/>
+        {{ pkg.ghOwner }}
+      </a>
     </td>
 
     <td>

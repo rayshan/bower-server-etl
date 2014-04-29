@@ -3,7 +3,6 @@
 set -o errexit
 set -o pipefail
 
-export APP_PORT=3000
 export APP_DIR=/var/www/stats.bower.io
 export APP_NAME=stats.bower.io
 export APP_REDIS=redis-bower

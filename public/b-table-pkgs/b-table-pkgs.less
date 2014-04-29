@@ -1,5 +1,5 @@
 .b-table-pkgs {
-  td:nth-child(2) { max-width: 400px }
+  td:nth-child(2) { max-width: 400px } // package column width control
 
   thead > tr {
     color: white;
@@ -7,8 +7,11 @@
     td:nth-child(-n+4) { background-color: @b-yellow; color: @b-brown } // bower columns
     td:nth-child(n+5) { background-color: @b-blue } // gh columns
   }
-  tbody > tr {
-    &:hover {background-color: @b-yellow-2}
+  tbody {
+    tr:hover {background-color: @b-yellow-2}
+    tr:nth-child(1) i.fa-trophy { color: @b-red }
+    tr:nth-child(2) i.fa-trophy { color: @b-brown }
+    tr:nth-child(3) i.fa-trophy { color: @b-gray }
     i.b-gh {color: @b-gray}
   }
 

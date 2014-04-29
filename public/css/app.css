@@ -7215,10 +7215,19 @@ footer:after {
 .b-table-pkgs thead > tr td:nth-child(n+5) {
   background-color: #00acee;
 }
-.b-table-pkgs tbody > tr:hover {
+.b-table-pkgs tbody tr:hover {
   background-color: #fff8e2;
 }
-.b-table-pkgs tbody > tr i.b-gh {
+.b-table-pkgs tbody tr:nth-child(1) i.fa-trophy {
+  color: #ef5734;
+}
+.b-table-pkgs tbody tr:nth-child(2) i.fa-trophy {
+  color: #543729;
+}
+.b-table-pkgs tbody tr:nth-child(3) i.fa-trophy {
+  color: #cecece;
+}
+.b-table-pkgs tbody i.b-gh {
   color: #cecece;
 }
 .b-table-pkgs .b-hide {
