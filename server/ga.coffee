@@ -31,7 +31,7 @@ authPromise = new rsvp.Promise (resolve, reject) ->
     reject new Error msg
   else
     authClient.authorize (err, token) ->
-      console.log "WIP: OAuthing w/ GA..."
+      console.log "[INFO] OAuthing w/ GA..."
       if err then console.error "ERROR: OAuth, err = ", err; reject err
       else
         resolve(token)

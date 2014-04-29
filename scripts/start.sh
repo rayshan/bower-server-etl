@@ -12,10 +12,10 @@ export APP_PM2=scripts/processes.json
 if [[ "$HOSTNAME" = "shan.io" ]]; then
   export NODE_ENV=prod
 
-  printf "WIP: redis for $APP_NAME node app starting...\n"
+  printf "[INFO] redis for $APP_NAME node app starting...\n"
   sudo start $APP_REDIS
 
-  printf "WIP: $APP_NAME node app starting...\n"
+  printf "[INFO] $APP_NAME node app starting...\n"
   pm2 restart $APP_NAME
 
 else

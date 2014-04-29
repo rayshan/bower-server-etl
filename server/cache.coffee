@@ -19,7 +19,7 @@ fetch = (key) ->
         reject err
         return
       else if res is 1 # already cached
-        console.info "INFO: cached / fetching [#{ key }] from cache."
+        console.info "[INFO] cached / fetching [#{ key }] from cache."
         db.get key, (err, res) ->
           if err
             console.error "ERROR: redis - db.get(#{ key }) - #{ err }"
@@ -28,7 +28,7 @@ fetch = (key) ->
           return
         return
       else # not cached
-        console.info "INFO: not cached / fetching [#{ key }] from GA."
+        console.info "[INFO] not cached / fetching [#{ key }] from GA."
         if key is 'overview'
           request {url: 'https://bower.herokuapp.com/packages', json: true}, (err, res, body) ->
             if err

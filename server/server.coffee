@@ -16,7 +16,7 @@ cache = require './cache'
 
 rewriter = express.Router()
 rewriter.use (req, res, next) ->
-#  console.info "INFO: rewriting #{ req.url } to:"
+#  console.info "[INFO] rewriting #{ req.url } to:"
   req.url = req.url.replace '/bower', ''
 #  console.info req.url
   next()
@@ -69,4 +69,4 @@ module.exports =
   start: ->
     port = process.env.APP_PORT
     app.listen port, ->
-      console.info "INFO: listening on port #{ port }."; return
+      console.info "[INFO] listening on port #{ port }."; return

@@ -11,8 +11,8 @@ export APP_PM2=scripts/processes.json
 
 export NODE_ENV=prod
 
-printf "WIP: $APP_NAME node app stopping...\n"
+printf "[INFO] $APP_NAME node app stopping...\n"
 pm2 stop $APP_NAME
 
-printf "WIP: redis for $APP_NAME node app stopping...\n"
+printf "[INFO] redis for $APP_NAME node app stopping...\n"
 sudo stop $APP_REDIS
