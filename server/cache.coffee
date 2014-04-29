@@ -51,8 +51,8 @@ init = ->
   console.info "SUCCESS: Connected to Redis."
 
   # for dev; comment out for prod
-  ga.validQueryTypes.forEach (key) -> db.del key; return
-  db.del 'overview'
+  if process.env.NODE_ENV is 'dev'
+    db.flushdb()
 
   ga.validQueryTypes.forEach (key) -> fetch key; return
   fetch 'overview'
