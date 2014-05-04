@@ -5,8 +5,9 @@ rsvp = require "rsvp"
 
 # ==========
 
-# github.com/lukes/ISO-3166-Countries-with-Regional-Codes
-# slim-3.json
+# github.com/lukes/ISO-3166-Countries-with-Regional-Codes -> slim-3.json
+# full name override for GA country naming
+# world bank countries: http://api.worldbank.org/countries?format=json
 codeMapping = [
   {
     name: "Afghanistan"
@@ -139,12 +140,14 @@ codeMapping = [
     "country-code": "064"
   }
   {
-    name: "Bolivia, Plurinational State of"
+#    name: "Bolivia, Plurinational State of"
+    name: "Bolivia"
     "alpha-3": "BOL"
     "country-code": "068"
   }
   {
-    name: "Bonaire, Sint Eustatius and Saba"
+#    name: "Bonaire, Sint Eustatius and Saba"
+    name: "Caribbean Netherlands"
     "alpha-3": "BES"
     "country-code": "535"
   }
@@ -279,7 +282,8 @@ codeMapping = [
     "country-code": "188"
   }
   {
-    name: "Côte d'Ivoire"
+#    name: "Côte d'Ivoire"
+    name: "Côte d’Ivoire"
     "alpha-3": "CIV"
     "country-code": "384"
   }
@@ -529,7 +533,8 @@ codeMapping = [
     "country-code": "360"
   }
   {
-    name: "Iran, Islamic Republic of"
+#    name: "Iran, Islamic Republic of"
+    name: "Iran"
     "alpha-3": "IRN"
     "country-code": "364"
   }
@@ -594,12 +599,14 @@ codeMapping = [
     "country-code": "296"
   }
   {
-    name: "Korea, Democratic People's Republic of"
+#    name: "Korea, Democratic People's Republic of"
+    name: "North Korea"
     "alpha-3": "PRK"
     "country-code": "408"
   }
   {
-    name: "Korea, Republic of"
+#    name: "Korea, Republic of"
+    name: "South Korea"
     "alpha-3": "KOR"
     "country-code": "410"
   }
@@ -614,7 +621,8 @@ codeMapping = [
     "country-code": "417"
   }
   {
-    name: "Lao People's Democratic Republic"
+#    name: "Lao People's Democratic Republic"
+    name: "Laos"
     "alpha-3": "LAO"
     "country-code": "418"
   }
@@ -659,12 +667,14 @@ codeMapping = [
     "country-code": "442"
   }
   {
-    name: "Macao"
+#    name: "Macao"
+    name: "Macau"
     "alpha-3": "MAC"
     "country-code": "446"
   }
   {
-    name: "Macedonia, the former Yugoslav Republic of"
+#    name: "Macedonia, the former Yugoslav Republic of"
+    name: "Macedonia (FYROM)"
     "alpha-3": "MKD"
     "country-code": "807"
   }
@@ -734,7 +744,8 @@ codeMapping = [
     "country-code": "583"
   }
   {
-    name: "Moldova, Republic of"
+#    name: "Moldova, Republic of"
+    name: "Moldova"
     "alpha-3": "MDA"
     "country-code": "498"
   }
@@ -769,7 +780,8 @@ codeMapping = [
     "country-code": "508"
   }
   {
-    name: "Myanmar"
+#    name: "Myanmar"
+    name: "Myanmar (Burma)"
     "alpha-3": "MMR"
     "country-code": "104"
   }
@@ -854,7 +866,8 @@ codeMapping = [
     "country-code": "585"
   }
   {
-    name: "Palestine, State of"
+#    name: "Palestine, State of"
+    name: "Palestine"
     "alpha-3": "PSE"
     "country-code": "275"
   }
@@ -919,7 +932,8 @@ codeMapping = [
     "country-code": "642"
   }
   {
-    name: "Russian Federation"
+#    name: "Russian Federation"
+    name: "Russia"
     "alpha-3": "RUS"
     "country-code": "643"
   }
@@ -949,7 +963,8 @@ codeMapping = [
     "country-code": "662"
   }
   {
-    name: "Saint Martin (French part)"
+#    name: "Saint Martin (French part)"
+    name: "Saint Martin"
     "alpha-3": "MAF"
     "country-code": "663"
   }
@@ -1089,12 +1104,14 @@ codeMapping = [
     "country-code": "756"
   }
   {
-    name: "Syrian Arab Republic"
+#    name: "Syrian Arab Republic"
+    name: "Syria"
     "alpha-3": "SYR"
     "country-code": "760"
   }
   {
-    name: "Taiwan, Province of China"
+#    name: "Taiwan, Province of China"
+    name: "Taiwan"
     "alpha-3": "TWN"
     "country-code": "158"
   }
@@ -1104,7 +1121,8 @@ codeMapping = [
     "country-code": "762"
   }
   {
-    name: "Tanzania, United Republic of"
+#    name: "Tanzania, United Republic of"
+    name: "Tanzania"
     "alpha-3": "TZA"
     "country-code": "834"
   }
@@ -1209,12 +1227,14 @@ codeMapping = [
     "country-code": "548"
   }
   {
-    name: "Venezuela, Bolivarian Republic of"
+#    name: "Venezuela, Bolivarian Republic of"
+    name: "Venezuela"
     "alpha-3": "VEN"
     "country-code": "862"
   }
   {
-    name: "Viet Nam"
+#    name: "Viet Nam"
+    name: "Vietnam"
     "alpha-3": "VNM"
     "country-code": "704"
   }
@@ -1253,24 +1273,61 @@ codeMapping = [
     "alpha-3": "ZWE"
     "country-code": "716"
   }
+  { # manual entry
+    name: "Kosovo"
+    "alpha-3": "XKX"
+    "country-code": "0"
+  }
 ]
+
+# not in world bank data, manual entry
+popByCode =
+  GIB: 30001
+  ALA: 28666
+  GUF: 250109
+  REU: 840974
+  MTQ: 386486
+  TWN: 23373517
+  MKD: 2058539
+  XKX: 1900000
+  BES: 21133
+  GGY: 65345
+  JEY: 97857
+  GLP: 405739
 
 # get ISO 3166-1 alpha-3 code given full country name
 getCode = (name) ->
-  return _find(codeMapping, (d) -> d.name is name)["alpha-3"]
+  try _find(codeMapping, (d) -> d.name is name)["alpha-3"]
+  catch error
+    err = new Error "[ERROR] #{ name } not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
+    console.error err
+    "N/A"
 
 # async get country population from World Bank API given ISO 3166-1 alpha-3 code
 getPop = (code) ->
-  wbIndicator = "SP.POP.TOTL"
-  wbYr = 2012
-  wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
   new rsvp.Promise (resolve, reject) ->
-    request wbEndpoint, (err, res, body) ->
-      if err
-        console.error "[ERROR] world bank api error, err = ", err
-        reject err
-      else resolve JSON.parse(body)[1][0].value
-      return
+    if code is "N/A" then resolve 0 else
+      wbIndicator = "SP.POP.TOTL"
+      wbYr = 2012
+      wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
+      # e.g. http://api.worldbank.org/countries/usa/indicators/SP.POP.TOTL?format=json&date=2012
+
+      request wbEndpoint, (err, res, body) ->
+        if err
+          err = "[ERROR] world bank api error; err = #{ err }."
+          console.error err
+          reject err
+        else
+          try
+            resolve JSON.parse(body)[1][0].value
+          catch err
+            if popByCode.hasOwnProperty code
+              resolve popByCode[code]
+            else
+              err = new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
+              console.error err
+              resolve 0
+        return
 
 module.exports =
   getCode: getCode

@@ -50,7 +50,7 @@ fetch = (key) ->
 init = ->
   console.info "SUCCESS: Connected to Redis."
 
-  # for dev; comment out for prod
+  # for dev
   if process.env.NODE_ENV is 'dev'
     db.flushdb()
 
@@ -58,7 +58,7 @@ init = ->
   fetch 'overview'
   return
 
-db = redis.createClient config.db.socket
+db = redis.createClient config.db.socket # defaults to db 0
 db.on "error", (err) -> console.log err; return
 
 module.exports =

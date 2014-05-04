@@ -6,6 +6,7 @@ gh = require './github'
 
 # Custom
 config = require "./config"
+geo = require "./geo"
 
 # ==========
 
@@ -229,6 +230,41 @@ queries.pkgs =
         return
 
       rsvp.all(ghPromises).then -> resolve result
+
+queries.geo =
+  queryObjs: [
+    { # monthly active users
+      'ids': 'ga:' + config.ga.profile
+      'start-date': '30daysAgo'
+      'end-date': 'yesterday'
+      'metrics': 'ga:users'
+      'dimensions': 'ga:country'
+      'sort': '-ga:users'
+    }
+  ]
+  transform: (data) ->
+    new rsvp.Promise (resolve) ->
+      current = data[0].rows
+      geoPromises = []
+
+      # remove (not set) country
+      current = current.filter (country) ->
+        country[0] != "(not set)"
+
+      result = current.map (d) ->
+        name: d[0]
+        isoCode: geo.getCode d[0] # get ISO 3166-1 alpha-3 code
+        bUsers: +d[1]
+
+      result.forEach (country) ->
+        geoPromise = geo.getPop(country.isoCode).then (pop) -> country.bDensity = country.bUsers / pop * 1000000; return
+        # get population from world bank api then calc bower user density per 1m pop
+        geoPromises.push geoPromise
+        return
+
+      rsvp.all(geoPromises).then ->
+        result.sort (a, b) -> b.bDensity - a.bDensity
+        resolve result
 
 # ==========
 

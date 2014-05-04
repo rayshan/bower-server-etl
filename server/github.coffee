@@ -33,7 +33,7 @@ getRepoNames = (pkgName) ->
   new rsvp.Promise (resolve, reject) ->
     registry.lookup pkgName, (err, entry) ->
       if err
-        console.error "ERROR: registry entry not found given pkgName #{pkgName}, err = ", err
+        console.error "[ERROR] registry entry not found given pkgName #{pkgName}, err = ", err
         reject err
       else
         # entry.url = git://github.com/jquery/jquery.git
@@ -47,7 +47,7 @@ appendData = (pkg) ->
   getRepoNames(pkg.bName).then (repo) ->
     repo.getInfo().then (data) ->
       if data.message is 'Not Found' or !data.owner.login?
-        err = new Error "ERROR: github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ data.message }"
+        err = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ data.message }"
         console.error err
       else
         pkg.ghOwner = data.owner.login
