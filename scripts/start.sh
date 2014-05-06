@@ -3,7 +3,7 @@
 set -o errexit
 set -o pipefail
 
-#export APP_DIR=/var/www/stats.bower.io
+export APP_DIR=/var/www/stats.bower.io
 export APP_NAME=stats.bower.io
 export APP_REDIS=redis-bower
 export APP_PM2=scripts/processes.json
