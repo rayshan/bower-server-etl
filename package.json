@@ -19,20 +19,19 @@
   },
   "homepage": "https://github.com/rayshan/stats.bower.io",
   "dependencies": {
-    "bower-registry-client": "^0.2.0",
-    "compression": "^1.0.1",
-    "d3": "^3.4.4",
-    "express": "^4.0.0-rc4",
-    "googleapis": "^0.7.0",
-    "lodash-node": "^2.4.1",
-    "moment": "^2.6.0",
-    "newrelic": "^1.5.2",
-    "octokit": "^0.9.20",
-    "redis": "^0.10.1",
-    "request": "^2.34.0",
-    "rsvp": "^3.0.6"
+    "bower-registry-client": "0.2.0",
+    "compression": "1.0.1",
+    "d3": "3.4.4",
+    "express": "4.1.1",
+    "googleapis": "0.7.0",
+    "lodash-node": "2.4.1",
+    "moment": "2.6.0",
+    "newrelic": "1.5.2",
+    "octokit": "0.9.20",
+    "redis": "0.10.1",
+    "request": "2.34.0",
+    "rsvp": "3.0.6"
   },
   "devDependencies": {
-    "flightplan": "^0.3.1"
   }
 }
