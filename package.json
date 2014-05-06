@@ -32,6 +32,5 @@
     "request": "2.34.0",
     "rsvp": "3.0.6"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
