@@ -249,7 +249,7 @@ queries.geo =
 
       # remove (not set) country
       current = current.filter (country) ->
-        country[0] != "(not set)"
+        country[0] != "(not set)" and +country[1] > 1
 
       result = current.map (d) ->
         name: d[0]
@@ -257,7 +257,9 @@ queries.geo =
         bUsers: +d[1]
 
       result.forEach (country) ->
-        geoPromise = geo.getPop(country.isoCode).then (pop) -> country.bDensity = country.bUsers / pop * 1000000; return
+        geoPromise = geo.getPop(country.isoCode).then (pop) ->
+          country.bDensity = Math.ceil(country.bUsers / pop * 1000000)
+          return
         # get population from world bank api then calc bower user density per 1m pop
         geoPromises.push geoPromise
         return
