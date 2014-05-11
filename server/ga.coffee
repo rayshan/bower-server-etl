@@ -254,18 +254,18 @@ queries.geo =
       result = current.map (d) ->
         name: d[0]
         isoCode: geo.getCode d[0] # get ISO 3166-1 alpha-3 code
-        bUsers: +d[1]
+        users: +d[1]
 
       result.forEach (country) ->
         geoPromise = geo.getPop(country.isoCode).then (pop) ->
-          country.bDensity = Math.ceil(country.bUsers / pop * 1000000)
+          country.density = Math.ceil(country.users / pop * 1000000)
           return
         # get population from world bank api then calc bower user density per 1m pop
         geoPromises.push geoPromise
         return
 
       rsvp.all(geoPromises).then ->
-        result.sort (a, b) -> b.bDensity - a.bDensity
+        result.sort (a, b) -> b.density - a.density
         resolve result
 
 # ==========

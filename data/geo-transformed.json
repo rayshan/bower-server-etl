@@ -2,973 +2,871 @@
   {
     "name": "Gibraltar",
     "isoCode": "GIB",
-    "bUsers": 10,
-    "bDensity": 333.32222259258026
+    "users": 14,
+    "density": 467
   },
   {
     "name": "Iceland",
     "isoCode": "ISL",
-    "bUsers": 58,
-    "bDensity": 180.84535851033314
+    "users": 57,
+    "density": 178
   },
   {
     "name": "Ãland Islands",
     "isoCode": "ALA",
-    "bUsers": 4,
-    "bDensity": 139.53812879369286
+    "users": 4,
+    "density": 140
   },
   {
     "name": "Monaco",
     "isoCode": "MCO",
-    "bUsers": 3,
-    "bDensity": 79.83182096383618
+    "users": 3,
+    "density": 80
   },
   {
     "name": "Sweden",
     "isoCode": "SWE",
-    "bUsers": 650,
-    "bDensity": 68.2818008831253
-  },
-  {
-    "name": "Finland",
-    "isoCode": "FIN",
-    "bUsers": 334,
-    "bDensity": 61.69224031676564
+    "users": 710,
+    "density": 75
   },
   {
     "name": "Norway",
     "isoCode": "NOR",
-    "bUsers": 300,
-    "bDensity": 59.77794883127136
+    "users": 338,
+    "density": 68
   },
   {
-    "name": "Estonia",
-    "isoCode": "EST",
-    "bUsers": 74,
-    "bDensity": 55.66835502267733
+    "name": "Finland",
+    "isoCode": "FIN",
+    "users": 357,
+    "density": 66
   },
   {
     "name": "Netherlands",
     "isoCode": "NLD",
-    "bUsers": 924,
-    "bDensity": 55.147842173560285
-  },
-  {
-    "name": "Liechtenstein",
-    "isoCode": "LIE",
-    "bUsers": 2,
-    "bDensity": 54.56132693147097
-  },
-  {
-    "name": "Malta",
-    "isoCode": "MLT",
-    "bUsers": 22,
-    "bDensity": 52.44901121693626
-  },
-  {
-    "name": "Cayman Islands",
-    "isoCode": "CYM",
-    "bUsers": 3,
-    "bDensity": 52.11047420531527
+    "users": 984,
+    "density": 59
   },
   {
     "name": "New Zealand",
     "isoCode": "NZL",
-    "bUsers": 228,
-    "bDensity": 51.431278337957636
+    "users": 244,
+    "density": 56
   },
   {
     "name": "Denmark",
     "isoCode": "DNK",
-    "bUsers": 278,
-    "bDensity": 49.71768225465039
+    "users": 308,
+    "density": 56
+  },
+  {
+    "name": "Liechtenstein",
+    "isoCode": "LIE",
+    "users": 2,
+    "density": 55
+  },
+  {
+    "name": "Estonia",
+    "isoCode": "EST",
+    "users": 72,
+    "density": 55
   },
   {
     "name": "Luxembourg",
     "isoCode": "LUX",
-    "bUsers": 26,
-    "bDensity": 48.969198374222614
+    "users": 28,
+    "density": 53
   },
   {
-    "name": "Palau",
-    "isoCode": "PLW",
-    "bUsers": 1,
-    "bDensity": 48.18348270212971
-  },
-  {
-    "name": "Caribbean Netherlands",
-    "isoCode": "BES",
-    "bUsers": 1,
-    "bDensity": 47.31935834950078
+    "name": "Cayman Islands",
+    "isoCode": "CYM",
+    "users": 3,
+    "density": 53
   },
   {
     "name": "Ireland",
     "isoCode": "IRL",
-    "bUsers": 212,
-    "bDensity": 46.218609225365206
+    "users": 232,
+    "density": 51
   },
   {
-    "name": "United States",
-    "isoCode": "USA",
-    "bUsers": 13989,
-    "bDensity": 44.563154932477694
-  },
-  {
-    "name": "Israel",
-    "isoCode": "ISR",
-    "bUsers": 350,
-    "bDensity": 44.24499083496618
-  },
-  {
-    "name": "Canada",
-    "isoCode": "CAN",
-    "bUsers": 1532,
-    "bDensity": 44.08086110293307
+    "name": "Malta",
+    "isoCode": "MLT",
+    "users": 21,
+    "density": 51
   },
   {
     "name": "Singapore",
     "isoCode": "SGP",
-    "bUsers": 233,
-    "bDensity": 43.859649122807014
+    "users": 262,
+    "density": 50
+  },
+  {
+    "name": "United States",
+    "isoCode": "USA",
+    "users": 14852,
+    "density": 48
+  },
+  {
+    "name": "Canada",
+    "isoCode": "CAN",
+    "users": 1633,
+    "density": 47
   },
   {
     "name": "Australia",
     "isoCode": "AUS",
-    "bUsers": 989,
-    "bDensity": 43.5260980547487
-  },
-  {
-    "name": "Slovenia",
-    "isoCode": "SVN",
-    "bUsers": 87,
-    "bDensity": 42.29133479716444
-  },
-  {
-    "name": "United Kingdom",
-    "isoCode": "GBR",
-    "bUsers": 2647,
-    "bDensity": 41.61116873322633
-  },
-  {
-    "name": "Faroe Islands",
-    "isoCode": "FRO",
-    "bUsers": 2,
-    "bDensity": 40.39914353815699
+    "users": 1034,
+    "density": 46
   },
   {
     "name": "Switzerland",
     "isoCode": "CHE",
-    "bUsers": 323,
-    "bDensity": 40.39084835912491
+    "users": 357,
+    "density": 45
+  },
+  {
+    "name": "Israel",
+    "isoCode": "ISR",
+    "users": 341,
+    "density": 44
+  },
+  {
+    "name": "United Kingdom",
+    "isoCode": "GBR",
+    "users": 2713,
+    "density": 43
   },
   {
     "name": "Belgium",
     "isoCode": "BEL",
-    "bUsers": 429,
-    "bDensity": 38.55054965535449
+    "users": 462,
+    "density": 42
   },
   {
-    "name": "Andorra",
-    "isoCode": "AND",
-    "bUsers": 3,
-    "bDensity": 38.28483920367535
+    "name": "Slovenia",
+    "isoCode": "SVN",
+    "users": 84,
+    "density": 41
+  },
+  {
+    "name": "Faroe Islands",
+    "isoCode": "FRO",
+    "users": 2,
+    "density": 41
   },
   {
     "name": "France",
     "isoCode": "FRA",
-    "bUsers": 2146,
-    "bDensity": 32.66526871696685
-  },
-  {
-    "name": "Saint Martin",
-    "isoCode": "MAF",
-    "bUsers": 1,
-    "bDensity": 32.30078490907329
-  },
-  {
-    "name": "Guernsey",
-    "isoCode": "GGY",
-    "bUsers": 2,
-    "bDensity": 30.606779401637464
-  },
-  {
-    "name": "Latvia",
-    "isoCode": "LVA",
-    "bUsers": 56,
-    "bDensity": 27.527639470505854
-  },
-  {
-    "name": "Austria",
-    "isoCode": "AUT",
-    "bUsers": 226,
-    "bDensity": 26.809044042870273
+    "users": 2174,
+    "density": 34
   },
   {
     "name": "CuraÃ§ao",
     "isoCode": "CUW",
-    "bUsers": 4,
-    "bDensity": 26.30609775345925
+    "users": 5,
+    "density": 33
+  },
+  {
+    "name": "Austria",
+    "isoCode": "AUT",
+    "users": 246,
+    "density": 30
+  },
+  {
+    "name": "Latvia",
+    "isoCode": "LVA",
+    "users": 60,
+    "density": 30
   },
   {
     "name": "Costa Rica",
     "isoCode": "CRI",
-    "bUsers": 119,
-    "bDensity": 24.764348494733415
+    "users": 130,
+    "density": 28
   },
   {
     "name": "Czech Republic",
     "isoCode": "CZE",
-    "bUsers": 253,
-    "bDensity": 24.070514238470295
+    "users": 275,
+    "density": 27
+  },
+  {
+    "name": "Andorra",
+    "isoCode": "AND",
+    "users": 2,
+    "density": 26
   },
   {
     "name": "Germany",
     "isoCode": "DEU",
-    "bUsers": 1913,
-    "bDensity": 23.785892747407757
+    "users": 2014,
+    "density": 26
   },
   {
     "name": "Lithuania",
     "isoCode": "LTU",
-    "bUsers": 71,
-    "bDensity": 23.763518848319467
+    "users": 72,
+    "density": 25
   },
   {
     "name": "Isle of Man",
     "isoCode": "IMN",
-    "bUsers": 2,
-    "bDensity": 23.451057642699684
+    "users": 2,
+    "density": 24
   },
   {
     "name": "Portugal",
     "isoCode": "PRT",
-    "bUsers": 227,
-    "bDensity": 21.588527609159012
-  },
-  {
-    "name": "Bulgaria",
-    "isoCode": "BGR",
-    "bUsers": 147,
-    "bDensity": 20.120757394583656
+    "users": 246,
+    "density": 24
   },
   {
     "name": "Belarus",
     "isoCode": "BLR",
-    "bUsers": 183,
-    "bDensity": 19.33643279797126
+    "users": 206,
+    "density": 22
+  },
+  {
+    "name": "Bulgaria",
+    "isoCode": "BGR",
+    "users": 156,
+    "density": 22
   },
   {
     "name": "Hong Kong",
     "isoCode": "HKG",
-    "bUsers": 137,
-    "bDensity": 19.1485198333939
+    "users": 155,
+    "density": 22
   },
   {
     "name": "Poland",
     "isoCode": "POL",
-    "bUsers": 709,
-    "bDensity": 18.398441369162704
-  },
-  {
-    "name": "Barbados",
-    "isoCode": "BRB",
-    "bUsers": 5,
-    "bDensity": 17.65405813834426
-  },
-  {
-    "name": "Greenland",
-    "isoCode": "GRL",
-    "bUsers": 1,
-    "bDensity": 17.602534765006162
+    "users": 755,
+    "density": 20
   },
   {
     "name": "Spain",
     "isoCode": "ESP",
-    "bUsers": 817,
-    "bDensity": 17.471726170618485
+    "users": 888,
+    "density": 19
   },
   {
     "name": "Taiwan",
     "isoCode": "TWN",
-    "bUsers": 398,
-    "bDensity": 17.027818278267667
+    "users": 434,
+    "density": 19
   },
   {
     "name": "Croatia",
     "isoCode": "HRV",
-    "bUsers": 72,
-    "bDensity": 16.871309401068515
+    "users": 76,
+    "density": 18
   },
   {
     "name": "Hungary",
     "isoCode": "HUN",
-    "bUsers": 156,
-    "bDensity": 15.725232607439125
+    "users": 164,
+    "density": 17
   },
   {
     "name": "Ukraine",
     "isoCode": "UKR",
-    "bUsers": 679,
-    "bDensity": 14.892539035340718
+    "users": 713,
+    "density": 16
   },
   {
     "name": "Maldives",
     "isoCode": "MDV",
-    "bUsers": 5,
-    "bDensity": 14.77358011121551
+    "users": 5,
+    "density": 15
   },
   {
     "name": "Serbia",
     "isoCode": "SRB",
-    "bUsers": 101,
-    "bDensity": 13.98139256607973
-  },
-  {
-    "name": "Montenegro",
-    "isoCode": "MNE",
-    "bUsers": 8,
-    "bDensity": 12.880767564939195
-  },
-  {
-    "name": "Macau",
-    "isoCode": "MAC",
-    "bUsers": 7,
-    "bDensity": 12.572222930657007
+    "users": 100,
+    "density": 14
   },
   {
     "name": "Romania",
     "isoCode": "ROU",
-    "bUsers": 250,
-    "bDensity": 12.452228891691359
-  },
-  {
-    "name": "Uruguay",
-    "isoCode": "URY",
-    "bUsers": 41,
-    "bDensity": 12.075683314321497
-  },
-  {
-    "name": "Slovakia",
-    "isoCode": "SVK",
-    "bUsers": 65,
-    "bDensity": 12.020166510743532
-  },
-  {
-    "name": "New Caledonia",
-    "isoCode": "NCL",
-    "bUsers": 3,
-    "bDensity": 11.62245613491347
-  },
-  {
-    "name": "Argentina",
-    "isoCode": "ARG",
-    "bUsers": 476,
-    "bDensity": 11.585193509361261
-  },
-  {
-    "name": "Cyprus",
-    "isoCode": "CYP",
-    "bUsers": 13,
-    "bDensity": 11.514675897303263
+    "users": 273,
+    "density": 14
   },
   {
     "name": "Japan",
     "isoCode": "JPN",
-    "bUsers": 1449,
-    "bDensity": 11.359227705471517
+    "users": 1531,
+    "density": 13
+  },
+  {
+    "name": "Slovakia",
+    "isoCode": "SVK",
+    "users": 67,
+    "density": 13
+  },
+  {
+    "name": "Uruguay",
+    "isoCode": "URY",
+    "users": 44,
+    "density": 13
   },
   {
     "name": "Greece",
     "isoCode": "GRC",
-    "bUsers": 123,
-    "bDensity": 11.088302462928334
+    "users": 144,
+    "density": 13
   },
   {
-    "name": "Macedonia (FYROM)",
-    "isoCode": "MKD",
-    "bUsers": 23,
-    "bDensity": 10.923381974045094
+    "name": "Montenegro",
+    "isoCode": "MNE",
+    "users": 7,
+    "density": 12
+  },
+  {
+    "name": "Cyprus",
+    "isoCode": "CYP",
+    "users": 13,
+    "density": 12
   },
   {
     "name": "Italy",
     "isoCode": "ITA",
-    "bUsers": 639,
-    "bDensity": 10.73233183154028
+    "users": 659,
+    "density": 12
   },
   {
-    "name": "Jersey",
-    "isoCode": "JEY",
-    "bUsers": 1,
-    "bDensity": 10.218993020427767
+    "name": "New Caledonia",
+    "isoCode": "NCL",
+    "users": 3,
+    "density": 12
+  },
+  {
+    "name": "Argentina",
+    "isoCode": "ARG",
+    "users": 490,
+    "density": 12
   },
   {
     "name": "Moldova",
     "isoCode": "MDA",
-    "bUsers": 36,
-    "bDensity": 10.113726039950905
+    "users": 38,
+    "density": 11
   },
   {
-    "name": "Mauritius",
-    "isoCode": "MUS",
-    "bUsers": 13,
-    "bDensity": 10.066157886912137
+    "name": "Macau",
+    "isoCode": "MAC",
+    "users": 6,
+    "density": 11
   },
   {
-    "name": "Trinidad and Tobago",
-    "isoCode": "TTO",
-    "bUsers": 12,
-    "bDensity": 8.972371824060762
-  },
-  {
-    "name": "South Korea",
-    "isoCode": "KOR",
-    "bUsers": 447,
-    "bDensity": 8.939206019721327
-  },
-  {
-    "name": "Russia",
-    "isoCode": "RUS",
-    "bUsers": 1262,
-    "bDensity": 8.792403140741154
+    "name": "Macedonia (FYROM)",
+    "isoCode": "MKD",
+    "users": 22,
+    "density": 11
   },
   {
     "name": "Armenia",
     "isoCode": "ARM",
-    "bUsers": 24,
-    "bDensity": 8.083309279874817
+    "users": 28,
+    "density": 10
   },
   {
-    "name": "Chile",
-    "isoCode": "CHL",
-    "bUsers": 138,
-    "bDensity": 7.901601471392711
+    "name": "Trinidad and Tobago",
+    "isoCode": "TTO",
+    "users": 13,
+    "density": 10
   },
   {
     "name": "Mongolia",
     "isoCode": "MNG",
-    "bUsers": 22,
-    "bDensity": 7.8670215885376065
+    "users": 26,
+    "density": 10
   },
   {
-    "name": "Brazil",
-    "isoCode": "BRA",
-    "bUsers": 1299,
-    "bDensity": 6.538941062742227
+    "name": "Mauritius",
+    "isoCode": "MUS",
+    "users": 12,
+    "density": 10
   },
   {
-    "name": "Panama",
-    "isoCode": "PAN",
-    "bUsers": 20,
-    "bDensity": 5.26000051022005
+    "name": "South Korea",
+    "isoCode": "KOR",
+    "users": 473,
+    "density": 10
   },
   {
-    "name": "Puerto Rico",
-    "isoCode": "PRI",
-    "bUsers": 18,
-    "bDensity": 4.908532228877222
+    "name": "Russia",
+    "isoCode": "RUS",
+    "users": 1286,
+    "density": 9
   },
   {
-    "name": "RÃ©union",
-    "isoCode": "REU",
-    "bUsers": 4,
-    "bDensity": 4.756389614898915
-  },
-  {
-    "name": "Bosnia and Herzegovina",
-    "isoCode": "BIH",
-    "bUsers": 17,
-    "bDensity": 4.434108624184776
-  },
-  {
-    "name": "French Guiana",
-    "isoCode": "GUF",
-    "bUsers": 1,
-    "bDensity": 3.998256760052617
-  },
-  {
-    "name": "Qatar",
-    "isoCode": "QAT",
-    "bUsers": 8,
-    "bDensity": 3.9014608044617103
-  },
-  {
-    "name": "Dominican Republic",
-    "isoCode": "DOM",
-    "bUsers": 39,
-    "bDensity": 3.795021729418649
-  },
-  {
-    "name": "South Africa",
-    "isoCode": "ZAF",
-    "bUsers": 196,
-    "bDensity": 3.7494061447601714
+    "name": "Chile",
+    "isoCode": "CHL",
+    "users": 152,
+    "density": 9
   },
   {
     "name": "French Polynesia",
     "isoCode": "PYF",
-    "bUsers": 1,
-    "bDensity": 3.6521142089155414
+    "users": 2,
+    "density": 8
   },
   {
-    "name": "Malaysia",
-    "isoCode": "MYS",
-    "bUsers": 104,
-    "bDensity": 3.556780425614606
+    "name": "Barbados",
+    "isoCode": "BRB",
+    "users": 2,
+    "density": 8
   },
   {
-    "name": "Colombia",
-    "isoCode": "COL",
-    "bUsers": 168,
-    "bDensity": 3.5216857336951137
+    "name": "Brazil",
+    "isoCode": "BRA",
+    "users": 1419,
+    "density": 8
   },
   {
-    "name": "United Arab Emirates",
-    "isoCode": "ARE",
-    "bUsers": 31,
-    "bDensity": 3.367496769104108
+    "name": "French Guiana",
+    "isoCode": "GUF",
+    "users": 2,
+    "density": 8
   },
   {
     "name": "Belize",
     "isoCode": "BLZ",
-    "bUsers": 1,
-    "bDensity": 3.0858482996975867
+    "users": 2,
+    "density": 7
   },
   {
-    "name": "Vietnam",
-    "isoCode": "VNM",
-    "bUsers": 273,
-    "bDensity": 3.0752628335899805
+    "name": "Puerto Rico",
+    "isoCode": "PRI",
+    "users": 19,
+    "density": 6
   },
   {
-    "name": "Tunisia",
-    "isoCode": "TUN",
-    "bUsers": 32,
-    "bDensity": 2.969148689399211
+    "name": "Panama",
+    "isoCode": "PAN",
+    "users": 22,
+    "density": 6
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "isoCode": "BIH",
+    "users": 20,
+    "density": 6
+  },
+  {
+    "name": "United Arab Emirates",
+    "isoCode": "ARE",
+    "users": 41,
+    "density": 5
+  },
+  {
+    "name": "RÃ©union",
+    "isoCode": "REU",
+    "users": 4,
+    "density": 5
+  },
+  {
+    "name": "Colombia",
+    "isoCode": "COL",
+    "users": 192,
+    "density": 5
+  },
+  {
+    "name": "Qatar",
+    "isoCode": "QAT",
+    "users": 10,
+    "density": 5
+  },
+  {
+    "name": "Dominican Republic",
+    "isoCode": "DOM",
+    "users": 42,
+    "density": 5
   },
   {
     "name": "Bolivia",
     "isoCode": "BOL",
-    "bUsers": 31,
-    "bDensity": 2.9534259025931555
+    "users": 32,
+    "density": 4
   },
   {
-    "name": "Thailand",
-    "isoCode": "THA",
-    "bUsers": 193,
-    "bDensity": 2.8898704366269308
-  },
-  {
-    "name": "Venezuela",
-    "isoCode": "VEN",
-    "bUsers": 84,
-    "bDensity": 2.804226717456999
-  },
-  {
-    "name": "Martinique",
-    "isoCode": "MTQ",
-    "bUsers": 1,
-    "bDensity": 2.587415844299664
+    "name": "Vietnam",
+    "isoCode": "VNM",
+    "users": 304,
+    "density": 4
   },
   {
     "name": "Jamaica",
     "isoCode": "JAM",
-    "bUsers": 7,
-    "bDensity": 2.5851196818086972
+    "users": 9,
+    "density": 4
   },
   {
-    "name": "Mexico",
-    "isoCode": "MEX",
-    "bUsers": 312,
-    "bDensity": 2.5817667670463655
+    "name": "South Africa",
+    "isoCode": "ZAF",
+    "users": 199,
+    "density": 4
   },
   {
-    "name": "Guyana",
-    "isoCode": "GUY",
-    "bUsers": 2,
-    "bDensity": 2.514556136837116
+    "name": "Tunisia",
+    "isoCode": "TUN",
+    "users": 34,
+    "density": 4
   },
   {
-    "name": "Turkey",
-    "isoCode": "TUR",
-    "bUsers": 184,
-    "bDensity": 2.486582992788585
+    "name": "Malaysia",
+    "isoCode": "MYS",
+    "users": 109,
+    "density": 4
   },
   {
-    "name": "Guadeloupe",
-    "isoCode": "GLP",
-    "bUsers": 1,
-    "bDensity": 2.4646385977192233
-  },
-  {
-    "name": "Sri Lanka",
-    "isoCode": "LKA",
-    "bUsers": 44,
-    "bDensity": 2.1645021645021645
-  },
-  {
-    "name": "Kazakhstan",
-    "isoCode": "KAZ",
-    "bUsers": 36,
-    "bDensity": 2.143951451410467
+    "name": "Thailand",
+    "isoCode": "THA",
+    "users": 197,
+    "density": 3
   },
   {
     "name": "Philippines",
     "isoCode": "PHL",
-    "bUsers": 206,
-    "bDensity": 2.1301508961668905
+    "users": 226,
+    "density": 3
+  },
+  {
+    "name": "Kazakhstan",
+    "isoCode": "KAZ",
+    "users": 43,
+    "density": 3
+  },
+  {
+    "name": "Guyana",
+    "isoCode": "GUY",
+    "users": 2,
+    "density": 3
+  },
+  {
+    "name": "Turkey",
+    "isoCode": "TUR",
+    "users": 191,
+    "density": 3
   },
   {
     "name": "Ecuador",
     "isoCode": "ECU",
-    "bUsers": 33,
-    "bDensity": 2.1300953817982964
-  },
-  {
-    "name": "Lebanon",
-    "isoCode": "LBN",
-    "bUsers": 8,
-    "bDensity": 1.807955365197944
-  },
-  {
-    "name": "Guatemala",
-    "isoCode": "GTM",
-    "bUsers": 27,
-    "bDensity": 1.7901148663669308
+    "users": 38,
+    "density": 3
   },
   {
     "name": "Georgia",
     "isoCode": "GEO",
-    "bUsers": 8,
-    "bDensity": 1.7814594606631484
+    "users": 11,
+    "density": 3
   },
   {
-    "name": "Jordan",
-    "isoCode": "JOR",
-    "bUsers": 11,
-    "bDensity": 1.7410572966128521
-  },
-  {
-    "name": "Peru",
-    "isoCode": "PER",
-    "bUsers": 52,
-    "bDensity": 1.7340385089936574
-  },
-  {
-    "name": "Morocco",
-    "isoCode": "MAR",
-    "bUsers": 52,
-    "bDensity": 1.5989597905584068
+    "name": "Venezuela",
+    "isoCode": "VEN",
+    "users": 84,
+    "density": 3
   },
   {
     "name": "Kosovo",
     "isoCode": "XKX",
-    "bUsers": 3,
-    "bDensity": 1.5789473684210527
+    "users": 4,
+    "density": 3
   },
   {
-    "name": "Kyrgyzstan",
-    "isoCode": "KGZ",
-    "bUsers": 8,
-    "bDensity": 1.4267370523612497
+    "name": "Mexico",
+    "isoCode": "MEX",
+    "users": 340,
+    "density": 3
   },
   {
-    "name": "China",
-    "isoCode": "CHN",
-    "bUsers": 1865,
-    "bDensity": 1.3807706402999937
-  },
-  {
-    "name": "Namibia",
-    "isoCode": "NAM",
-    "bUsers": 3,
-    "bDensity": 1.3277902516295306
-  },
-  {
-    "name": "Ghana",
-    "isoCode": "GHA",
-    "bUsers": 33,
-    "bDensity": 1.300930338649513
-  },
-  {
-    "name": "Honduras",
-    "isoCode": "HND",
-    "bUsers": 10,
-    "bDensity": 1.2601050978055774
-  },
-  {
-    "name": "Palestine",
-    "isoCode": "PSE",
-    "bUsers": 5,
-    "bDensity": 1.2355132977060719
-  },
-  {
-    "name": "Nicaragua",
-    "isoCode": "NIC",
-    "bUsers": 7,
-    "bDensity": 1.1682763567735746
-  },
-  {
-    "name": "Indonesia",
-    "isoCode": "IDN",
-    "bUsers": 270,
-    "bDensity": 1.0937187726833981
-  },
-  {
-    "name": "India",
-    "isoCode": "IND",
-    "bUsers": 1219,
-    "bDensity": 0.9856982924273824
-  },
-  {
-    "name": "Lesotho",
-    "isoCode": "LSO",
-    "bUsers": 2,
-    "bDensity": 0.9748750332066809
-  },
-  {
-    "name": "El Salvador",
-    "isoCode": "SLV",
-    "bUsers": 6,
-    "bDensity": 0.9527750685442263
+    "name": "Sri Lanka",
+    "isoCode": "LKA",
+    "users": 44,
+    "density": 3
   },
   {
     "name": "Cambodia",
     "isoCode": "KHM",
-    "bUsers": 14,
-    "bDensity": 0.9418320490107871
+    "users": 15,
+    "density": 2
+  },
+  {
+    "name": "Indonesia",
+    "isoCode": "IDN",
+    "users": 282,
+    "density": 2
+  },
+  {
+    "name": "Kyrgyzstan",
+    "isoCode": "KGZ",
+    "users": 9,
+    "density": 2
+  },
+  {
+    "name": "Peru",
+    "isoCode": "PER",
+    "users": 53,
+    "density": 2
+  },
+  {
+    "name": "China",
+    "isoCode": "CHN",
+    "users": 2109,
+    "density": 2
+  },
+  {
+    "name": "Ghana",
+    "isoCode": "GHA",
+    "users": 33,
+    "density": 2
   },
   {
     "name": "Paraguay",
     "isoCode": "PRY",
-    "bUsers": 6,
-    "bDensity": 0.8972149103360803
+    "users": 7,
+    "density": 2
   },
   {
-    "name": "Bahrain",
-    "isoCode": "BHR",
-    "bUsers": 1,
-    "bDensity": 0.7588249443971021
+    "name": "Honduras",
+    "isoCode": "HND",
+    "users": 12,
+    "density": 2
   },
   {
-    "name": "Kenya",
-    "isoCode": "KEN",
-    "bUsers": 31,
-    "bDensity": 0.7179558749414432
+    "name": "Lebanon",
+    "isoCode": "LBN",
+    "users": 6,
+    "density": 2
   },
   {
-    "name": "Saudi Arabia",
-    "isoCode": "SAU",
-    "bUsers": 18,
-    "bDensity": 0.6363154788512596
+    "name": "Jordan",
+    "isoCode": "JOR",
+    "users": 12,
+    "density": 2
   },
   {
-    "name": "Albania",
-    "isoCode": "ALB",
-    "bUsers": 2,
-    "bDensity": 0.6324944664640365
+    "name": "Palestine",
+    "isoCode": "PSE",
+    "users": 6,
+    "density": 2
   },
   {
-    "name": "Tajikistan",
-    "isoCode": "TJK",
-    "bUsers": 5,
-    "bDensity": 0.6242984446228551
+    "name": "Morocco",
+    "isoCode": "MAR",
+    "users": 58,
+    "density": 2
   },
   {
-    "name": "Iran",
-    "isoCode": "IRN",
-    "bUsers": 46,
-    "bDensity": 0.6019016716942248
+    "name": "India",
+    "isoCode": "IND",
+    "users": 1284,
+    "density": 2
   },
   {
-    "name": "Senegal",
-    "isoCode": "SEN",
-    "bUsers": 8,
-    "bDensity": 0.582834602977804
+    "name": "Nicaragua",
+    "isoCode": "NIC",
+    "users": 11,
+    "density": 2
   },
   {
-    "name": "Nepal",
-    "isoCode": "NPL",
-    "bUsers": 16,
-    "bDensity": 0.5823607938407483
-  },
-  {
-    "name": "Egypt",
-    "isoCode": "EGY",
-    "bUsers": 46,
-    "bDensity": 0.5698579297106011
-  },
-  {
-    "name": "Uzbekistan",
-    "isoCode": "UZB",
-    "bUsers": 11,
-    "bDensity": 0.36944365144670777
-  },
-  {
-    "name": "Pakistan",
-    "isoCode": "PAK",
-    "bUsers": 60,
-    "bDensity": 0.3348959746960639
-  },
-  {
-    "name": "Libya",
-    "isoCode": "LBY",
-    "bUsers": 2,
-    "bDensity": 0.32495897799101586
-  },
-  {
-    "name": "Syria",
-    "isoCode": "SYR",
-    "bUsers": 7,
-    "bDensity": 0.31251040771268546
-  },
-  {
-    "name": "Kuwait",
-    "isoCode": "KWT",
-    "bUsers": 1,
-    "bDensity": 0.3076453562779342
-  },
-  {
-    "name": "Bangladesh",
-    "isoCode": "BGD",
-    "bUsers": 47,
-    "bDensity": 0.3038229302379629
-  },
-  {
-    "name": "Cuba",
-    "isoCode": "CUB",
-    "bUsers": 3,
-    "bDensity": 0.26617083181135376
-  },
-  {
-    "name": "Madagascar",
-    "isoCode": "MDG",
-    "bUsers": 5,
-    "bDensity": 0.2242764550002301
-  },
-  {
-    "name": "Zimbabwe",
-    "isoCode": "ZWE",
-    "bUsers": 3,
-    "bDensity": 0.21859011271744888
-  },
-  {
-    "name": "Azerbaijan",
-    "isoCode": "AZE",
-    "bUsers": 2,
-    "bDensity": 0.2151512986962692
+    "name": "Guatemala",
+    "isoCode": "GTM",
+    "users": 22,
+    "density": 2
   },
   {
     "name": "Algeria",
     "isoCode": "DZA",
-    "bUsers": 8,
-    "bDensity": 0.20789099651379792
+    "users": 12,
+    "density": 1
   },
   {
-    "name": "Benin",
-    "isoCode": "BEN",
-    "bUsers": 2,
-    "bDensity": 0.19899107544925718
+    "name": "Madagascar",
+    "isoCode": "MDG",
+    "users": 5,
+    "density": 1
   },
   {
-    "name": "Turkmenistan",
-    "isoCode": "TKM",
-    "bUsers": 1,
-    "bDensity": 0.1933140032217712
-  },
-  {
-    "name": "Togo",
-    "isoCode": "TGO",
-    "bUsers": 1,
-    "bDensity": 0.15053602869096278
-  },
-  {
-    "name": "Laos",
-    "isoCode": "LAO",
-    "bUsers": 1,
-    "bDensity": 0.1504703628306906
+    "name": "Tajikistan",
+    "isoCode": "TJK",
+    "users": 5,
+    "density": 1
   },
   {
     "name": "Uganda",
     "isoCode": "UGA",
-    "bUsers": 5,
-    "bDensity": 0.1375672497500403
+    "users": 6,
+    "density": 1
   },
   {
     "name": "Tanzania",
     "isoCode": "TZA",
-    "bUsers": 6,
-    "bDensity": 0.12556738932861775
-  },
-  {
-    "name": "Myanmar (Burma)",
-    "isoCode": "MMR",
-    "bUsers": 6,
-    "bDensity": 0.11364213398790192
+    "users": 6,
+    "density": 1
   },
   {
     "name": "Sudan",
     "isoCode": "SDN",
-    "bUsers": 4,
-    "bDensity": 0.10754032715219314
+    "users": 4,
+    "density": 1
   },
   {
-    "name": "Burundi",
-    "isoCode": "BDI",
-    "bUsers": 1,
-    "bDensity": 0.1015272851025258
+    "name": "El Salvador",
+    "isoCode": "SLV",
+    "users": 6,
+    "density": 1
+  },
+  {
+    "name": "Senegal",
+    "isoCode": "SEN",
+    "users": 8,
+    "density": 1
   },
   {
     "name": "CÃ´te dâIvoire",
     "isoCode": "CIV",
-    "bUsers": 2,
-    "bDensity": 0.10080772187149535
-  },
-  {
-    "name": "Haiti",
-    "isoCode": "HTI",
-    "bUsers": 1,
-    "bDensity": 0.0982919319524955
-  },
-  {
-    "name": "Zambia",
-    "isoCode": "ZMB",
-    "bUsers": 1,
-    "bDensity": 0.07104745764132814
-  },
-  {
-    "name": "Afghanistan",
-    "isoCode": "AFG",
-    "bUsers": 2,
-    "bDensity": 0.06705888064779951
-  },
-  {
-    "name": "Nigeria",
-    "isoCode": "NGA",
-    "bUsers": 11,
-    "bDensity": 0.06515284003361982
-  },
-  {
-    "name": "Angola",
-    "isoCode": "AGO",
-    "bUsers": 1,
-    "bDensity": 0.0480295285541551
-  },
-  {
-    "name": "Mozambique",
-    "isoCode": "MOZ",
-    "bUsers": 1,
-    "bDensity": 0.03967719428275437
+    "users": 3,
+    "density": 1
   },
   {
     "name": "Ethiopia",
     "isoCode": "ETH",
-    "bUsers": 3,
-    "bDensity": 0.032705087142214116
+    "users": 3,
+    "density": 1
   },
   {
-    "name": "Iraq",
-    "isoCode": "IRQ",
-    "bUsers": 1,
-    "bDensity": 0.030695364499626118
+    "name": "Kuwait",
+    "isoCode": "KWT",
+    "users": 3,
+    "density": 1
+  },
+  {
+    "name": "Syria",
+    "isoCode": "SYR",
+    "users": 9,
+    "density": 1
+  },
+  {
+    "name": "Uzbekistan",
+    "isoCode": "UZB",
+    "users": 11,
+    "density": 1
+  },
+  {
+    "name": "Zimbabwe",
+    "isoCode": "ZWE",
+    "users": 3,
+    "density": 1
+  },
+  {
+    "name": "Afghanistan",
+    "isoCode": "AFG",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Albania",
+    "isoCode": "ALB",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Myanmar (Burma)",
+    "isoCode": "MMR",
+    "users": 5,
+    "density": 1
+  },
+  {
+    "name": "Azerbaijan",
+    "isoCode": "AZE",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Nigeria",
+    "isoCode": "NGA",
+    "users": 18,
+    "density": 1
+  },
+  {
+    "name": "Saudi Arabia",
+    "isoCode": "SAU",
+    "users": 19,
+    "density": 1
+  },
+  {
+    "name": "Benin",
+    "isoCode": "BEN",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Nepal",
+    "isoCode": "NPL",
+    "users": 23,
+    "density": 1
+  },
+  {
+    "name": "Kenya",
+    "isoCode": "KEN",
+    "users": 29,
+    "density": 1
+  },
+  {
+    "name": "Egypt",
+    "isoCode": "EGY",
+    "users": 51,
+    "density": 1
+  },
+  {
+    "name": "Iran",
+    "isoCode": "IRN",
+    "users": 54,
+    "density": 1
+  },
+  {
+    "name": "Haiti",
+    "isoCode": "HTI",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Bangladesh",
+    "isoCode": "BGD",
+    "users": 59,
+    "density": 1
+  },
+  {
+    "name": "Lesotho",
+    "isoCode": "LSO",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Libya",
+    "isoCode": "LBY",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Pakistan",
+    "isoCode": "PAK",
+    "users": 68,
+    "density": 1
+  },
+  {
+    "name": "Mozambique",
+    "isoCode": "MOZ",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Namibia",
+    "isoCode": "NAM",
+    "users": 2,
+    "density": 1
   }
 ]
