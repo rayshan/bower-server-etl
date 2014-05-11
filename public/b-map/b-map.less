@@ -1,0 +1,38 @@
+.b-chart.b-map {
+  height: 420px;
+  background: white;
+  border: 1px solid @b-yellow;
+  position: relative;
+
+  .land {
+    fill: @b-yellow-3;
+  }
+  .country-boundary {
+    fill: none;
+    stroke: white;
+    stroke-width: 1px;
+  }
+
+
+  .bubble {
+    fill-opacity: .75;
+    //    fill: black;
+  }
+
+  text { .lh-user-select(none) }
+  .label {
+    fill: white;
+    font-family: sans-serif;
+    text-anchor: middle;
+    &.sm {font-size: .6em; font-weight: normal}
+    &.md {font-size: .8em}
+    &.lg {font-size: 1.2em}
+  }
+
+  .b-options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+}

@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Delta', 'ngResource']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ngResource', 'ui.bootstrap']);
 
   app.controller('BHeaderCtrl', function(bGaSvc) {
     bGaSvc.fetchOverview.then((function(_this) {
@@ -10,6 +10,10 @@
         return _this.totalPkgs = data.totalPkgs;
       };
     })(this));
+  });
+
+  app.factory('topojson', function() {
+    return topojson;
   });
 
   app.factory('d3', function() {
@@ -74,7 +78,7 @@
   });
 
   app.factory('bGaSvc', function($resource, bApiRoot) {
-    var fetchCommandsP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
+    var fetchCommandsP, fetchGeoP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
     ga = $resource(bApiRoot, null, {
       getUsers: {
         method: 'GET',
@@ -102,17 +106,26 @@
         params: {
           type: 'overview'
         }
+      },
+      getGeo: {
+        method: 'GET',
+        params: {
+          type: 'geo'
+        },
+        isArray: true
       }
     });
     fetchUsersP = ga.getUsers().$promise;
     fetchCommandsP = ga.getCommands().$promise;
     fetchPkgsP = ga.getPkgs().$promise;
     fetchOverviewP = ga.getOverview().$promise;
+    fetchGeoP = ga.getGeo().$promise;
     return {
       fetchUsers: fetchUsersP,
       fetchCommands: fetchCommandsP,
       fetchPkgs: fetchPkgsP,
-      fetchOverview: fetchOverviewP
+      fetchOverview: fetchOverviewP,
+      fetchGeo: fetchGeoP
     };
   });
 

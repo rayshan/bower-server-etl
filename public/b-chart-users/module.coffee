@@ -62,7 +62,7 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
       svg = d3.select(canvas)
           .attr "width", w + margin.l + margin.r
           .attr "height", h + margin.t + margin.b
-        .append "g"
+        .append "g" # need to wrap in g to transform
           .attr "transform", "translate(#{ margin.l }, #{ margin.t })"
 
       users = svg.selectAll ".users"

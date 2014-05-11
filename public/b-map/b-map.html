@@ -1,5 +1,12 @@
 <h2>Popularity around the world over past <span>7 days <i class="fa fa-caret-down"></i></span></h2>
 
-<div class="b-map">
-  <!--<svg></svg>-->
+<div class="b-chart b-map">
+  <div class="b-options">
+    <div class="btn-group">
+      <button class="btn btn-info btn-xs" ng-model="chartType" btn-radio="'Users'">Users</button>
+      <button class="btn btn-info btn-xs" ng-model="chartType" btn-radio="'Density'">Density</button>
+    </div>
+    <!--<i class="fa fa-question-circle"></i>-->
+    <!--Users = Bower CLI MAUs (monthly active users) ● Density = MAUs per capita-->
+  </div>
 </div>

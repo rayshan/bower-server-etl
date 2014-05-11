@@ -2,14 +2,19 @@ app = angular.module 'BApp', [
   'B.Chart.Users'
   'B.Table.Commands'
   'B.Table.Pkgs'
+  'B.Map'
   'B.Delta'
   'ngResource'
+  'ui.bootstrap'
 ]
 
 app.controller 'BHeaderCtrl', (bGaSvc) ->
   bGaSvc.fetchOverview.then (data) =>
     @totalPkgs = data.totalPkgs
   return
+
+app.factory 'topojson', ->
+  topojson
 
 app.factory 'd3', ->
   d3.legend = ->
@@ -85,22 +90,28 @@ app.factory 'bGaSvc', ($resource, bApiRoot) ->
     getOverview:
       method: 'GET'
       params: {type: 'overview'}
+    getGeo:
+      method: 'GET'
+      params: {type: 'geo'}
+      isArray: true
   }
 
   fetchUsersP = ga.getUsers().$promise
   fetchCommandsP = ga.getCommands().$promise
   fetchPkgsP = ga.getPkgs().$promise
   fetchOverviewP = ga.getOverview().$promise
+  fetchGeoP = ga.getGeo().$promise
 
   fetchUsers: fetchUsersP
   fetchCommands: fetchCommandsP
   fetchPkgs: fetchPkgsP
   fetchOverview: fetchOverviewP
+  fetchGeo: fetchGeoP
 
 app.filter 'round', ->
   (input, decimals) ->
     if !input?
       undefined
     else if input >= 1000
-      (input / 1000).toFixed(1) + ' k' # e.g. 206.1 k
+      (input / 1000).toFixed(1) + ' k' # e.g. 206.1 k; toFixed() returns string
     else input.toFixed decimals
