@@ -27,16 +27,18 @@ authPromise = new rsvp.Promise (resolve, reject) ->
   # console.log "console.log config.ga.privateKeyPath = " + config.ga.privateKeyPath
   # returns expires_in: 1395623939 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
   if !config.ga.privateKeyPath?
-    msg = "ERROR: process.env.APP_GA_KEY_PATH mismatch or #{ config.ga.privateKeyPath }"
-    console.error msg
-    reject new Error msg
+    error = new Error "[ERROR] process.env.APP_GA_KEY_PATH mismatch or #{ config.ga.privateKeyPath }"
+    console.error error
+    reject error
   else
     authClient.authorize (err, token) ->
       console.log "[INFO] OAuthing w/ GA..."
-      if err then console.error "ERROR: OAuth, err = ", err; reject err
+      if err
+        error = new Error "[ERROR] OAuth, err = #{ err }"
+        console.error error
+        reject error
       else
-        resolve(token)
-        console.info "SUCCESS: server OAuthed w/ GA."
+        resolve token; console.info "[SUCCESS] server OAuthed w/ GA."
       return
   return
 
@@ -82,8 +84,7 @@ queries.users =
         d[0] = if d[0].indexOf('New') != -1 then 'N' else 'E'
         d[2] = +d[2]
         return
-      resolve result
-      return
+      resolve result; return
 
 util =
   removeSlash: (input) -> input.replace /\//g, '' # remove leading & trailing /
@@ -169,7 +170,7 @@ queries.commands =
 
         return
 
-      resolve result
+      resolve result; return
 
 queries.pkgs =
   # 'package' is a reserved word in JS
@@ -224,12 +225,13 @@ queries.pkgs =
           pkg.bUsers.prior = priorPkg[1]
           pkg.bInstalls.prior = priorPkg[2]
         else
-          err = new Error "ERROR: no prior period data for package #{ pkg.bName }"
+          err = new Error "[ERROR] no prior period data for package #{ pkg.bName }"
           console.error err
         ghPromises.push gh.appendData pkg
         return
 
       rsvp.all(ghPromises).then -> resolve result
+      return
 
 queries.geo =
   queryObjs: [
@@ -267,11 +269,12 @@ queries.geo =
       rsvp.all(geoPromises).then ->
         result.sort (a, b) -> b.density - a.density
         resolve result
+      return
 
 # ==========
 
 module.exports =
-  validQueryTypes: Object.keys queries
+  validQueryTypes: Object.keys(queries).concat('overview', 'all')
   queries: queries
   authPromise: authPromise
   fetch: fetch
