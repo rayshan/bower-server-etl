@@ -2,6 +2,7 @@
 redis = require 'redis'
 rsvp = require 'rsvp'
 request = require 'request'
+moment = require 'moment'
 
 # Custom
 ga = require './ga'
@@ -24,16 +25,18 @@ fetch = (key) ->
         return
       return
 
-    _fetchAndCache = ->
+    _fetchAndCache = {}
+    _fetchAndCache.ga = ->
       ga.authPromise.then ga.fetch key # .then transform
         .then (data) ->
           db.set key, JSON.stringify data
+          # delete key at start of next day in case there's a midnight refresh
+          db.expireat key, moment().add('days', 1).startOf('day').unix()
           resolve data
           return
         .catch (err) -> console.error "[ERROR] ", err; return
       return
-
-    _fetchAndCacheOverview = ->
+    _fetchAndCache.overview = ->
       request {url: 'https://bower.herokuapp.com/packages', json: true}, (err, res, body) ->
         if err
           error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
@@ -42,6 +45,8 @@ fetch = (key) ->
         else
           data = totalPkgs: body.length
           db.set key, JSON.stringify data
+          # delete key at start of next day in case there's a midnight refresh
+          db.expireat key, moment().add('days', 1).startOf('day').unix()
           resolve data
         return
 
@@ -61,9 +66,9 @@ fetch = (key) ->
         else # not cached
           console.info "[INFO] not cached / fetching [#{ key }] from GA."
           if key is 'overview'
-            _fetchAndCacheOverview()
+            _fetchAndCache.overview()
           else
-            _fetchAndCache()
+            _fetchAndCache.ga()
     return
 
 init = ->
