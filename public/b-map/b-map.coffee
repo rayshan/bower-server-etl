@@ -108,7 +108,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
       return
 
     bubblePadding = 1 # for collision detection
-    bubbleOverBorder = 10 # allow bubbles to go out of bounding box a bit but not too much, see tick()
+    bubbleOverBorder = 5 # allow bubbles to go out of bounding box a bit but not too much, see tick()
     bubbleRBreaks = sm: 10, md: 15, lg: 20 # for setting font sizes in bubbles
 
     transitionDuration = 250
@@ -120,7 +120,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
     svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h)
 
     projection = d3map.geo.equirectangular()
-      .scale (w + 50) / 2 / Math.PI # default to 150
+      .scale 160 # default to 150
       .translate [w / 2.1, h / 1.55] # move a little to the left & down to accommodate for europe
       # .precision(.1) # default Math.SQRT(1/2) = .5
     path = d3map.geo.path().projection projection
@@ -175,10 +175,10 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
         countryBubbles
           .each gravity e.alpha * .1 # custom gravity function to draw nodes to original x0/y0 position instead of center of chart
           .each d3map.collision .2, scope.data.countryDataTopo, scope.chartType, bubblePadding
-          .attr "cx", (d) -> Math.max d[radiusKey], (Math.min w - d[radiusKey], d.x) + bubbleOverBorder / 2 # / 2 due to horizontal letters take up extra width within bubble
+          .attr "cx", (d) -> Math.max d[radiusKey], (Math.min w - d[radiusKey], d.x) + bubbleOverBorder
           .attr "cy", (d) -> Math.max d[radiusKey] - bubbleOverBorder, Math.min h - d[radiusKey], d.y
         countryLabels
-          .attr "x", (d) -> Math.max d[radiusKey], (Math.min w - d[radiusKey], d.x) + bubbleOverBorder / 2
+          .attr "x", (d) -> Math.max d[radiusKey], (Math.min w - d[radiusKey], d.x) + bubbleOverBorder
           .attr "y", (d) ->
             res = Math.max d[radiusKey] - bubbleOverBorder, Math.min h - d[radiusKey], d.y
             if d[radiusKey] <= bubbleRBreaks.md then res + 3 else if d[radiusKey] > bubbleRBreaks.md and d[radiusKey] <= bubbleRBreaks.lg then res + 4 else res + 6

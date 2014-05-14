@@ -123,7 +123,7 @@
           }
         });
         bubblePadding = 1;
-        bubbleOverBorder = 10;
+        bubbleOverBorder = 5;
         bubbleRBreaks = {
           sm: 10,
           md: 15,
@@ -134,7 +134,7 @@
         w = canvas.clientWidth;
         h = canvas.clientHeight;
         svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h);
-        projection = d3map.geo.equirectangular().scale((w + 50) / 2 / Math.PI).translate([w / 2.1, h / 1.55]);
+        projection = d3map.geo.equirectangular().scale(160).translate([w / 2.1, h / 1.55]);
         path = d3map.geo.path().projection(projection);
         force = d3map.layout.force().gravity(0).size([w * 2, h * 2]);
         gravity = function(k) {
@@ -184,12 +184,12 @@
             var radiusKey;
             radiusKey = 'r' + scope.chartType;
             countryBubbles.each(gravity(e.alpha * .1)).each(d3map.collision(.2, scope.data.countryDataTopo, scope.chartType, bubblePadding)).attr("cx", function(d) {
-              return Math.max(d[radiusKey], (Math.min(w - d[radiusKey], d.x)) + bubbleOverBorder / 2);
+              return Math.max(d[radiusKey], (Math.min(w - d[radiusKey], d.x)) + bubbleOverBorder);
             }).attr("cy", function(d) {
               return Math.max(d[radiusKey] - bubbleOverBorder, Math.min(h - d[radiusKey], d.y));
             });
             countryLabels.attr("x", function(d) {
-              return Math.max(d[radiusKey], (Math.min(w - d[radiusKey], d.x)) + bubbleOverBorder / 2);
+              return Math.max(d[radiusKey], (Math.min(w - d[radiusKey], d.x)) + bubbleOverBorder);
             }).attr("y", function(d) {
               var res;
               res = Math.max(d[radiusKey] - bubbleOverBorder, Math.min(h - d[radiusKey], d.y));
