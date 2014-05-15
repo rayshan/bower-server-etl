@@ -14,11 +14,10 @@ cache = require './cache'
 # Middleware
 ###
 
+# serve requests on shan.io/bower
 rewriter = express.Router()
 rewriter.use (req, res, next) ->
-#  console.info "[INFO] rewriting #{ req.url } to:"
   req.url = req.url.replace '/bower', ''
-#  console.info req.url
   next()
   return
 
@@ -45,7 +44,14 @@ dataApi.route '/data/:type'
     next()
     return
   .get (req, res) ->
-    cache.fetch(req.type).then (data) -> res.json data; return
+    if cache.allCached()
+      cache.fetch(req.type).then (data) -> res.json data; return
+    else
+      err = new Error "[ERROR] request was made when fetch/cache was in progress."
+      console.error err
+      res.json 503, { # Service Unavailable (temporary)
+        error: "Server is fetching & caching data, should be done soon. Please try again later."
+      }
     return
 
 ###
