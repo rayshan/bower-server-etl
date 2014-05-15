@@ -4,12 +4,12 @@
 
   module = angular.module('B.Table.Pkgs', []);
 
-  module.directive("bTablePkgs", function(bGaSvc) {
+  module.directive("bTablePkgs", function(bDataSvc) {
     return {
       templateUrl: 'b-table-pkgs/b-table-pkgs.html',
       restrict: 'E',
       link: function(scope, ele) {
-        bGaSvc.fetchPkgs.then(function(data) {
+        bDataSvc.fetchPkgs.then(function(data) {
           return scope.pkgs = data;
         });
         scope.hideAngular = true;

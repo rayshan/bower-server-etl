@@ -1,10 +1,10 @@
 module = angular.module 'B.Table.Commands', []
 
-module.directive "bTableCommands", (bGaSvc) ->
+module.directive "bTableCommands", (bDataSvc) ->
   templateUrl: 'b-table-commands/partial.html'
   restrict: 'E'
   link: (scope) ->
-    bGaSvc.fetchCommands.then (data) ->
+    bDataSvc.fetchCommands.then (data) ->
       scope.commands = data
 
     return

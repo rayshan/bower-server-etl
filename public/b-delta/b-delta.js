@@ -4,7 +4,7 @@
 
   module = angular.module('B.Delta', []);
 
-  module.directive("bDelta", function(bGaSvc) {
+  module.directive("bDelta", function(bDataSvc) {
     return {
       templateUrl: 'b-delta/b-delta.html',
       restrict: 'E',

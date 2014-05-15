@@ -1,6 +1,6 @@
 module = angular.module 'B.Chart.Users', []
 
-module.directive "bChartUsers", (d3, bGaSvc) ->
+module.directive "bChartUsers", (d3, bDataSvc) ->
   templateUrl: 'b-chart-users/partial.html'
   restrict: 'E'
   link: (scope, ele) ->
@@ -102,6 +102,6 @@ module.directive "bChartUsers", (d3, bGaSvc) ->
 
       return
 
-    bGaSvc.fetchUsers.then render
+    bDataSvc.fetchUsers.then render
     return
 

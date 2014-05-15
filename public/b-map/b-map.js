@@ -42,7 +42,7 @@
     return d3;
   });
 
-  module.factory('bMapDataSvc', function($filter, $q, d3map, topojson, bGaSvc, bTopojsonSvc) {
+  module.factory('bMapDataSvc', function($filter, $q, d3map, topojson, bDataSvc, bTopojsonSvc) {
     var parseData;
     parseData = function(data) {
       var colorsDensity, colorsUsers, countryData, countryDataTopo, maxDensity, maxUsers, minDensity, radiusDensity, radiusUsers, topo, topojsonData, _deferred;
@@ -88,7 +88,7 @@
       });
       return _deferred.promise;
     };
-    return $q.all([bGaSvc.fetchGeo, bTopojsonSvc]).then(parseData);
+    return $q.all([bDataSvc.fetchGeo, bTopojsonSvc]).then(parseData);
   });
 
   module.directive("bMap", function(d3map, topojson, bMapDataSvc) {

@@ -1,10 +1,10 @@
 module = angular.module 'B.Table.Pkgs', []
 
-module.directive "bTablePkgs", (bGaSvc) ->
+module.directive "bTablePkgs", (bDataSvc) ->
   templateUrl: 'b-table-pkgs/b-table-pkgs.html'
   restrict: 'E'
   link: (scope, ele) ->
-    bGaSvc.fetchPkgs.then (data) ->
+    bDataSvc.fetchPkgs.then (data) ->
       scope.pkgs = data
 
     scope.hideAngular = true

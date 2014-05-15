@@ -4,7 +4,7 @@
 
   module = angular.module('B.Chart.Users', []);
 
-  module.directive("bChartUsers", function(d3, bGaSvc) {
+  module.directive("bChartUsers", function(d3, bDataSvc) {
     return {
       templateUrl: 'b-chart-users/partial.html',
       restrict: 'E',
@@ -103,7 +103,7 @@
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
           legend = svg.append("g").attr("class", "legend").call(d3.legend);
         };
-        bGaSvc.fetchUsers.then(render);
+        bDataSvc.fetchUsers.then(render);
       }
     };
   });

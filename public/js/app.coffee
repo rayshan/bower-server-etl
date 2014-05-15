@@ -8,8 +8,8 @@ app = angular.module 'BApp', [
   'ui.bootstrap'
 ]
 
-app.controller 'BHeaderCtrl', (bGaSvc) ->
-  bGaSvc.fetchOverview.then (data) =>
+app.controller 'BHeaderCtrl', (bDataSvc) ->
+  bDataSvc.fetchOverview.then (data) =>
     @totalPkgs = data.totalPkgs
   return
 
@@ -72,8 +72,9 @@ app.factory 'd3', ->
 
 app.factory 'bApiRoot', ($location) ->
   if $location.host() is 'localhost' then "/data/:type" else "/bower/data/:type"
+#  if $location.host() is 'localhost' then "/data/" else "/bower/data/"
 
-app.factory 'bGaSvc', ($resource, bApiRoot) ->
+app.factory 'bDataSvc', ($resource, $http, bApiRoot) ->
   ga = $resource bApiRoot, null, {
     getUsers:
       method: 'GET'
@@ -95,6 +96,9 @@ app.factory 'bGaSvc', ($resource, bApiRoot) ->
       params: {type: 'geo'}
       isArray: true
   }
+
+#  fetchAll: $http.get(bApiRoot + 'all')
+
 
   fetchUsersP = ga.getUsers().$promise
   fetchCommandsP = ga.getCommands().$promise

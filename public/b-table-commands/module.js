@@ -4,12 +4,12 @@
 
   module = angular.module('B.Table.Commands', []);
 
-  module.directive("bTableCommands", function(bGaSvc) {
+  module.directive("bTableCommands", function(bDataSvc) {
     return {
       templateUrl: 'b-table-commands/partial.html',
       restrict: 'E',
       link: function(scope) {
-        bGaSvc.fetchCommands.then(function(data) {
+        bDataSvc.fetchCommands.then(function(data) {
           return scope.commands = data;
         });
       }

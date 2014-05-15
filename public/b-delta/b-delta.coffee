@@ -1,6 +1,6 @@
 module = angular.module 'B.Delta', []
 
-module.directive "bDelta", (bGaSvc) ->
+module.directive "bDelta", (bDataSvc) ->
   templateUrl: 'b-delta/b-delta.html'
   restrict: 'E'
   scope:

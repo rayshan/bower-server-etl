@@ -4,8 +4,8 @@
 
   app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ngResource', 'ui.bootstrap']);
 
-  app.controller('BHeaderCtrl', function(bGaSvc) {
-    bGaSvc.fetchOverview.then((function(_this) {
+  app.controller('BHeaderCtrl', function(bDataSvc) {
+    bDataSvc.fetchOverview.then((function(_this) {
       return function(data) {
         return _this.totalPkgs = data.totalPkgs;
       };
@@ -77,7 +77,7 @@
     }
   });
 
-  app.factory('bGaSvc', function($resource, bApiRoot) {
+  app.factory('bDataSvc', function($resource, $http, bApiRoot) {
     var fetchCommandsP, fetchGeoP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
     ga = $resource(bApiRoot, null, {
       getUsers: {

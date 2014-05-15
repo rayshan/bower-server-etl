@@ -32,7 +32,7 @@ module.factory 'd3map', (d3) ->
 
   return d3
 
-module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bGaSvc, bTopojsonSvc) ->
+module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bDataSvc, bTopojsonSvc) ->
   parseData = (data) ->
     _deferred = $q.defer()
 
@@ -78,7 +78,7 @@ module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bGaSvc, bTopojsonSv
     }
     _deferred.promise
 
-  $q.all([bGaSvc.fetchGeo, bTopojsonSvc]).then parseData
+  $q.all([bDataSvc.fetchGeo, bTopojsonSvc]).then parseData
 
 module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
   templateUrl: 'b-map/b-map.html'
