@@ -3,16 +3,14 @@ redis = require 'redis'
 rsvp = require 'rsvp'
 request = require 'request'
 moment = require 'moment'
+later = require 'later'
 
 # Custom
 ga = require './ga'
 config = require "./config"
 
 # ==========
-
-allCached = false
-
-# cache GA response via redis
+# cache data fetch responses via redis
 
 fetch = (key) ->
   new rsvp.Promise (resolve, reject) ->
@@ -76,9 +74,11 @@ fetch = (key) ->
             _fetchAndCache.ga()
     return
 
-init = ->
-  console.info "[SUCCESS] Connected to Redis."
+# ==========
 
+allCached = false
+
+init = ->
   # for dev
   db.flushdb() if process.env.NODE_ENV is 'dev'
 
@@ -96,8 +96,21 @@ init = ->
 
   return
 
+# ==========
+# cron job to get data ready so 1st user of every day don't have to wait long
+
+# set later to use local time (default = UTC)
+later.date.localTime()
+schedule = later.parse.recur().on(1).hour() # 1am; 24-hour format
+console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
+timer = later.setInterval init, schedule # execute init on schedule
+
+# ==========
+
 db = redis.createClient config.db.socket # defaults to db 0
 db.on "error", (err) -> console.error err; return
+
+# ==========
 
 module.exports =
   init: init

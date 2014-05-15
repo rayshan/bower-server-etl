@@ -23,6 +23,7 @@
     "compression": "1.0.2",
     "express": "4.2",
     "googleapis": "0.7.0",
+    "later": "^1.1.6",
     "lodash-node": "2.4.1",
     "moment": "2.6.0",
     "newrelic": "1.5.4",
