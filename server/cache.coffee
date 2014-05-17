@@ -27,7 +27,7 @@ fetch = (key) ->
 
     _fetchAndCache = {}
     _fetchAndCache.ga = ->
-      ga.authPromise.then ga.fetch key # .then transform
+      ga.authPromise.then ga.fetch key
         .then (data) ->
           db.set key, JSON.stringify data
           # delete key at start of next day in case there's a midnight refresh
@@ -102,7 +102,7 @@ init = ->
 # set later to use local time (default = UTC)
 later.date.localTime()
 schedule = later.parse.recur().on(1).hour() # 1am; 24-hour format
-console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
+# console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
 timer = later.setInterval init, schedule # execute init on schedule
 
 # ==========

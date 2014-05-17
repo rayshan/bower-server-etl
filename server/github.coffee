@@ -11,45 +11,37 @@ registry = new RegistryClient
 
 # ==========
 
-pkg =
-  "name": "jquery"
-  "rank":
-    "current": 1
-    "prior": 1
-  "users":
-    "current": 9043
-    "prior": 8714
-  "pkgs":
-    "current": 18673
-    "prior": 18286
-
 _token = process.env.GITHUB_OAUTH_TOKEN_BOWER
-console.error "ERROR: GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
+console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
 _gh = new Octokit.new {token: _token}
 
 # get github repo info from bower register
 # raw data @ http://bower.herokuapp.com/packages
-getRepoNames = (pkgName) ->
+getRepoName = (pkgName) ->
   new rsvp.Promise (resolve, reject) ->
     registry.lookup pkgName, (err, entry) ->
       if err
-        console.error "[ERROR] registry entry not found given pkgName #{pkgName}, err = ", err
-        reject err
+        error = new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
+        console.error error
+        reject error
       else
-        # entry.url = git://github.com/jquery/jquery.git
         urlParsed = url.parse(entry.url).pathname.split '/'
         ownerName = urlParsed[urlParsed.length - 2]
         repoName = urlParsed[urlParsed.length - 1].split('.')[0]
-        resolve _gh.getRepo ownerName, repoName
+        resolve {
+          ownerName: ownerName
+          repoName: repoName
+        }
       return
 
+getRepoData = (data) ->
+  _gh.getRepo data.ownerName, data.repoName
+
+# pkg obj passed from GA module
 appendData = (pkg) ->
-  getRepoNames(pkg.bName).then (repo) ->
-    repo.getInfo().then (data) ->
-      if data.message is 'Not Found' or !data.owner.login?
-        err = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ data.message }"
-        console.error err
-      else
+  getRepoName(pkg.bName).then(getRepoData).then (repo) ->
+    repo.getInfo()
+      .then (data) ->
         pkg.ghOwner = data.owner.login
         pkg.ghOwnerAvatar = data.owner.avatar_url
         pkg.ghUrl = data.html_url
@@ -59,7 +51,22 @@ appendData = (pkg) ->
         pkg.ghUpdated = data.pushed_at
         pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
         pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
-      return
+        return
+      .catch (err) ->
+        error = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.message }"
+        console.error error
+        return
+
+# log GH rate limit warning at certain intervals
+listener = (rateLimitRemaining, rateLimit, method, path, data, raw, isBase64) ->
+  log = (type) ->
+    console[type] "[#{ type.toUpperCase() }] Github API rate limit has #{ rateLimitRemaining } of #{ rateLimit } remaining."
+    return
+  switch
+    when rateLimitRemaining >= 1000 and rateLimitRemaining % 1000 is 0 then log 'info'
+    when rateLimitRemaining is 500 or rateLimitRemaining is 100 then log 'warn'
+  return
+_gh.onRateLimitChanged listener
 
 module.exports =
   appendData: appendData

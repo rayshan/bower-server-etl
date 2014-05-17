@@ -14,6 +14,9 @@ geo = require "./geo"
 # generic GA util
 ###
 
+util =
+  removeSlash: (input) -> input.replace /\//g, '' # remove leading & trailing /
+
 # define auth obj; used for init auth & fetches
 authClient = new gapi.auth.JWT(
     config.ga.clientEmail,
@@ -50,11 +53,18 @@ fetch = (key) ->
     query.queryObjs.forEach (queryObj) ->
       promise = new rsvp.Promise (resolve, reject) ->
         gapi.discover('analytics', 'v3').execute (err, client) ->
-          if err then reject err
+          if err
+            error = new Error "[ERROR] error with gapi.discover.execute, err = #{ err }"
+            reject error
           else
             client.analytics.data.ga.get queryObj
               .withAuthClient authClient
-              .execute (err, result) -> if err then reject err else resolve result; return
+              .execute (err, result) ->
+                if err
+                  error = new Error "[ERROR] error when fetching via GA API, err = #{ err }"
+                  reject error
+                else resolve result
+                return
           return
         return
       promises.push promise
@@ -85,9 +95,6 @@ queries.users =
         d[2] = +d[2]
         return
       resolve result; return
-
-util =
-  removeSlash: (input) -> input.replace /\//g, '' # remove leading & trailing /
 
 queries.commands =
   queryObjs: [
@@ -204,7 +211,7 @@ queries.pkgs =
       prior = data[1].rows[..29]
 
       _transform = (d, i) ->
-        d[0] = util.removeSlash(d[0])
+        d[0] = util.removeSlash d[0]
         d[1] = +d[1]; d[2] = +d[2]
         d.push i + 1 # rank
         return
@@ -230,7 +237,7 @@ queries.pkgs =
         ghPromises.push gh.appendData pkg
         return
 
-      rsvp.all(ghPromises).then -> resolve result
+      rsvp.all(ghPromises).then -> resolve result; return
       return
 
 queries.geo =
