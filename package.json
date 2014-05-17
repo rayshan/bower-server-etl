@@ -26,8 +26,8 @@
     "later": "^1.1.6",
     "lodash-node": "2.4.1",
     "moment": "2.6.0",
-    "newrelic": "1.5.4",
-    "octokit": "0.9.20",
+    "newrelic": "1.5.5",
+    "octokit": "0.10.1",
     "redis": "0.10.1",
     "request": "2.34.0",
     "rsvp": "3.0.6"
