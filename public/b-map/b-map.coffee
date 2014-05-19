@@ -61,6 +61,7 @@ module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bDataSvc, bTopojson
       .filter (d) ->
         countryData.some (country) -> country.isoCode is d.id
       .map (d) ->
+        # ES6 array.find supported in FF & Chrome but not IE
         bowerData = $filter('filter')(countryData, {isoCode: d.id})[0]
         d.data = bowerData
         d.rDensity = if bowerData then radiusDensity bowerData.density else 0

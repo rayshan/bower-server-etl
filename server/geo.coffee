@@ -974,7 +974,8 @@ codeMapping = [
     "country-code": "666"
   }
   {
-    name: "Saint Vincent and the Grenadines"
+#    name: "Saint Vincent and the Grenadines"
+    name: "St. Vincent & Grenadines"
     "alpha-3": "VCT"
     "country-code": "670"
   }
@@ -1299,7 +1300,7 @@ popByCode =
 getCode = (name) ->
   try _find(codeMapping, (d) -> d.name is name)["alpha-3"]
   catch error
-    err = new Error "[ERROR] #{ name } not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
+    err = new Error "[ERROR] '#{ name }' not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
     console.error err
     "N/A"
 

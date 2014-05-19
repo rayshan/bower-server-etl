@@ -1,6 +1,6 @@
 # Vendor
 express = require 'express'
-compress = require('compression')()
+compress = require 'compression'
 p = require 'path'
 
 # Custom
@@ -67,7 +67,7 @@ if process.env.NODE_ENV is 'prod'
   app.use rewriter # serve requests on shan.io/bower
 
 # prod & dev env
-app.use compress # gzip static content
+app.use compress() # gzip static content
 app.use dataApi
 app.use express.static p.join __dirname, '../public' # serve static assets
 
