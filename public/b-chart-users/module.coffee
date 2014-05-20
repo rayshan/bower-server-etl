@@ -5,6 +5,7 @@ module.directive "bChartUsers", (d3, bDataSvc) ->
   restrict: 'E'
   link: (scope, ele) ->
     render = (data) ->
+      data = data.data.users
       parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
       data.forEach (d) ->
         d[1] = parseDate(d[1]) # date
@@ -102,6 +103,6 @@ module.directive "bChartUsers", (d3, bDataSvc) ->
 
       return
 
-    bDataSvc.fetchUsers.then render
+    bDataSvc.fetchAllP.then render
     return
 

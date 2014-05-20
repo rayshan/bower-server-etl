@@ -2,18 +2,14 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ngResource', 'ui.bootstrap']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
 
   app.controller('BHeaderCtrl', function(bDataSvc) {
-    bDataSvc.fetchOverview.then((function(_this) {
+    return bDataSvc.fetchAllP.then((function(_this) {
       return function(data) {
-        return _this.totalPkgs = data.totalPkgs;
+        _this.totalPkgs = data.data.overview.totalPkgs;
       };
     })(this));
-  });
-
-  app.factory('topojson', function() {
-    return topojson;
   });
 
   app.factory('d3', function() {
@@ -71,61 +67,15 @@
 
   app.factory('bApiRoot', function($location) {
     if ($location.host() === 'localhost') {
-      return "/data/:type";
+      return "/data/";
     } else {
-      return "/bower/data/:type";
+      return "/bower/data/";
     }
   });
 
-  app.factory('bDataSvc', function($resource, $http, bApiRoot) {
-    var fetchCommandsP, fetchGeoP, fetchOverviewP, fetchPkgsP, fetchUsersP, ga;
-    ga = $resource(bApiRoot, null, {
-      getUsers: {
-        method: 'GET',
-        params: {
-          type: 'users'
-        },
-        isArray: true
-      },
-      getCommands: {
-        method: 'GET',
-        params: {
-          type: 'commands'
-        },
-        isArray: true
-      },
-      getPkgs: {
-        method: 'GET',
-        params: {
-          type: 'pkgs'
-        },
-        isArray: true
-      },
-      getOverview: {
-        method: 'GET',
-        params: {
-          type: 'overview'
-        }
-      },
-      getGeo: {
-        method: 'GET',
-        params: {
-          type: 'geo'
-        },
-        isArray: true
-      }
-    });
-    fetchUsersP = ga.getUsers().$promise;
-    fetchCommandsP = ga.getCommands().$promise;
-    fetchPkgsP = ga.getPkgs().$promise;
-    fetchOverviewP = ga.getOverview().$promise;
-    fetchGeoP = ga.getGeo().$promise;
+  app.factory('bDataSvc', function($http, bApiRoot) {
     return {
-      fetchUsers: fetchUsersP,
-      fetchCommands: fetchCommandsP,
-      fetchPkgs: fetchPkgsP,
-      fetchOverview: fetchOverviewP,
-      fetchGeo: fetchGeoP
+      fetchAllP: $http.get(bApiRoot + 'all')
     };
   });
 

@@ -1,5 +1,8 @@
 module = angular.module 'B.Map', []
 
+module.factory 'topojson', ->
+  topojson
+
 # load topojson
 module.factory 'bTopojsonSvc', ($http) ->
   $http.get 'b-map/ne_110m_admin_0_countries_topojson.json'
@@ -36,7 +39,7 @@ module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bDataSvc, bTopojson
   parseData = (data) ->
     _deferred = $q.defer()
 
-    countryData = data[0]
+    countryData = data[0].data.geo
     topojsonData = data[1].data # $http returns other stuff w/ data
 
     maxUsers = d3map.max countryData, (country) -> country.users
@@ -79,7 +82,7 @@ module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bDataSvc, bTopojson
     }
     _deferred.promise
 
-  $q.all([bDataSvc.fetchGeo, bTopojsonSvc]).then parseData
+  $q.all([bDataSvc.fetchAllP, bTopojsonSvc]).then parseData
 
 module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
   templateUrl: 'b-map/b-map.html'

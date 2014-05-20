@@ -12,6 +12,7 @@
         var render;
         render = function(data) {
           var area, canvas, h, hOrig, legend, margin, marginBase, maxUsers, maxUsersDayI, minUsers, minUsersDayI, parseDate, stack, svg, totalUsersByDay, users, w, wOrig, x, xAxis, y;
+          data = data.data.users;
           parseDate = d3.time.format("%Y%m%d").parse;
           data.forEach(function(d) {
             d[1] = parseDate(d[1]);
@@ -103,7 +104,7 @@
           svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
           legend = svg.append("g").attr("class", "legend").call(d3.legend);
         };
-        bDataSvc.fetchUsers.then(render);
+        bDataSvc.fetchAllP.then(render);
       }
     };
   });

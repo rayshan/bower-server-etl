@@ -4,6 +4,10 @@
 
   module = angular.module('B.Map', []);
 
+  module.factory('topojson', function() {
+    return topojson;
+  });
+
   module.factory('bTopojsonSvc', function($http) {
     return $http.get('b-map/ne_110m_admin_0_countries_topojson.json');
   });
@@ -47,7 +51,7 @@
     parseData = function(data) {
       var colorsDensity, colorsUsers, countryData, countryDataTopo, maxDensity, maxUsers, minDensity, radiusDensity, radiusUsers, topo, topojsonData, _deferred;
       _deferred = $q.defer();
-      countryData = data[0];
+      countryData = data[0].data.geo;
       topojsonData = data[1].data;
       maxUsers = d3map.max(countryData, function(country) {
         return country.users;
@@ -88,7 +92,7 @@
       });
       return _deferred.promise;
     };
-    return $q.all([bDataSvc.fetchGeo, bTopojsonSvc]).then(parseData);
+    return $q.all([bDataSvc.fetchAllP, bTopojsonSvc]).then(parseData);
   });
 
   module.directive("bMap", function(d3map, topojson, bMapDataSvc) {

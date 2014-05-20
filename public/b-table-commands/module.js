@@ -9,8 +9,8 @@
       templateUrl: 'b-table-commands/partial.html',
       restrict: 'E',
       link: function(scope) {
-        bDataSvc.fetchCommands.then(function(data) {
-          return scope.commands = data;
+        bDataSvc.fetchAllP.then(function(data) {
+          scope.commands = data.data.commands;
         });
       }
     };

@@ -8,9 +8,9 @@
     return {
       templateUrl: 'b-table-pkgs/b-table-pkgs.html',
       restrict: 'E',
-      link: function(scope, ele) {
-        bDataSvc.fetchPkgs.then(function(data) {
-          return scope.pkgs = data;
+      link: function(scope) {
+        bDataSvc.fetchAllP.then(function(data) {
+          scope.pkgs = data.data.pkgs;
         });
         scope.hideAngular = true;
         scope.toggleHideAngular = function() {
