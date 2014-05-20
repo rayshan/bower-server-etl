@@ -281,7 +281,7 @@ queries.geo =
 # ==========
 
 module.exports =
-  validQueryTypes: Object.keys(queries).concat('overview', 'all')
+  validQueryTypes: Object.keys(queries).concat 'overview'
   queries: queries
   authPromise: authPromise
   fetch: fetch

@@ -29,7 +29,9 @@ dataApi = express.Router()
 
 # invoked when /:type present in path
 dataApi.param 'type', (req, res, next, id) ->
-  if ga.validQueryTypes.indexOf(id) is -1
+  # add 'all' to valid query types b/c all isn't used for caching
+  validTypes = ga.validQueryTypes.concat 'all'
+  if validTypes.indexOf(id) is -1
     err = new Error "[ERROR] wrong request data type."
     console.error err
     res.json 500, {error: err.message}

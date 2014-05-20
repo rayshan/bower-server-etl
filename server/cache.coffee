@@ -14,16 +14,31 @@ config = require "./config"
 
 fetch = (key) ->
   new rsvp.Promise (resolve, reject) ->
-    _fetchFromCache = ->
+    _fetchFromCache = (key) ->
       console.info "[INFO] fetching [#{ key }] from cache."
-      db.get key, (err, res) ->
-        if err
-          error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
-          console.error error
-          reject error
-        else resolve JSON.parse res
+      # fetch combined data source, 'all'
+      if key is 'all'
+        console.log ga.validQueryTypes
+        db.mget ga.validQueryTypes, (err, res) ->
+          if err
+            error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
+            console.error error
+            reject error
+          else
+            result = {}
+            ga.validQueryTypes.forEach (type, i) -> result[type] = JSON.parse res[i]; return
+            resolve result
+          return
         return
-      return
+      else
+        db.get key, (err, res) ->
+          if err
+            error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
+            console.error error
+            reject error
+          else resolve JSON.parse res
+          return
+        return
 
     _fetchAndCache = {}
     _fetchAndCache.ga = ->
@@ -52,10 +67,9 @@ fetch = (key) ->
           resolve data
         return
 
-    # fetch combined data source, 'all'
+    # fetch 'all' combined data sources
     if key is 'all'
-      resolve ''
-      return
+      _fetchFromCache key
     else
       # fetch individual data source
       db.exists key, (err, res) ->
@@ -63,15 +77,15 @@ fetch = (key) ->
           error = new Error "[ERROR] redis - error when checking db.exists(#{ key }), error = #{ err }"
           console.error error
           reject error
-          return
         else if res is 1    # already cached
-          _fetchFromCache()
+          _fetchFromCache key
         else                # not cached
           console.info "[INFO] not cached / fetching [#{ key }] from GA."
           if key is 'overview'
             _fetchAndCache.overview()
           else
             _fetchAndCache.ga()
+        return
     return
 
 # ==========
@@ -87,7 +101,7 @@ init = ->
 
   rsvp.all fetchPromises
     .then ->
-      console.info "[SUCCESS] all fetched & cached."
+      console.info "[SUCCESS] fetched & cached all data."
       allCached = true
       return
     .catch (err) ->

@@ -1,0 +1,1602 @@
+{"users": [
+  ["N", "20140315", 791],
+  ["N", "20140316", 881],
+  ["N", "20140317", 1420],
+  ["N", "20140318", 1374],
+  ["N", "20140319", 1359],
+  ["N", "20140320", 1266],
+  ["N", "20140321", 1045],
+  ["N", "20140322", 809],
+  ["N", "20140323", 782],
+  ["N", "20140324", 1183],
+  ["N", "20140325", 1205],
+  ["N", "20140326", 1246],
+  ["N", "20140327", 1165],
+  ["N", "20140328", 1046],
+  ["N", "20140329", 822],
+  ["N", "20140330", 749],
+  ["N", "20140331", 1220],
+  ["N", "20140401", 1336],
+  ["N", "20140402", 1257],
+  ["N", "20140403", 1253],
+  ["N", "20140404", 1111],
+  ["N", "20140405", 785],
+  ["N", "20140406", 821],
+  ["N", "20140407", 1253],
+  ["N", "20140408", 1421],
+  ["N", "20140409", 1289],
+  ["N", "20140410", 1261],
+  ["N", "20140411", 1113],
+  ["N", "20140412", 886],
+  ["N", "20140413", 763],
+  ["N", "20140414", 1293],
+  ["N", "20140415", 1309],
+  ["N", "20140416", 1270],
+  ["N", "20140417", 1115],
+  ["N", "20140418", 989],
+  ["N", "20140419", 714],
+  ["N", "20140420", 689],
+  ["N", "20140421", 1097],
+  ["N", "20140422", 1223],
+  ["N", "20140423", 1290],
+  ["N", "20140424", 1229],
+  ["N", "20140425", 1091],
+  ["N", "20140426", 800],
+  ["N", "20140427", 809],
+  ["N", "20140428", 1191],
+  ["N", "20140429", 1237],
+  ["N", "20140430", 1153],
+  ["N", "20140501", 1007],
+  ["N", "20140502", 965],
+  ["N", "20140503", 714],
+  ["N", "20140504", 866],
+  ["N", "20140505", 1275],
+  ["N", "20140506", 1364],
+  ["N", "20140507", 1288],
+  ["N", "20140508", 1236],
+  ["N", "20140509", 1113],
+  ["N", "20140510", 767],
+  ["N", "20140511", 792],
+  ["N", "20140512", 1340],
+  ["N", "20140513", 1364],
+  ["N", "20140514", 1389],
+  ["N", "20140515", 1320],
+  ["N", "20140516", 1150],
+  ["N", "20140517", 892],
+  ["E", "20140315", 565],
+  ["E", "20140316", 747],
+  ["E", "20140317", 1298],
+  ["E", "20140318", 1408],
+  ["E", "20140319", 1554],
+  ["E", "20140320", 1614],
+  ["E", "20140321", 1484],
+  ["E", "20140322", 923],
+  ["E", "20140323", 1176],
+  ["E", "20140324", 1935],
+  ["E", "20140325", 1958],
+  ["E", "20140326", 2096],
+  ["E", "20140327", 1987],
+  ["E", "20140328", 1803],
+  ["E", "20140329", 1134],
+  ["E", "20140330", 1268],
+  ["E", "20140331", 2282],
+  ["E", "20140401", 2367],
+  ["E", "20140402", 2425],
+  ["E", "20140403", 2443],
+  ["E", "20140404", 2171],
+  ["E", "20140405", 1217],
+  ["E", "20140406", 1485],
+  ["E", "20140407", 2617],
+  ["E", "20140408", 2753],
+  ["E", "20140409", 2848],
+  ["E", "20140410", 2777],
+  ["E", "20140411", 2408],
+  ["E", "20140412", 1407],
+  ["E", "20140413", 1705],
+  ["E", "20140414", 2978],
+  ["E", "20140415", 3031],
+  ["E", "20140416", 3045],
+  ["E", "20140417", 2846],
+  ["E", "20140418", 2207],
+  ["E", "20140419", 1374],
+  ["E", "20140420", 1563],
+  ["E", "20140421", 2590],
+  ["E", "20140422", 3277],
+  ["E", "20140423", 3273],
+  ["E", "20140424", 3218],
+  ["E", "20140425", 2788],
+  ["E", "20140426", 1602],
+  ["E", "20140427", 1929],
+  ["E", "20140428", 3403],
+  ["E", "20140429", 3408],
+  ["E", "20140430", 3223],
+  ["E", "20140501", 2744],
+  ["E", "20140502", 2822],
+  ["E", "20140503", 1665],
+  ["E", "20140504", 1990],
+  ["E", "20140505", 3469],
+  ["E", "20140506", 3796],
+  ["E", "20140507", 3800],
+  ["E", "20140508", 3581],
+  ["E", "20140509", 3175],
+  ["E", "20140510", 1761],
+  ["E", "20140511", 2087],
+  ["E", "20140512", 3986],
+  ["E", "20140513", 4018],
+  ["E", "20140514", 4121],
+  ["E", "20140515", 3886],
+  ["E", "20140516", 3407],
+  ["E", "20140517", 1828]
+], "commands": [
+  {
+    "command": "(not set)",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 150,
+        "prior": 113,
+        "delta": 0.32743362831858414
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 0,
+        "prior": 0,
+        "delta": null
+      }
+    ]
+  },
+  {
+    "command": "Info",
+    "order": 4,
+    "icon": "info",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 618,
+        "prior": 562,
+        "delta": 0.0996441281138789
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 1568,
+        "prior": 1393,
+        "delta": 0.12562814070351758
+      }
+    ]
+  },
+  {
+    "command": "Install",
+    "order": 1,
+    "icon": "download",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 10753,
+        "prior": 10167,
+        "delta": 0.05763745450968827
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 44827,
+        "prior": 41953,
+        "delta": 0.06850523204538406
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 281558,
+        "prior": 252091,
+        "delta": 0.11689032928585319
+      }
+    ]
+  },
+  {
+    "command": "Register",
+    "order": 3,
+    "icon": "pencil",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 156,
+        "prior": 129,
+        "delta": 0.20930232558139528
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 339,
+        "prior": 350,
+        "delta": -0.03142857142857147
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 154,
+        "prior": 143,
+        "delta": 0.07692307692307687
+      }
+    ]
+  },
+  {
+    "command": "Search",
+    "order": 5,
+    "icon": "search",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 3103,
+        "prior": 2913,
+        "delta": 0.06522485410229995
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 8223,
+        "prior": 7929,
+        "delta": 0.03707907680665912
+      }
+    ]
+  },
+  {
+    "command": "Uninstall",
+    "order": 2,
+    "icon": "trash-o",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 1532,
+        "prior": 1405,
+        "delta": 0.090391459074733
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 4028,
+        "prior": 3560,
+        "delta": 0.13146067415730345
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 4030,
+        "prior": 3684,
+        "delta": 0.09391965255157442
+      }
+    ]
+  }
+], "pkgs": [
+  {
+    "bName": "jquery",
+    "bRank": {
+      "current": 1,
+      "prior": 1
+    },
+    "bUsers": {
+      "current": 11500,
+      "prior": 10766
+    },
+    "bInstalls": {
+      "current": 24726,
+      "prior": 22293
+    },
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
+    "ghUrl": "https://github.com/jquery/jquery",
+    "ghDesc": "jQuery JavaScript Library",
+    "ghStars": 30644,
+    "ghIssues": 18,
+    "ghUpdated": "2014-05-09T00:16:05Z",
+    "ghUpdatedHuman": "10 days"
+  },
+  {
+    "bName": "angular",
+    "bRank": {
+      "current": 2,
+      "prior": 2
+    },
+    "bUsers": {
+      "current": 7389,
+      "prior": 6973
+    },
+    "bInstalls": {
+      "current": 15049,
+      "prior": 13733
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular",
+    "ghDesc": "Bower package for the stable branch of AngularJS",
+    "ghStars": 45,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:18Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "bootstrap",
+    "bRank": {
+      "current": 3,
+      "prior": 3
+    },
+    "bUsers": {
+      "current": 6870,
+      "prior": 6243
+    },
+    "bInstalls": {
+      "current": 11801,
+      "prior": 10670
+    },
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
+    "ghUrl": "https://github.com/twbs/bootstrap",
+    "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+    "ghStars": 67806,
+    "ghIssues": 165,
+    "ghUpdated": "2014-05-19T05:51:49Z",
+    "ghUpdatedHuman": "4 minutes"
+  },
+  {
+    "bName": "angular-mocks",
+    "bRank": {
+      "current": 4,
+      "prior": 4
+    },
+    "bUsers": {
+      "current": 5415,
+      "prior": 5265
+    },
+    "bInstalls": {
+      "current": 10654,
+      "prior": 9736
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-mocks",
+    "ghDesc": "angular-mocks.js bower repo",
+    "ghStars": 13,
+    "ghIssues": 1,
+    "ghUpdated": "2014-05-19T01:04:40Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "angular-route",
+    "bRank": {
+      "current": 5,
+      "prior": 5
+    },
+    "bUsers": {
+      "current": 5319,
+      "prior": 5147
+    },
+    "bInstalls": {
+      "current": 9929,
+      "prior": 9170
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-route",
+    "ghDesc": "angular-route bower repo",
+    "ghStars": 17,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:43Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "angular-resource",
+    "bRank": {
+      "current": 6,
+      "prior": 6
+    },
+    "bUsers": {
+      "current": 4708,
+      "prior": 4520
+    },
+    "bInstalls": {
+      "current": 8604,
+      "prior": 8030
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-resource",
+    "ghDesc": "angular-resource bower repo",
+    "ghStars": 10,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:46Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "angular-cookies",
+    "bRank": {
+      "current": 7,
+      "prior": 7
+    },
+    "bUsers": {
+      "current": 3579,
+      "prior": 3385
+    },
+    "bInstalls": {
+      "current": 7020,
+      "prior": 6228
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-cookies",
+    "ghDesc": "angular-cookies bower repo",
+    "ghStars": 8,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:27Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "angular-sanitize",
+    "bRank": {
+      "current": 8,
+      "prior": 8
+    },
+    "bUsers": {
+      "current": 3441,
+      "prior": 3218
+    },
+    "bInstalls": {
+      "current": 6798,
+      "prior": 6159
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-sanitize",
+    "ghDesc": "angular-sanitize bower repo",
+    "ghStars": 7,
+    "ghIssues": 1,
+    "ghUpdated": "2014-05-19T01:04:51Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "angular-scenario",
+    "bRank": {
+      "current": 9,
+      "prior": 9
+    },
+    "bUsers": {
+      "current": 3131,
+      "prior": 3025
+    },
+    "bInstalls": {
+      "current": 6452,
+      "prior": 5870
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-scenario",
+    "ghDesc": "bower repo for angular-scenario.js",
+    "ghStars": 6,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:55Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "es5-shim",
+    "bRank": {
+      "current": 10,
+      "prior": 10
+    },
+    "bUsers": {
+      "current": 3124,
+      "prior": 3028
+    },
+    "bInstalls": {
+      "current": 6304,
+      "prior": 5778
+    },
+    "ghOwner": "es-shims",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6288429?",
+    "ghUrl": "https://github.com/es-shims/es5-shim",
+    "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
+    "ghStars": 2603,
+    "ghIssues": 23,
+    "ghUpdated": "2014-05-19T03:15:59Z",
+    "ghUpdatedHuman": "3 hours"
+  },
+  {
+    "bName": "json3",
+    "bRank": {
+      "current": 11,
+      "prior": 11
+    },
+    "bUsers": {
+      "current": 2952,
+      "prior": 2905
+    },
+    "bInstalls": {
+      "current": 5997,
+      "prior": 5590
+    },
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
+    "ghUrl": "https://github.com/bestiejs/json3",
+    "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
+    "ghStars": 559,
+    "ghIssues": 5,
+    "ghUpdated": "2014-05-17T08:47:42Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "bName": "underscore",
+    "bRank": {
+      "current": 12,
+      "prior": 12
+    },
+    "bUsers": {
+      "current": 2853,
+      "prior": 2359
+    },
+    "bInstalls": {
+      "current": 5121,
+      "prior": 4489
+    },
+    "ghOwner": "jashkenas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
+    "ghUrl": "https://github.com/jashkenas/underscore",
+    "ghDesc": "JavaScript's utility _ belt",
+    "ghStars": 11357,
+    "ghIssues": 34,
+    "ghUpdated": "2014-05-17T13:54:30Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "bName": "modernizr",
+    "bRank": {
+      "current": 13,
+      "prior": 13
+    },
+    "bUsers": {
+      "current": 2217,
+      "prior": 2205
+    },
+    "bInstalls": {
+      "current": 4363,
+      "prior": 4230
+    },
+    "ghOwner": "Modernizr",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/131060?",
+    "ghUrl": "https://github.com/Modernizr/Modernizr",
+    "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the userâs browser.",
+    "ghStars": 12163,
+    "ghIssues": 123,
+    "ghUpdated": "2014-05-11T23:23:49Z",
+    "ghUpdatedHuman": "7 days"
+  },
+  {
+    "bName": "angular-bootstrap",
+    "bRank": {
+      "current": 14,
+      "prior": 14
+    },
+    "bUsers": {
+      "current": 2285,
+      "prior": 2172
+    },
+    "bInstalls": {
+      "current": 3805,
+      "prior": 3592
+    },
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/bootstrap-bower",
+    "ghDesc": "A repository to hold bootstrap releases for twitter's bower",
+    "ghStars": 22,
+    "ghIssues": 3,
+    "ghUpdated": "2014-05-01T16:10:30Z",
+    "ghUpdatedHuman": "18 days"
+  },
+  {
+    "bName": "requirejs",
+    "bRank": {
+      "current": 15,
+      "prior": 15
+    },
+    "bUsers": {
+      "current": 1781,
+      "prior": 1804
+    },
+    "bInstalls": {
+      "current": 3620,
+      "prior": 3426
+    },
+    "ghOwner": "jrburke",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/73359?",
+    "ghUrl": "https://github.com/jrburke/requirejs-bower",
+    "ghDesc": "Repo hold assets for publishing to the bower package manager.",
+    "ghStars": 7,
+    "ghIssues": 0,
+    "ghUpdated": "2014-02-17T06:09:34Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "bName": "angular-animate",
+    "bRank": {
+      "current": 16,
+      "prior": 17
+    },
+    "bUsers": {
+      "current": 2214,
+      "prior": 2069
+    },
+    "bInstalls": {
+      "current": 3536,
+      "prior": 3189
+    },
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-animate",
+    "ghDesc": "",
+    "ghStars": 13,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-19T01:04:23Z",
+    "ghUpdatedHuman": "5 hours"
+  },
+  {
+    "bName": "bootstrap-sass",
+    "bRank": {
+      "current": 17,
+      "prior": 16
+    },
+    "bUsers": {
+      "current": 1824,
+      "prior": 1776
+    },
+    "bInstalls": {
+      "current": 3391,
+      "prior": 3243
+    }
+  },
+  {
+    "bName": "angular-ui-router",
+    "bRank": {
+      "current": 18,
+      "prior": 18
+    },
+    "bUsers": {
+      "current": 1874,
+      "prior": 1679
+    },
+    "bInstalls": {
+      "current": 3186,
+      "prior": 2802
+    },
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ui-router",
+    "ghDesc": "The de-facto solution to flexible routing with nested views",
+    "ghStars": 3009,
+    "ghIssues": 187,
+    "ghUpdated": "2014-04-28T01:11:29Z",
+    "ghUpdatedHuman": "21 days"
+  },
+  {
+    "bName": "backbone",
+    "bRank": {
+      "current": 19,
+      "prior": 20
+    },
+    "bUsers": {
+      "current": 1625,
+      "prior": 1251
+    },
+    "bInstalls": {
+      "current": 3079,
+      "prior": 2534
+    },
+    "ghOwner": "jashkenas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
+    "ghUrl": "https://github.com/jashkenas/backbone",
+    "ghDesc": "Give your JS App some Backbone with Models, Views, Collections, and Events",
+    "ghStars": 17998,
+    "ghIssues": 19,
+    "ghUpdated": "2014-05-05T13:36:03Z",
+    "ghUpdatedHuman": "14 days"
+  },
+  {
+    "bName": "moment",
+    "bRank": {
+      "current": 20,
+      "prior": 19
+    },
+    "bUsers": {
+      "current": 1544,
+      "prior": 1506
+    },
+    "bInstalls": {
+      "current": 2875,
+      "prior": 2621
+    },
+    "ghOwner": "moment",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4129662?",
+    "ghUrl": "https://github.com/moment/moment",
+    "ghDesc": "Parse, validate, manipulate, and display dates in javascript.",
+    "ghStars": 16139,
+    "ghIssues": 75,
+    "ghUpdated": "2014-05-16T07:09:07Z",
+    "ghUpdatedHuman": "3 days"
+  }
+], "geo": [
+  {
+    "name": "Gibraltar",
+    "isoCode": "GIB",
+    "users": 14,
+    "density": 467
+  },
+  {
+    "name": "Iceland",
+    "isoCode": "ISL",
+    "users": 53,
+    "density": 166
+  },
+  {
+    "name": "Ãland Islands",
+    "isoCode": "ALA",
+    "users": 4,
+    "density": 140
+  },
+  {
+    "name": "Liechtenstein",
+    "isoCode": "LIE",
+    "users": 3,
+    "density": 82
+  },
+  {
+    "name": "Monaco",
+    "isoCode": "MCO",
+    "users": 3,
+    "density": 80
+  },
+  {
+    "name": "Sweden",
+    "isoCode": "SWE",
+    "users": 718,
+    "density": 76
+  },
+  {
+    "name": "Norway",
+    "isoCode": "NOR",
+    "users": 361,
+    "density": 72
+  },
+  {
+    "name": "Finland",
+    "isoCode": "FIN",
+    "users": 387,
+    "density": 72
+  },
+  {
+    "name": "Netherlands",
+    "isoCode": "NLD",
+    "users": 1008,
+    "density": 61
+  },
+  {
+    "name": "New Zealand",
+    "isoCode": "NZL",
+    "users": 266,
+    "density": 61
+  },
+  {
+    "name": "Ireland",
+    "isoCode": "IRL",
+    "users": 268,
+    "density": 59
+  },
+  {
+    "name": "Denmark",
+    "isoCode": "DNK",
+    "users": 318,
+    "density": 57
+  },
+  {
+    "name": "Estonia",
+    "isoCode": "EST",
+    "users": 74,
+    "density": 56
+  },
+  {
+    "name": "Singapore",
+    "isoCode": "SGP",
+    "users": 288,
+    "density": 55
+  },
+  {
+    "name": "Luxembourg",
+    "isoCode": "LUX",
+    "users": 28,
+    "density": 53
+  },
+  {
+    "name": "Canada",
+    "isoCode": "CAN",
+    "users": 1753,
+    "density": 51
+  },
+  {
+    "name": "United States",
+    "isoCode": "USA",
+    "users": 15468,
+    "density": 50
+  },
+  {
+    "name": "Switzerland",
+    "isoCode": "CHE",
+    "users": 399,
+    "density": 50
+  },
+  {
+    "name": "Israel",
+    "isoCode": "ISR",
+    "users": 377,
+    "density": 48
+  },
+  {
+    "name": "Australia",
+    "isoCode": "AUS",
+    "users": 1068,
+    "density": 48
+  },
+  {
+    "name": "Malta",
+    "isoCode": "MLT",
+    "users": 19,
+    "density": 46
+  },
+  {
+    "name": "United Kingdom",
+    "isoCode": "GBR",
+    "users": 2877,
+    "density": 46
+  },
+  {
+    "name": "Belgium",
+    "isoCode": "BEL",
+    "users": 483,
+    "density": 44
+  },
+  {
+    "name": "Cayman Islands",
+    "isoCode": "CYM",
+    "users": 2,
+    "density": 35
+  },
+  {
+    "name": "Slovenia",
+    "isoCode": "SVN",
+    "users": 70,
+    "density": 35
+  },
+  {
+    "name": "France",
+    "isoCode": "FRA",
+    "users": 2272,
+    "density": 35
+  },
+  {
+    "name": "Austria",
+    "isoCode": "AUT",
+    "users": 270,
+    "density": 33
+  },
+  {
+    "name": "Costa Rica",
+    "isoCode": "CRI",
+    "users": 136,
+    "density": 29
+  },
+  {
+    "name": "Latvia",
+    "isoCode": "LVA",
+    "users": 56,
+    "density": 28
+  },
+  {
+    "name": "Czech Republic",
+    "isoCode": "CZE",
+    "users": 277,
+    "density": 27
+  },
+  {
+    "name": "Germany",
+    "isoCode": "DEU",
+    "users": 2114,
+    "density": 27
+  },
+  {
+    "name": "Lithuania",
+    "isoCode": "LTU",
+    "users": 76,
+    "density": 26
+  },
+  {
+    "name": "Isle of Man",
+    "isoCode": "IMN",
+    "users": 2,
+    "density": 24
+  },
+  {
+    "name": "Portugal",
+    "isoCode": "PRT",
+    "users": 243,
+    "density": 24
+  },
+  {
+    "name": "Hong Kong",
+    "isoCode": "HKG",
+    "users": 159,
+    "density": 23
+  },
+  {
+    "name": "Belarus",
+    "isoCode": "BLR",
+    "users": 200,
+    "density": 22
+  },
+  {
+    "name": "Poland",
+    "isoCode": "POL",
+    "users": 785,
+    "density": 21
+  },
+  {
+    "name": "Jersey",
+    "isoCode": "JEY",
+    "users": 2,
+    "density": 21
+  },
+  {
+    "name": "Spain",
+    "isoCode": "ESP",
+    "users": 959,
+    "density": 21
+  },
+  {
+    "name": "Bulgaria",
+    "isoCode": "BGR",
+    "users": 151,
+    "density": 21
+  },
+  {
+    "name": "CuraÃ§ao",
+    "isoCode": "CUW",
+    "users": 3,
+    "density": 20
+  },
+  {
+    "name": "Croatia",
+    "isoCode": "HRV",
+    "users": 84,
+    "density": 20
+  },
+  {
+    "name": "St. Vincent & Grenadines",
+    "isoCode": "VCT",
+    "users": 2,
+    "density": 19
+  },
+  {
+    "name": "Taiwan",
+    "isoCode": "TWN",
+    "users": 431,
+    "density": 19
+  },
+  {
+    "name": "Ukraine",
+    "isoCode": "UKR",
+    "users": 794,
+    "density": 18
+  },
+  {
+    "name": "Hungary",
+    "isoCode": "HUN",
+    "users": 174,
+    "density": 18
+  },
+  {
+    "name": "Maldives",
+    "isoCode": "MDV",
+    "users": 6,
+    "density": 18
+  },
+  {
+    "name": "Serbia",
+    "isoCode": "SRB",
+    "users": 114,
+    "density": 16
+  },
+  {
+    "name": "Romania",
+    "isoCode": "ROU",
+    "users": 295,
+    "density": 15
+  },
+  {
+    "name": "Cyprus",
+    "isoCode": "CYP",
+    "users": 15,
+    "density": 14
+  },
+  {
+    "name": "Japan",
+    "isoCode": "JPN",
+    "users": 1673,
+    "density": 14
+  },
+  {
+    "name": "Slovakia",
+    "isoCode": "SVK",
+    "users": 72,
+    "density": 14
+  },
+  {
+    "name": "Greece",
+    "isoCode": "GRC",
+    "users": 148,
+    "density": 14
+  },
+  {
+    "name": "Moldova",
+    "isoCode": "MDA",
+    "users": 43,
+    "density": 13
+  },
+  {
+    "name": "Uruguay",
+    "isoCode": "URY",
+    "users": 44,
+    "density": 13
+  },
+  {
+    "name": "Italy",
+    "isoCode": "ITA",
+    "users": 720,
+    "density": 13
+  },
+  {
+    "name": "Argentina",
+    "isoCode": "ARG",
+    "users": 516,
+    "density": 13
+  },
+  {
+    "name": "New Caledonia",
+    "isoCode": "NCL",
+    "users": 3,
+    "density": 12
+  },
+  {
+    "name": "Armenia",
+    "isoCode": "ARM",
+    "users": 35,
+    "density": 12
+  },
+  {
+    "name": "Montenegro",
+    "isoCode": "MNE",
+    "users": 7,
+    "density": 12
+  },
+  {
+    "name": "South Korea",
+    "isoCode": "KOR",
+    "users": 510,
+    "density": 11
+  },
+  {
+    "name": "Russia",
+    "isoCode": "RUS",
+    "users": 1351,
+    "density": 10
+  },
+  {
+    "name": "Belize",
+    "isoCode": "BLZ",
+    "users": 3,
+    "density": 10
+  },
+  {
+    "name": "Macedonia (FYROM)",
+    "isoCode": "MKD",
+    "users": 21,
+    "density": 10
+  },
+  {
+    "name": "Chile",
+    "isoCode": "CHL",
+    "users": 171,
+    "density": 10
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "isoCode": "TTO",
+    "users": 11,
+    "density": 9
+  },
+  {
+    "name": "Macau",
+    "isoCode": "MAC",
+    "users": 5,
+    "density": 9
+  },
+  {
+    "name": "Brazil",
+    "isoCode": "BRA",
+    "users": 1590,
+    "density": 9
+  },
+  {
+    "name": "Mongolia",
+    "isoCode": "MNG",
+    "users": 25,
+    "density": 9
+  },
+  {
+    "name": "Barbados",
+    "isoCode": "BRB",
+    "users": 2,
+    "density": 8
+  },
+  {
+    "name": "Martinique",
+    "isoCode": "MTQ",
+    "users": 3,
+    "density": 8
+  },
+  {
+    "name": "French Guiana",
+    "isoCode": "GUF",
+    "users": 2,
+    "density": 8
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "isoCode": "BIH",
+    "users": 25,
+    "density": 7
+  },
+  {
+    "name": "Mauritius",
+    "isoCode": "MUS",
+    "users": 9,
+    "density": 7
+  },
+  {
+    "name": "RÃ©union",
+    "isoCode": "REU",
+    "users": 5,
+    "density": 6
+  },
+  {
+    "name": "Panama",
+    "isoCode": "PAN",
+    "users": 18,
+    "density": 5
+  },
+  {
+    "name": "Dominican Republic",
+    "isoCode": "DOM",
+    "users": 45,
+    "density": 5
+  },
+  {
+    "name": "Colombia",
+    "isoCode": "COL",
+    "users": 194,
+    "density": 5
+  },
+  {
+    "name": "Puerto Rico",
+    "isoCode": "PRI",
+    "users": 15,
+    "density": 5
+  },
+  {
+    "name": "United Arab Emirates",
+    "isoCode": "ARE",
+    "users": 43,
+    "density": 5
+  },
+  {
+    "name": "Tunisia",
+    "isoCode": "TUN",
+    "users": 39,
+    "density": 4
+  },
+  {
+    "name": "South Africa",
+    "isoCode": "ZAF",
+    "users": 205,
+    "density": 4
+  },
+  {
+    "name": "Mexico",
+    "isoCode": "MEX",
+    "users": 409,
+    "density": 4
+  },
+  {
+    "name": "Thailand",
+    "isoCode": "THA",
+    "users": 209,
+    "density": 4
+  },
+  {
+    "name": "Jamaica",
+    "isoCode": "JAM",
+    "users": 9,
+    "density": 4
+  },
+  {
+    "name": "Malaysia",
+    "isoCode": "MYS",
+    "users": 114,
+    "density": 4
+  },
+  {
+    "name": "Vietnam",
+    "isoCode": "VNM",
+    "users": 324,
+    "density": 4
+  },
+  {
+    "name": "Kosovo",
+    "isoCode": "XKX",
+    "users": 6,
+    "density": 4
+  },
+  {
+    "name": "Venezuela",
+    "isoCode": "VEN",
+    "users": 81,
+    "density": 3
+  },
+  {
+    "name": "Georgia",
+    "isoCode": "GEO",
+    "users": 10,
+    "density": 3
+  },
+  {
+    "name": "Jordan",
+    "isoCode": "JOR",
+    "users": 14,
+    "density": 3
+  },
+  {
+    "name": "Turkey",
+    "isoCode": "TUR",
+    "users": 197,
+    "density": 3
+  },
+  {
+    "name": "Bolivia",
+    "isoCode": "BOL",
+    "users": 29,
+    "density": 3
+  },
+  {
+    "name": "Philippines",
+    "isoCode": "PHL",
+    "users": 248,
+    "density": 3
+  },
+  {
+    "name": "Nicaragua",
+    "isoCode": "NIC",
+    "users": 13,
+    "density": 3
+  },
+  {
+    "name": "Sri Lanka",
+    "isoCode": "LKA",
+    "users": 41,
+    "density": 3
+  },
+  {
+    "name": "Ecuador",
+    "isoCode": "ECU",
+    "users": 42,
+    "density": 3
+  },
+  {
+    "name": "Qatar",
+    "isoCode": "QAT",
+    "users": 6,
+    "density": 3
+  },
+  {
+    "name": "Kazakhstan",
+    "isoCode": "KAZ",
+    "users": 45,
+    "density": 3
+  },
+  {
+    "name": "Palestine",
+    "isoCode": "PSE",
+    "users": 9,
+    "density": 3
+  },
+  {
+    "name": "Kyrgyzstan",
+    "isoCode": "KGZ",
+    "users": 9,
+    "density": 2
+  },
+  {
+    "name": "Guatemala",
+    "isoCode": "GTM",
+    "users": 26,
+    "density": 2
+  },
+  {
+    "name": "Indonesia",
+    "isoCode": "IDN",
+    "users": 283,
+    "density": 2
+  },
+  {
+    "name": "China",
+    "isoCode": "CHN",
+    "users": 2161,
+    "density": 2
+  },
+  {
+    "name": "Ghana",
+    "isoCode": "GHA",
+    "users": 31,
+    "density": 2
+  },
+  {
+    "name": "Lebanon",
+    "isoCode": "LBN",
+    "users": 7,
+    "density": 2
+  },
+  {
+    "name": "Paraguay",
+    "isoCode": "PRY",
+    "users": 12,
+    "density": 2
+  },
+  {
+    "name": "Kuwait",
+    "isoCode": "KWT",
+    "users": 4,
+    "density": 2
+  },
+  {
+    "name": "Cambodia",
+    "isoCode": "KHM",
+    "users": 15,
+    "density": 2
+  },
+  {
+    "name": "Peru",
+    "isoCode": "PER",
+    "users": 59,
+    "density": 2
+  },
+  {
+    "name": "Morocco",
+    "isoCode": "MAR",
+    "users": 62,
+    "density": 2
+  },
+  {
+    "name": "Honduras",
+    "isoCode": "HND",
+    "users": 9,
+    "density": 2
+  },
+  {
+    "name": "India",
+    "isoCode": "IND",
+    "users": 1338,
+    "density": 2
+  },
+  {
+    "name": "Afghanistan",
+    "isoCode": "AFG",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Madagascar",
+    "isoCode": "MDG",
+    "users": 5,
+    "density": 1
+  },
+  {
+    "name": "Sudan",
+    "isoCode": "SDN",
+    "users": 5,
+    "density": 1
+  },
+  {
+    "name": "Tajikistan",
+    "isoCode": "TJK",
+    "users": 5,
+    "density": 1
+  },
+  {
+    "name": "CÃ´te dâIvoire",
+    "isoCode": "CIV",
+    "users": 4,
+    "density": 1
+  },
+  {
+    "name": "Ethiopia",
+    "isoCode": "ETH",
+    "users": 4,
+    "density": 1
+  },
+  {
+    "name": "El Salvador",
+    "isoCode": "SLV",
+    "users": 6,
+    "density": 1
+  },
+  {
+    "name": "Uganda",
+    "isoCode": "UGA",
+    "users": 8,
+    "density": 1
+  },
+  {
+    "name": "Tanzania",
+    "isoCode": "TZA",
+    "users": 8,
+    "density": 1
+  },
+  {
+    "name": "Benin",
+    "isoCode": "BEN",
+    "users": 3,
+    "density": 1
+  },
+  {
+    "name": "Pakistan",
+    "isoCode": "PAK",
+    "users": 59,
+    "density": 1
+  },
+  {
+    "name": "Haiti",
+    "isoCode": "HTI",
+    "users": 3,
+    "density": 1
+  },
+  {
+    "name": "Syria",
+    "isoCode": "SYR",
+    "users": 10,
+    "density": 1
+  },
+  {
+    "name": "Uzbekistan",
+    "isoCode": "UZB",
+    "users": 14,
+    "density": 1
+  },
+  {
+    "name": "Algeria",
+    "isoCode": "DZA",
+    "users": 16,
+    "density": 1
+  },
+  {
+    "name": "Saudi Arabia",
+    "isoCode": "SAU",
+    "users": 18,
+    "density": 1
+  },
+  {
+    "name": "Senegal",
+    "isoCode": "SEN",
+    "users": 5,
+    "density": 1
+  },
+  {
+    "name": "Albania",
+    "isoCode": "ALB",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Nigeria",
+    "isoCode": "NGA",
+    "users": 20,
+    "density": 1
+  },
+  {
+    "name": "Cameroon",
+    "isoCode": "CMR",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Nepal",
+    "isoCode": "NPL",
+    "users": 27,
+    "density": 1
+  },
+  {
+    "name": "Cuba",
+    "isoCode": "CUB",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Kenya",
+    "isoCode": "KEN",
+    "users": 32,
+    "density": 1
+  },
+  {
+    "name": "Bangladesh",
+    "isoCode": "BGD",
+    "users": 68,
+    "density": 1
+  },
+  {
+    "name": "Egypt",
+    "isoCode": "EGY",
+    "users": 47,
+    "density": 1
+  },
+  {
+    "name": "Lesotho",
+    "isoCode": "LSO",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Libya",
+    "isoCode": "LBY",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Mozambique",
+    "isoCode": "MOZ",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Myanmar (Burma)",
+    "isoCode": "MMR",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Iran",
+    "isoCode": "IRN",
+    "users": 53,
+    "density": 1
+  },
+  {
+    "name": "Zambia",
+    "isoCode": "ZMB",
+    "users": 2,
+    "density": 1
+  },
+  {
+    "name": "Zimbabwe",
+    "isoCode": "ZWE",
+    "users": 2,
+    "density": 1
+  }
+], "overview": {
+  "totalPkgs": 13530
+}}
