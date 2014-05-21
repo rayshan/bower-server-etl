@@ -9,6 +9,7 @@ app = angular.module 'BApp', [
 
 app.controller 'BHeaderCtrl', (bDataSvc) ->
   bDataSvc.fetchAllP.then (data) => @totalPkgs = data.data.overview.totalPkgs; return
+  return
 
 app.factory 'd3', ->
   d3.legend = ->

@@ -5,7 +5,7 @@
   app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
 
   app.controller('BHeaderCtrl', function(bDataSvc) {
-    return bDataSvc.fetchAllP.then((function(_this) {
+    bDataSvc.fetchAllP.then((function(_this) {
       return function(data) {
         _this.totalPkgs = data.data.overview.totalPkgs;
       };
