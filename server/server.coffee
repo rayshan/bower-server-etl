@@ -40,7 +40,7 @@ dataApi.param 'type', (req, res, next, id) ->
     next()
   return
 
-dataApi.route '/data/:type'
+dataApi.route p.join config.apiBaseUri, '/data/:type'
   .all (req, res, next) -> # req logger for api only
     console.log req.method, req.type, req.path
     next()

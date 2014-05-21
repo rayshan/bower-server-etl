@@ -18,7 +18,6 @@ fetch = (key) ->
       console.info "[INFO] fetching [#{ key }] from cache."
       # fetch combined data source, 'all'
       if key is 'all'
-        console.log ga.validQueryTypes
         db.mget ga.validQueryTypes, (err, res) ->
           if err
             error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
@@ -115,8 +114,8 @@ init = ->
 
 # set later to use local time (default = UTC)
 later.date.localTime()
-schedule = later.parse.recur().on(1).hour() # 1am; 24-hour format
-# console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
+schedule = later.parse.recur().on(5).minute() # 0:05; 24-hour format
+console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
 timer = later.setInterval init, schedule # execute init on schedule
 
 # ==========

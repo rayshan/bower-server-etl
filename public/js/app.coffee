@@ -65,7 +65,7 @@ app.factory 'd3', ->
   d3
 
 app.factory 'bApiRoot', ($location) ->
-  if $location.host() is 'localhost' then "/data/" else "/bower/data/"
+  if $location.host() is 'localhost' then "/api/1/data/" else "/bower/api/1/data/"
 
 app.factory 'bDataSvc', ($http, bApiRoot) ->
   fetchAllP: $http.get bApiRoot + 'all'

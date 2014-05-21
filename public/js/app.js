@@ -67,9 +67,9 @@
 
   app.factory('bApiRoot', function($location) {
     if ($location.host() === 'localhost') {
-      return "/data/";
+      return "/api/1/data/";
     } else {
-      return "/bower/data/";
+      return "/bower/api/1/data/";
     }
   });
 
