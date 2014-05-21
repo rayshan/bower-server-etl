@@ -63,12 +63,12 @@ dataApi.route '/data/:type'
 app = express()
 
 # Only for prod env
-if process.env.NODE_ENV is 'prod'
+if process.env.NODE_ENV is 'production'
   app.disable 'x-powered-by' # don't broadcast it's an express app
   app.enable 'trust proxy' # tell express it's behind nginx reverse proxy & trust X-Forwarded-* headers
   app.use rewriter # serve requests on shan.io/bower
 
-# prod & dev env
+# all env
 app.use compress() # gzip static content
 app.use dataApi
 app.use express.static p.join __dirname, '../public' # serve static assets

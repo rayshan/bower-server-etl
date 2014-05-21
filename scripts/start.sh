@@ -9,8 +9,6 @@ export APP_REDIS=redis-bower
 export APP_PM2=scripts/processes.json
 
 if [[ "$HOSTNAME" = "shan.io" ]]; then
-#  export NODE_ENV=prod
-
   printf "[INFO] redis for $APP_NAME node app starting...\n"
   sudo start $APP_REDIS
 
@@ -19,7 +17,7 @@ if [[ "$HOSTNAME" = "shan.io" ]]; then
 
 else
   source ./scripts/dev.sh
-  export NODE_ENV=dev
+  export NODE_ENV=development
   export APP_PORT=3000
   export APP_GA_KEY_PATH=~/=Projects=/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   redis-server ./scripts/redis.conf

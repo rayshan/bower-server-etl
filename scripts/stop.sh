@@ -6,10 +6,6 @@ set -o pipefail
 export APP_NAME=stats.bower.io
 export APP_REDIS=redis-bower
 
-#export NODE_ENV=prod
-#export APP_DIR=/var/www/stats.bower.io
-#export APP_PM2=scripts/processes.json
-
 printf "[INFO] $APP_NAME node app stopping...\n"
 pm2 stop $APP_NAME
 

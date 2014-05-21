@@ -1,5 +1,5 @@
 # vendor
-if process.env.NODE_ENV is 'prod'
+if process.env.NODE_ENV is 'production'
   require 'newrelic'
 
 # custom
