@@ -267,7 +267,8 @@ codeMapping = [
     "country-code": "178"
   }
   {
-    name: "Congo, the Democratic Republic of the"
+#    name: "Congo, the Democratic Republic of the"
+    name: "Congo (DRC)"
     "alpha-3": "COD"
     "country-code": "180"
   }
