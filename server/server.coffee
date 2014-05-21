@@ -1,6 +1,7 @@
 # Vendor
 express = require 'express'
 compress = require 'compression'
+moment = require 'moment'
 p = require 'path'
 
 # Custom
@@ -47,7 +48,12 @@ dataApi.route p.join config.apiBaseUri, '/data/:type'
     return
   .get (req, res) ->
     if cache.allCached()
-      cache.fetch(req.type).then (data) -> res.json data; return
+      cache.fetch(req.type).then (data) ->
+        res.set 'cache-control', 'public, max-age=86400' # 1 day
+        res.set 'expires', moment().add('days', 1).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]' # RFC2616, +1 day from now
+        res.set 'last-modified', cache.lastCachedTime().RFC2616
+        res.json data
+        return
     else
       err = new Error "[ERROR] request was made when fetch/cache was in progress."
       console.error err
@@ -71,7 +77,8 @@ if process.env.NODE_ENV is 'production'
 # all env
 app.use compress() # gzip static content
 app.use dataApi
-app.use express.static p.join __dirname, '../public' # serve static assets
+app.use express.static(p.join(__dirname, '../public'), { maxAge: 2592000 })
+# serve static assets; 30 days
 
 module.exports =
   start: ->

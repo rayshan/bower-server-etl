@@ -9,13 +9,22 @@ later = require 'later'
 ga = require './ga'
 config = require "./config"
 
+
+# ==========
+
+allCached = false
+lastCachedTime =
+  unix: null
+  human: null
+  RFC2616: null
+
 # ==========
 # cache data fetch responses via redis
 
 fetch = (key) ->
   new rsvp.Promise (resolve, reject) ->
     _fetchFromCache = (key) ->
-      console.info "[INFO] fetching [#{ key }] from cache."
+      console.info "[INFO] fetching data [#{ key }] from cache."
       # fetch combined data source, 'all'
       if key is 'all'
         db.mget ga.validQueryTypes, (err, res) ->
@@ -39,17 +48,23 @@ fetch = (key) ->
           return
         return
 
+    _cache = (data) ->
+      db.set key, JSON.stringify data
+      # delete key at start of next day in case there's a midnight refresh
+      db.expireat key, moment().add('days', 1).startOf('day').unix()
+
+      db.set "lastCachedTimeUnix", JSON.stringify moment().unix()
+      db.expireat key, moment().add('days', 1).startOf('day').unix()
+
+      console.info "[SUCCESS] fetched / cached [#{ key }] data."
+      resolve data
+      return
+
     _fetchAndCache = {}
     _fetchAndCache.ga = ->
       ga.authPromise.then ga.fetch key
-        .then (data) ->
-          db.set key, JSON.stringify data
-          # delete key at start of next day in case there's a midnight refresh
-          db.expireat key, moment().add('days', 1).startOf('day').unix()
-          console.info "[SUCCESS] fetched / cached [#{ key }] data."
-          resolve data
-          return
-#        .catch (err) -> console.error "[ERROR] ", err; return
+        .then (data) -> _cache data; return
+        .catch (err) -> console.error "[ERROR] ", err; return
       return
     _fetchAndCache.overview = ->
       request {url: 'https://bower.herokuapp.com/packages', json: true}, (err, res, body) ->
@@ -57,13 +72,7 @@ fetch = (key) ->
           error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
           console.error error
           reject error
-        else
-          data = totalPkgs: body.length
-          db.set key, JSON.stringify data
-          # delete key at start of next day in case there's a midnight refresh
-          db.expireat key, moment().add('days', 1).startOf('day').unix()
-          console.info "[SUCCESS] fetched / cached [#{ key }] data."
-          resolve data
+        else _cache {totalPkgs: body.length}
         return
 
     # fetch 'all' combined data sources
@@ -89,19 +98,26 @@ fetch = (key) ->
 
 # ==========
 
-allCached = false
-
 init = ->
   # for dev
-#  db.flushdb() if process.env.NODE_ENV is 'development'
+  db.flushdb() if process.env.NODE_ENV is 'development'
 
   fetchPromises = []
   ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
   rsvp.all fetchPromises
     .then ->
-      console.info "[SUCCESS] fetched & cached all data."
       allCached = true
+      db.get "lastCachedTimeUnix", (err, res) ->
+        if err
+          error = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
+          console.error error
+        else
+          lastCachedTime.unix = res # unix
+          lastCachedTime.human = moment.unix(lastCachedTime.unix).format 'LLLL'
+          lastCachedTime.RFC2616 = moment.unix(lastCachedTime.unix).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
+          console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
+        return
       return
     .catch (err) ->
       console.error err
@@ -114,7 +130,7 @@ init = ->
 
 # set later to use local time (default = UTC)
 later.date.localTime()
-schedule = later.parse.recur().on('00:05:00').time() # 0:05; 24-hour format
+schedule = later.parse.recur().on('00:01:00').time() # 0:05; 24-hour format
 #console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
 timer = later.setInterval init, schedule # execute init on schedule
 
@@ -129,4 +145,5 @@ module.exports =
   init: init
   fetch: fetch
   db: db
-  allCached: -> allCached # get around module export caching
+  allCached: -> allCached # func to get around module export caching
+  lastCachedTime: -> lastCachedTime
