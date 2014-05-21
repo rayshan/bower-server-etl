@@ -93,7 +93,7 @@ allCached = false
 
 init = ->
   # for dev
-  db.flushdb() if process.env.NODE_ENV is 'development'
+#  db.flushdb() if process.env.NODE_ENV is 'development'
 
   fetchPromises = []
   ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
@@ -114,8 +114,8 @@ init = ->
 
 # set later to use local time (default = UTC)
 later.date.localTime()
-schedule = later.parse.recur().on(5).minute() # 0:05; 24-hour format
-console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
+schedule = later.parse.recur().on('00:05:00').time() # 0:05; 24-hour format
+#console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
 timer = later.setInterval init, schedule # execute init on schedule
 
 # ==========
