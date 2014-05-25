@@ -74,10 +74,12 @@ if process.env.NODE_ENV is 'production'
   app.enable 'trust proxy' # tell express it's behind nginx reverse proxy & trust X-Forwarded-* headers
   app.use rewriter # serve requests on shan.io/bower
 
+staticAssetPath = p.join __dirname, '../public', if process.env.NODE_ENV is 'production' then '/dist' else ''
+
 # all env
 app.use compress() # gzip static content
 app.use dataApi
-app.use express.static(p.join(__dirname, '../public'), {maxAge: 2592000})
+app.use express.static staticAssetPath, {maxAge: 2592000}
 # serve static assets; 30 days
 
 module.exports =

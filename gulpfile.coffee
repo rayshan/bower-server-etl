@@ -23,7 +23,8 @@ p = require 'path'
 # ==========================
 # TODO: only runs @ root, should run anywhere in proj dir
 
-dest = './public/dist'
+destPath = './public/dist'
+dest = gulp.dest destPath
 
 htmlminOptions =
   removeComments: true
@@ -40,14 +41,9 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
-    .pipe less {
-      paths: ['./public'] # @import path
-    }
-    .pipe minifyCSS {
-      cache: true
-      keepSpecialComments: 0 # remove all
-    }
-    .pipe gulp.dest dest
+    .pipe less { paths: ['./public'] } # @import path
+    .pipe minifyCSS { cache: true, keepSpecialComments: 0 } # remove all
+    .pipe dest
 
 gulp.task 'html', ->
   gulp.src ['./public/index.html']
@@ -57,19 +53,16 @@ gulp.task 'html', ->
     }
     .pipe replace 'dist/', ''
     .pipe htmlmin htmlminOptions
-    .pipe gulp.dest dest
+    .pipe dest
 
 gulp.task 'js', ->
   # inline templates
-  angularTemplates = gulp.src './public/b-*/b-*.html'
+  ngTemplates = gulp.src './public/b-*/b-*.html'
     .pipe htmlmin htmlminOptions
-    .pipe templateCache {
-      module: 'B.Templates'
-      standalone: true
-    } # annotated
+    .pipe templateCache { module: 'B.Templates', standalone: true } # annotated already
 
   # compile cs & annotate for min
-  angularModules = gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee']
+  ngModules = gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee']
     .pipe replace 'dist/', '' # for b-map.coffee loading topojson
     .pipe replace "# 'B.Templates'", "'B.Templates'" # for b-app.coffee $templateCache
     .pipe coffee()
@@ -80,8 +73,7 @@ gulp.task 'js', ->
   other = gulp.src otherSrc
 
   # min above
-  min = streamqueue {objectMode: true}, angularTemplates, angularModules, other
-    .pipe uglify()
+  min = streamqueue({objectMode: true}, ngTemplates, ngModules, other).pipe uglify()
 
   # src already min
   otherMinSrc = [
@@ -93,10 +85,7 @@ gulp.task 'js', ->
 
   # concat
   streamqueue {objectMode: true}, otherMin, min # other 1st b/c has angular
-    .pipe concat 'b-app.js'
-    .pipe gulp.dest dest
-
-  # TODO: move angular.min.js.map
+    .pipe(concat('b-app.js')).pipe dest
 
 gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], { stdio: 'inherit' }
 
@@ -110,5 +99,4 @@ gulp.task 'dev', ['css', 'html', 'server'], ( -> # not compiling js due to using
   return )
   .on 'error', gutil.log
 
-gulp.task 'prod', ['css', 'js', 'html']
-  .on 'error', gutil.log
+gulp.task('prod', ['css', 'js', 'html']).on 'error', gutil.log
