@@ -6,7 +6,7 @@ Insights into Bower, the best package manager for the web.
 For what's happening, see:
 https://github.com/bower/bower/issues/1164#issuecomment-38207751
 
-![Screenshot](/public/img/stats-bower-io-screenshot.png)
+![Screenshot](/public/dist/img/stats-bower-io-screenshot.png)
 
 ### Deployment Dependencies
 - Node.js & modules
