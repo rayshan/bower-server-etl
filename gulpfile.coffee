@@ -1,7 +1,7 @@
 gulp = require 'gulp'
-#watch = require 'gulp-watch'
 gutil = require 'gulp-util'
-changed = require 'gulp-changed'
+# changed = require 'gulp-changed'
+# .pipe changed dest # only pass through changed files; need to know dest up-front
 
 #less = require 'gulp-less-sourcemap'
 less = require 'gulp-less'
@@ -12,7 +12,10 @@ templateCache = require 'gulp-angular-templatecache'
 concat = require 'gulp-concat'
 uglify = require 'gulp-uglify'
 htmlmin = require 'gulp-htmlmin'
+htmlreplace = require 'gulp-html-replace'
+replace = require 'gulp-replace'
 
+spawn = require("child_process").spawn
 streamqueue = require 'streamqueue'
 
 p = require 'path'
@@ -37,7 +40,6 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
-    .pipe changed dest # only pass through changed files; need to know dest up-front
     .pipe less {
       paths: ['./public'] # @import path
     }
@@ -47,17 +49,19 @@ gulp.task 'css', ->
     }
     .pipe gulp.dest dest
 
-# from 3k to 1k, need to swap out index.html, not worth the effort
 gulp.task 'html', ->
-  gulp.src './public/index.html'
-    .pipe changed dest
+  gulp.src ['./public/index.html']
+    .pipe htmlreplace {
+      js: 'b-app.js'
+      css: 'b-app.css'
+    }
+    .pipe replace 'dist/', ''
     .pipe htmlmin htmlminOptions
     .pipe gulp.dest dest
 
 gulp.task 'js', ->
   # inline templates
   angularTemplates = gulp.src './public/b-*/b-*.html'
-    .pipe changed dest
     .pipe htmlmin htmlminOptions
     .pipe templateCache {
       module: 'B.Templates'
@@ -66,13 +70,14 @@ gulp.task 'js', ->
 
   # compile cs & annotate for min
   angularModules = gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee']
-    .pipe changed dest
+    .pipe replace 'dist/', '' # for b-map.coffee loading topojson
+    .pipe replace "# 'B.Templates'", "'B.Templates'" # for b-app.coffee $templateCache
     .pipe coffee()
     .pipe ngAnnotate() # ngmin doesn't annotate coffeescript wrapped code
 
   # src that need min
   otherSrc = ['./public/bower_components/topojson/topojson.js']
-  other = gulp.src(otherSrc).pipe changed dest
+  other = gulp.src otherSrc
 
   # min above
   min = streamqueue {objectMode: true}, angularTemplates, angularModules, other
@@ -84,14 +89,26 @@ gulp.task 'js', ->
     './public/bower_components/angular-bootstrap/ui-bootstrap.min.js'
     './public/bower_components/d3/d3.min.js'
   ] # order is respected
-  otherMin = gulp.src(otherMinSrc).pipe changed dest
+  otherMin = gulp.src otherMinSrc
 
   # concat
   streamqueue {objectMode: true}, otherMin, min # other 1st b/c has angular
     .pipe concat 'b-app.js'
     .pipe gulp.dest dest
 
-  # move angular.min.js.map since
+  # TODO: move angular.min.js.map
 
-gulp.task 'default', ['css', 'js']
+gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], { stdio: 'inherit' }
+
+# ==========================
+
+gulp.task 'dev', ['css', 'html', 'server'], ( -> # not compiling js due to using un-min files
+  cssWatcher = gulp.watch ['./public/b-*/b-*.less', './public/css/b-app.less'], ['css']
+  cssWatcher.on 'change', (event) ->
+    gutil.log "#{ p.basename event.path } was #{ event.type }, running tasks..."
+  # not watching server files due to using node-dev
+  return )
+  .on 'error', gutil.log
+
+gulp.task 'prod', ['css', 'js', 'html']
   .on 'error', gutil.log

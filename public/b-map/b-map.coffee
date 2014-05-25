@@ -5,7 +5,7 @@ module.factory 'topojson', ->
 
 # load topojson
 module.factory 'bTopojsonSvc', ($http) ->
-  $http.get 'b-map/ne_110m_admin_0_countries_topojson.json'
+  $http.get 'dist/ne_110m_admin_0_countries_topojson.json'
 
 # extend d3 w/ collission func
 module.factory 'd3map', (d3) ->

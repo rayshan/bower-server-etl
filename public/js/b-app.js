@@ -2,7 +2,7 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'B.Templates', 'ui.bootstrap']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
 
   app.factory('bApiRoot', function($location) {
     if ($location.host() === 'localhost') {

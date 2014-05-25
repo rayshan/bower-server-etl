@@ -9,7 +9,7 @@
   });
 
   module.factory('bTopojsonSvc', function($http) {
-    return $http.get('b-map/ne_110m_admin_0_countries_topojson.json');
+    return $http.get('dist/ne_110m_admin_0_countries_topojson.json');
   });
 
   module.factory('d3map', function(d3) {

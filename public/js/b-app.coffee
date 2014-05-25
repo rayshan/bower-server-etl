@@ -4,8 +4,8 @@ app = angular.module 'BApp', [
   'B.Table.Pkgs'
   'B.Map'
   'B.Delta'
-  'B.Templates'
   'ui.bootstrap'
+  # 'B.Templates'
 ]
 
 app.factory 'bApiRoot', ($location) ->
