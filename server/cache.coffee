@@ -100,7 +100,7 @@ fetch = (key) ->
 
 init = ->
   # for dev
-  db.flushdb() if process.env.NODE_ENV is 'development'
+#  db.flushdb() if process.env.NODE_ENV is 'development'
 
   fetchPromises = []
   ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return

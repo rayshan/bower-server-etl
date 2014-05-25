@@ -6,7 +6,7 @@
 
   module.directive("bTableCommands", function(bDataSvc) {
     return {
-      templateUrl: 'b-table-commands/partial.html',
+      templateUrl: 'b-table-cmds/b-table-cmds.html',
       restrict: 'E',
       link: function(scope) {
         bDataSvc.fetchAllP.then(function(data) {
@@ -18,4 +18,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=module.map
+//# sourceMappingURL=b-table-cmds.map

@@ -1,0 +1,104 @@
+<!doctype html>
+<html ng-app="BApp" lang="en">
+
+<head>
+  <title>Stats for Bower - A package manager for the web</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="dist/b-app.css">
+</head>
+
+<body>
+
+<!--github ribbon-->
+<div class="github-fork-ribbon-wrapper right">
+  <div class="github-fork-ribbon">
+    <a href="https://github.com/rayshan/stats.bower.io">Improve on <i class="fa fa-github-alt"></i> Github</a>
+  </div>
+</div>
+
+<header ng-controller="BHeaderCtrl as header">
+  <div class="b-wrap">
+
+    <div class="b-left">
+      <a href="http://bower.io"><img src="img/bower-logo.png" class="b-logo" alt="Bower logo" /></a>
+    </div>
+
+    <div class="b-right">
+      <div class="b-v-center">
+        <div class="b-brand">
+          <span class="b-1">stats.</span><span class="b-2">Bower</span>
+        </div>
+        <div class="b-tagline">
+          Insights on <span class="b-stat" ng-bind="header.totalPkgs | number">a ton of</span> packages from the
+          <a href="http://bower.io/search/"><i class="fa fa-search"></i> Registry</a>.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section>
+  <div class="b-wrap">
+    <b-chart-users></b-chart-users>
+    <b-map></b-map>
+    <b-table-commands></b-table-commands>
+    <b-table-pkgs></b-table-pkgs>
+  </div>
+</section>
+
+<footer>
+  <div class="b-wrap">
+    <small>
+      Coming soon: more metrics, per-package API, badge service... help shape our future on
+      <a href="https://github.com/bower/bower/issues/1164#issuecomment-38207751">Github</a>.
+    </small>
+    <br/>
+    <small>
+      © 2014 <a href="https://shan.io">Ray Shan</a>,
+      Twitter and
+      <a href="https://github.com/bower/bower/graphs/contributors">contributors</a>.
+      MIT Licensed.
+    </small>
+  </div>
+</footer>
+
+<!--production-->
+<script src="dist/b-app.js"></script>
+<!--<script src="dist/templates.js"></script>-->
+
+<!--development-->
+<!--AngularJS-->
+<!--<script src="bower_components/angular/angular.js"></script>-->
+
+<!--Other Vendors-->
+<!--<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>-->
+<!--<script src="bower_components/d3/d3.js"></script>-->
+<!--<script src="bower_components/topojson/topojson.js"></script>-->
+
+<!--<script src="bower_components/lodash/dist/lodash.js"></script>-->
+
+<!--Custom-->
+<!--<script src="js/b-app.js"></script>-->
+<!--<script src="b-chart-users/b-chart-users.js"></script>-->
+<!--<script src="b-table-cmds/b-table-cmds.js"></script>-->
+<!--<script src="b-table-pkgs/b-table-pkgs.js"></script>-->
+<!--<script src="b-map/b-map.js"></script>-->
+<!--<script src="b-delta/b-delta.js"></script>-->
+
+<!--GA tracking-->
+<!--TODO: to be swapped out w/ Bower's after setting up separate tracking path-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47116686-1', 'shan.io');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

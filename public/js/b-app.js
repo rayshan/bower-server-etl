@@ -2,7 +2,21 @@
 (function() {
   var app;
 
-  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
+  app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Commands', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'B.Templates', 'ui.bootstrap']);
+
+  app.factory('bApiRoot', function($location) {
+    if ($location.host() === 'localhost') {
+      return "/api/1/data/";
+    } else {
+      return "/bower/api/1/data/";
+    }
+  });
+
+  app.factory('bDataSvc', function($http, bApiRoot) {
+    return {
+      fetchAllP: $http.get(bApiRoot + 'all')
+    };
+  });
 
   app.controller('BHeaderCtrl', function(bDataSvc) {
     bDataSvc.fetchAllP.then((function(_this) {
@@ -65,20 +79,6 @@
     return d3;
   });
 
-  app.factory('bApiRoot', function($location) {
-    if ($location.host() === 'localhost') {
-      return "/api/1/data/";
-    } else {
-      return "/bower/api/1/data/";
-    }
-  });
-
-  app.factory('bDataSvc', function($http, bApiRoot) {
-    return {
-      fetchAllP: $http.get(bApiRoot + 'all')
-    };
-  });
-
   app.filter('round', function() {
     return function(input, decimals) {
       if (input == null) {
@@ -93,4 +93,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=app.map
+//# sourceMappingURL=b-app.map

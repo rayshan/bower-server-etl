@@ -4,8 +4,15 @@ app = angular.module 'BApp', [
   'B.Table.Pkgs'
   'B.Map'
   'B.Delta'
+  'B.Templates'
   'ui.bootstrap'
 ]
+
+app.factory 'bApiRoot', ($location) ->
+  if $location.host() is 'localhost' then "/api/1/data/" else "/bower/api/1/data/"
+
+app.factory 'bDataSvc', ($http, bApiRoot) ->
+  fetchAllP: $http.get bApiRoot + 'all'
 
 app.controller 'BHeaderCtrl', (bDataSvc) ->
   bDataSvc.fetchAllP.then (data) => @totalPkgs = data.data.overview.totalPkgs; return
@@ -64,12 +71,6 @@ app.factory 'd3', ->
     return
 
   d3
-
-app.factory 'bApiRoot', ($location) ->
-  if $location.host() is 'localhost' then "/api/1/data/" else "/bower/api/1/data/"
-
-app.factory 'bDataSvc', ($http, bApiRoot) ->
-  fetchAllP: $http.get bApiRoot + 'all'
 
 app.filter 'round', ->
   (input, decimals) ->

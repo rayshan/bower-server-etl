@@ -6,7 +6,7 @@
 
   module.directive("bChartUsers", function(d3, bDataSvc) {
     return {
-      templateUrl: 'b-chart-users/partial.html',
+      templateUrl: 'b-chart-users/b-chart-users.html',
       restrict: 'E',
       link: function(scope, ele) {
         var render;
@@ -111,4 +111,4 @@
 
 }).call(this);
 
-//# sourceMappingURL=module.map
+//# sourceMappingURL=b-chart-users.map
