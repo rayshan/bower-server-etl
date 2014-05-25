@@ -1,8 +1,8 @@
-module = angular.module 'B.Table.Commands', []
+module = angular.module 'B.Table.Cmds', []
 
-module.directive "bTableCommands", (bDataSvc) ->
+module.directive "bTableCmds", (bDataSvc) ->
   templateUrl: 'b-table-cmds/b-table-cmds.html'
   restrict: 'E'
   link: (scope) ->
-    bDataSvc.fetchAllP.then (data) -> scope.commands = data.data.commands; return
+    bDataSvc.fetchAllP.then (data) -> scope.cmds = data.data.cmds; return
     return

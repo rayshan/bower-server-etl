@@ -2,15 +2,15 @@
 (function() {
   var module;
 
-  module = angular.module('B.Table.Commands', []);
+  module = angular.module('B.Table.Cmds', []);
 
-  module.directive("bTableCommands", function(bDataSvc) {
+  module.directive("bTableCmds", function(bDataSvc) {
     return {
       templateUrl: 'b-table-cmds/b-table-cmds.html',
       restrict: 'E',
       link: function(scope) {
         bDataSvc.fetchAllP.then(function(data) {
-          scope.commands = data.data.commands;
+          scope.cmds = data.data.cmds;
         });
       }
     };

@@ -1,6 +1,6 @@
 app = angular.module 'BApp', [
   'B.Chart.Users'
-  'B.Table.Commands'
+  'B.Table.Cmds'
   'B.Table.Pkgs'
   'B.Map'
   'B.Delta'

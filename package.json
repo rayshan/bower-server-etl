@@ -49,6 +49,8 @@
     "gulp-replace": "0.3.0",
     "gulp-uglify": "0.3.0",
     "gulp-util": "2.2.14",
+    "gulp-watch": "0.6.5",
+    "stream-combiner": "0.2.0",
     "streamqueue": "0.0.7"
   }
 }

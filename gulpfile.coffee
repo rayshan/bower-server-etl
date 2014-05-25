@@ -1,5 +1,6 @@
 gulp = require 'gulp'
 gutil = require 'gulp-util'
+watch = require 'gulp-watch'
 # changed = require 'gulp-changed'
 # .pipe changed dest # only pass through changed files; need to know dest up-front
 
@@ -17,6 +18,7 @@ replace = require 'gulp-replace'
 
 spawn = require("child_process").spawn
 streamqueue = require 'streamqueue'
+combine = require 'stream-combiner'
 
 p = require 'path'
 
@@ -41,16 +43,15 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
-    .pipe less { paths: './public/b-*/b-*.less' } # @import path
-    .pipe minifyCSS { cache: false, keepSpecialComments: 0 } # remove all
+    .pipe less paths: './public/b-*/b-*.less' # @import path
+    .pipe minifyCSS cache: true, keepSpecialComments: 0 # remove all
     .pipe gulp.dest destPath
 
 gulp.task 'html', ->
   gulp.src ['./public/index.html']
-    .pipe htmlreplace {
+    .pipe htmlreplace
       js: 'b-app.js'
       css: 'b-app.css'
-    }
     .pipe replace 'dist/', ''
     .pipe htmlmin htmlminOptions
     .pipe gulp.dest destPath
@@ -59,7 +60,7 @@ gulp.task 'js', ->
   # inline templates
   ngTemplates = gulp.src './public/b-*/b-*.html'
     .pipe htmlmin htmlminOptions
-    .pipe templateCache { module: 'B.Templates', standalone: true } # annotated already
+    .pipe templateCache module: 'B.Templates', standalone: true # annotated already
 
   # compile cs & annotate for min
   ngModules = gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee']
@@ -73,7 +74,7 @@ gulp.task 'js', ->
   other = gulp.src otherSrc
 
   # min above
-  min = streamqueue({objectMode: true}, ngTemplates, ngModules, other).pipe uglify()
+  min = streamqueue(objectMode: true, ngTemplates, ngModules, other).pipe uglify()
 
   # src already min
   otherMinSrc = [
@@ -87,16 +88,17 @@ gulp.task 'js', ->
   streamqueue {objectMode: true}, otherMin, min # other 1st b/c has angular
     .pipe(concat('b-app.js')).pipe gulp.dest destPath
 
-gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], { stdio: 'inherit' }
+gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'}
 
 # ==========================
 
-gulp.task 'dev', ['css', 'html', 'server'], ( -> # not compiling js due to using un-min files
-  cssWatcher = gulp.watch ['./public/b-*/b-*.less', './public/css/b-app.less'], ['css']
-  cssWatcher.on 'change', (event) ->
-    gutil.log "#{ p.basename event.path } was #{ event.type }, running tasks..."
-  # not watching server files due to using node-dev
-  return )
-  .on 'error', gutil.log
+gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
+  gulp.src ['./public/b-*/b-*.less', './public/css/b-app.less']
+    .pipe watch {emit: 'one', name: 'css'}, ['css']
+  gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee'] # './public/bower_components/**/*.js'
+    .pipe watch {emit: 'one', name: 'js'}, ['js']
+  gulp.src ['./public/index.html']
+    .pipe watch {emit: 'one', name: 'html'}, ['html']
+#  .on 'error', gutil.log
 
 gulp.task('prod', ['css', 'js', 'html']).on 'error', gutil.log

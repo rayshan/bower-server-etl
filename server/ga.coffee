@@ -96,7 +96,7 @@ queries.users =
         return
       resolve result; return
 
-queries.commands =
+queries.cmds =
   queryObjs: [
     { # current week
       'ids': 'ga:' + config.ga.profile
@@ -128,24 +128,24 @@ queries.commands =
       Search: 'search'
 
     new rsvp.Promise (resolve, reject) ->
-      current = data[0].rows
+      current = data[0].rows.filter (cmd) -> cmd[0] != "(not set)"
       prior = data[1].rows
 
       _transform = (d) ->
-        command = util.removeSlash(d[0])
-        command = command.charAt(0).toUpperCase() + command.slice 1 # Cap Case
-        d[0] = command
+        cmd = util.removeSlash(d[0])
+        cmd = cmd.charAt(0).toUpperCase() + cmd.slice 1 # Cap Case
+        d[0] = cmd
         d[1] = +d[1]
         d[2] = +d[2]
         return
       current.forEach _transform
       prior.forEach _transform
 
-      commandCheck = (d) -> d[0].indexOf("ed") is -1 and d[0] != "Searched"
-      # keep only commands that isn't called on success; searched is deprecated
-      result = current.filter (d) -> commandCheck(d)
+      cmdCheck = (d) -> d[0].indexOf("ed") is -1 and d[0] != "Searched"
+      # keep only cmds that isn't called on success; searched is deprecated
+      result = current.filter (d) -> cmdCheck(d)
         .map (d) ->
-          command: d[0]
+          cmd: d[0]
           order: order[d[0]]
           icon: icon[d[0]]
           metrics: [
@@ -153,25 +153,25 @@ queries.commands =
             {metric: 'uses', order: 2, current: d[2]} # ga:pageviews
           ]
 
-      getValue = (command, period, ed, valueType) ->
+      getValue = (cmd, period, ed, valueType) ->
         ed = if ed then 'ed' else ''
         i = if valueType is 'users' then 1 else 2 # else pkgs
-        # catch edge case in case new command tracked and no prior history
+        # catch edge case in case new cmd tracked and no prior history
         try
-          _find(period, (d) -> d[0] is command.command + ed)[i]
+          _find(period, (d) -> d[0] is cmd.cmd + ed)[i]
         catch error
-          0 # if not found, command tracking wasn't implemented
+          0 # if not found, cmd tracking wasn't implemented
 
-      result.forEach (command) ->
-        # command with pkgs count ('-ed')
-        if ["Install", "Uninstall", "Register", "Unregister"].indexOf(command.command) != -1
-          command.metrics.push {
+      result.forEach (cmd) ->
+        # cmd with pkgs count ('-ed')
+        if ["Install", "Uninstall", "Register", "Unregister"].indexOf(cmd.cmd) != -1
+          cmd.metrics.push {
             metric: 'pkgs', order: 3
-            current: getValue command, current, true, 'pkgs'
+            current: getValue cmd, current, true, 'pkgs'
           }
 
-        command.metrics.forEach (metric) ->
-          metric.prior = getValue command, prior, (if metric.metric is 'pkgs' then true else false), metric.metric
+        cmd.metrics.forEach (metric) ->
+          metric.prior = getValue cmd, prior, (if metric.metric is 'pkgs' then true else false), metric.metric
           metric.delta = metric.current / metric.prior - 1
           return
 
