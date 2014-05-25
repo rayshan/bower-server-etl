@@ -16,7 +16,6 @@
       <td><i class="fa fa-fw" ng-class="'fa-' + command.icon"></i> {{ command.command }}</td>
       <td ng-repeat="metric in command.metrics | orderBy: 'order'">
         {{ metric.current | round: 0 }}
-
         <b-delta delta="{{ metric.delta }}" type="pct"></b-delta>
 
         <!--per use-->
