@@ -24,12 +24,12 @@ p = require 'path'
 # TODO: only runs @ root, should run anywhere in proj dir
 
 destPath = './public/dist'
-dest = gulp.dest destPath
 
 htmlminOptions =
   removeComments: true
-  collapseWhitespace: true
   removeCommentsFromCDATA: true
+  collapseWhitespace: true
+#  conservativeCollapse: true # otherwise <i> & text squished
   collapseBooleanAttributes: true
   removeAttributeQuotes: true
   removeRedundantAttributes: true
@@ -41,9 +41,9 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
-    .pipe less { paths: ['./public'] } # @import path
-    .pipe minifyCSS { cache: true, keepSpecialComments: 0 } # remove all
-    .pipe dest
+    .pipe less { paths: './public/b-*/b-*.less' } # @import path
+    .pipe minifyCSS { cache: false, keepSpecialComments: 0 } # remove all
+    .pipe gulp.dest destPath
 
 gulp.task 'html', ->
   gulp.src ['./public/index.html']
@@ -53,7 +53,7 @@ gulp.task 'html', ->
     }
     .pipe replace 'dist/', ''
     .pipe htmlmin htmlminOptions
-    .pipe dest
+    .pipe gulp.dest destPath
 
 gulp.task 'js', ->
   # inline templates
@@ -85,7 +85,7 @@ gulp.task 'js', ->
 
   # concat
   streamqueue {objectMode: true}, otherMin, min # other 1st b/c has angular
-    .pipe(concat('b-app.js')).pipe dest
+    .pipe(concat('b-app.js')).pipe gulp.dest destPath
 
 gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], { stdio: 'inherit' }
 
