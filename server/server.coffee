@@ -49,9 +49,15 @@ dataApi.route p.join config.apiBaseUri, '/data/:type'
   .get (req, res) ->
     if cache.allCached()
       cache.fetch(req.type).then (data) ->
+        # enable caching
         res.set 'cache-control', 'public, max-age=86400' # 1 day
         res.set 'expires', moment().add('days', 1).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]' # RFC2616, +1 day from now
         res.set 'last-modified', cache.lastCachedTime().RFC2616
+
+        # enable CORS so other websites can embed API results
+        res.set "Access-Control-Allow-Origin", "*"
+        res.set "Access-Control-Allow-Headers", "X-Requested-With"
+
         res.json data
         return
     else
