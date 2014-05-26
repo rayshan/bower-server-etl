@@ -1,7 +1,10 @@
 # Vendor
 express = require 'express'
+app = express()
+
 compress = require 'compression'
 moment = require 'moment'
+limiter = require 'express-limiter'
 p = require 'path'
 
 # Custom
@@ -21,6 +24,17 @@ rewriter.use (req, res, next) ->
   req.url = req.url.replace '/bower', ''
   next()
   return
+
+# rate limiter
+#limiter = limiter(app, cache.db)
+#limiter {
+#  path: '/api/action'
+#  method: 'get'
+#  lookup: ['connection.remoteAddress']
+#  # total: 60 * 60 / 5 # 1 request every 5 seconds
+#  total: 150
+#  expire: 1000 * 60 * 60 # per hour
+#}
 
 ###
 # API
@@ -71,8 +85,6 @@ dataApi.route p.join config.apiBaseUri, '/data/:type'
 ###
 # Server
 ###
-
-app = express()
 
 # Only for prod env
 if process.env.NODE_ENV is 'production'
