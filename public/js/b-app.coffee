@@ -23,7 +23,7 @@ app.factory 'd3', ->
     # `this` should be classed legend, = current node wrapped by d3
     items = {}
 
-    chart = d3.select(@.node().parentNode) # select parent chart
+    chart = d3.select @.node().parentNode # select parent chart
 
     lBox = @.selectAll(".box").data [true]
     lItems = @.selectAll(".items").data [true]

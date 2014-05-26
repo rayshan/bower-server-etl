@@ -1,6 +1,7 @@
 gulp = require 'gulp'
 gutil = require 'gulp-util'
 watch = require 'gulp-watch'
+plumber = require 'gulp-plumber'
 # changed = require 'gulp-changed'
 # .pipe changed dest # only pass through changed files; need to know dest up-front
 
@@ -66,6 +67,7 @@ gulp.task 'js', ->
 
   # compile cs & annotate for min
   ngModules = gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee']
+    .pipe plumber()
     .pipe replace 'dist/', '' # for b-map.coffee loading topojson
     .pipe replace "# 'B.Templates'", "'B.Templates'" # for b-app.coffee $templateCache
     .pipe coffee()
@@ -107,7 +109,7 @@ gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
 
   gulp.src ['./public/index.html']
     .pipe watch {emit: 'one', name: 'html'}, ['html']
-#  .on 'error', gutil.log
+
 gulp.task 'default', ['dev']
 
-gulp.task('prod', ['css', 'js', 'html']).on 'error', gutil.log
+gulp.task 'prod', ['css', 'js', 'html']
