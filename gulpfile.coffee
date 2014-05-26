@@ -2,10 +2,8 @@ gulp = require 'gulp'
 gutil = require 'gulp-util'
 watch = require 'gulp-watch'
 plumber = require 'gulp-plumber'
-# changed = require 'gulp-changed'
-# .pipe changed dest # only pass through changed files; need to know dest up-front
 
-#less = require 'gulp-less-sourcemap'
+# less = require 'gulp-less-sourcemap'
 less = require 'gulp-less'
 minifyCSS = require 'gulp-minify-css'
 coffee = require 'gulp-coffee'
