@@ -1,0 +1,156 @@
+[
+  {
+    "cmd": "Info",
+    "order": 4,
+    "icon": "info",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 645,
+        "prior": 633,
+        "delta": 0.018957345971563955
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 1665,
+        "prior": 1625,
+        "delta": 0.024615384615384706
+      }
+    ]
+  },
+  {
+    "cmd": "Install",
+    "order": 0,
+    "icon": "download",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 10789,
+        "prior": 10772,
+        "delta": 0.0015781656145561485
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 44879,
+        "prior": 44814,
+        "delta": 0.001450439594769426
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 271467,
+        "prior": 284425,
+        "delta": -0.04555858310626704
+      }
+    ]
+  },
+  {
+    "cmd": "Register",
+    "order": 2,
+    "icon": "pencil",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 160,
+        "prior": 150,
+        "delta": 0.06666666666666665
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 304,
+        "prior": 341,
+        "delta": -0.10850439882697949
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 187,
+        "prior": 153,
+        "delta": 0.22222222222222232
+      }
+    ]
+  },
+  {
+    "cmd": "Search",
+    "order": 5,
+    "icon": "search",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 3132,
+        "prior": 3111,
+        "delta": 0.0067502410800386325
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 8494,
+        "prior": 8305,
+        "delta": 0.02275737507525588
+      }
+    ]
+  },
+  {
+    "cmd": "Uninstall",
+    "order": 1,
+    "icon": "trash-o",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 1480,
+        "prior": 1536,
+        "delta": -0.03645833333333337
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 3784,
+        "prior": 4068,
+        "delta": -0.0698131760078663
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 3914,
+        "prior": 4102,
+        "delta": -0.04583130180399808
+      }
+    ]
+  },
+  {
+    "cmd": "Unregister",
+    "order": 3,
+    "icon": "eraser",
+    "metrics": [
+      {
+        "metric": "users",
+        "order": 1,
+        "current": 1,
+        "prior": 0,
+        "delta": null
+      },
+      {
+        "metric": "uses",
+        "order": 2,
+        "current": 3,
+        "prior": 0,
+        "delta": null
+      },
+      {
+        "metric": "pkgs",
+        "order": 3,
+        "current": 0,
+        "prior": 0,
+        "delta": null
+      }
+    ]
+  }
+]

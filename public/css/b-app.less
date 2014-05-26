@@ -10,11 +10,13 @@
 @import "../bower_components/bootstrap/less/grid.less";
 @import "../bower_components/bootstrap/less/scaffolding.less";
 @import "../bower_components/bootstrap/less/utilities.less"; // stuff like clearfix
+@import "../bower_components/bootstrap/less/component-animations.less"; // for tooltip
 //@import "../bower_components/bootstrap/less/responsive-utilities.less";
 
 @import "../bower_components/bootstrap/less/tables.less";
 @import "../bower_components/bootstrap/less/buttons.less";
 @import "../bower_components/bootstrap/less/button-groups.less";
+@import "../bower_components/bootstrap/less/popovers.less";
 
 // Other vendors
 @import "../bower_components/lesshat/build/lesshat-prefixed.less";
@@ -25,11 +27,11 @@
 //serve from cdn for higher likelyhood of client caching; benchmark: http://www.cdnperf.com/
 
 // custom
+@import "../b-chart-users/b-chart-users.less";
 @import "../b-delta/b-delta.less";
-@import "../b-chart-users/b-chart-users";
-@import "../b-table-cmds/b-table-cmds";
-@import "../b-table-pkgs/b-table-pkgs.less";
 @import "../b-map/b-map.less";
+@import "../b-table-cmds/b-table-cmds.less";
+@import "../b-table-pkgs/b-table-pkgs.less";
 
 // custom var
 @b-yellow: #FFCC2F;
@@ -123,6 +125,10 @@ h1, h2, h3, h4, h5, h6 > .b-title {
   span {border-bottom: 1px dashed @b-yellow}
   i {color: @b-yellow}
 }
+
+.popover {min-width: 256px}
+
+.fa-question-circle {color: @b-gray}
 
 /* Footer
 ================================================== */

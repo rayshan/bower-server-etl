@@ -4,7 +4,7 @@ app = angular.module 'BApp', [
   'B.Table.Pkgs'
   'B.Map'
   'B.Delta'
-  'ui.bootstrap'
+  'ui.bootstrap' # TODO: use custom build
   # 'B.Templates'
 ]
 

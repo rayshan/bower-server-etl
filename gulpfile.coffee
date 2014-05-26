@@ -79,7 +79,7 @@ gulp.task 'js', ->
   # src already min
   otherMinSrc = [
     './public/bower_components/angular/angular.min.js'
-    './public/bower_components/angular-bootstrap/ui-bootstrap.min.js'
+    './public/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'
     './public/bower_components/d3/d3.min.js'
   ] # order is respected
   otherMin = gulp.src otherMinSrc
@@ -100,5 +100,6 @@ gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
   gulp.src ['./public/index.html']
     .pipe watch {emit: 'one', name: 'html'}, ['html']
 #  .on 'error', gutil.log
+gulp.task 'default', ['dev']
 
 gulp.task('prod', ['css', 'js', 'html']).on 'error', gutil.log

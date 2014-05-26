@@ -114,16 +114,13 @@ queries.cmds =
     }
   ]
   transform: (data) ->
-    order =
-      Install: 1
-      Uninstall: 2
-      Register: 3
-      Info: 4
-      Search: 5
+    order = {}
+    ['Install', 'Uninstall', 'Register', 'Unregister', 'Info', 'Search'].forEach (cmd, i) -> order[cmd] = i; return
     icon =
       Install: 'download'
       Uninstall: 'trash-o'
       Register: 'pencil'
+      Unregister: 'eraser'
       Info: 'info'
       Search: 'search'
 
@@ -132,18 +129,18 @@ queries.cmds =
       prior = data[1].rows
 
       _transform = (d) ->
-        cmd = util.removeSlash(d[0])
-        cmd = cmd.charAt(0).toUpperCase() + cmd.slice 1 # Cap Case
-        d[0] = cmd
+        cmdName = util.removeSlash d[0]
+        cmdName = cmdName.charAt(0).toUpperCase() + cmdName.slice 1 # Cap Case
+        d[0] = cmdName
         d[1] = +d[1]
         d[2] = +d[2]
         return
       current.forEach _transform
       prior.forEach _transform
 
-      cmdCheck = (d) -> d[0].indexOf("ed") is -1 and d[0] != "Searched"
-      # keep only cmds that isn't called on success; searched is deprecated
-      result = current.filter (d) -> cmdCheck(d)
+      cmdCheck = (d) -> d[0].indexOf("ed") is -1 # and d[0] != "Searched"
+      # keep only cmds that isn't called on success; 'Searched' is deprecated
+      result = current.filter (d) -> cmdCheck d
         .map (d) ->
           cmd: d[0]
           order: order[d[0]]
@@ -256,7 +253,7 @@ queries.geo =
       current = data[0].rows
       geoPromises = []
 
-      # remove (not set) country
+      # remove (not set) country & country w/ just 1 user
       current = current.filter (country) ->
         country[0] != "(not set)" and +country[1] > 1
 
