@@ -43,6 +43,8 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
+    # TODO: switch out font-awesome woff path w/ CDN path
+    # .pipe replace "../bower_components/font-awesome/fonts", "//cdn.jsdelivr.net/fontawesome/4.1.0/fonts"
     .pipe less paths: './public/b-*/b-*.less' # @import path
     .pipe minifyCSS cache: true, keepSpecialComments: 0 # remove all
     .pipe gulp.dest destPath
@@ -95,8 +97,14 @@ gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'}
 gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
   gulp.src ['./public/b-*/b-*.less', './public/css/b-app.less']
     .pipe watch {emit: 'one', name: 'css'}, ['css']
-  gulp.src ['./public/b-*/b-*.coffee', './public/js/b-app.coffee'] # './public/bower_components/**/*.js'
-    .pipe watch {emit: 'one', name: 'js'}, ['js']
+
+  jsSrc = [
+    './public/b-*/b-*.coffee', './public/js/b-app.coffee'
+    './public/b-*/b-*.html'
+    # './public/bower_components/**/*.js' # gulp watch can't see added files unless using glob option
+  ]
+  gulp.src(jsSrc).pipe watch {emit: 'one', name: 'js'}, ['js']
+
   gulp.src ['./public/index.html']
     .pipe watch {emit: 'one', name: 'html'}, ['html']
 #  .on 'error', gutil.log
