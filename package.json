@@ -19,18 +19,18 @@
   },
   "homepage": "https://github.com/rayshan/stats.bower.io",
   "dependencies": {
-    "bower-registry-client": "0.2.0",
+    "express": "4.3.1",
+    "bower-registry-client": "0.2.1",
     "coffee-script": "1.7.1",
     "compression": "1.0.2",
-    "express": "4.2",
     "googleapis": "0.7.0",
     "later": "1.1.6",
     "lodash-node": "2.4.1",
     "moment": "2.6.0",
-    "newrelic": "1.5.5",
+    "newrelic": "1.6.0",
     "octokit": "0.10.1",
-    "redis": "0.10.1",
-    "request": "2.34.0",
+    "redis": "0.10.3",
+    "request": "2.36.0",
     "rsvp": "3.0.6"
   },
   "devDependencies": {
@@ -51,6 +51,6 @@
     "gulp-util": "2.2.14",
     "gulp-watch": "0.6.5",
     "stream-combiner": "0.2.0",
-    "streamqueue": "0.0.7"
+    "streamqueue": "0.1.0"
   }
 }
