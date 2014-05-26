@@ -110,6 +110,6 @@ gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
   gulp.src ['./public/index.html']
     .pipe watch {emit: 'one', name: 'html'}, ['html']
 
-gulp.task 'default', ['dev']
-
 gulp.task 'prod', ['css', 'js', 'html']
+
+gulp.task 'default', ['dev']
