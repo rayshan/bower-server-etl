@@ -97,11 +97,11 @@ staticAssetPath = p.join __dirname, '../public', if process.env.NODE_ENV is 'pro
 # all env
 app.use compress() # gzip static content
 app.use dataApi
-app.use express.static staticAssetPath, {maxAge: 2592000}
-# serve static assets; 30 days
+app.use express.static staticAssetPath, {maxAge: 2592000000}
+# serve static assets; 30 days in ms
 
 module.exports =
   start: ->
     port = process.env.APP_PORT
-    app.listen port, ->
-      console.info "[INFO] listening on port #{ port }."; return
+    app.listen port, -> console.info "[INFO] listening on port #{ port }."; return
+    return
