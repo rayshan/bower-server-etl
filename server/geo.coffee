@@ -1,7 +1,7 @@
 # Vendor
 _find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
-request = require 'request'
-rsvp = require "rsvp"
+Promise = require 'bluebird'
+request = Promise.promisify require 'request'
 
 # ==========
 
@@ -1307,29 +1307,22 @@ getCode = (name) ->
 
 # async get country population from World Bank API given ISO 3166-1 alpha-3 code
 getPop = (code) ->
-  new rsvp.Promise (resolve, reject) ->
-    if code is "N/A" then resolve 0 else
-      wbIndicator = "SP.POP.TOTL"
-      wbYr = 2012
-      wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
-      # e.g. http://api.worldbank.org/countries/usa/indicators/SP.POP.TOTL?format=json&date=2012
+#  if code is "N/A" then resolve 0 else
+  wbIndicator = "SP.POP.TOTL"
+  wbYr = 2012
+  wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
+  # e.g. http://api.worldbank.org/countries/usa/indicators/SP.POP.TOTL?format=json&date=2012
 
-      request wbEndpoint, (err, res, body) ->
-        if err
-          err = "[ERROR] world bank api error; err = #{ err }."
-          console.error err
-          reject err
+  request wbEndpoint
+    .spread (res, body) ->
+      try JSON.parse(body)[1][0].value
+      catch err
+        if popByCode.hasOwnProperty code
+          popByCode[code]
         else
-          try
-            resolve JSON.parse(body)[1][0].value
-          catch err
-            if popByCode.hasOwnProperty code
-              resolve popByCode[code]
-            else
-              err = new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
-              console.error err
-              resolve 0
-        return
+          throw new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
+          0
+    .catch (err) -> console.error err; return
 
 module.exports =
   getCode: getCode

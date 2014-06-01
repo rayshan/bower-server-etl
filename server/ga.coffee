@@ -1,6 +1,6 @@
 # Vendor
-gapi = require "googleapis"
-rsvp = require "rsvp"
+Promise = require 'bluebird'
+gapi = Promise.promisifyAll require "googleapis"
 _find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
 gh = require './github'
 
@@ -26,22 +26,22 @@ authClient = new gapi.auth.JWT(
 )
 
 # auth on bootstrap
-authPromise = new rsvp.Promise (resolve, reject) ->
+authPromise = new Promise (resolve, reject) ->
+  console.log "[INFO] OAuthing w/ GA..."
   # console.log "console.log config.ga.privateKeyPath = " + config.ga.privateKeyPath
   # returns expires_in: 1395623939 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
   if !config.ga.privateKeyPath?
     error = new Error "[ERROR] process.env.APP_GA_KEY_PATH mismatch or #{ config.ga.privateKeyPath }"
-    console.error error
     reject error
   else
     authClient.authorize (err, token) ->
-      console.log "[INFO] OAuthing w/ GA..."
       if err
         error = new Error "[ERROR] OAuth, err = #{ err }"
         console.error error
         reject error
       else
-        resolve token; console.info "[SUCCESS] server OAuthed w/ GA."
+        console.info "[SUCCESS] server OAuthed w/ GA."
+        resolve token
       return
   return
 
@@ -51,7 +51,7 @@ fetch = (key) ->
     promises = []
 
     query.queryObjs.forEach (queryObj) ->
-      promise = new rsvp.Promise (resolve, reject) ->
+      promise = new Promise (resolve, reject) ->
         gapi.discover('analytics', 'v3').execute (err, client) ->
           if err
             error = new Error "[ERROR] error with gapi.discover.execute, err = #{ err }"
@@ -70,7 +70,7 @@ fetch = (key) ->
       promises.push promise
       return
 
-    rsvp.all(promises).then query.transform
+    Promise.all(promises).then(query.transform).catch (err) -> console.error err; return
 
 ###
 # define queries
@@ -88,7 +88,7 @@ queries.users =
     }
   ]
   transform: (data) ->
-    new rsvp.Promise (resolve, reject) ->
+    new Promise (resolve, reject) ->
       result = data[0].rows
       result.forEach (d) ->
         d[0] = if d[0].indexOf('New') != -1 then 'N' else 'E'
@@ -124,7 +124,7 @@ queries.cmds =
       Info: 'info'
       Search: 'search'
 
-    new rsvp.Promise (resolve, reject) ->
+    new Promise (resolve, reject) ->
       current = data[0].rows.filter (cmd) -> cmd[0] != "(not set)"
       prior = data[1].rows
 
@@ -203,7 +203,7 @@ queries.pkgs =
     }
   ]
   transform: (data) ->
-    new rsvp.Promise (resolve, reject) ->
+    new Promise (resolve, reject) ->
       current = data[0].rows[..19] # TODO: from / to as arg
       prior = data[1].rows[..29]
 
@@ -234,7 +234,7 @@ queries.pkgs =
         ghPromises.push gh.appendData pkg
         return
 
-      rsvp.all(ghPromises).then -> resolve result; return
+      Promise.all(ghPromises).then -> resolve result; return
       return
 
 queries.geo =
@@ -249,7 +249,7 @@ queries.geo =
     }
   ]
   transform: (data) ->
-    new rsvp.Promise (resolve) ->
+    new Promise (resolve) ->
       current = data[0].rows
       geoPromises = []
 
@@ -270,7 +270,7 @@ queries.geo =
         geoPromises.push geoPromise
         return
 
-      rsvp.all(geoPromises).then ->
+      Promise.all(geoPromises).then ->
         result.sort (a, b) -> b.density - a.density
         resolve result
       return

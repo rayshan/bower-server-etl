@@ -1,14 +1,13 @@
 # Vendor
-redis = require 'redis'
-rsvp = require 'rsvp'
-request = require 'request'
+Promise = require 'bluebird'
+redis = require 'redis'; Promise.promisifyAll redis.RedisClient.prototype
+request = Promise.promisify require 'request'
 moment = require 'moment'
 later = require 'later'
 
 # Custom
 ga = require './ga'
 config = require "./config"
-
 
 # ==========
 
@@ -22,7 +21,7 @@ lastCachedTime =
 # cache data fetch responses via redis
 
 fetch = (key) ->
-  new rsvp.Promise (resolve, reject) ->
+  new Promise (resolve, reject) ->
     _fetchFromCache = (key) ->
       console.info "[INFO] fetching data [#{ key }] from cache."
       # fetch combined data source, 'all'
@@ -67,13 +66,11 @@ fetch = (key) ->
         .catch (err) -> console.error "[ERROR] ", err; return
       return
     _fetchAndCache.overview = ->
-      request {url: 'https://bower.herokuapp.com/packages', json: true}, (err, res, body) ->
-        if err
-          error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
-          console.error error
-          reject error
-        else _cache {totalPkgs: body.length}
-        return
+      request({url: 'https://bower.herokuapp.com/packages', json: true}).spread (res, body) ->
+        _cache {totalPkgs: body.length}; return
+      # error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
+
+    # ==========
 
     # fetch 'all' combined data sources
     if key is 'all'
@@ -100,25 +97,24 @@ fetch = (key) ->
 
 init = ->
   # for dev
-#  db.flushdb() if process.env.NODE_ENV is 'development'
+  db.flushdb() if process.env.NODE_ENV is 'development'
 
   fetchPromises = []
   ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
-  rsvp.all fetchPromises
-    .then ->
-      allCached = true
-      db.get "lastCachedTimeUnix", (err, res) ->
-        if err
-          error = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
-          console.error error
-        else
-          lastCachedTime.unix = res # unix
-          lastCachedTime.human = moment.unix(lastCachedTime.unix).format 'LLLL'
-          lastCachedTime.RFC2616 = moment.unix(lastCachedTime.unix).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
-          console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
-        return
-      return
+  getTime = (res) ->
+    allCached = true
+    if err then err = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
+    else
+      lastCachedTime.unix = res # unix
+      lastCachedTime.human = moment.unix(lastCachedTime.unix).format 'LLLL'
+      lastCachedTime.RFC2616 = moment.unix(lastCachedTime.unix).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
+      console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
+    return
+
+  Promise.all fetchPromises
+    .then -> db.getAsync("lastCachedTimeUnix")
+    .then getTime
     .catch (err) ->
       console.error err
       return

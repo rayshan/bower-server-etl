@@ -2,10 +2,10 @@
 
 Octokit = require 'octokit'
 moment = require 'moment'
-rsvp = require "rsvp"
+Promise = require 'bluebird'
 url = require 'url'
 RegistryClient = require 'bower-registry-client'
-registry = new RegistryClient
+registry = Promise.promisifyAll new RegistryClient
 
 # Custom
 
@@ -18,44 +18,40 @@ _gh = new Octokit.new {token: _token}
 # get github repo info from bower register
 # raw data @ http://bower.herokuapp.com/packages
 getRepoName = (pkgName) ->
-  new rsvp.Promise (resolve, reject) ->
-    registry.lookup pkgName, (err, entry) ->
-      if err
-        error = new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
-        console.error error
-        reject error
-      else
-        urlParsed = url.parse(entry.url).pathname.split '/'
-        ownerName = urlParsed[urlParsed.length - 2]
-        repoName = urlParsed[urlParsed.length - 1].split('.')[0]
-        resolve {
-          ownerName: ownerName
-          repoName: repoName
-        }
-      return
+  registry.lookupAsync(pkgName)
+    .then (entry) ->
+      # error = new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
+      urlParsed = url.parse(entry.url).pathname.split '/'
+      ownerName = urlParsed[urlParsed.length - 2]
+      repoName = urlParsed[urlParsed.length - 1].split('.')[0]
 
-getRepoData = (data) ->
-  _gh.getRepo data.ownerName, data.repoName
+      ownerName: ownerName
+      repoName: repoName
+
+getRepoData = (data) -> _gh.getRepo data.ownerName, data.repoName
 
 # pkg obj passed from GA module
 appendData = (pkg) ->
-  getRepoName(pkg.bName).then(getRepoData).then (repo) ->
-    repo.getInfo()
-      .then (data) ->
-        pkg.ghOwner = data.owner.login
-        pkg.ghOwnerAvatar = data.owner.avatar_url
-        pkg.ghUrl = data.html_url
-        pkg.ghDesc = data.description
-        pkg.ghStars = data.stargazers_count
-        pkg.ghIssues = data.open_issues_count
-        pkg.ghUpdated = data.pushed_at
-        pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
-        pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
-        return
-      .catch (err) ->
-        error = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.message }"
-        console.error error
-        return
+  append = (data) ->
+    pkg.ghOwner = data.owner.login
+    pkg.ghOwnerAvatar = data.owner.avatar_url
+    pkg.ghUrl = data.html_url
+    pkg.ghDesc = data.description
+    pkg.ghStars = data.stargazers_count
+    pkg.ghIssues = data.open_issues_count
+    pkg.ghUpdated = data.pushed_at
+    pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
+    pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
+    return
+
+  getRepoName pkg.bName
+    .then getRepoData
+    .then (repo) -> repo.getInfo()
+    .then append
+    .catch (err) ->
+      error = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.error.message }"
+      console.error error
+      return
 
 # log GH rate limit warning at certain intervals
 listener = (rateLimitRemaining, rateLimit, method, path, data, raw, isBase64) ->
