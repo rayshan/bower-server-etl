@@ -1,7 +1,7 @@
 # Vendor
 Promise = require 'bluebird'
-redis = require 'redis'; Promise.promisifyAll redis.RedisClient.prototype
-request = Promise.promisify require 'request'
+redis = Promise.promisifyAll require 'redis'
+request = Promise.promisifyAll require 'request'
 moment = require 'moment'
 later = require 'later'
 
@@ -61,12 +61,13 @@ fetch = (key) ->
 
     _fetchAndCache = {}
     _fetchAndCache.ga = ->
-      ga.authPromise.then ga.fetch key
+      ga.authPromise
+        .then ga.fetch key
         .then (data) -> _cache data; return
-        .catch (err) -> console.error "[ERROR] ", err; return
+        .catch (err) -> console.error err; return
       return
     _fetchAndCache.overview = ->
-      request({url: 'https://bower.herokuapp.com/packages', json: true}).spread (res, body) ->
+      request.getAsync({url: 'https://bower.herokuapp.com/packages', json: true}).spread (res, body) ->
         _cache {totalPkgs: body.length}; return
       # error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
 
@@ -97,6 +98,7 @@ fetch = (key) ->
 
 init = ->
   # for dev
+  # TODO: move to creating db client below
   db.flushdb() if process.env.NODE_ENV is 'development'
 
   fetchPromises = []
@@ -112,12 +114,11 @@ init = ->
       console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
     return
 
+  # TODO: use bluebird's .map(, {concurrency: 1}) or gapi's batch execution to meet GA's 10 QPS limit
   Promise.all fetchPromises
-    .then -> db.getAsync("lastCachedTimeUnix")
+    .then -> db.getAsync "lastCachedTimeUnix"
     .then getTime
-    .catch (err) ->
-      console.error err
-      return
+    .catch (err) -> console.error err; return
 
   return
 
@@ -132,7 +133,15 @@ timer = later.setInterval init, schedule # execute init on schedule
 
 # ==========
 
-db = redis.createClient config.db.socket # defaults to db 0
+# defaults to db 0
+if process.env.NODE_ENV is 'development'
+  db = redis.createClient config.db
+else
+  console.log config.db
+  # using Redis Labs Redis Cloud, req auth
+  db = redis.createClient config.db.port, config.db.hostname, no_ready_check: true
+  db.auth config.db.auth.split(":")[1]
+
 db.on "error", (err) -> console.error err; return
 
 # ==========

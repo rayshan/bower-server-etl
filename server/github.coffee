@@ -11,6 +11,12 @@ registry = Promise.promisifyAll new RegistryClient
 
 # ==========
 
+# TODO
+mapping =
+  'angular': ['angular', 'angular.js']
+  'bootstrap-sass': ['twbs', 'bootstrap']
+  'requirejs': ['jrburke', 'requirejs']
+
 _token = process.env.GITHUB_OAUTH_TOKEN_BOWER
 console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
 _gh = new Octokit.new {token: _token}
@@ -18,15 +24,22 @@ _gh = new Octokit.new {token: _token}
 # get github repo info from bower register
 # raw data @ http://bower.herokuapp.com/packages
 getRepoName = (pkgName) ->
-  registry.lookupAsync(pkgName)
-    .then (entry) ->
-      # error = new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
-      urlParsed = url.parse(entry.url).pathname.split '/'
-      ownerName = urlParsed[urlParsed.length - 2]
-      repoName = urlParsed[urlParsed.length - 1].split('.')[0]
+  if mapping.hasOwnProperty pkgName
+    new Promise (resolve) ->
+      resolve ownerName: mapping[pkgName][0], repoName: mapping[pkgName][1]
+      return
+  else
+    registry.lookupAsync pkgName
+      .then (entry) ->
+        urlParsed = url.parse(entry.url).pathname.split '/'
+        ownerName = urlParsed[urlParsed.length - 2]
+        repoName = urlParsed[urlParsed.length - 1].split('.')[0]
 
-      ownerName: ownerName
-      repoName: repoName
+        ownerName: ownerName
+        repoName: repoName
+      .catch (err) ->
+        throw new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
+        return
 
 getRepoData = (data) -> _gh.getRepo data.ownerName, data.repoName
 
@@ -49,8 +62,8 @@ appendData = (pkg) ->
     .then (repo) -> repo.getInfo()
     .then append
     .catch (err) ->
-      error = new Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.error.message }"
-      console.error error
+      console.error err
+      # throw Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.error.message }"
       return
 
 # log GH rate limit warning at certain intervals

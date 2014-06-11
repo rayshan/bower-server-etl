@@ -1,7 +1,7 @@
 # Vendor
 _find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
 Promise = require 'bluebird'
-request = Promise.promisify require 'request'
+request = Promise.promisifyAll require 'request'
 
 # ==========
 
@@ -1313,7 +1313,7 @@ getPop = (code) ->
   wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
   # e.g. http://api.worldbank.org/countries/usa/indicators/SP.POP.TOTL?format=json&date=2012
 
-  request wbEndpoint
+  request.getAsync wbEndpoint
     .spread (res, body) ->
       try JSON.parse(body)[1][0].value
       catch err
@@ -1322,7 +1322,6 @@ getPop = (code) ->
         else
           throw new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
           0
-    .catch (err) -> console.error err; return
 
 module.exports =
   getCode: getCode

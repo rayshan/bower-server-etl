@@ -1,6 +1,9 @@
 # vendor
-if process.env.NODE_ENV is 'production'
-  require 'newrelic'
+#if process.env.NODE_ENV is 'production'
+#  require 'newrelic'
+
+#if process.env.NODE_ENV isnt 'production'
+#  require 'longjohn'
 
 # custom
 server = require './server/server'
