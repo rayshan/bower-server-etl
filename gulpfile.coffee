@@ -16,7 +16,7 @@ htmlminOptions =
   removeComments: true
   removeCommentsFromCDATA: true
   collapseWhitespace: true
-#  conservativeCollapse: true # otherwise <i> & text squished
+  # conservativeCollapse: true # otherwise <i> & text squished
   collapseBooleanAttributes: true
   removeAttributeQuotes: true
   removeRedundantAttributes: true
@@ -62,7 +62,8 @@ gulp.task 'js', ->
   other = gulp.src otherSrc
 
   # min above
-  min = streamqueue(objectMode: true, ngTemplates, ngModules, other).pipe gp.uglify()
+  min = streamqueue(objectMode: true, ngTemplates, ngModules, other)
+    .pipe gp.uglify()
 
   # src already min
   otherMinSrc = [
@@ -73,8 +74,9 @@ gulp.task 'js', ->
   otherMin = gulp.src otherMinSrc
 
   # concat
-  streamqueue {objectMode: true}, otherMin, min # other 1st b/c has angular
-    .pipe(gp.concat('b-app.js')).pipe gulp.dest destPath
+  streamqueue objectMode: true, otherMin, min # other 1st b/c has angular
+    .pipe gp.concat 'b-app.js'
+    .pipe gulp.dest destPath
 
 gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'}
 
