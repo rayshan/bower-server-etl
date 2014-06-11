@@ -18,7 +18,6 @@ if [[ "$HOSTNAME" = "shan.io" ]]; then
 else
   source ./scripts/dev.sh
   export NODE_ENV=development
-  export APP_PORT=3000
   export APP_GA_KEY_PATH=~/=Projects=/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem
   redis-server ./scripts/redis.conf
   node-dev index.coffee

@@ -3,6 +3,7 @@ url = require 'url'
 # ==========
 
 config =
+  port: 3000
   apiBaseUri: '/api/1'
   ga:
     clientEmail: '1068634003933-b8cijec64sti0if00mnrbqfnrt7vaa7a@developer.gserviceaccount.com'
