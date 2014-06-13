@@ -108,19 +108,22 @@ queries.cmds =
     }
   ]
   transform: (data) ->
-    # set order for display
-    order = {}
-    ['Install', 'Uninstall', 'Register', 'Unregister', 'Info', 'Search'].forEach (cmd, i) -> order[cmd] = i; return
-
-    icon = # define font awesome icons
+    cmdIcons = # define font awesome icons
       Install: 'download'
+      Installed: null
       Uninstall: 'trash-o'
+      Uninstalled: null
       Register: 'pencil'
+      Registered: null
       Unregister: 'eraser'
       Info: 'info'
       Search: 'search'
+    cmds = Object.keys cmdIcons
+    # set order for display
+    order = {}
+    cmds.forEach (cmd, i) -> order[cmd] = i; return
 
-    current = data[0].rows.filter (cmd) -> cmd[0] != "(not set)"
+    current = data[0].rows
     prior = data[1].rows
 
     _transform = (d) ->
@@ -133,13 +136,16 @@ queries.cmds =
     current.forEach _transform
     prior.forEach _transform
 
+    # remove garbage data from GA e.g. (not set), FakeXMLHttpRequest, Pretender, Route-recognizer...
+    current = current.filter (cmd) -> cmds.indexOf(cmd[0]) isnt -1
+
     cmdCheck = (d) -> d[0].indexOf("ed") is -1 # and d[0] != "Searched"
     # keep only cmds that isn't called on success; 'Searched' is deprecated
     result = current.filter (d) -> cmdCheck d
       .map (d) ->
         cmd: d[0]
         order: order[d[0]]
-        icon: icon[d[0]]
+        icon: cmdIcons[d[0]]
         metrics: [
           {metric: 'users', order: 1, current: d[1]} # ga:users
           {metric: 'uses', order: 2, current: d[2]} # ga:pageviews
