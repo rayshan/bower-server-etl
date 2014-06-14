@@ -1,16 +1,25 @@
-stats.bower.io
+[stats.bower.io](http://stats.bower.io)
 ===
 
 Insights into Bower, the best package manager for the web.
 
-For what's happening, see:
+v1 planning here:
 https://github.com/bower/bower/issues/1164#issuecomment-38207751
 
-![Screenshot](/public/dist/img/stats-bower-io-screenshot.png)
+v2 & beyond planning done in this repo's issues.
 
-### Deployment Dependencies
-- Node.js & modules
+## Deployment
+
+**WIP**
+
+Current deployment target is Heroku and redislabs. Also tested on DigitalOcean VPS.
+
+- Node.js
 - Redis
-- Google OAuth 2.0 [service account](https://developers.google.com/accounts/docs/OAuth2ServiceAccount) private key
+- Google OAuth 2.0 [service account](https://developers.google.com/accounts/docs/OAuth2ServiceAccount) private key (contact repo owner)
+- Github API key (create your own)
+- ...
 
-To try it out, contact repo owner for the private key, `git clone`, tweak `GA_KEY_PATH` in `start.sh` then `npm start`
+`git clone`
+`npm test`
+`gulp dev`
