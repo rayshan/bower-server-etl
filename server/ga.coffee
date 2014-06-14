@@ -228,7 +228,8 @@ queries.pkgs =
         pkg.bUsers.prior = priorPkg[1]
         pkg.bInstalls.prior = priorPkg[2]
       else
-        throw new Error "[ERROR] no prior period data for package #{ pkg.bName }"
+        error = new Error "[ERROR] no prior period data for package #{ pkg.bName }"
+        console.error error
       ghPromises.push gh.appendData pkg
       return
 
