@@ -12,7 +12,9 @@ v2 & beyond planning done in this repo's issues.
 
 **WIP**
 
-Current deployment target is Heroku and redislabs. Also tested on DigitalOcean VPS.
+Current deployment target is Heroku. Data is all cached in Redis via Redis Labs. Also tested on DigitalOcean VPS.
+
+Server time zone: `America/Los_Angeles`
 
 - Node.js
 - Redis
