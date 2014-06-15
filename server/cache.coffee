@@ -49,11 +49,9 @@ fetch = (key) ->
 
     _cache = (data) ->
       db.set key, JSON.stringify data
-      # delete key at start of next day in case there's a midnight refresh
+      # delete key at start of next day
       db.expireat key, moment().add('days', 1).startOf('day').unix()
-
       db.set "lastCachedTimeUnix", JSON.stringify moment().unix()
-      db.expireat key, moment().add('days', 1).startOf('day').unix()
 
       console.info "[SUCCESS] fetched / cached [#{ key }] data."
       resolve data
@@ -61,7 +59,7 @@ fetch = (key) ->
 
     _fetchAndCache = {}
     _fetchAndCache.ga = ->
-      ga.authPromise
+      ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
         .then ga.fetch key
         .then (data) -> _cache data; return
         .catch (err) -> console.error err; return
@@ -98,35 +96,38 @@ fetch = (key) ->
 
 init = ->
   # for dev
-  # TODO: move to creating db client below
   db.flushdb() if process.env.NODE_ENV is 'development'
 
-  fetchPromises = []
-  ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
+  # need delay to ensure google server knows about auth before executing queries
+  ga.authPromise().delay(2000).then ->
+    fetchPromises = []
+    ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
-  getTime = (res) ->
-    allCached = true
-    if err then err = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
-    else
+    setLastCachedTime = (res) ->
+      # if err then err = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
       lastCachedTime.unix = res # unix
       lastCachedTime.human = moment.unix(lastCachedTime.unix).format 'LLLL'
       lastCachedTime.RFC2616 = moment.unix(lastCachedTime.unix).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
+      allCached = true
       console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
-    return
+      return
 
-  # TODO: use bluebird's .map(, {concurrency: 1}) or gapi's batch execution to meet GA's 10 QPS limit
-  Promise.all fetchPromises
-    .then -> db.getAsync "lastCachedTimeUnix"
-    .then getTime
-    .catch (err) -> console.error err; return
+    # TODO: use bluebird's .map(, {concurrency: 1}) or gapi's batch execution to meet GA's 10 QPS limit
+    Promise.all fetchPromises
+      .then -> db.getAsync "lastCachedTimeUnix"
+      .then setLastCachedTime
+      .catch (err) -> console.error err; return
+
+    return
 
   return
 
 # ==========
 # cron job to get data ready so 1st user of every day don't have to wait long
 
-# set later to use local time (default = UTC)
+# set later to use local time (default = UTC, later doesn't support specific tz)
 later.date.localTime()
+# catch/fetch a little later than midnight in case there's a midnight refresh
 schedule = later.parse.recur().on('00:01:00').time() # 0:05; 24-hour format
 #console.info later.schedule(schedule).next 5 # print next 5 occurrences of later schedule
 timer = later.setInterval init, schedule # execute init on schedule
@@ -137,7 +138,6 @@ timer = later.setInterval init, schedule # execute init on schedule
 if process.env.NODE_ENV is 'development'
   db = redis.createClient config.db
 else
-  console.log config.db
   # using Redis Labs Redis Cloud, req auth
   db = redis.createClient config.db.port, config.db.hostname, no_ready_check: true
   db.auth config.db.auth.split(":")[1]

@@ -1,22 +1,22 @@
 [
   {
     "cmd": "Info",
-    "order": 4,
+    "order": 7,
     "icon": "info",
     "metrics": [
       {
         "metric": "users",
         "order": 1,
         "current": 645,
-        "prior": 633,
-        "delta": 0.018957345971563955
+        "prior": 532,
+        "delta": 0.21240601503759393
       },
       {
         "metric": "uses",
         "order": 2,
-        "current": 1665,
-        "prior": 1625,
-        "delta": 0.024615384615384706
+        "current": 1565,
+        "prior": 1423,
+        "delta": 0.09978917779339413
       }
     ]
   },
@@ -28,128 +28,100 @@
       {
         "metric": "users",
         "order": 1,
-        "current": 10789,
-        "prior": 10772,
-        "delta": 0.0015781656145561485
+        "current": 11103,
+        "prior": 10068,
+        "delta": 0.10280095351609053
       },
       {
         "metric": "uses",
         "order": 2,
-        "current": 44879,
-        "prior": 44814,
-        "delta": 0.001450439594769426
+        "current": 45538,
+        "prior": 41323,
+        "delta": 0.10200130677830743
       },
       {
         "metric": "pkgs",
         "order": 3,
-        "current": 271467,
-        "prior": 284425,
-        "delta": -0.04555858310626704
+        "current": 293961,
+        "prior": 258913,
+        "delta": 0.13536593373063543
       }
     ]
   },
   {
     "cmd": "Register",
-    "order": 2,
+    "order": 4,
     "icon": "pencil",
     "metrics": [
       {
         "metric": "users",
         "order": 1,
-        "current": 160,
-        "prior": 150,
-        "delta": 0.06666666666666665
+        "current": 150,
+        "prior": 126,
+        "delta": 0.19047619047619047
       },
       {
         "metric": "uses",
         "order": 2,
-        "current": 304,
-        "prior": 341,
-        "delta": -0.10850439882697949
+        "current": 319,
+        "prior": 234,
+        "delta": 0.3632478632478633
       },
       {
         "metric": "pkgs",
         "order": 3,
-        "current": 187,
-        "prior": 153,
-        "delta": 0.22222222222222232
+        "current": 177,
+        "prior": 125,
+        "delta": 0.4159999999999999
       }
     ]
   },
   {
     "cmd": "Search",
-    "order": 5,
+    "order": 8,
     "icon": "search",
     "metrics": [
       {
         "metric": "users",
         "order": 1,
-        "current": 3132,
-        "prior": 3111,
-        "delta": 0.0067502410800386325
+        "current": 3189,
+        "prior": 2923,
+        "delta": 0.09100239479986305
       },
       {
         "metric": "uses",
         "order": 2,
-        "current": 8494,
-        "prior": 8305,
-        "delta": 0.02275737507525588
+        "current": 8356,
+        "prior": 7632,
+        "delta": 0.09486373165618445
       }
     ]
   },
   {
     "cmd": "Uninstall",
-    "order": 1,
+    "order": 2,
     "icon": "trash-o",
     "metrics": [
       {
         "metric": "users",
         "order": 1,
-        "current": 1480,
-        "prior": 1536,
-        "delta": -0.03645833333333337
+        "current": 1454,
+        "prior": 1393,
+        "delta": 0.043790380473797574
       },
       {
         "metric": "uses",
         "order": 2,
-        "current": 3784,
-        "prior": 4068,
-        "delta": -0.0698131760078663
+        "current": 3767,
+        "prior": 3599,
+        "delta": 0.04667963323145319
       },
       {
         "metric": "pkgs",
         "order": 3,
-        "current": 3914,
-        "prior": 4102,
-        "delta": -0.04583130180399808
-      }
-    ]
-  },
-  {
-    "cmd": "Unregister",
-    "order": 3,
-    "icon": "eraser",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 1,
-        "prior": 0,
-        "delta": null
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 3,
-        "prior": 0,
-        "delta": null
-      },
-      {
-        "metric": "pkgs",
-        "order": 3,
-        "current": 0,
-        "prior": 0,
-        "delta": null
+        "current": 4192,
+        "prior": 3761,
+        "delta": 0.11459718160063814
       }
     ]
   }

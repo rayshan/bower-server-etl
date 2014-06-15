@@ -32,13 +32,10 @@ getRepoName = (pkgName) ->
     registry.lookupAsync pkgName
       .then (entry) ->
         urlParsed = url.parse(entry.url).pathname.split '/'
-        ownerName = urlParsed[urlParsed.length - 2]
-        repoName = urlParsed[urlParsed.length - 1].split('.')[0]
-
-        ownerName: ownerName
-        repoName: repoName
+        ownerName: urlParsed[1]
+        repoName: urlParsed[2].replace '.git', ''
       .catch (err) ->
-        throw new Error "[ERROR] registry entry not found given pkgName #{pkgName}, err = #{ err }"
+        throw new Error "[ERROR] registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
         return
 
 getRepoData = (data) -> _gh.getRepo data.ownerName, data.repoName
@@ -62,8 +59,8 @@ appendData = (pkg) ->
     .then (repo) -> repo.getInfo()
     .then append
     .catch (err) ->
-      console.error err
-      # throw Error "[ERROR] github data not found for bower pkg #{ pkg.bName } or api error, msg = #{ err.error.message }"
+      console.log err
+#      throw Error "[ERROR] can't find bower pkg #{ pkg.bName } on github or api error, msg = #{ err.error.message }"
       return
 
 # log GH rate limit warning at certain intervals
