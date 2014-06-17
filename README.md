@@ -25,3 +25,7 @@ Server time zone: `America/Los_Angeles`
 `git clone`
 `npm test`
 `gulp dev`
+
+## Contribution
+
+Due to package owners using Bower-specific GitHub repos, e.g. https://github.com/angular/bower-angular, GitHub stats sometimes look funny. Please submit a PR for `githubMapping.coffee` if you discover one.
