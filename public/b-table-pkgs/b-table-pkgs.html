@@ -19,7 +19,8 @@
   </thead>
 
   <tbody>
-  <tr ng-repeat="pkg in pkgs" ng-hide="pkg.bName.indexOf('angular-') !== -1 && hideAngular">
+  <tr ng-repeat="pkg in pkgs"
+      ng-hide="pkg.bName !== 'angular' && pkg.ghOwner === 'angular' && hideAngular">
     <td>
       {{ pkg.bRank.current }}
       <br/>
@@ -38,7 +39,7 @@
         </small>
       </span>
       <i ng-if="$index < 3" class="fa fa-trophy"></i>
-      <a href="{{ pkg.ghUrl }}">{{ pkg.bName }}</a>
+      <a ng-href="{{ pkg.ghUrl }}">{{ pkg.bName }}</a>
       <br/>
       <small>{{ pkg.ghDesc }}</small>
     </td>
@@ -58,7 +59,7 @@
     </td>
 
     <td>
-      <a href="{{ pkg.ghUrl }}">
+      <a ng-href="{{ pkg.ghUrl }}">
         <img ng-src="{{ pkg.ghOwnerAvatar }}" alt="" class="img-rounded"/>
         {{ pkg.ghOwner }}
       </a>
