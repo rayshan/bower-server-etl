@@ -3,8 +3,8 @@ Promise = require 'bluebird'
 gapi = require "googleapis"
 moment = require 'moment'
 RateLimiter = require('limiter').RateLimiter
-gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 'second'
-  # 1 GA query / sec; don't hammer GA server w/ too many concurrent reqs
+gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 5000
+# 1 GA query / 5 sec; don't hammer GA server w/ too many concurrent reqs
 
 # Custom
 config = require "./config"
@@ -50,21 +50,18 @@ authPromise = -> new Promise (resolve, reject) ->
 fetch = (key) ->
   (xRateLimitRemaining) ->
     query = gaQueries[key]
-    queryPromises = []
 
-    query.queryObjs.forEach (queryObj) ->
-      promise = new Promise (resolve, reject) ->
-        gaClient.obj.analytics.data.ga.get(queryObj).execute (err, result) ->
-          if err
-            reject new Error "[ERROR] client.analytics.data.ga.get, err = #{ err.message }"
-          else resolve result
-          return
+    queryPromise = new Promise (resolve, reject) ->
+      console.info "[INFO] fetching [#{ key }] from GA."
+      gaClient.obj.analytics.data.ga.get(query.queryObj).execute (err, result) ->
+        if err
+          reject new Error "[ERROR] client.analytics.data.ga.get, err = #{ err.message }"
+        else resolve result
         return
-      queryPromises.push promise
       return
 
-    Promise.all(queryPromises).then query.transform
-    # err catched in cache.coffee .catch (err) -> console.error err; return
+    queryPromise.then query.transform
+    # err catched in cache.coffee
 
 # ==========
 

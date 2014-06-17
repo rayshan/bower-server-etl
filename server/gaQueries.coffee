@@ -1,6 +1,6 @@
 # vendor
 Promise = require 'bluebird'
-_find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
+_ = require 'lodash-node'
 
 # custom
 config = require "./config"
@@ -23,33 +23,31 @@ util =
 queries = {}
 
 queries.users =
-  queryObjs: [
-    {
-      'ids': 'ga:' + config.ga.profile
-      'start-date': '2014-03-15'
-      'end-date': 'yesterday'
-      'metrics': 'ga:users'
-      'dimensions': 'ga:userType,ga:date'
-    }
-  ]
+
+  queryObj:
+    'ids': 'ga:' + config.ga.profile
+    'start-date': '2014-03-15'
+    'end-date': 'yesterday'
+    'metrics': 'ga:users'
+    'dimensions': 'ga:userType,ga:date'
+
   transform: (data) ->
-    result = data[0].rows
+    result = data.rows
     result.forEach (d) ->
-      d[0] = if d[0].indexOf('New') != -1 then 'N' else 'E'
+      d[0] = if d[0].indexOf('New') isnt -1 then 'N' else 'E'
       d[2] = +d[2]
       return
     result
 
 queries.cmds =
-  queryObjs: [
-    {
-      'ids': 'ga:' + config.ga.profile
-      'start-date': '13daysAgo'
-      'end-date': 'yesterday'
-      'metrics': 'ga:users,ga:pageviews'
-      'dimensions': 'ga:pagePathLevel1,ga:nthWeek'
-    }
-  ]
+
+  queryObj:
+    'ids': 'ga:' + config.ga.profile
+    'start-date': '14daysAgo'
+    'end-date': 'yesterday'
+    'metrics': 'ga:users,ga:pageviews'
+    'dimensions': 'ga:pagePathLevel1,ga:nthWeek'
+
   transform: (data) ->
     cmdIcons = # define font awesome icons
       Install: 'download'
@@ -78,8 +76,8 @@ queries.cmds =
         {metric: 'uses', order: 2, current: +d[3]} # ga:pageviews
       ]
 
-    current = data[0].rows.filter((d) -> +d[1] is 1).map _transform # current week
-    prior = data[0].rows.filter((d) -> +d[1] is 0).map _transform # previous week
+    current = data.rows.filter((d) -> +d[1] is 1).map _transform # current week
+    prior = data.rows.filter((d) -> +d[1] is 0).map _transform # previous week
 
     # remove garbage data from GA e.g. (not set), FakeXMLHttpRequest, Pretender, Route-recognizer...
     garbageFilter = (cmdName) -> cmds.indexOf(cmdName) isnt -1
@@ -92,7 +90,7 @@ queries.cmds =
       ed = if ed then 'ed' else ''
       i = if valueType is 'users' then 0 else 1 # ga:users : ga:pageviews
       try # catch edge case in case new cmd tracked and no prior history
-        _find(period, (d) -> d.cmd is cmdName + ed).metrics[i].current
+        _.find(period, (d) -> d.cmd is cmdName + ed).metrics[i].current
       catch err
         console.error err; 0
 
@@ -116,80 +114,63 @@ queries.cmds =
 queries.pkgs =
   # 'package' is a reserved word in JS
   # only want to pull pkgs w/ >= 5 installs, which is around the 3500th pkg sorted by installs
-  queryObjs: [
-    { # current week
-      'ids': 'ga:' + config.ga.profile
-      'start-date': '7daysAgo'
-      'end-date': 'yesterday'
-      'metrics': 'ga:users,ga:pageviews'
-      'dimensions': 'ga:pagePathLevel2'
-      'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring, don't use url encoding '%3D@'
-      'sort': '-ga:pageviews'
-      'max-results': 3500
-    }
-    { # prior week
-      'ids': 'ga:' + config.ga.profile
-      'start-date': '14daysAgo'
-      'end-date': '8daysAgo'
-      'metrics': 'ga:users,ga:pageviews'
-      'dimensions': 'ga:pagePathLevel2'
-      'filters': 'ga:pagePathLevel1=@installed'
-      'sort': '-ga:pageviews'
-      'max-results': 3500
-    }
-  ]
+
+  queryObj:
+    'ids': 'ga:' + config.ga.profile
+    'start-date': '14daysAgo'
+    'end-date': 'yesterday'
+    'metrics': 'ga:users,ga:pageviews'
+    'dimensions': 'ga:pagePathLevel2,ga:nthWeek'
+    'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
+    'sort': '-ga:pageviews'
+    'max-results': 100 # desired result quantity * 2 due to ga:nthWeek dim doubling # of rows returned
+
   transform: (data) ->
-    console.log data[0].rows[1]
-    current = data[0].rows[..29] # TODO: ranking range as arg
-    prior = data[1].rows[..99] # need more rows in case ranking diff b/t current / prior is too large
+#    current = data[0].rows[..29] # TODO: ranking range as arg
+#    prior = data[1].rows[..99] # need more rows in case ranking diff b/t current / prior is too large
 
     _transform = (d, i) ->
-      d[0] = util.removeSlash d[0]
-      d[1] = +d[1]; d[2] = +d[2]
-      d.push i + 1 # rank
-      return
-    current.forEach _transform
-    prior.forEach _transform
+      bName: util.removeSlash d[0]
+      bRank: current: i + 1
+      bUsers: current: +d[2] # ga:users
+      bInstalls: current: +d[3] # ga:pageviews
 
-    result = current.map (d) ->
-      bName: d[0]
-      bRank: current: d[3]
-      bUsers: current: d[1] # ga:users
-      bInstalls: current: d[2] # ga:pageviews
+    priorPreTransform = data.rows.filter (d) -> +d[1] is 0 # previous week = ga:nthWeek is 0000
+    priorList = _.pluck priorPreTransform, 0 # get arr of pkg names w/ prior period data
+    prior = priorPreTransform.map _transform
+    result = data.rows
+      .filter (d) -> +d[1] is 1 and priorList.indexOf(d[0]) isnt -1
+      # current week = ga:nthWeek is 0001; only incl. pkg that has prior period data
+      .map _transform
 
     ghPromises = []
     result.forEach (pkg) ->
-      priorPkg = _find prior, (d) -> d[0] is pkg.bName
-      if priorPkg?
-        pkg.bRank.prior = priorPkg[3]
-        pkg.bUsers.prior = priorPkg[1]
-        pkg.bInstalls.prior = priorPkg[2]
-      else
-        error = new Error "[ERROR] no prior period data for pkg #{ pkg.bName }"
-        console.error error
+      priorPkg = _.find prior, (d) -> d.bName is pkg.bName # should always find it due to filter by priorList above
+      pkg.bRank.prior = priorPkg.bRank.current
+      pkg.bUsers.prior = priorPkg.bUsers.current
+      pkg.bInstalls.prior = priorPkg.bInstalls.current
       ghPromises.push gh.appendData pkg
       return
 
     Promise.all(ghPromises).then -> result
 
 queries.geo =
-  queryObjs: [
-    { # monthly active users
-      'ids': 'ga:' + config.ga.profile
-      'start-date': '30daysAgo'
-      'end-date': 'yesterday'
-      'metrics': 'ga:users'
-      'dimensions': 'ga:country'
-      'sort': '-ga:users'
-    }
-  ]
+
+  queryObj:
+    # monthly active users
+    'ids': 'ga:' + config.ga.profile
+    'start-date': '30daysAgo'
+    'end-date': 'yesterday'
+    'metrics': 'ga:users'
+    'dimensions': 'ga:country'
+    'sort': '-ga:users'
+
   transform: (data) ->
-    current = data[0].rows
     geoPromises = []
 
     # remove (not set) country & country w/ just 1 user
-    current = current.filter (country) ->
-      country[0] != "(not set)" and +country[1] > 1
+    current = data.rows.filter (country) ->
+      country[0] isnt "(not set)" and +country[1] > 1
 
     result = current.map (d) ->
       name: d[0]
@@ -198,7 +179,7 @@ queries.geo =
 
     result.forEach (country) ->
       geoPromise = geo.getPop(country.isoCode).then (pop) ->
-        country.density = Math.ceil(country.users / pop * 1000000)
+        country.density = Math.ceil(country.users / pop * 1000000) # per 1mil
         return
       # get population from world bank api then calc bower user density per 1m pop
       geoPromises.push geoPromise

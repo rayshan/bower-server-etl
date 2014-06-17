@@ -8,14 +8,9 @@ RegistryClient = require 'bower-registry-client'
 registry = Promise.promisifyAll new RegistryClient
 
 # Custom
+mapping = require './githubMapping'
 
 # ==========
-
-# TODO
-mapping =
-  'angular': ['angular', 'angular.js']
-  'bootstrap-sass': ['twbs', 'bootstrap']
-  'requirejs': ['jrburke', 'requirejs']
 
 _token = process.env.GITHUB_OAUTH_TOKEN_BOWER
 console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
@@ -26,7 +21,7 @@ _gh = new Octokit.new {token: _token}
 getRepoName = (pkgName) ->
   if mapping.hasOwnProperty pkgName
     new Promise (resolve) ->
-      resolve ownerName: mapping[pkgName][0], repoName: mapping[pkgName][1]
+      resolve ownerName: mapping[pkgName].split('/')[0], repoName: mapping[pkgName].split('/')[1]
       return
   else
     registry.lookupAsync pkgName
@@ -35,7 +30,7 @@ getRepoName = (pkgName) ->
         ownerName: urlParsed[1]
         repoName: urlParsed[2].replace '.git', ''
       .catch (err) ->
-        throw new Error "[ERROR] registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
+        console.error new Error "[ERROR] registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
         return
 
 getRepoData = (data) -> _gh.getRepo data.ownerName, data.repoName
@@ -59,8 +54,7 @@ appendData = (pkg) ->
     .then (repo) -> repo.getInfo()
     .then append
     .catch (err) ->
-      console.log err
-#      throw Error "[ERROR] can't find bower pkg #{ pkg.bName } on github or api error, msg = #{ err.error.message }"
+      console.error new Error "[ERROR] fetching Github data for #{ pkg.bName } via API, msg = #{ err.error.message }"
       return
 
 # log GH rate limit warning at certain intervals

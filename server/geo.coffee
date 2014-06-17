@@ -1,5 +1,5 @@
 # Vendor
-_find = require 'lodash-node/modern/collections/find' # to be replaced w/ array.prototype.find w/ node --harmony
+_ = require 'lodash-node' # to be replaced w/ array.prototype.find w/ node --harmony
 Promise = require 'bluebird'
 request = Promise.promisifyAll require 'request'
 
@@ -1299,7 +1299,7 @@ popByCode =
 
 # get ISO 3166-1 alpha-3 code given full country name
 getCode = (name) ->
-  try _find(codeMapping, (d) -> d.name is name)["alpha-3"]
+  try _.find(codeMapping, (d) -> d.name is name)["alpha-3"]
   catch error
     err = new Error "[ERROR] '#{ name }' not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
     console.error err

@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/rayshan/stats.bower.io",
   "dependencies": {
-    "bluebird": "2.1.1",
+    "bluebird": "2.1.2",
     "bower-registry-client": "0.2.1",
     "coffee-script": "1.7.1",
     "compression": "1.0.7",
