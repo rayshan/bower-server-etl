@@ -64,8 +64,8 @@
       });
       colorsUsers = d3.scale.log().domain([2, maxUsers]).range(["#00acee", "#EF5734"]);
       colorsDensity = d3map.scale.log().domain([minDensity, maxDensity]).range(["#00acee", "#EF5734"]);
-      radiusUsers = d3map.scale.sqrt().domain([2, maxUsers]).range([2, 65]);
-      radiusDensity = d3map.scale.sqrt().domain([minDensity, maxDensity]).range([2, 65]);
+      radiusUsers = d3map.scale.sqrt().domain([2, maxUsers]).range([2, 55]);
+      radiusDensity = d3map.scale.sqrt().domain([minDensity, maxDensity]).range([2, 55]);
       topo = topojson.feature(topojsonData, topojsonData.objects.countries);
       countryDataTopo = topo.features.filter(function(d) {
         return countryData.some(function(country) {

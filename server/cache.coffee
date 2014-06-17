@@ -84,7 +84,7 @@ fetch = (key) ->
         else if res is 1    # already cached
           _fetchFromCache key
         else                # not cached
-          console.info "[INFO] not cached / fetching [#{ key }] from GA."
+          console.info "[INFO] [#{ key }] not cached."
           if key is 'overview'
             _fetchAndCache.overview()
           else
@@ -95,11 +95,11 @@ fetch = (key) ->
 # ==========
 
 init = ->
-  # for dev
-  db.flushdb() if process.env.NODE_ENV is 'development'
+  # always flush db even on prod due to infrequent deploys & data schema still in flux
+  db.flushdb() # if process.env.NODE_ENV is 'development'
 
   # need delay to ensure google server knows about auth before executing queries
-  ga.authPromise().delay(2000).then ->
+  ga.authPromise().delay(5000).then ->
     fetchPromises = []
     ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
