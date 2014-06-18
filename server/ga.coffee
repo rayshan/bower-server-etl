@@ -31,7 +31,7 @@ authPromise = -> new Promise (resolve, reject) ->
   else
     console.info "[INFO] OAuthing w/ GA..."
     authClient.authorize (err, token) ->
-      # returns expires_in: 1395623939 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
+      # returns expires_in: 1403069828 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
       if err
         reject new Error "[ERROR] OAuth error; err = #{ err }"
       else

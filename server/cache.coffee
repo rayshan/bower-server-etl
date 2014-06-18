@@ -20,77 +20,45 @@ lastCachedTime =
 # ==========
 # cache data fetch responses via redis
 
+_fetchFromCache = (key) ->
+  console.info "[INFO] fetching data [#{ key }] from cache."
+  if key is 'all' # fetch combined data source, 'all'
+    db.mgetAsync(ga.validQueryTypes).then (res) ->
+      result = {}
+      ga.validQueryTypes.forEach (type, i) -> result[type] = JSON.parse res[i]; return
+      result
+  else # fetch individual data source
+    db.getAsync(key).then (res) -> JSON.parse res
+
+_cache = (key) -> (data) ->
+  setData = db.setAsync key, JSON.stringify data
+  # delete key at start of next day
+  expireAt = db.expireatAsync key, moment().add('days', 1).startOf('day').unix()
+  setTime = db.setAsync "lastCachedTimeUnix", JSON.stringify moment().unix()
+
+  Promise.all([setData, expireAt, setTime]).then ->
+    console.info "[SUCCESS] fetched / cached [#{ key }] data."; return
+
 fetch = (key) ->
-  new Promise (resolve, reject) ->
-    _fetchFromCache = (key) ->
-      console.info "[INFO] fetching data [#{ key }] from cache."
-      # fetch combined data source, 'all'
-      if key is 'all'
-        db.mget ga.validQueryTypes, (err, res) ->
-          if err
-            error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
-            console.error error
-            reject error
-          else
-            result = {}
-            ga.validQueryTypes.forEach (type, i) -> result[type] = JSON.parse res[i]; return
-            resolve result
-          return
-        return
-      else
-        db.get key, (err, res) ->
-          if err
-            error = new Error "[ERROR] redis - db.get(#{ key }) - #{ err }"
-            console.error error
-            reject error
-          else resolve JSON.parse res
-          return
-        return
-
-    _cache = (data) ->
-      db.set key, JSON.stringify data
-      # delete key at start of next day
-      db.expireat key, moment().add('days', 1).startOf('day').unix()
-      db.set "lastCachedTimeUnix", JSON.stringify moment().unix()
-
-      console.info "[SUCCESS] fetched / cached [#{ key }] data."
-      resolve data
-      return
-
-    _fetchAndCache = {}
-    _fetchAndCache.ga = ->
-      ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
-        .then ga.fetch key
-        .then (data) -> _cache data; return
-        .catch (err) -> console.error err; return
-      return
-    _fetchAndCache.overview = ->
-      request.getAsync({url: 'https://bower.herokuapp.com/packages', json: true}).spread (res, body) ->
-        _cache {totalPkgs: body.length}; return
-      # error = new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
-
-    # ==========
-
-    # fetch 'all' combined data sources
-    if key is 'all'
-      _fetchFromCache key
-    else
-      # fetch individual data source
-      db.exists key, (err, res) ->
-        if err              # redis err
-          error = new Error "[ERROR] redis - error when checking db.exists(#{ key }), error = #{ err }"
-          console.error error
-          reject error
-        else if res is 1    # already cached
-          _fetchFromCache key
-        else                # not cached
-          console.info "[INFO] [#{ key }] not cached."
-          if key is 'overview'
-            _fetchAndCache.overview()
-          else
-            _fetchAndCache.ga()
-        return
-    return
+  if key is 'all' # fetch 'all' combined data sources
+    _fetchFromCache key
+  else # fetch individual data source
+    db.existsAsync(key).then (res) ->
+      if res is 1 # already cached
+        _fetchFromCache key
+      else # not cached
+        console.info "[INFO] [#{ key }] not cached."
+        if key is 'overview'
+          request.getAsync {url: 'https://bower.herokuapp.com/packages', json: true}
+            .spread (res, body) -> totalPkgs: body.length
+            .then _cache key
+            .catch (err) ->
+              console.error new Error "[ERROR] can't fetch package count from bower registry, err = #{ err }"
+              return
+        else
+          ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
+            .then ga.fetch key
+            .then _cache key
 
 # ==========
 
