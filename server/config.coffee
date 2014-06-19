@@ -6,10 +6,10 @@ config =
   port: 3000
   apiBaseUri: '/api/1'
   ga:
-    clientEmail: '1068634003933-b8cijec64sti0if00mnrbqfnrt7vaa7a@developer.gserviceaccount.com'
+    clientEmail: '1068634003933-hgpd424gtchnb0f6ikfn7rkc5q6toubg@developer.gserviceaccount.com'
     # ask repo owner for GA Service Account key.pem, then export GA_KEY_PATH=path
-    privateKeyPath: "/Users/rayshan/=Projects=/2f798d5414685a52456c31158c9fa61fa14256c3-privatekey.pem" # process.env.APP_GA_KEY_PATH || null
-    privateKeyContent: process.env.APP_GA_KEY_CONTENT || null
+    privateKeyPath: "../gaServiceAcctKeyDev.pem" # for dev
+    privateKeyContent: process.env.APP_GA_KEY_CONTENT # for prod
     profile: '75972512'
     scopeUri: 'https://www.googleapis.com/auth/analytics.readonly'
 

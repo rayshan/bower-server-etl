@@ -1,4 +1,5 @@
 # Vendor
+p = require 'path'
 Promise = require 'bluebird'
 gapi = require "googleapis"
 moment = require 'moment'
@@ -15,7 +16,7 @@ gaQueries = require "./gaQueries"
 # define auth obj; used for init auth & fetches
 authClient = new gapi.auth.JWT(
   config.ga.clientEmail,
-  if process.env.NODE_ENV is 'development' then config.ga.privateKeyPath else null, # key as .pem file
+  if process.env.NODE_ENV is 'development' then p.join __dirname, config.ga.privateKeyPath else null, # key as .pem file
   if process.env.NODE_ENV is 'production' then config.ga.privateKeyContent else null,
   [config.ga.scopeUri]
 )
@@ -34,6 +35,7 @@ authPromise = -> new Promise (resolve, reject) ->
       # returns expires_in: 1403069828 and refresh_token: 'jwt-placeholder', not sure if 16 days or 44 yrs -_-
       if err
         reject new Error "[ERROR] OAuth error; err = #{ err }"
+        console.log err
       else
         console.info "[SUCCESS] server OAuthed w/ GA."
         gapi.discover('analytics', 'v3').withAuthClient(authClient).execute (err, client) ->

@@ -34,5 +34,5 @@ newrelic.js
 .env
 
 # keys (e.g. for GA service account)
-.p12
-.pem
+*.p12
+*.pem
