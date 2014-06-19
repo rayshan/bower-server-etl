@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rayshan/stats.bower.io.git"
+    "url": "git://github.com/bower/stats.bower.io.git"
   },
   "author": "Ray Shan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rayshan/stats.bower.io/issues"
+    "url": "https://github.com/bower/stats.bower.io/issues"
   },
-  "homepage": "https://github.com/rayshan/stats.bower.io",
+  "homepage": "https://github.com/bower/stats.bower.io",
   "dependencies": {
     "bluebird": "2.1.2",
     "bower-registry-client": "0.2.1",
