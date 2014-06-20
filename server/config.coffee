@@ -6,7 +6,7 @@ config =
   port: 3000
   apiBaseUri: '/api/1'
   ga:
-    clientEmail: '1068634003933-hgpd424gtchnb0f6ikfn7rkc5q6toubg@developer.gserviceaccount.com'
+    clientEmail: process.env.APP_GA_CLIENT_EMAIL
     # ask repo owner for GA Service Account key.pem, then export GA_KEY_PATH=path
     privateKeyPath: "../gaServiceAcctKeyDev.pem" # for dev
     privateKeyContent: process.env.APP_GA_KEY_CONTENT # for prod
