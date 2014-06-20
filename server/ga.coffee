@@ -4,8 +4,8 @@ Promise = require 'bluebird'
 gapi = require "googleapis"
 moment = require 'moment'
 RateLimiter = require('limiter').RateLimiter
-gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 5000
-# 1 GA query / 5 sec; don't hammer GA server w/ too many concurrent reqs
+gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 'second'
+# don't hammer GA server w/ too many concurrent reqs
 
 # Custom
 config = require "./config"

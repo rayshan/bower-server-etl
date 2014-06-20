@@ -25,6 +25,7 @@ rewriter.use (req, res, next) ->
   next()
   return
 
+# TODO
 # rate limiter
 #limiter = limiter(app, cache.db)
 #limiter {
@@ -100,9 +101,11 @@ app.use dataApi
 app.use express.static staticAssetPath, {maxAge: 2592000000}
 # serve static assets; 30 days in ms
 
+start = ->
+  port = process.env.PORT || config.port
+  # heroku dynamically assigns a port, don't set env var if deploying on heroku
+  app.listen port, -> console.info "[INFO] listening on port #{ port }."; return
+  return
+
 module.exports =
-  start: ->
-    port = process.env.PORT || config.port
-    # heroku dynamically assigns a port, don't set env var if deploying on heroku
-    app.listen port, -> console.info "[INFO] listening on port #{ port }."; return
-    return
+  start: start
