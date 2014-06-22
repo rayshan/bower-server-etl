@@ -82,14 +82,15 @@ gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'}
 
 # ==========================
 
-gulp.task 'dev', ['server'], -> # not compiling js due to using un-min files
+gulp.task 'dev', ['server'], ->
   gulp.src ['./public/b-*/b-*.less', './public/css/b-app.less']
     .pipe gp.watch {emit: 'one', name: 'css'}, ['css']
 
   jsSrc = [
     './public/b-*/b-*.coffee', './public/js/b-app.coffee'
     './public/b-*/b-*.html'
-    # './public/bower_components/**/*.js' # gulp watch can't see added files unless using glob option
+    # './public/bower_components/**/*.js'
+    # TODO: gulp watch can't see files added after bower install unless using glob option
   ]
   gulp.src(jsSrc).pipe gp.watch {emit: 'one', name: 'js'}, ['js']
 

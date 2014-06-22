@@ -1320,7 +1320,8 @@ getPop = (code) ->
         if popByCode.hasOwnProperty code
           popByCode[code]
         else
-          throw new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
+          # TODO catch throw
+          console.error new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
           0
 
 module.exports =
