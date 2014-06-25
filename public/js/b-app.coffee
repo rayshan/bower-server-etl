@@ -8,8 +8,7 @@ app = angular.module 'BApp', [
   # 'B.Templates'
 ]
 
-app.factory 'bApiRoot', ($location) ->
-  if $location.host() is 'localhost' then "/api/1/data/" else "/bower/api/1/data/"
+app.factory 'bApiRoot', ($location) -> "/api/1/data/"
 
 app.factory 'bDataSvc', ($http, bApiRoot) ->
   fetchAllP: $http.get bApiRoot + 'all'

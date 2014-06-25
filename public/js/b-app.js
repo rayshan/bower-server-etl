@@ -5,11 +5,7 @@
   app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Cmds', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
 
   app.factory('bApiRoot', function($location) {
-    if ($location.host() === 'localhost') {
-      return "/api/1/data/";
-    } else {
-      return "/bower/api/1/data/";
-    }
+    return "/api/1/data/";
   });
 
   app.factory('bDataSvc', function($http, bApiRoot) {
