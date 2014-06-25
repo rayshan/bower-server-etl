@@ -78,11 +78,12 @@ gulp.task 'js', ->
     .pipe gp.concat 'b-app.js'
     .pipe gulp.dest destPath
 
-gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'}
+#gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'} # node-dev
+gulp.task 'server', -> spawn 'foreman', ['start'], {stdio: 'inherit'} # foreman
 
 # ==========================
 
-gulp.task 'dev', ['server'], ->
+gulp.task 'dev', ->
   gulp.src ['./public/b-*/b-*.less', './public/css/b-app.less']
     .pipe gp.watch {emit: 'one', name: 'css'}, ['css']
 
@@ -99,4 +100,4 @@ gulp.task 'dev', ['server'], ->
 
 gulp.task 'prod', ['css', 'js', 'html']
 
-gulp.task 'default', ['dev']
+gulp.task 'default', ['dev', 'server']
