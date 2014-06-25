@@ -991,7 +991,8 @@ codeMapping = [
     "country-code": "674"
   }
   {
-    name: "Sao Tome and Principe"
+#    name: "Sao Tome and Principe"
+    name: "São Tomé and Príncipe"
     "alpha-3": "STP"
     "country-code": "678"
   }
@@ -1246,7 +1247,8 @@ codeMapping = [
     "country-code": "092"
   }
   {
-    name: "Virgin Islands, U.S."
+#    name: "Virgin Islands, U.S."
+    name: "U.S. Virgin Islands"
     "alpha-3": "VIR"
     "country-code": "850"
   }
@@ -1320,7 +1322,6 @@ getPop = (code) ->
         if popByCode.hasOwnProperty code
           popByCode[code]
         else
-          # TODO catch throw
           console.error new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
           0
 
