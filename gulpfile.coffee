@@ -80,6 +80,7 @@ gulp.task 'js', ->
 
 #gulp.task 'server', -> spawn 'bash', ['./scripts/start.sh'], {stdio: 'inherit'} # node-dev
 gulp.task 'server', -> spawn 'foreman', ['start'], {stdio: 'inherit'} # foreman
+gulp.task 'redis', -> spawn 'redis-server', ['./scripts/redis.conf'], {stdio: 'inherit'}
 
 # ==========================
 
@@ -100,4 +101,4 @@ gulp.task 'dev', ->
 
 gulp.task 'prod', ['css', 'js', 'html']
 
-gulp.task 'default', ['dev', 'server']
+gulp.task 'default', ['dev', 'redis', 'server']
