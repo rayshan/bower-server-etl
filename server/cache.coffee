@@ -67,7 +67,7 @@ init = ->
   db.flushdb() # if process.env.NODE_ENV is 'development'
 
   # need delay to ensure google server knows about auth before executing queries
-  ga.authPromise().delay(2000).then ->
+  ga.authPromise().delay(3000).then ->
     fetchPromises = []
     ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
