@@ -12,10 +12,6 @@ config = require "./config"
 # ==========
 
 allCached = false
-lastCachedTime =
-  unix: null
-  human: null
-  RFC2616: null
 
 # ==========
 # cache data fetch responses via redis
@@ -71,19 +67,13 @@ init = ->
     fetchPromises = []
     ga.validQueryTypes.forEach (key) -> fetchPromises.push fetch key; return
 
-    setLastCachedTime = (res) ->
-      # if err then err = new Error "[ERROR] redis - db.get('lastCachedTimeUnix') - #{ err }"
-      lastCachedTime.unix = res # unix
-      lastCachedTime.human = moment.unix(lastCachedTime.unix).format 'LLLL'
-      lastCachedTime.RFC2616 = moment.unix(lastCachedTime.unix).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
-      allCached = true
-      console.info "[SUCCESS] cached all data @ #{ lastCachedTime.human }"
-      return
-
     # TODO: use bluebird's .map(, {concurrency: 1}) or gapi's batch execution to meet GA's 10 QPS limit
     Promise.all fetchPromises
       .then -> db.getAsync "lastCachedTimeUnix"
-      .then setLastCachedTime
+      .then (lastCachedTime) ->
+        console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTime).format 'LLLL' }"
+        allCached = true
+        return
       .catch (err) -> console.error err; return
 
     return
@@ -119,4 +109,3 @@ module.exports =
   fetch: fetch
   db: db
   allCached: -> allCached # func to get around module export caching
-  lastCachedTime: -> lastCachedTime
