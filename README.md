@@ -8,24 +8,29 @@ https://github.com/bower/bower/issues/1164#issuecomment-38207751
 
 v2 & beyond planning done in this repo's issues.
 
-## Deployment
+## Development
 
-**WIP**
-
-Current deployment target is Heroku. Data is all cached in Redis via Redis Labs. Also tested on DigitalOcean VPS.
-
-Server time zone: `America/Los_Angeles`
-
+System Dependencies
 - Node.js
 - Redis
-- Google OAuth 2.0 [service account](https://developers.google.com/accounts/docs/OAuth2ServiceAccount) private key (contact repo owner)
-- Github API key (create your own)
-- ...
+- [foreman](https://github.com/ddollar/foreman) (due to deploy target being Heroku)
 
-`git clone`
-`npm test`
-`gulp dev`
+Please ask repo owners for foreman's `.env` file containing API keys
+
+Install back-end dependencies: `npm install`
+
+Install front-end dependencies: `bower install`
+
+Compile assets & start dev server, with live-watch: `gulp`
+
+View app @ `localhost:3000`
 
 ## Contribution
 
-Due to package owners using Bower-specific GitHub repos, e.g. https://github.com/angular/bower-angular, GitHub stats sometimes look funny. Please submit a PR for `githubMapping.coffee` if you discover one.
+Due to package owners using Bower-specific GitHub repos, e.g. https://github.com/angular/bower-angular, GitHub stats sometimes look funny. Please submit a PR for [`githubMapping.coffee`](server/githubMapping.coffee) if you discover one.
+
+## Deployment
+
+Current deployment target is Heroku. Data is all cached in Redis via Redis Labs. Also tested on DigitalOcean VPS.
+
+Server time zone: `America/Los_Angeles` (API returned times are RFC2616 UTC)
