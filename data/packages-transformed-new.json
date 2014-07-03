@@ -1,0 +1,1087 @@
+[
+  {
+    "name": "jquery",
+    "installs": [3874, 3870, 3483, 2073, 2407, 4273, 4192, 3987, 3682, 3272, 1926, 2198, 3996, 3993],
+    "rank": [1, 1],
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
+    "ghUrl": "https://github.com/jquery/jquery",
+    "ghDesc": "jQuery JavaScript Library",
+    "ghStars": 31059,
+    "ghIssues": 23,
+    "ghUpdated": "2014-07-01T20:50:31Z",
+    "ghUpdatedHuman": "12 hours"
+  },
+  {
+    "name": "angular",
+    "installs": [2728, 2592, 2364, 1493, 1755, 2907, 2694, 2632, 2458, 2060, 1310, 1468, 2529, 2652],
+    "rank": [2, 2],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/angular.js",
+    "ghDesc": "HTML enhanced for web apps",
+    "ghStars": 25627,
+    "ghIssues": 1130,
+    "ghUpdated": "2014-07-01T23:32:35Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "bootstrap",
+    "installs": [1932, 1840, 1771, 1158, 1253, 2109, 2045, 1908, 1750, 1671, 988, 1112, 1988, 2010],
+    "rank": [3, 3],
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
+    "ghUrl": "https://github.com/twbs/bootstrap",
+    "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+    "ghStars": 69318,
+    "ghIssues": 138,
+    "ghUpdated": "2014-07-01T04:39:42Z",
+    "ghUpdatedHuman": "a day"
+  },
+  {
+    "name": "angular-mocks",
+    "installs": [1888, 1765, 1598, 1110, 1230, 2001, 1878, 1804, 1688, 1363, 848, 950, 1745, 1783],
+    "rank": [4, 4],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-mocks",
+    "ghDesc": "angular-mocks.js bower repo",
+    "ghStars": 16,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-01T23:42:04Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-route",
+    "installs": [1699, 1583, 1447, 991, 1134, 1810, 1757, 1651, 1591, 1264, 837, 904, 1590, 1690],
+    "rank": [5, 5],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-route",
+    "ghDesc": "angular-route bower repo",
+    "ghStars": 20,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:42:07Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-resource",
+    "installs": [1540, 1403, 1308, 912, 1034, 1657, 1565, 1495, 1398, 1099, 740, 750, 1351, 1453],
+    "rank": [6, 6],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-resource",
+    "ghDesc": "angular-resource bower repo",
+    "ghStars": 12,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:42:11Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-sanitize",
+    "installs": [1308, 1269, 1137, 763, 856, 1427, 1374, 1312, 1287, 1011, 630, 699, 1273, 1325],
+    "rank": [7, 7],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-sanitize",
+    "ghDesc": "angular-sanitize bower repo",
+    "ghStars": 7,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-01T23:42:14Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-cookies",
+    "installs": [1256, 1226, 1091, 786, 874, 1412, 1398, 1289, 1217, 966, 637, 675, 1204, 1261],
+    "rank": [8, 8],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-cookies",
+    "ghDesc": "angular-cookies bower repo",
+    "ghStars": 9,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:41:53Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "es5-shim",
+    "installs": [1125, 1107, 997, 719, 765, 1283, 1295, 1151, 1131, 925, 579, 599, 1113, 1123],
+    "rank": [10, 9],
+    "ghOwner": "es-shims",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6288429?",
+    "ghUrl": "https://github.com/es-shims/es5-shim",
+    "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
+    "ghStars": 2717,
+    "ghIssues": 21,
+    "ghUpdated": "2014-06-25T18:59:24Z",
+    "ghUpdatedHuman": "7 days"
+  },
+  {
+    "name": "angular-scenario",
+    "installs": [1127, 1124, 998, 724, 785, 1280, 1286, 1183, 1119, 888, 602, 598, 1098, 1130],
+    "rank": [9, 10],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-scenario",
+    "ghDesc": "bower repo for angular-scenario.js",
+    "ghStars": 6,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:42:17Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "json3",
+    "installs": [1069, 1036, 947, 706, 752, 1235, 1191, 1102, 1040, 817, 564, 579, 1011, 1078],
+    "rank": [11, 11],
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
+    "ghUrl": "https://github.com/bestiejs/json3",
+    "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
+    "ghStars": 581,
+    "ghIssues": 5,
+    "ghUpdated": "2014-06-22T21:23:07Z",
+    "ghUpdatedHuman": "9 days"
+  },
+  {
+    "name": "angular-animate",
+    "installs": [1049, 1016, 931, 604, 719, 1160, 1067, 1078, 1054, 837, 498, 555, 1074, 1035],
+    "rank": [12, 12],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-animate",
+    "ghDesc": "",
+    "ghStars": 18,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:41:50Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "modernizr",
+    "installs": [692, 724, 618, 299, 391, 787, 823, 649, 702, 607, 322, 370, 764, 798],
+    "rank": [13, 13],
+    "ghOwner": "Modernizr",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/131060?",
+    "ghUrl": "https://github.com/Modernizr/Modernizr",
+    "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
+    "ghStars": 12535,
+    "ghIssues": 116,
+    "ghUpdated": "2014-06-30T20:37:24Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "name": "bootstrap-sass",
+    "installs": [645, 648, 583, 398, 504, 748, 754, 657, 630, 591, 373, 414, 779, 710],
+    "rank": [14, 14],
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
+    "ghUrl": "https://github.com/twbs/bootstrap-sass",
+    "ghDesc": "Official Sass port of Bootstrap",
+    "ghStars": 6855,
+    "ghIssues": 11,
+    "ghUpdated": "2014-06-29T18:59:14Z",
+    "ghUpdatedHuman": "3 days"
+  },
+  {
+    "name": "angular-bootstrap",
+    "installs": [699, 646, 583, 331, 411, 794, 812, 694, 697, 555, 276, 370, 763, 728],
+    "rank": [15, 15],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/bootstrap",
+    "ghDesc": "Native AngularJS (Angular) directives for Bootstrap. Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required!",
+    "ghStars": 5373,
+    "ghIssues": 304,
+    "ghUpdated": "2014-06-11T17:33:16Z",
+    "ghUpdatedHuman": "21 days"
+  },
+  {
+    "name": "angular-touch",
+    "installs": [546, 565, 488, 373, 448, 680, 633, 658, 614, 526, 331, 345, 630, 624],
+    "rank": [17, 16],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-touch",
+    "ghDesc": "",
+    "ghStars": 22,
+    "ghIssues": 2,
+    "ghUpdated": "2014-07-01T23:42:21Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-ui-router",
+    "installs": [618, 600, 548, 337, 382, 718, 675, 572, 527, 469, 273, 334, 640, 605],
+    "rank": [16, 17],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ui-router",
+    "ghDesc": "The de-facto solution to flexible routing with nested views",
+    "ghStars": 3417,
+    "ghIssues": 256,
+    "ghUpdated": "2014-06-05T19:44:14Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "moment",
+    "installs": [575, 586, 465, 177, 239, 690, 734, 593, 633, 501, 164, 241, 623, 571],
+    "rank": [18, 18],
+    "ghOwner": "moment",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4129662?",
+    "ghUrl": "https://github.com/moment/moment",
+    "ghDesc": "Parse, validate, manipulate, and display dates in javascript.",
+    "ghStars": 17063,
+    "ghIssues": 61,
+    "ghUpdated": "2014-07-01T23:25:53Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "font-awesome",
+    "installs": [574, 475, 435, 251, 267, 553, 604, 511, 529, 484, 217, 268, 559, 572],
+    "rank": [19, 19],
+    "ghOwner": "FortAwesome",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1505683?",
+    "ghUrl": "https://github.com/FortAwesome/Font-Awesome",
+    "ghDesc": "The iconic font and CSS toolkit",
+    "ghStars": 24547,
+    "ghIssues": 1469,
+    "ghUpdated": "2014-06-27T15:27:40Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "lodash",
+    "installs": [509, 492, 420, 203, 232, 614, 608, 520, 479, 463, 183, 272, 600, 571],
+    "rank": [20, 20],
+    "ghOwner": "lodash",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2565403?",
+    "ghUrl": "https://github.com/lodash/lodash",
+    "ghDesc": "A utility library delivering consistency, customization, performance, & extras.",
+    "ghStars": 5295,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-02T07:48:51Z",
+    "ghUpdatedHuman": "an hour"
+  },
+  {
+    "name": "mocha",
+    "installs": [358, 439, 361, 199, 256, 413, 409, 436, 365, 395, 256, 301, 509, 427],
+    "rank": [21, 21],
+    "ghOwner": "visionmedia",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/25254?",
+    "ghUrl": "https://github.com/visionmedia/mocha",
+    "ghDesc": "mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)",
+    "ghStars": 4769,
+    "ghIssues": 229,
+    "ghUpdated": "2014-06-26T06:26:04Z",
+    "ghUpdatedHuman": "6 days"
+  },
+  {
+    "name": "platform",
+    "installs": [101, 100, 138, 100, 100, 124, 133, 347, 377, 437, 371, 327, 429, 356],
+    "rank": [40, 22],
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
+    "ghUrl": "https://github.com/bestiejs/platform.js",
+    "ghDesc": "A platform detection library that works on nearly all JavaScript platforms.  ",
+    "ghStars": 469,
+    "ghIssues": 4,
+    "ghUpdated": "2014-06-23T07:37:47Z",
+    "ghUpdatedHuman": "9 days"
+  },
+  {
+    "name": "chai",
+    "installs": [315, 426, 339, 197, 229, 410, 412, 434, 339, 376, 247, 292, 486, 417],
+    "rank": [23, 23],
+    "ghOwner": "chaijs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1515293?",
+    "ghUrl": "https://github.com/chaijs/chai",
+    "ghDesc": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
+    "ghStars": 1189,
+    "ghIssues": 36,
+    "ghUpdated": "2014-06-08T03:29:08Z",
+    "ghUpdatedHuman": "24 days"
+  },
+  {
+    "name": "jquery-ui",
+    "installs": [378, 379, 395, 102, 152, 433, 470, 387, 402, 415, 161, 210, 536, 473],
+    "rank": [24, 24],
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
+    "ghUrl": "https://github.com/jquery/jquery-ui",
+    "ghDesc": "The official jQuery user interface library.",
+    "ghStars": 8406,
+    "ghIssues": 46,
+    "ghUpdated": "2014-06-27T15:18:34Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "core-component-page",
+    "installs": [100, 100, 127, 100, 100, 118, 121, 306, 349, 371, 337, 308, 382, 328],
+    "rank": [42, 25]
+  },
+  {
+    "name": "backbone",
+    "installs": [426, 384, 342, 193, 190, 412, 420, 362, 360, 348, 199, 173, 392, 347],
+    "rank": [22, 26],
+    "ghOwner": "jashkenas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
+    "ghUrl": "https://github.com/jashkenas/backbone",
+    "ghDesc": "Give your JS App some Backbone with Models, Views, Collections, and Events",
+    "ghStars": 18473,
+    "ghIssues": 26,
+    "ghUpdated": "2014-06-27T20:39:21Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "handlebars",
+    "installs": [290, 297, 247, 125, 104, 309, 291, 290, 339, 263, 146, 147, 309, 276],
+    "rank": [25, 27],
+    "ghOwner": "wycats",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4?",
+    "ghUrl": "https://github.com/wycats/handlebars.js",
+    "ghDesc": "",
+    "ghStars": 6634,
+    "ghIssues": 34,
+    "ghUpdated": "2014-06-29T01:44:15Z",
+    "ghUpdatedHuman": "3 days"
+  },
+  {
+    "name": "core-meta",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 176, 209, 256, 227, 189, 253, 221],
+    "rank": [120, 28]
+  },
+  {
+    "name": "d3",
+    "installs": [239, 230, 173, 100, 100, 229, 320, 253, 271, 237, 100, 100, 278, 289],
+    "rank": [26, 29],
+    "ghOwner": "mbostock",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/230541?",
+    "ghUrl": "https://github.com/mbostock/d3",
+    "ghDesc": "A JavaScript visualization library for HTML and SVG.",
+    "ghStars": 27378,
+    "ghIssues": 168,
+    "ghUpdated": "2014-07-01T14:55:42Z",
+    "ghUpdatedHuman": "18 hours"
+  },
+  {
+    "name": "core-icons",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 171, 209, 254, 226, 190, 251, 215],
+    "rank": [81, 30]
+  },
+  {
+    "name": "core-iconset-svg",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 171, 209, 254, 224, 188, 251, 214],
+    "rank": [80, 31]
+  },
+  {
+    "name": "core-icon",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 170, 209, 254, 225, 187, 251, 214],
+    "rank": [84, 32]
+  },
+  {
+    "name": "core-iconset",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 171, 209, 254, 225, 187, 249, 213],
+    "rank": [78, 33]
+  },
+  {
+    "name": "core-selection",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 157, 213, 244, 218, 188, 248, 206],
+    "rank": [62, 34]
+  },
+  {
+    "name": "core-selector",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 155, 212, 245, 218, 185, 251, 206],
+    "rank": [63, 35]
+  },
+  {
+    "name": "core-icon-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 150, 205, 244, 219, 182, 244, 203],
+    "rank": [88, 36]
+  },
+  {
+    "name": "core-toolbar",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 150, 203, 243, 219, 178, 243, 201],
+    "rank": [68, 37]
+  },
+  {
+    "name": "core-header-panel",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 147, 203, 239, 213, 182, 240, 200],
+    "rank": [89, 38]
+  },
+  {
+    "name": "core-media-query",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 148, 203, 236, 211, 176, 244, 200],
+    "rank": [99, 39]
+  },
+  {
+    "name": "core-drawer-panel",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 145, 200, 233, 211, 178, 242, 197],
+    "rank": [92, 40]
+  },
+  {
+    "name": "core-input",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 148, 205, 232, 199, 177, 239, 202],
+    "rank": [77, 41]
+  },
+  {
+    "name": "core-collapse",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 145, 200, 234, 202, 178, 243, 196],
+    "rank": [98, 42]
+  },
+  {
+    "name": "core-item",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 146, 200, 232, 201, 177, 243, 197],
+    "rank": [75, 43]
+  },
+  {
+    "name": "core-menu",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 145, 200, 232, 202, 174, 242, 196],
+    "rank": [100, 44]
+  },
+  {
+    "name": "core-transition",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 146, 200, 232, 198, 171, 240, 197],
+    "rank": [70, 45]
+  },
+  {
+    "name": "core-overlay",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 144, 199, 233, 199, 168, 238, 194],
+    "rank": [57, 46]
+  },
+  {
+    "name": "core-range",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 145, 197, 225, 197, 166, 236, 193],
+    "rank": [59, 47]
+  },
+  {
+    "name": "jquery.cookie",
+    "installs": [227, 231, 163, 100, 100, 214, 271, 213, 247, 195, 100, 100, 255, 241],
+    "rank": [28, 48],
+    "ghOwner": "carhartl",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/21918?",
+    "ghUrl": "https://github.com/carhartl/jquery-cookie",
+    "ghDesc": "A simple, lightweight jQuery plugin for reading, writing and deleting cookies",
+    "ghStars": 5567,
+    "ghIssues": 9,
+    "ghUpdated": "2014-06-02T05:40:43Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "font-roboto",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 130, 185, 236, 193, 168, 221, 192],
+    "rank": [79, 49]
+  },
+  {
+    "name": "paper-ripple",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 127, 186, 234, 193, 164, 219, 193],
+    "rank": [114, 50]
+  },
+  {
+    "name": "paper-shadow",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 122, 185, 232, 192, 165, 218, 185],
+    "rank": [115, 51]
+  },
+  {
+    "name": "paper-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 120, 184, 232, 192, 163, 216, 185],
+    "rank": [103, 52]
+  },
+  {
+    "name": "paper-focusable",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 122, 184, 230, 191, 163, 216, 185],
+    "rank": [108, 53]
+  },
+  {
+    "name": "fastclick",
+    "installs": [220, 230, 161, 108, 100, 228, 275, 219, 222, 164, 100, 118, 221, 245],
+    "rank": [27, 54],
+    "ghOwner": "ftlabs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1432696?",
+    "ghUrl": "https://github.com/ftlabs/fastclick",
+    "ghDesc": "Polyfill to remove click delays on browsers with touch UIs",
+    "ghStars": 6926,
+    "ghIssues": 84,
+    "ghUpdated": "2014-06-19T18:34:14Z",
+    "ghUpdatedHuman": "13 days"
+  },
+  {
+    "name": "paper-icon-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 115, 183, 226, 190, 163, 215, 177],
+    "rank": [109, 55]
+  },
+  {
+    "name": "paper-tabs",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 111, 180, 219, 189, 154, 211, 177],
+    "rank": [117, 56]
+  },
+  {
+    "name": "paper-input",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 112, 181, 216, 184, 158, 208, 180],
+    "rank": [110, 57]
+  },
+  {
+    "name": "paper-radio-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 113, 181, 212, 184, 150, 210, 179],
+    "rank": [112, 58]
+  },
+  {
+    "name": "paper-fab",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 110, 181, 211, 184, 153, 211, 175],
+    "rank": [107, 59]
+  },
+  {
+    "name": "paper-checkbox",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 110, 181, 211, 184, 151, 208, 178],
+    "rank": [104, 60]
+  },
+  {
+    "name": "paper-progress",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 111, 181, 211, 184, 150, 209, 174],
+    "rank": [111, 61]
+  },
+  {
+    "name": "paper-slider",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 111, 180, 211, 184, 151, 208, 174],
+    "rank": [116, 62]
+  },
+  {
+    "name": "paper-radio-group",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 110, 181, 210, 184, 150, 208, 176],
+    "rank": [113, 63]
+  },
+  {
+    "name": "paper-toast",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 109, 181, 213, 184, 150, 208, 174],
+    "rank": [118, 64]
+  },
+  {
+    "name": "paper-dialog",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 109, 180, 211, 185, 151, 208, 174],
+    "rank": [105, 65]
+  },
+  {
+    "name": "paper-toggle-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 110, 180, 211, 184, 150, 207, 174],
+    "rank": [119, 66]
+  },
+  {
+    "name": "paper-elements",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 109, 179, 210, 184, 153, 206, 174],
+    "rank": [106, 67]
+  },
+  {
+    "name": "core-ajax",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 134, 165, 214, 175, 144, 211, 169],
+    "rank": [101, 68]
+  },
+  {
+    "name": "highlightjs",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 146, 184, 196, 161, 125, 192, 170],
+    "rank": [83, 69],
+    "ghOwner": "components",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2160696?",
+    "ghUrl": "https://github.com/components/highlightjs",
+    "ghDesc": "Shim repository for Highlight.js.",
+    "ghStars": 10,
+    "ghIssues": 0,
+    "ghUpdated": "2014-01-22T15:38:21Z",
+    "ghUpdatedHuman": "5 months"
+  },
+  {
+    "name": "ember",
+    "installs": [164, 195, 142, 100, 100, 184, 166, 184, 223, 180, 100, 112, 182, 192],
+    "rank": [31, 70],
+    "ghOwner": "emberjs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1253363?",
+    "ghUrl": "https://github.com/emberjs/ember.js",
+    "ghDesc": "Ember.js - A JavaScript framework for creating ambitious web applications",
+    "ghStars": 10640,
+    "ghIssues": 246,
+    "ghUpdated": "2014-07-01T14:53:35Z",
+    "ghUpdatedHuman": "18 hours"
+  },
+  {
+    "name": "core-field",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 130, 164, 203, 170, 139, 199, 158],
+    "rank": [90, 71]
+  },
+  {
+    "name": "marked",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 137, 172, 191, 167, 131, 190, 172],
+    "rank": [95, 72],
+    "ghOwner": "chjj",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/470564?",
+    "ghUrl": "https://github.com/chjj/marked",
+    "ghDesc": "A markdown parser and compiler. Built for speed.",
+    "ghStars": 3875,
+    "ghIssues": 190,
+    "ghUpdated": "2014-05-01T22:57:58Z",
+    "ghUpdatedHuman": "2 months"
+  },
+  {
+    "name": "core-scroll-header-panel",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 126, 163, 200, 169, 140, 198, 157],
+    "rank": [121, 73]
+  },
+  {
+    "name": "core-shared-lib",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 132, 169, 187, 173, 129, 184, 159],
+    "rank": [64, 74]
+  },
+  {
+    "name": "core-style",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 126, 156, 196, 166, 132, 194, 163],
+    "rank": [66, 75]
+  },
+  {
+    "name": "core-scaffold",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 123, 152, 181, 171, 130, 180, 155],
+    "rank": [60, 76]
+  },
+  {
+    "name": "jquery-placeholder",
+    "installs": [154, 163, 124, 100, 100, 192, 230, 195, 190, 142, 100, 100, 181, 183],
+    "rank": [30, 77],
+    "ghOwner": "mathiasbynens",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/81942?",
+    "ghUrl": "https://github.com/mathiasbynens/jquery-placeholder",
+    "ghDesc": "A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet",
+    "ghStars": 2893,
+    "ghIssues": 101,
+    "ghUpdated": "2014-04-01T13:16:24Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "name": "core-elements",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 153, 180, 162, 124, 174, 156],
+    "rank": [91, 78]
+  },
+  {
+    "name": "core-doc-viewer",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 119, 152, 178, 160, 126, 176, 154],
+    "rank": [97, 79]
+  },
+  {
+    "name": "core-list",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 150, 176, 159, 124, 177, 157],
+    "rank": [71, 80]
+  },
+  {
+    "name": "core-docs",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 152, 178, 160, 124, 176, 153],
+    "rank": [96, 81]
+  },
+  {
+    "name": "core-localstorage",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 151, 180, 159, 122, 176, 154],
+    "rank": [61, 82]
+  },
+  {
+    "name": "core-drag-drop",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 122, 153, 177, 160, 122, 176, 153],
+    "rank": [93, 83]
+  },
+  {
+    "name": "core-menu-button",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 123, 152, 179, 158, 120, 176, 154],
+    "rank": [87, 84]
+  },
+  {
+    "name": "core-pages",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 151, 179, 159, 121, 176, 154],
+    "rank": [58, 85]
+  },
+  {
+    "name": "core-layout",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 151, 175, 160, 124, 175, 154],
+    "rank": [72, 86]
+  },
+  {
+    "name": "core-layout-trbl",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 151, 176, 160, 122, 176, 153],
+    "rank": [73, 87]
+  },
+  {
+    "name": "core-tooltip",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 122, 153, 175, 160, 121, 175, 153],
+    "rank": [69, 88]
+  },
+  {
+    "name": "core-splitter",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 121, 151, 176, 161, 121, 175, 153],
+    "rank": [65, 89]
+  },
+  {
+    "name": "core-tests",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 120, 150, 176, 158, 121, 178, 154],
+    "rank": [67, 90]
+  },
+  {
+    "name": "marked-element",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 120, 151, 175, 160, 123, 174, 152],
+    "rank": [94, 91]
+  },
+  {
+    "name": "highlightjs-element",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 120, 151, 174, 160, 123, 175, 151],
+    "rank": [82, 92]
+  },
+  {
+    "name": "core-layout-grid",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 120, 151, 176, 158, 122, 173, 152],
+    "rank": [74, 93]
+  },
+  {
+    "name": "context-free-parser",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 119, 151, 173, 160, 123, 173, 152],
+    "rank": [102, 94]
+  },
+  {
+    "name": "ember-data",
+    "installs": [133, 188, 111, 100, 100, 132, 120, 145, 177, 149, 100, 100, 158, 142],
+    "rank": [37, 95],
+    "ghOwner": "emberjs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1253363?",
+    "ghUrl": "https://github.com/emberjs/data",
+    "ghDesc": "A data persistence library for Ember.js.",
+    "ghStars": 1898,
+    "ghIssues": 186,
+    "ghUpdated": "2014-06-27T16:18:12Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "foundation",
+    "installs": [122, 149, 116, 100, 100, 172, 193, 155, 170, 110, 100, 100, 158, 173],
+    "rank": [35, 96],
+    "ghOwner": "zurb",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/156122?",
+    "ghUrl": "https://github.com/zurb/foundation",
+    "ghDesc": "The most advanced responsive front-end framework in the world. Quickly create prototypes and production code for sites and apps that work on any kind of device.",
+    "ghStars": 17209,
+    "ghIssues": 226,
+    "ghUpdated": "2014-07-01T20:52:54Z",
+    "ghUpdatedHuman": "12 hours"
+  },
+  {
+    "name": "angular-translate",
+    "installs": [141, 151, 155, 100, 100, 189, 184, 156, 169, 100, 100, 100, 130, 174],
+    "rank": [32, 97],
+    "ghOwner": "angular-translate",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6117835?",
+    "ghUrl": "https://github.com/angular-translate/angular-translate",
+    "ghDesc": "i18n in your Angular apps, made easy.",
+    "ghStars": 1404,
+    "ghIssues": 64,
+    "ghUpdated": "2014-06-29T12:39:11Z",
+    "ghUpdatedHuman": "3 days"
+  },
+  {
+    "name": "angular-ui-utils",
+    "installs": [120, 136, 102, 100, 100, 146, 151, 159, 144, 100, 100, 100, 139, 128],
+    "rank": [39, 98],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ui-utils",
+    "ghDesc": "Swiss-Army-Knife of AngularJS tools (with no external dependencies!)",
+    "ghStars": 756,
+    "ghIssues": 110,
+    "ghUpdated": "2014-06-27T12:05:08Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "normalize-css",
+    "installs": [148, 144, 115, 100, 100, 162, 149, 137, 121, 100, 100, 100, 159, 145],
+    "rank": [36, 99],
+    "ghOwner": "necolas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/239676?",
+    "ghUrl": "https://github.com/necolas/normalize.css",
+    "ghDesc": "A collection of HTML element and attribute style-normalizations",
+    "ghStars": 12790,
+    "ghIssues": 13,
+    "ghUpdated": "2014-03-27T05:14:06Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "name": "backbone.marionette",
+    "installs": [198, 191, 174, 100, 101, 166, 172, 129, 153, 108, 100, 100, 139, 125],
+    "rank": [29, 100],
+    "ghOwner": "marionettejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2273169?",
+    "ghUrl": "https://github.com/marionettejs/backbone.marionette",
+    "ghDesc": "Make your Backbone.js applications dance!",
+    "ghStars": 5095,
+    "ghIssues": 87,
+    "ghUpdated": "2014-07-02T01:45:33Z",
+    "ghUpdatedHuman": "7 hours"
+  },
+  {
+    "name": "html5-boilerplate",
+    "installs": [122, 105, 112, 100, 100, 158, 164, 113, 129, 123, 100, 100, 140, 131],
+    "rank": [38, 101],
+    "ghOwner": "h5bp",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1136800?",
+    "ghUrl": "https://github.com/h5bp/html5-boilerplate",
+    "ghDesc": "A professional front-end template for building fast, robust, and adaptable web apps or sites.",
+    "ghStars": 25836,
+    "ghIssues": 7,
+    "ghUpdated": "2014-06-30T21:20:39Z",
+    "ghUpdatedHuman": "a day"
+  },
+  {
+    "name": "angular-loader",
+    "installs": [128, 100, 111, 100, 100, 120, 128, 110, 131, 104, 100, 100, 148, 140],
+    "rank": [41, 102],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-loader",
+    "ghDesc": "bower repo for angular-loader.js",
+    "ghStars": 4,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-01T23:42:00Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "angular-file-upload",
+    "installs": [103, 100, 103, 100, 100, 100, 124, 110, 131, 100, 100, 100, 154, 117],
+    "rank": [44, 103],
+    "ghOwner": "nervgh",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2478262?",
+    "ghUrl": "https://github.com/nervgh/angular-file-upload",
+    "ghDesc": "Angular File Upload is a module for the AngularJS framework",
+    "ghStars": 598,
+    "ghIssues": 15,
+    "ghUpdated": "2014-06-23T20:34:47Z",
+    "ghUpdatedHuman": "9 days"
+  },
+  {
+    "name": "backbone.wreqr",
+    "installs": [179, 170, 160, 100, 100, 154, 153, 117, 146, 101, 100, 100, 131, 109],
+    "rank": [33, 104],
+    "ghOwner": "marionettejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2273169?",
+    "ghUrl": "https://github.com/marionettejs/backbone.wreqr",
+    "ghDesc": "A simple infrastructure for decoupling Backbone and Backbone.Marionette application modules and components",
+    "ghStars": 235,
+    "ghIssues": 7,
+    "ghUpdated": "2014-06-15T22:33:19Z",
+    "ghUpdatedHuman": "16 days"
+  },
+  {
+    "name": "backbone.babysitter",
+    "installs": [175, 166, 158, 100, 100, 152, 153, 115, 143, 101, 100, 100, 131, 108],
+    "rank": [34, 105],
+    "ghOwner": "marionettejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2273169?",
+    "ghUrl": "https://github.com/marionettejs/backbone.babysitter",
+    "ghDesc": "Manage child views for your Backbone.View (and other parents)",
+    "ghStars": 264,
+    "ghIssues": 6,
+    "ghUpdated": "2014-05-06T18:14:56Z",
+    "ghUpdatedHuman": "2 months"
+  },
+  {
+    "name": "eventEmitter",
+    "installs": [102, 100, 100, 100, 100, 102, 105, 159, 104, 100, 100, 100, 114, 100],
+    "rank": [49, 106],
+    "ghOwner": "Wolfy87",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/315229?",
+    "ghUrl": "https://github.com/Wolfy87/EventEmitter",
+    "ghDesc": "Evented JavaScript for the browser",
+    "ghStars": 610,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-11T11:55:16Z",
+    "ghUpdatedHuman": "2 months"
+  },
+  {
+    "name": "angular-ui-select2",
+    "installs": [100, 100, 100, 100, 100, 102, 118, 100, 100, 100, 100, 100, 136, 100],
+    "rank": [46, 107],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ui-select2",
+    "ghDesc": "An AngularJS wrapper for select2",
+    "ghStars": 359,
+    "ghIssues": 136,
+    "ghUpdated": "2014-04-09T20:06:05Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "name": "eventie",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 132, 100, 100, 100, 100, 100, 100],
+    "rank": [76, 108],
+    "ghOwner": "desandro",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/85566?",
+    "ghUrl": "https://github.com/desandro/eventie",
+    "ghDesc": "event binding helper",
+    "ghStars": 19,
+    "ghIssues": 0,
+    "ghUpdated": "2014-05-23T11:03:18Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "html5shiv",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 112, 109, 100, 100, 100, 100, 111],
+    "rank": [85, 109],
+    "ghOwner": "aFarkas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/188254?",
+    "ghUrl": "https://github.com/aFarkas/html5shiv",
+    "ghDesc": "This script is the defacto way to enable use of HTML5 sectioning elements in legacy Internet Explorer.",
+    "ghStars": 4142,
+    "ghIssues": 34,
+    "ghUpdated": "2014-06-09T15:02:14Z",
+    "ghUpdatedHuman": "23 days"
+  },
+  {
+    "name": "almond",
+    "installs": [100, 114, 100, 100, 100, 118, 100, 105, 100, 100, 100, 100, 107, 100],
+    "rank": [43, 110],
+    "ghOwner": "jrburke",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/73359?",
+    "ghUrl": "https://github.com/jrburke/almond",
+    "ghDesc": "A minimal AMD API implementation for use after optimized builds",
+    "ghStars": 1615,
+    "ghIssues": 5,
+    "ghUpdated": "2014-03-19T01:36:06Z",
+    "ghUpdatedHuman": "4 months"
+  },
+  {
+    "name": "animate.css",
+    "installs": [106, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 109, 100],
+    "rank": [51, 111],
+    "ghOwner": "daneden",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/439365?",
+    "ghUrl": "https://github.com/daneden/animate.css",
+    "ghDesc": "A cross-browser library of CSS animations. As easy to use as an easy thing.",
+    "ghStars": 13656,
+    "ghIssues": 9,
+    "ghUpdated": "2014-06-17T19:36:01Z",
+    "ghUpdatedHuman": "15 days"
+  },
+  {
+    "name": "imagesloaded",
+    "installs": [100, 100, 100, 100, 100, 100, 100, 105, 100, 100, 100, 100, 100, 100],
+    "rank": [86, 112],
+    "ghOwner": "desandro",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/85566?",
+    "ghUrl": "https://github.com/desandro/imagesloaded",
+    "ghDesc": "JavaScript is all like \"You images done yet or what?\"",
+    "ghStars": 2949,
+    "ghIssues": 32,
+    "ghUpdated": "2014-06-14T13:14:56Z",
+    "ghUpdatedHuman": "18 days"
+  },
+  {
+    "name": "angular-strap",
+    "installs": [111, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 105, 100],
+    "rank": [48, 113],
+    "ghOwner": "mgcrea",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/108273?",
+    "ghUrl": "https://github.com/mgcrea/angular-strap",
+    "ghDesc": "AngularJS 1.2+ native directives for Bootstrap 3.",
+    "ghStars": 3773,
+    "ghIssues": 161,
+    "ghUpdated": "2014-06-25T17:22:15Z",
+    "ghUpdatedHuman": "7 days"
+  },
+  {
+    "name": "angular-i18n",
+    "installs": [100, 100, 100, 100, 100, 107, 120, 100, 100, 100, 100, 100, 100, 102],
+    "rank": [45, 114],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-i18n",
+    "ghDesc": "",
+    "ghStars": 12,
+    "ghIssues": 3,
+    "ghUpdated": "2014-07-01T23:41:56Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "polymer",
+    "installs": [104, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [52, 115],
+    "ghOwner": "components",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2160696?",
+    "ghUrl": "https://github.com/components/polymer",
+    "ghDesc": "Leverage the future of the web platform today.",
+    "ghStars": 27,
+    "ghIssues": 0,
+    "ghUpdated": "2014-06-25T23:38:30Z",
+    "ghUpdatedHuman": "6 days"
+  },
+  {
+    "name": "ng-grid",
+    "installs": [100, 100, 100, 100, 100, 100, 102, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [55, 116],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ng-grid",
+    "ghDesc": "UI Grid: an Angular Data Grid",
+    "ghStars": 1154,
+    "ghIssues": 114,
+    "ghUpdated": "2014-07-01T17:26:48Z",
+    "ghUpdatedHuman": "15 hours"
+  },
+  {
+    "name": "angular-local-storage",
+    "installs": [100, 100, 100, 100, 100, 100, 119, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [47, 117],
+    "ghOwner": "grevory",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1222666?",
+    "ghUrl": "https://github.com/grevory/angular-local-storage",
+    "ghDesc": "An AngularJS module that gives you access to the browsers local storage with cookie fallback",
+    "ghStars": 736,
+    "ghIssues": 23,
+    "ghUpdated": "2014-05-23T00:15:41Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "nvd3",
+    "installs": [100, 100, 100, 100, 100, 100, 106, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [50, 118],
+    "ghOwner": "novus",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/293390?",
+    "ghUrl": "https://github.com/novus/nvd3",
+    "ghDesc": "",
+    "ghStars": 2673,
+    "ghIssues": 302,
+    "ghUpdated": "2014-06-16T19:06:52Z",
+    "ghUpdatedHuman": "16 days"
+  },
+  {
+    "name": "angular-translate-loader-static-files",
+    "installs": [100, 100, 100, 100, 100, 102, 100, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [56, 119],
+    "ghOwner": "angular-translate",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6117835?",
+    "ghUrl": "https://github.com/angular-translate/bower-angular-translate-loader-static-files",
+    "ghDesc": "angular-translate-loader-static-files bower package",
+    "ghStars": 10,
+    "ghIssues": 3,
+    "ghUpdated": "2014-06-03T09:49:28Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "mousetrap",
+    "installs": [100, 100, 100, 100, 100, 100, 103, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [54, 120],
+    "ghOwner": "ccampbell",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/259316?",
+    "ghUrl": "https://github.com/ccampbell/mousetrap",
+    "ghDesc": "Simple library for handling keyboard shortcuts in Javascript",
+    "ghStars": 5000,
+    "ghIssues": 71,
+    "ghUpdated": "2014-06-03T23:16:22Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "ionic",
+    "installs": [103, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+    "rank": [53, 121],
+    "ghOwner": "driftyco",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/3171503?",
+    "ghUrl": "https://github.com/driftyco/ionic",
+    "ghDesc": "Advanced HTML5 Mobile App Framework. A beautiful front-end framework for developing hybrid mobile apps in HTML5. Best friends with AngularJS.",
+    "ghStars": 6889,
+    "ghIssues": 197,
+    "ghUpdated": "2014-07-01T15:12:57Z",
+    "ghUpdatedHuman": "17 hours"
+  }
+]

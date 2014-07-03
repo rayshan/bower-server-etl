@@ -1,6 +1,7 @@
 # vendor
 Promise = require 'bluebird'
 _ = require 'lodash-node'
+moment = require 'moment'
 
 # custom
 config = require "./config"
@@ -95,15 +96,15 @@ queries.cmds =
         console.error err; 0
 
     result.forEach (cmd) ->
-      # cmd with pkgs count, i.e. suffixed w/ 'ed'
+      # cmd with packages count, i.e. suffixed w/ 'ed'
       if ["Install", "Uninstall", "Register", "Unregister"].indexOf(cmd.cmd) isnt -1
         cmd.metrics.push {
-          metric: 'pkgs', order: 3
-          current: getValue cmd.cmd, current, true, 'pkgs'
+          metric: 'packages', order: 3
+          current: getValue cmd.cmd, current, true, 'packages'
         }
 
       cmd.metrics.forEach (metric) ->
-        metric.prior = getValue cmd.cmd, prior, (if metric.metric is 'pkgs' then true else false), metric.metric
+        metric.prior = getValue cmd.cmd, prior, (if metric.metric is 'packages' then true else false), metric.metric
         metric.delta = metric.current / metric.prior - 1
         return
 
@@ -111,48 +112,50 @@ queries.cmds =
 
     result
 
-queries.pkgs =
+queries.packages =
   # 'package' is a reserved word in JS
-  # only want to pull pkgs w/ >= 5 installs, which is around the 3500th pkg sorted by installs
+  # only want to pull packages w/ >= 5 installs, which is around the 3500th pkg sorted by installs
 
   queryObj:
     'ids': 'ga:' + config.ga.profile
+    'dimensions': 'ga:pagePathLevel2,ga:nthDay'
+    'metrics': 'ga:pageviews'
+    'filters': 'ga:pagePathLevel1=@installed;ga:pageviews>=100'
     'start-date': '14daysAgo'
     'end-date': 'yesterday'
-    'metrics': 'ga:users,ga:pageviews'
-    'dimensions': 'ga:pagePathLevel2,ga:nthWeek'
-    'filters': 'ga:pagePathLevel1=@installed' # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
-    'sort': '-ga:pageviews'
-    'max-results': 100 # desired result quantity * 2 due to ga:nthWeek dim doubling # of rows returned
+    # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
+    # 'sort': '-ga:pageviews'
+    # 'max-results': 100 # desired result quantity * 2 due to ga:nthWeek dim doubling # of rows returned
 
   transform: (data) ->
-#    current = data[0].rows[..29] # TODO: ranking range as arg
-#    prior = data[1].rows[..99] # need more rows in case ranking diff b/t current / prior is too large
+    # TODO: ranking range as arg
 
-    _transform = (d, i) ->
-      bName: util.removeSlash d[0]
-      bRank: current: i + 1
-      bUsers: current: +d[2] # ga:users
-      bInstalls: current: +d[3] # ga:pageviews
+    dataNested = _.groupBy data.rows, (d) -> d[0]
+    data = Object.keys(dataNested).map (name) ->
+      # extract daily install counts to an array
+      installs = []
+      dataNested[name].forEach (d) -> installs[+d[1]] = +d[2]; return
+      # ensure array has 14 days of data
+      installs = [0..13].map (i) -> if installs[i] then installs[i] else 100
 
-    priorPreTransform = data.rows.filter (d) -> +d[1] is 0 # previous week = ga:nthWeek is 0000
-    priorList = _.pluck priorPreTransform, 0 # get arr of pkg names w/ prior period data
-    prior = priorPreTransform.map _transform
-    result = data.rows
-      .filter (d) -> +d[1] is 1 and priorList.indexOf(d[0]) isnt -1
-      # current week = ga:nthWeek is 0001; only incl. pkg that has prior period data
-      .map _transform
+      name: util.removeSlash name
+      installs: installs
+
+    sortFunc = (period, currentOrPrior) -> (a, b) ->
+      reduceFunc = (a, b, i) ->
+        if (if currentOrPrior is 'current' then i >= period else i < period) then a + b else a
+      (b.installs.reduce reduceFunc, 0) - (a.installs.reduce reduceFunc, 0)
+
+    # find prior period rankings
+    data.sort sortFunc 7, 'prior'
+    data.forEach (d, i) -> d.rank = []; d.rank.push i + 1
+    # find current period rankings
+    data.sort sortFunc 7, 'current'
+    data.forEach (d, i) -> d.rank.push i + 1
 
     ghPromises = []
-    result.forEach (pkg) ->
-      priorPkg = _.find prior, (d) -> d.bName is pkg.bName # should always find it due to filter by priorList above
-      pkg.bRank.prior = priorPkg.bRank.current
-      pkg.bUsers.prior = priorPkg.bUsers.current
-      pkg.bInstalls.prior = priorPkg.bInstalls.current
-      ghPromises.push gh.appendData pkg
-      return
-
-    Promise.all(ghPromises).then -> result
+    data.forEach (pkg) -> ghPromises.push gh.appendData pkg; return
+    Promise.all(ghPromises).then -> data
 
 queries.geo =
 

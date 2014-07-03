@@ -7,6 +7,7 @@ later = require 'later'
 
 # Custom
 ga = require './ga'
+gh = require './github'
 config = require "./config"
 
 # ==========
@@ -22,6 +23,8 @@ _fetchFromCache = (key) ->
     db.mgetAsync(ga.validQueryTypes).then (res) ->
       result = {}
       ga.validQueryTypes.forEach (type, i) -> result[type] = JSON.parse res[i]; return
+      result.dataEndTime = moment().subtract('days', 1).endOf('day').utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
+      # yesterday
       result
   else # fetch individual data source
     db.getAsync(key).then (res) -> JSON.parse res
@@ -72,6 +75,8 @@ init = ->
       .then -> db.getAsync "lastCachedTimeUnix"
       .then (lastCachedTime) ->
         console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTime).format 'LLLL' }"
+        console.log gh.noData.bowerRegistry
+        console.log gh.noData.github
         allCached = true
         return
       .catch (err) -> console.error err; return

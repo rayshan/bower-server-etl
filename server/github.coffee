@@ -1,28 +1,32 @@
 # vendor
 
-Octokit = require 'octokit'
 moment = require 'moment'
 Promise = require 'bluebird'
 url = require 'url'
 RegistryClient = require 'bower-registry-client'
 registry = Promise.promisifyAll new RegistryClient
+Octokit = require 'octokit'
 
 # Custom
 mapping = require './githubMapping'
 
 # ==========
 
+noData =
+  bowerRegistry: []
+  github: []
+
+# ==========
+
 _token = process.env.GITHUB_OAUTH_TOKEN_BOWER
-console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token?
+console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token
 _gh = new Octokit.new {token: _token}
 
 # get github repo info from bower register
 # raw data @ http://bower.herokuapp.com/packages
 getRepoName = (pkgName) ->
   if mapping.hasOwnProperty pkgName
-    new Promise (resolve) ->
-      resolve ownerName: mapping[pkgName].split('/')[0], repoName: mapping[pkgName].split('/')[1]
-      return
+    Promise.resolve ownerName: mapping[pkgName].split('/')[0], repoName: mapping[pkgName].split('/')[1]
   else
     registry.lookupAsync pkgName
       .then (entry) ->
@@ -30,10 +34,10 @@ getRepoName = (pkgName) ->
         ownerName: urlParsed[1]
         repoName: urlParsed[2].replace '.git', ''
       .catch (err) ->
-        console.error new Error "[ERROR] registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
+        noData.bowerRegistry.push pkgName
+        console.error new Error "Registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
+        throw err # rethrow so subsequent steps aren't processed
         return
-
-getRepoData = (data) -> _gh.getRepo data.ownerName, data.repoName
 
 # pkg obj passed from GA module
 appendData = (pkg) ->
@@ -49,12 +53,14 @@ appendData = (pkg) ->
     pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
     return
 
-  getRepoName pkg.bName
-    .then getRepoData
-    .then (repo) -> repo.getInfo()
-    .then append
+  getRepoName pkg.name
+    .then ((data) -> _gh.getRepo data.ownerName, data.repoName), null
+    .then ((repo) -> repo.getInfo()), null
+    .then append, null
     .catch (err) ->
-      console.error new Error "[ERROR] fetching Github data for #{ pkg.bName } via API, msg = #{ err.error.message }"
+      noData.github.push pkg.name
+      # console.error new Error "Fetching Github data for #{ pkg.name } via API, msg = #{ err.error.message }"
+      console.log err
       return
 
 # log GH rate limit warning at certain intervals
@@ -70,3 +76,4 @@ _gh.onRateLimitChanged listener
 
 module.exports =
   appendData: appendData
+  noData: noData

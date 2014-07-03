@@ -13,3 +13,5 @@ module.exports =
   'ember': 'emberjs/ember.js'
   'foundation': 'zurb/foundation'
   'ember-data': 'emberjs/data'
+  'less': 'less/less.js'
+  'angular-translate-loader-static-files': 'angular-translate/bower-angular-translate-loader-static-files'
