@@ -9,8 +9,22 @@
       templateUrl: 'b-table-pkgs/b-table-pkgs.html',
       restrict: 'E',
       link: function(scope) {
+        var reduceFunc;
+        reduceFunc = function(period, currentOrPrior) {
+          return function(a, b, i) {
+            if ((currentOrPrior === 'current' ? i >= period : i < period)) {
+              return a + b;
+            } else {
+              return a;
+            }
+          };
+        };
         bDataSvc.fetchAllP.then(function(data) {
-          scope.pkgs = data.data.pkgs;
+          data.data.packages.forEach(function(pkg) {
+            pkg.installsSum = [];
+            pkg.installsSum.push(pkg.installs.reduce(reduceFunc(7, 'prior'), 0), pkg.installs.reduce(reduceFunc(7, 'current'), 0));
+          });
+          scope.packages = data.data.packages;
         });
         scope.hideAngular = true;
         scope.toggleHideAngular = function() {

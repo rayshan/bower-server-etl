@@ -7,7 +7,6 @@
   <tr>
     <td>Rank</td>
     <td>Package</td>
-    <td>Users</td>
     <td>Installs</td>
     <td><i class="fa fa-github-alt"></i> Owner</td>
     <td>
@@ -19,17 +18,17 @@
   </thead>
 
   <tbody>
-  <tr ng-repeat="pkg in pkgs"
-      ng-hide="pkg.bName !== 'angular' && pkg.ghOwner === 'angular' && hideAngular">
+  <tr ng-repeat="pkg in packages"
+      ng-hide="pkg.name !== 'angular' && pkg.ghOwner === 'angular' && hideAngular">
     <td>
-      {{ pkg.bRank.current }}
+      {{ pkg.rank[1] }} <!--[prior, current]-->
       <br/>
-      <b-delta delta="{{pkg.bRank.current - pkg.bRank.prior}}" type="num"></b-delta>
+      <b-delta delta="{{pkg.rank[0] - pkg.rank[1]}}" type="num"></b-delta>
     </td>
 
     <td>
       <span class="pull-right b-hide"
-            ng-if="pkg.bName === 'angular'"
+            ng-if="pkg.name === 'angular'"
             ng-click="toggleHideAngular()">
         <i class="fa b-gh" ng-class="'fa-' + ($parent.hideAngular ? 'plus' : 'minus') + '-square'"></i>
         <small ng-switch on="$parent.hideAngular">
@@ -39,25 +38,19 @@
         </small>
       </span>
       <i ng-if="$index < 3" class="fa fa-trophy"></i>
-      <a ng-href="{{ pkg.ghUrl }}">{{ pkg.bName }}</a>
+      <a ng-href="{{ pkg.ghUrl }}">{{ pkg.name }}</a>
       <br/>
       <small>{{ pkg.ghDesc }}</small>
     </td>
 
-    <!--users-->
-    <td>
-      {{ pkg.bUsers.current | round }}
-      <br/>
-      <b-delta delta="{{ pkg.bUsers.current / pkg.bUsers.prior - 1 }}" type="pct"></b-delta>
-    </td>
-
     <!--installs-->
     <td>
-      {{ pkg.bInstalls.current | round }}
+      {{ pkg.installsSum[1] | round }} <!--[prior, current]-->
       <br/>
-      <b-delta delta="{{ pkg.bInstalls.current / pkg.bInstalls.prior - 1 }}" type="pct"></b-delta>
+      <b-delta delta="{{ pkg.installsSum[1] / pkg.installsSum[0] - 1 }}" type="pct"></b-delta>
     </td>
 
+    <!--GH stuff-->
     <td>
       <a ng-href="{{ pkg.ghUrl }}">
         <img ng-src="{{ pkg.ghOwnerAvatar }}" alt="" class="img-rounded"/>
