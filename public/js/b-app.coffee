@@ -13,9 +13,16 @@ app.factory 'bApiRoot', ($location) -> "/api/1/data/"
 app.factory 'bDataSvc', ($http, bApiRoot) ->
   fetchAllP: $http.get bApiRoot + 'all'
 
-app.controller 'BHeaderCtrl', (bDataSvc) ->
-  bDataSvc.fetchAllP.then (data) => @totalPkgs = data.data.overview.totalPkgs; return
-  return
+# period over period helper funcs
+app.factory 'bPoP', ->
+  _reduceFunc = (period, currentOrPrior) -> (a, b, i) ->
+    if (if currentOrPrior is 'current' then i >= period else i < period) then a + b else a
+
+  process: (data, period) ->
+    [
+      data.reduce _reduceFunc(period, 'prior'), 0
+      data.reduce _reduceFunc(period, 'current'), 0
+    ]
 
 app.factory 'd3', ->
   d3.legend = ->
@@ -70,6 +77,10 @@ app.factory 'd3', ->
     return
 
   d3
+
+app.controller 'BHeaderCtrl', (bDataSvc) ->
+  bDataSvc.fetchAllP.then (data) => @totalPkgs = data.data.overview.totalPkgs; return
+  return
 
 app.filter 'round', ->
   (input, decimals) ->
