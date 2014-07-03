@@ -14,16 +14,42 @@
 
   <tbody>
     <tr ng-repeat="cmd in cmds | orderBy: 'order'">
-      <td><i class="fa fa-fw" ng-class="'fa-' + cmd.icon"></i> {{ cmd.cmd }}</td>
-      <td ng-repeat="metric in cmd.metrics | orderBy: 'order'">
-        {{ metric.current | round: 0 }}
-        <b-delta delta="{{ metric.delta }}" type="pct"></b-delta>
+      <td><i class="fa fa-fw" ng-class="'fa-' + cmd.icon"></i> {{ cmd.name }}</td>
+
+      <td>
+        <!--absolute-->
+        {{ cmd.usersSum[1] | round: 0 }}
+
+        <!--delta-->
+        <b-delta delta="{{ cmd.usersSum[1] / cmd.usersSum[0] - 1 }}" type="pct"></b-delta>
+      </td>
+
+      <td>
+        <!--absolute-->
+        {{ cmd.usesSum[1] | round: 0 }}
+
+        <!--delta-->
+        <b-delta delta="{{ cmd.usesSum[1] / cmd.usesSum[0] - 1 }}" type="pct"></b-delta>
 
         <!--per use-->
-        <span ng-if="metric.metric !== 'users'" class="pull-right">
-          {{ metric.current / cmd.metrics[$index - 1].current | round: 1 }}
+        <span class="pull-right">
+          {{ cmd.usesSum[1] / cmd.usersSum[1] | round: 1 }}
         </span>
       </td>
+
+      <td ng-if="cmd.packagesSum">
+        <!--absolute-->
+        {{ cmd.packagesSum[1] | round: 0 }}
+
+        <!--delta-->
+        <b-delta delta="{{ cmd.packagesSum[1] / cmd.packagesSum[0] - 1 }}" type="pct"></b-delta>
+
+        <!--per use-->
+        <span class="pull-right">
+          {{ cmd.packagesSum[1] / cmd.usesSum[1] | round: 1 }}
+        </span>
+      </td>
+
     </tr>
   </tbody>
 

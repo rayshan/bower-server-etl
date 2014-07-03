@@ -1,6 +1,6 @@
 module = angular.module 'B.Table.Pkgs', []
 
-module.directive "bTablePkgs", (bDataSvc) ->
+module.directive "bTablePkgs", (bDataSvc, bPoP) ->
   templateUrl: 'b-table-pkgs/b-table-pkgs.html'
   restrict: 'E'
   link: (scope) ->
@@ -9,12 +9,8 @@ module.directive "bTablePkgs", (bDataSvc) ->
 
     bDataSvc.fetchAllP.then (data) ->
       # calc period over period totals
-      data.data.packages.forEach (pkg) ->
-        pkg.installsSum = []
-        pkg.installsSum.push(
-          (pkg.installs.reduce reduceFunc(7, 'prior'), 0)
-          (pkg.installs.reduce reduceFunc(7, 'current'), 0),
-        )
+      data.data.packages.forEach (pkgObj) ->
+        pkgObj.installsSum = bPoP.process pkgObj.installs, 7
         return
 
       scope.packages = data.data.packages

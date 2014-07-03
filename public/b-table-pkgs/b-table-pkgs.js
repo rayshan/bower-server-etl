@@ -4,7 +4,7 @@
 
   module = angular.module('B.Table.Pkgs', []);
 
-  module.directive("bTablePkgs", function(bDataSvc) {
+  module.directive("bTablePkgs", function(bDataSvc, bPoP) {
     return {
       templateUrl: 'b-table-pkgs/b-table-pkgs.html',
       restrict: 'E',
@@ -20,9 +20,8 @@
           };
         };
         bDataSvc.fetchAllP.then(function(data) {
-          data.data.packages.forEach(function(pkg) {
-            pkg.installsSum = [];
-            pkg.installsSum.push(pkg.installs.reduce(reduceFunc(7, 'prior'), 0), pkg.installs.reduce(reduceFunc(7, 'current'), 0));
+          data.data.packages.forEach(function(pkgObj) {
+            pkgObj.installsSum = bPoP.process(pkgObj.installs, 7);
           });
           scope.packages = data.data.packages;
         });

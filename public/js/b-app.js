@@ -14,12 +14,22 @@
     };
   });
 
-  app.controller('BHeaderCtrl', function(bDataSvc) {
-    bDataSvc.fetchAllP.then((function(_this) {
-      return function(data) {
-        _this.totalPkgs = data.data.overview.totalPkgs;
+  app.factory('bPoP', function() {
+    var _reduceFunc;
+    _reduceFunc = function(period, currentOrPrior) {
+      return function(a, b, i) {
+        if ((currentOrPrior === 'current' ? i >= period : i < period)) {
+          return a + b;
+        } else {
+          return a;
+        }
       };
-    })(this));
+    };
+    return {
+      process: function(data, period) {
+        return [data.reduce(_reduceFunc(period, 'prior'), 0), data.reduce(_reduceFunc(period, 'current'), 0)];
+      }
+    };
   });
 
   app.factory('d3', function() {
@@ -73,6 +83,14 @@
       });
     };
     return d3;
+  });
+
+  app.controller('BHeaderCtrl', function(bDataSvc) {
+    bDataSvc.fetchAllP.then((function(_this) {
+      return function(data) {
+        _this.totalPkgs = data.data.overview.totalPkgs;
+      };
+    })(this));
   });
 
   app.filter('round', function() {
