@@ -15,3 +15,5 @@ module.exports =
   'ember-data': 'emberjs/data'
   'less': 'less/less.js'
   'angular-translate-loader-static-files': 'angular-translate/bower-angular-translate-loader-static-files'
+  'highlightjs': 'isagalaev/highlight.js'
+  'polymer': 'Polymer/polymer'

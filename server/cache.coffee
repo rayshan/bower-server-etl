@@ -75,8 +75,8 @@ init = ->
       .then -> db.getAsync "lastCachedTimeUnix"
       .then (lastCachedTime) ->
         console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTime).format 'LLLL' }"
-        console.log gh.noData.bowerRegistry
-        console.log gh.noData.github
+#        console.log gh.noData.bowerRegistry
+#        console.log gh.noData.github
         allCached = true
         return
       .catch (err) -> console.error err; return

@@ -2,6 +2,7 @@
 Promise = require 'bluebird'
 _ = require 'lodash-node'
 moment = require 'moment'
+pj = require('prettyjson').render
 
 # custom
 config = require "./config"
@@ -40,14 +41,15 @@ queries.users =
       return
     result
 
-queries.cmds =
+queries.commands =
 
   queryObj:
     'ids': 'ga:' + config.ga.profile
+    'dimensions': 'ga:pagePathLevel1,ga:nthDay'
+    'metrics': 'ga:users,ga:pageviews'
     'start-date': '14daysAgo'
     'end-date': 'yesterday'
-    'metrics': 'ga:users,ga:pageviews'
-    'dimensions': 'ga:pagePathLevel1,ga:nthWeek'
+    'sort': 'ga:nthDay'
 
   transform: (data) ->
     cmdIcons = # define font awesome icons
@@ -60,54 +62,56 @@ queries.cmds =
       Unregister: 'eraser'
       Info: 'info'
       Search: 'search'
-    cmds = Object.keys cmdIcons
+    commands = Object.keys cmdIcons
     # set order for display
     order = {}
-    cmds.forEach (cmd, i) -> order[cmd] = i; return
+    commands.forEach (cmd, i) -> order[cmd] = i; return
 
-    _transform = (d) ->
+    # reformat command name
+    data.rows.forEach (d) ->
       cmdName = util.removeSlash d[0]
       cmdName = cmdName.charAt(0).toUpperCase() + cmdName.slice 1 # Cap Case
-
-      cmd: cmdName
-      order: order[cmdName]
-      icon: cmdIcons[cmdName]
-      metrics: [
-        {metric: 'users', order: 1, current: +d[2]} # ga:users
-        {metric: 'uses', order: 2, current: +d[3]} # ga:pageviews
-      ]
-
-    current = data.rows.filter((d) -> +d[1] is 1).map _transform # current week
-    prior = data.rows.filter((d) -> +d[1] is 0).map _transform # previous week
+      d[0] = cmdName
+      return
 
     # remove garbage data from GA e.g. (not set), FakeXMLHttpRequest, Pretender, Route-recognizer...
-    garbageFilter = (cmdName) -> cmds.indexOf(cmdName) isnt -1
-    edFilter = (cmdName) -> cmdName.indexOf("ed") is -1 # no "-ed"
-    result = current.filter (cmdObj) ->
-      # console.log "1 = #{garbageFilter cmdObj.cmd}, 2 = #{edFilter cmdObj.cmd}"
-      garbageFilter(cmdObj.cmd) and edFilter(cmdObj.cmd)
+    data = data.rows.filter (d) -> commands.indexOf(d[0]) isnt -1
 
-    getValue = (cmdName, period, ed, valueType) ->
-      ed = if ed then 'ed' else ''
-      i = if valueType is 'users' then 0 else 1 # ga:users : ga:pageviews
-      try # catch edge case in case new cmd tracked and no prior history
-        _.find(period, (d) -> d.cmd is cmdName + ed).metrics[i].current
-      catch err
-        console.error err; 0
+    # filter for current data
+    dataCurrent = data.filter (d) -> d[0].indexOf("ed") is -1 # no "-ed"
+    dataCurrent = _.groupBy dataCurrent, (d) -> d[0]
 
-    result.forEach (cmd) ->
-      # cmd with packages count, i.e. suffixed w/ 'ed'
-      if ["Install", "Uninstall", "Register", "Unregister"].indexOf(cmd.cmd) isnt -1
-        cmd.metrics.push {
-          metric: 'packages', order: 3
-          current: getValue cmd.cmd, current, true, 'packages'
-        }
+    # filter for prior data
+    dataPrior = data.filter (d) -> d[0].indexOf("ed") isnt -1
+    dataPrior = _.groupBy dataPrior, (d) -> d[0]
 
-      cmd.metrics.forEach (metric) ->
-        metric.prior = getValue cmd.cmd, prior, (if metric.metric is 'packages' then true else false), metric.metric
-        metric.delta = metric.current / metric.prior - 1
+    # construct model schema
+    result = Object.keys(dataCurrent).map (name) -> # can't use _.mapValues due to want an arr in the end
+      # extract daily install counts to an array
+      users = []
+      uses = []
+      dataCurrent[name].forEach (d) ->
+        # i1 = day, i2 = users, i3 = uses / packages
+        users[+d[1]] = +d[2]
+        uses[+d[1]] = +d[3]
         return
 
+      name: name
+      order: order[name]
+      icon: cmdIcons[name]
+      users: users
+      uses: uses
+
+    # append successful package numbers to commands with packages count, i.e. suffixed w/ 'ed'
+    result.forEach (cmdObj) ->
+      if ["Install", "Uninstall", "Register", "Unregister"].indexOf(cmdObj.name) isnt -1
+        packages = []
+        edName = cmdObj.name + 'ed'
+        try
+          dataPrior[edName].forEach (d) -> packages[+d[1]] = +d[3]; return
+        catch err
+          console.error err
+        cmdObj.packages = packages
       return
 
     result
@@ -152,6 +156,9 @@ queries.packages =
     # find current period rankings
     data.sort sortFunc 7, 'current'
     data.forEach (d, i) -> d.rank.push i + 1
+
+    # TODO: force cache only top 100; to be removed
+    data.splice 100
 
     ghPromises = []
     data.forEach (pkg) -> ghPromises.push gh.appendData pkg; return
