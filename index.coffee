@@ -1,17 +1,21 @@
+# global
+GLOBAL.config = require 'config'
+
 # vendor
 if process.env.NODE_ENV is 'production'
   require 'newrelic'
 
 # custom
-server = require './server/server'
-cache = require './server/cache'
+server = require 'server'
+cache = require 'cache'
+etl = require 'etl'
 
 # ==========
 
 # run all queries & populate cache
 cache.db.on "connect", ->
   console.info "[SUCCESS] Connected to Redis."
-  cache.init()
+  etl.execute()
   return
 
 # start server

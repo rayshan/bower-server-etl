@@ -8,7 +8,7 @@ registry = Promise.promisifyAll new RegistryClient
 Octokit = require 'octokit'
 
 # Custom
-mapping = require './githubMapping'
+mapping = require 'githubMapping'
 
 # ==========
 
