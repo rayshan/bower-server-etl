@@ -1,55 +1,41 @@
-# Vendor
-_ = require 'lodash-node' # to be replaced w/ array.prototype.find w/ node --harmony
+# vendor
+fs = require 'fs'
+p = require 'path'
+
+_ = require 'lodash-node'
 Promise = require 'bluebird'
-request = Promise.promisifyAll require 'request'
+csvParseAsync = Promise.promisify require 'csv-parse'
 
 # custom
-
-codeMapping = require './geoCodeMapping'
+codeMapping = require 'geoCodeMapping'
 
 # ==========
+# load & parse internet user data csv
 
-# not in world bank data, manual entry
-popByCode =
-  GIB: 30001
-  ALA: 28666
-  GUF: 250109
-  REU: 840974
-  MTQ: 386486
-  TWN: 23373517
-  MKD: 2058539
-  XKX: 1900000
-  BES: 21133
-  GGY: 65345
-  JEY: 97857
-  GLP: 405739
+csvParserOptions = skipEmptyLines: true, trim: true, auto_parse: true
+csvDataFile = fs.readFileSync p.join __dirname, '../data/geoInternetUsers.csv'
+loadPopData = csvParseAsync csvDataFile, csvParserOptions
+  .then (data) ->
+    data.forEach (d) -> d.splice 2, d.length
+    data
 
-# get ISO 3166-1 alpha-3 code given full country name
+# ==========
+# get ISO 3166-1 alpha-3 code given GA's full country name
+
 getCode = (name) ->
   try _.find(codeMapping, (d) -> d.name is name)["alpha-3"]
   catch error
-    err = new Error "[ERROR] '#{ name }' not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
-    console.error err
+    err = new Error "'#{ name }' not found in ISO 3166-1 alpha-3 codeMapping; err = #{ error }."
+    console.error err # can't throw here b/c sync
     "N/A"
 
-# async get country population from World Bank API given ISO 3166-1 alpha-3 code
-getPop = (code) ->
-#  if code is "N/A" then resolve 0 else
-  wbIndicator = "SP.POP.TOTL"
-  wbYr = 2012
-  wbEndpoint = "http://api.worldbank.org/countries/#{ code }/indicators/#{ wbIndicator }?format=json&date=#{ wbYr }"
-  # e.g. http://api.worldbank.org/countries/usa/indicators/SP.POP.TOTL?format=json&date=2012
+# ==========
+getPop = (code) -> loadPopData.then (data) ->
+  try (_.find data, (d) -> d[0] is code)[1]
+  catch err
+    throw new Error "[#{code}] has no internet user data in csv file."
 
-  request.getAsync wbEndpoint
-    .spread (res, body) ->
-      try JSON.parse(body)[1][0].value
-      catch err
-        if popByCode.hasOwnProperty code
-          popByCode[code]
-        else
-          console.error new Error "[ERROR] alpha-3 code '#{ code }' not found in world bank api or manual entry; err = #{ err }."
-          0
-
+# ==========
 module.exports =
   getCode: getCode
   getPop: getPop # async

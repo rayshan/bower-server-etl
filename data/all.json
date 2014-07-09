@@ -1,1535 +1,840 @@
-{"users": [
-  ["N", "20140315", 791],
-  ["N", "20140316", 881],
-  ["N", "20140317", 1420],
-  ["N", "20140318", 1374],
-  ["N", "20140319", 1359],
-  ["N", "20140320", 1266],
-  ["N", "20140321", 1045],
-  ["N", "20140322", 809],
-  ["N", "20140323", 782],
-  ["N", "20140324", 1183],
-  ["N", "20140325", 1205],
-  ["N", "20140326", 1246],
-  ["N", "20140327", 1165],
-  ["N", "20140328", 1046],
-  ["N", "20140329", 822],
-  ["N", "20140330", 749],
-  ["N", "20140331", 1220],
-  ["N", "20140401", 1336],
-  ["N", "20140402", 1257],
-  ["N", "20140403", 1253],
-  ["N", "20140404", 1111],
-  ["N", "20140405", 785],
-  ["N", "20140406", 821],
-  ["N", "20140407", 1253],
-  ["N", "20140408", 1421],
-  ["N", "20140409", 1289],
-  ["N", "20140410", 1261],
-  ["N", "20140411", 1113],
-  ["N", "20140412", 886],
-  ["N", "20140413", 763],
-  ["N", "20140414", 1293],
-  ["N", "20140415", 1309],
-  ["N", "20140416", 1270],
-  ["N", "20140417", 1115],
-  ["N", "20140418", 989],
-  ["N", "20140419", 714],
-  ["N", "20140420", 689],
-  ["N", "20140421", 1097],
-  ["N", "20140422", 1223],
-  ["N", "20140423", 1290],
-  ["N", "20140424", 1229],
-  ["N", "20140425", 1091],
-  ["N", "20140426", 800],
-  ["N", "20140427", 809],
-  ["N", "20140428", 1191],
-  ["N", "20140429", 1237],
-  ["N", "20140430", 1153],
-  ["N", "20140501", 1007],
-  ["N", "20140502", 965],
-  ["N", "20140503", 714],
-  ["N", "20140504", 866],
-  ["N", "20140505", 1275],
-  ["N", "20140506", 1364],
-  ["N", "20140507", 1288],
-  ["N", "20140508", 1236],
-  ["N", "20140509", 1113],
-  ["N", "20140510", 767],
-  ["N", "20140511", 792],
-  ["N", "20140512", 1340],
-  ["N", "20140513", 1364],
-  ["N", "20140514", 1389],
-  ["N", "20140515", 1320],
-  ["N", "20140516", 1150],
-  ["N", "20140517", 892],
-  ["E", "20140315", 565],
-  ["E", "20140316", 747],
-  ["E", "20140317", 1298],
-  ["E", "20140318", 1408],
-  ["E", "20140319", 1554],
-  ["E", "20140320", 1614],
-  ["E", "20140321", 1484],
-  ["E", "20140322", 923],
-  ["E", "20140323", 1176],
-  ["E", "20140324", 1935],
-  ["E", "20140325", 1958],
-  ["E", "20140326", 2096],
-  ["E", "20140327", 1987],
-  ["E", "20140328", 1803],
-  ["E", "20140329", 1134],
-  ["E", "20140330", 1268],
-  ["E", "20140331", 2282],
-  ["E", "20140401", 2367],
-  ["E", "20140402", 2425],
-  ["E", "20140403", 2443],
-  ["E", "20140404", 2171],
-  ["E", "20140405", 1217],
-  ["E", "20140406", 1485],
-  ["E", "20140407", 2617],
-  ["E", "20140408", 2753],
-  ["E", "20140409", 2848],
-  ["E", "20140410", 2777],
-  ["E", "20140411", 2408],
-  ["E", "20140412", 1407],
-  ["E", "20140413", 1705],
-  ["E", "20140414", 2978],
-  ["E", "20140415", 3031],
-  ["E", "20140416", 3045],
-  ["E", "20140417", 2846],
-  ["E", "20140418", 2207],
-  ["E", "20140419", 1374],
-  ["E", "20140420", 1563],
-  ["E", "20140421", 2590],
-  ["E", "20140422", 3277],
-  ["E", "20140423", 3273],
-  ["E", "20140424", 3218],
-  ["E", "20140425", 2788],
-  ["E", "20140426", 1602],
-  ["E", "20140427", 1929],
-  ["E", "20140428", 3403],
-  ["E", "20140429", 3408],
-  ["E", "20140430", 3223],
-  ["E", "20140501", 2744],
-  ["E", "20140502", 2822],
-  ["E", "20140503", 1665],
-  ["E", "20140504", 1990],
-  ["E", "20140505", 3469],
-  ["E", "20140506", 3796],
-  ["E", "20140507", 3800],
-  ["E", "20140508", 3581],
-  ["E", "20140509", 3175],
-  ["E", "20140510", 1761],
-  ["E", "20140511", 2087],
-  ["E", "20140512", 3986],
-  ["E", "20140513", 4018],
-  ["E", "20140514", 4121],
-  ["E", "20140515", 3886],
-  ["E", "20140516", 3407],
-  ["E", "20140517", 1828]
-], "commands": [
+{"commands": [
   {
-    "command": "(not set)",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 150,
-        "prior": 113,
-        "delta": 0.32743362831858414
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 0,
-        "prior": 0,
-        "delta": null
-      }
-    ]
-  },
-  {
-    "command": "Info",
-    "order": 4,
+    "name": "Info",
+    "order": 7,
     "icon": "info",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 618,
-        "prior": 562,
-        "delta": 0.0996441281138789
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 1568,
-        "prior": 1393,
-        "delta": 0.12562814070351758
-      }
-    ]
+    "users": [128, 128, 129, 120, 74, 76, 130, 148, 148, 123, 95, 63, 66, 149],
+    "uses": [242, 280, 242, 275, 163, 183, 280, 335, 253, 258, 223, 119, 151, 283]
   },
   {
-    "command": "Install",
-    "order": 1,
+    "name": "Install",
+    "order": 0,
     "icon": "download",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 10753,
-        "prior": 10167,
-        "delta": 0.05763745450968827
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 44827,
-        "prior": 41953,
-        "delta": 0.06850523204538406
-      },
-      {
-        "metric": "pkgs",
-        "order": 3,
-        "current": 281558,
-        "prior": 252091,
-        "delta": 0.11689032928585319
-      }
-    ]
+    "users": [2825, 2910, 2943, 2697, 1629, 1916, 3018, 3056, 3258, 2983, 2151, 1526, 1826, 3094],
+    "uses": [8386, 8234, 8826, 8018, 5273, 5859, 9062, 9015, 9597, 8596, 6359, 4601, 5452, 9408],
+    "packages": [58796, 60739, 61582, 56348, 34955, 35930, 67334, 63154, 50088, 32983, 18327, 10796, 13347, 29687]
   },
   {
-    "command": "Register",
-    "order": 3,
+    "name": "Register",
+    "order": 4,
     "icon": "pencil",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 156,
-        "prior": 129,
-        "delta": 0.20930232558139528
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 339,
-        "prior": 350,
-        "delta": -0.03142857142857147
-      },
-      {
-        "metric": "pkgs",
-        "order": 3,
-        "current": 154,
-        "prior": 143,
-        "delta": 0.07692307692307687
-      }
-    ]
+    "users": [36, 24, 35, 25, 18, 19, 32, 33, 38, 35, 24, 14, 21, 33],
+    "uses": [46, 36, 66, 52, 36, 46, 64, 90, 79, 73, 55, 38, 31, 85],
+    "packages": [23, 19, 36, 32, 17, 20, 28, 35, 32, 14, 15, 7, 11, 12]
   },
   {
-    "command": "Search",
-    "order": 5,
+    "name": "Search",
+    "order": 8,
     "icon": "search",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 3103,
-        "prior": 2913,
-        "delta": 0.06522485410229995
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 8223,
-        "prior": 7929,
-        "delta": 0.03707907680665912
-      }
-    ]
+    "users": [721, 721, 731, 631, 389, 452, 687, 716, 773, 689, 505, 332, 393, 726],
+    "uses": [1469, 1371, 1457, 1344, 855, 941, 1402, 1466, 1707, 1355, 1008, 692, 783, 1441]
   },
   {
-    "command": "Uninstall",
+    "name": "Uninstall",
     "order": 2,
     "icon": "trash-o",
-    "metrics": [
-      {
-        "metric": "users",
-        "order": 1,
-        "current": 1532,
-        "prior": 1405,
-        "delta": 0.090391459074733
-      },
-      {
-        "metric": "uses",
-        "order": 2,
-        "current": 4028,
-        "prior": 3560,
-        "delta": 0.13146067415730345
-      },
-      {
-        "metric": "pkgs",
-        "order": 3,
-        "current": 4030,
-        "prior": 3684,
-        "delta": 0.09391965255157442
-      }
-    ]
-  }
-], "pkgs": [
-  {
-    "bName": "jquery",
-    "bRank": {
-      "current": 1,
-      "prior": 1
-    },
-    "bUsers": {
-      "current": 11500,
-      "prior": 10766
-    },
-    "bInstalls": {
-      "current": 24726,
-      "prior": 22293
-    },
-    "ghOwner": "jquery",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
-    "ghUrl": "https://github.com/jquery/jquery",
-    "ghDesc": "jQuery JavaScript Library",
-    "ghStars": 30644,
-    "ghIssues": 18,
-    "ghUpdated": "2014-05-09T00:16:05Z",
-    "ghUpdatedHuman": "10 days"
-  },
-  {
-    "bName": "angular",
-    "bRank": {
-      "current": 2,
-      "prior": 2
-    },
-    "bUsers": {
-      "current": 7389,
-      "prior": 6973
-    },
-    "bInstalls": {
-      "current": 15049,
-      "prior": 13733
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular",
-    "ghDesc": "Bower package for the stable branch of AngularJS",
-    "ghStars": 45,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:18Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "bootstrap",
-    "bRank": {
-      "current": 3,
-      "prior": 3
-    },
-    "bUsers": {
-      "current": 6870,
-      "prior": 6243
-    },
-    "bInstalls": {
-      "current": 11801,
-      "prior": 10670
-    },
-    "ghOwner": "twbs",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
-    "ghUrl": "https://github.com/twbs/bootstrap",
-    "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-    "ghStars": 67806,
-    "ghIssues": 165,
-    "ghUpdated": "2014-05-19T05:51:49Z",
-    "ghUpdatedHuman": "4 minutes"
-  },
-  {
-    "bName": "angular-mocks",
-    "bRank": {
-      "current": 4,
-      "prior": 4
-    },
-    "bUsers": {
-      "current": 5415,
-      "prior": 5265
-    },
-    "bInstalls": {
-      "current": 10654,
-      "prior": 9736
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-mocks",
-    "ghDesc": "angular-mocks.js bower repo",
-    "ghStars": 13,
-    "ghIssues": 1,
-    "ghUpdated": "2014-05-19T01:04:40Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "angular-route",
-    "bRank": {
-      "current": 5,
-      "prior": 5
-    },
-    "bUsers": {
-      "current": 5319,
-      "prior": 5147
-    },
-    "bInstalls": {
-      "current": 9929,
-      "prior": 9170
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-route",
-    "ghDesc": "angular-route bower repo",
-    "ghStars": 17,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:43Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "angular-resource",
-    "bRank": {
-      "current": 6,
-      "prior": 6
-    },
-    "bUsers": {
-      "current": 4708,
-      "prior": 4520
-    },
-    "bInstalls": {
-      "current": 8604,
-      "prior": 8030
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-resource",
-    "ghDesc": "angular-resource bower repo",
-    "ghStars": 10,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:46Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "angular-cookies",
-    "bRank": {
-      "current": 7,
-      "prior": 7
-    },
-    "bUsers": {
-      "current": 3579,
-      "prior": 3385
-    },
-    "bInstalls": {
-      "current": 7020,
-      "prior": 6228
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-cookies",
-    "ghDesc": "angular-cookies bower repo",
-    "ghStars": 8,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:27Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "angular-sanitize",
-    "bRank": {
-      "current": 8,
-      "prior": 8
-    },
-    "bUsers": {
-      "current": 3441,
-      "prior": 3218
-    },
-    "bInstalls": {
-      "current": 6798,
-      "prior": 6159
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-sanitize",
-    "ghDesc": "angular-sanitize bower repo",
-    "ghStars": 7,
-    "ghIssues": 1,
-    "ghUpdated": "2014-05-19T01:04:51Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "angular-scenario",
-    "bRank": {
-      "current": 9,
-      "prior": 9
-    },
-    "bUsers": {
-      "current": 3131,
-      "prior": 3025
-    },
-    "bInstalls": {
-      "current": 6452,
-      "prior": 5870
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-scenario",
-    "ghDesc": "bower repo for angular-scenario.js",
-    "ghStars": 6,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:55Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "es5-shim",
-    "bRank": {
-      "current": 10,
-      "prior": 10
-    },
-    "bUsers": {
-      "current": 3124,
-      "prior": 3028
-    },
-    "bInstalls": {
-      "current": 6304,
-      "prior": 5778
-    },
-    "ghOwner": "es-shims",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6288429?",
-    "ghUrl": "https://github.com/es-shims/es5-shim",
-    "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
-    "ghStars": 2603,
-    "ghIssues": 23,
-    "ghUpdated": "2014-05-19T03:15:59Z",
-    "ghUpdatedHuman": "3 hours"
-  },
-  {
-    "bName": "json3",
-    "bRank": {
-      "current": 11,
-      "prior": 11
-    },
-    "bUsers": {
-      "current": 2952,
-      "prior": 2905
-    },
-    "bInstalls": {
-      "current": 5997,
-      "prior": 5590
-    },
-    "ghOwner": "bestiejs",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
-    "ghUrl": "https://github.com/bestiejs/json3",
-    "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
-    "ghStars": 559,
-    "ghIssues": 5,
-    "ghUpdated": "2014-05-17T08:47:42Z",
-    "ghUpdatedHuman": "2 days"
-  },
-  {
-    "bName": "underscore",
-    "bRank": {
-      "current": 12,
-      "prior": 12
-    },
-    "bUsers": {
-      "current": 2853,
-      "prior": 2359
-    },
-    "bInstalls": {
-      "current": 5121,
-      "prior": 4489
-    },
-    "ghOwner": "jashkenas",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
-    "ghUrl": "https://github.com/jashkenas/underscore",
-    "ghDesc": "JavaScript's utility _ belt",
-    "ghStars": 11357,
-    "ghIssues": 34,
-    "ghUpdated": "2014-05-17T13:54:30Z",
-    "ghUpdatedHuman": "2 days"
-  },
-  {
-    "bName": "modernizr",
-    "bRank": {
-      "current": 13,
-      "prior": 13
-    },
-    "bUsers": {
-      "current": 2217,
-      "prior": 2205
-    },
-    "bInstalls": {
-      "current": 4363,
-      "prior": 4230
-    },
-    "ghOwner": "Modernizr",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/131060?",
-    "ghUrl": "https://github.com/Modernizr/Modernizr",
-    "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the userâs browser.",
-    "ghStars": 12163,
-    "ghIssues": 123,
-    "ghUpdated": "2014-05-11T23:23:49Z",
-    "ghUpdatedHuman": "7 days"
-  },
-  {
-    "bName": "angular-bootstrap",
-    "bRank": {
-      "current": 14,
-      "prior": 14
-    },
-    "bUsers": {
-      "current": 2285,
-      "prior": 2172
-    },
-    "bInstalls": {
-      "current": 3805,
-      "prior": 3592
-    },
-    "ghOwner": "angular-ui",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
-    "ghUrl": "https://github.com/angular-ui/bootstrap-bower",
-    "ghDesc": "A repository to hold bootstrap releases for twitter's bower",
-    "ghStars": 22,
-    "ghIssues": 3,
-    "ghUpdated": "2014-05-01T16:10:30Z",
-    "ghUpdatedHuman": "18 days"
-  },
-  {
-    "bName": "requirejs",
-    "bRank": {
-      "current": 15,
-      "prior": 15
-    },
-    "bUsers": {
-      "current": 1781,
-      "prior": 1804
-    },
-    "bInstalls": {
-      "current": 3620,
-      "prior": 3426
-    },
-    "ghOwner": "jrburke",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/73359?",
-    "ghUrl": "https://github.com/jrburke/requirejs-bower",
-    "ghDesc": "Repo hold assets for publishing to the bower package manager.",
-    "ghStars": 7,
-    "ghIssues": 0,
-    "ghUpdated": "2014-02-17T06:09:34Z",
-    "ghUpdatedHuman": "3 months"
-  },
-  {
-    "bName": "angular-animate",
-    "bRank": {
-      "current": 16,
-      "prior": 17
-    },
-    "bUsers": {
-      "current": 2214,
-      "prior": 2069
-    },
-    "bInstalls": {
-      "current": 3536,
-      "prior": 3189
-    },
-    "ghOwner": "angular",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
-    "ghUrl": "https://github.com/angular/bower-angular-animate",
-    "ghDesc": "",
-    "ghStars": 13,
-    "ghIssues": 0,
-    "ghUpdated": "2014-05-19T01:04:23Z",
-    "ghUpdatedHuman": "5 hours"
-  },
-  {
-    "bName": "bootstrap-sass",
-    "bRank": {
-      "current": 17,
-      "prior": 16
-    },
-    "bUsers": {
-      "current": 1824,
-      "prior": 1776
-    },
-    "bInstalls": {
-      "current": 3391,
-      "prior": 3243
-    }
-  },
-  {
-    "bName": "angular-ui-router",
-    "bRank": {
-      "current": 18,
-      "prior": 18
-    },
-    "bUsers": {
-      "current": 1874,
-      "prior": 1679
-    },
-    "bInstalls": {
-      "current": 3186,
-      "prior": 2802
-    },
-    "ghOwner": "angular-ui",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
-    "ghUrl": "https://github.com/angular-ui/ui-router",
-    "ghDesc": "The de-facto solution to flexible routing with nested views",
-    "ghStars": 3009,
-    "ghIssues": 187,
-    "ghUpdated": "2014-04-28T01:11:29Z",
-    "ghUpdatedHuman": "21 days"
-  },
-  {
-    "bName": "backbone",
-    "bRank": {
-      "current": 19,
-      "prior": 20
-    },
-    "bUsers": {
-      "current": 1625,
-      "prior": 1251
-    },
-    "bInstalls": {
-      "current": 3079,
-      "prior": 2534
-    },
-    "ghOwner": "jashkenas",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
-    "ghUrl": "https://github.com/jashkenas/backbone",
-    "ghDesc": "Give your JS App some Backbone with Models, Views, Collections, and Events",
-    "ghStars": 17998,
-    "ghIssues": 19,
-    "ghUpdated": "2014-05-05T13:36:03Z",
-    "ghUpdatedHuman": "14 days"
-  },
-  {
-    "bName": "moment",
-    "bRank": {
-      "current": 20,
-      "prior": 19
-    },
-    "bUsers": {
-      "current": 1544,
-      "prior": 1506
-    },
-    "bInstalls": {
-      "current": 2875,
-      "prior": 2621
-    },
-    "ghOwner": "moment",
-    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4129662?",
-    "ghUrl": "https://github.com/moment/moment",
-    "ghDesc": "Parse, validate, manipulate, and display dates in javascript.",
-    "ghStars": 16139,
-    "ghIssues": 75,
-    "ghUpdated": "2014-05-16T07:09:07Z",
-    "ghUpdatedHuman": "3 days"
+    "users": [327, 308, 308, 296, 174, 178, 352, 357, 337, 320, 219, 136, 175, 326],
+    "uses": [756, 641, 711, 717, 412, 446, 746, 892, 795, 647, 448, 335, 424, 774],
+    "packages": [821, 793, 707, 837, 497, 648, 829, 878, 773, 448, 288, 184, 209, 461]
   }
 ], "geo": [
   {
-    "name": "Gibraltar",
-    "isoCode": "GIB",
-    "users": 14,
-    "density": 467
+    "name": "United States",
+    "isoCode": "USA",
+    "users": 17221,
+    "density": 65
   },
   {
-    "name": "Iceland",
-    "isoCode": "ISL",
-    "users": 53,
-    "density": 166
+    "name": "United Kingdom",
+    "isoCode": "GBR",
+    "users": 3230,
+    "density": 57
   },
   {
-    "name": "Ãland Islands",
-    "isoCode": "ALA",
-    "users": 4,
-    "density": 140
+    "name": "France",
+    "isoCode": "FRA",
+    "users": 2509,
+    "density": 47
   },
   {
-    "name": "Liechtenstein",
-    "isoCode": "LIE",
-    "users": 3,
-    "density": 82
+    "name": "China",
+    "isoCode": "CHN",
+    "users": 2404,
+    "density": 4
   },
   {
-    "name": "Monaco",
-    "isoCode": "MCO",
-    "users": 3,
-    "density": 80
+    "name": "Germany",
+    "isoCode": "DEU",
+    "users": 2348,
+    "density": 35
   },
   {
-    "name": "Sweden",
-    "isoCode": "SWE",
-    "users": 718,
-    "density": 76
+    "name": "Brazil",
+    "isoCode": "BRA",
+    "users": 1976,
+    "density": 20
   },
   {
-    "name": "Norway",
-    "isoCode": "NOR",
-    "users": 361,
-    "density": 72
+    "name": "India",
+    "isoCode": "IND",
+    "users": 1911,
+    "density": 11
   },
   {
-    "name": "Finland",
-    "isoCode": "FIN",
-    "users": 387,
+    "name": "Japan",
+    "isoCode": "JPN",
+    "users": 1892,
+    "density": 18
+  },
+  {
+    "name": "Canada",
+    "isoCode": "CAN",
+    "users": 1802,
+    "density": 60
+  },
+  {
+    "name": "Russia",
+    "isoCode": "RUS",
+    "users": 1547,
+    "density": 18
+  },
+  {
+    "name": "Australia",
+    "isoCode": "AUS",
+    "users": 1369,
     "density": 72
   },
   {
     "name": "Netherlands",
     "isoCode": "NLD",
-    "users": 1008,
-    "density": 61
-  },
-  {
-    "name": "New Zealand",
-    "isoCode": "NZL",
-    "users": 266,
-    "density": 61
-  },
-  {
-    "name": "Ireland",
-    "isoCode": "IRL",
-    "users": 268,
-    "density": 59
-  },
-  {
-    "name": "Denmark",
-    "isoCode": "DNK",
-    "users": 318,
-    "density": 57
-  },
-  {
-    "name": "Estonia",
-    "isoCode": "EST",
-    "users": 74,
-    "density": 56
-  },
-  {
-    "name": "Singapore",
-    "isoCode": "SGP",
-    "users": 288,
-    "density": 55
-  },
-  {
-    "name": "Luxembourg",
-    "isoCode": "LUX",
-    "users": 28,
-    "density": 53
-  },
-  {
-    "name": "Canada",
-    "isoCode": "CAN",
-    "users": 1753,
-    "density": 51
-  },
-  {
-    "name": "United States",
-    "isoCode": "USA",
-    "users": 15468,
-    "density": 50
-  },
-  {
-    "name": "Switzerland",
-    "isoCode": "CHE",
-    "users": 399,
-    "density": 50
-  },
-  {
-    "name": "Israel",
-    "isoCode": "ISR",
-    "users": 377,
-    "density": 48
-  },
-  {
-    "name": "Australia",
-    "isoCode": "AUS",
-    "users": 1068,
-    "density": 48
-  },
-  {
-    "name": "Malta",
-    "isoCode": "MLT",
-    "users": 19,
-    "density": 46
-  },
-  {
-    "name": "United Kingdom",
-    "isoCode": "GBR",
-    "users": 2877,
-    "density": 46
-  },
-  {
-    "name": "Belgium",
-    "isoCode": "BEL",
-    "users": 483,
-    "density": 44
-  },
-  {
-    "name": "Cayman Islands",
-    "isoCode": "CYM",
-    "users": 2,
-    "density": 35
-  },
-  {
-    "name": "Slovenia",
-    "isoCode": "SVN",
-    "users": 70,
-    "density": 35
-  },
-  {
-    "name": "France",
-    "isoCode": "FRA",
-    "users": 2272,
-    "density": 35
-  },
-  {
-    "name": "Austria",
-    "isoCode": "AUT",
-    "users": 270,
-    "density": 33
-  },
-  {
-    "name": "Costa Rica",
-    "isoCode": "CRI",
-    "users": 136,
-    "density": 29
-  },
-  {
-    "name": "Latvia",
-    "isoCode": "LVA",
-    "users": 56,
-    "density": 28
-  },
-  {
-    "name": "Czech Republic",
-    "isoCode": "CZE",
-    "users": 277,
-    "density": 27
-  },
-  {
-    "name": "Germany",
-    "isoCode": "DEU",
-    "users": 2114,
-    "density": 27
-  },
-  {
-    "name": "Lithuania",
-    "isoCode": "LTU",
-    "users": 76,
-    "density": 26
-  },
-  {
-    "name": "Isle of Man",
-    "isoCode": "IMN",
-    "users": 2,
-    "density": 24
-  },
-  {
-    "name": "Portugal",
-    "isoCode": "PRT",
-    "users": 243,
-    "density": 24
-  },
-  {
-    "name": "Hong Kong",
-    "isoCode": "HKG",
-    "users": 159,
-    "density": 23
-  },
-  {
-    "name": "Belarus",
-    "isoCode": "BLR",
-    "users": 200,
-    "density": 22
-  },
-  {
-    "name": "Poland",
-    "isoCode": "POL",
-    "users": 785,
-    "density": 21
-  },
-  {
-    "name": "Jersey",
-    "isoCode": "JEY",
-    "users": 2,
-    "density": 21
+    "users": 1225,
+    "density": 78
   },
   {
     "name": "Spain",
     "isoCode": "ESP",
-    "users": 959,
-    "density": 21
-  },
-  {
-    "name": "Bulgaria",
-    "isoCode": "BGR",
-    "users": 151,
-    "density": 21
-  },
-  {
-    "name": "CuraÃ§ao",
-    "isoCode": "CUW",
-    "users": 3,
-    "density": 20
-  },
-  {
-    "name": "Croatia",
-    "isoCode": "HRV",
-    "users": 84,
-    "density": 20
-  },
-  {
-    "name": "St. Vincent & Grenadines",
-    "isoCode": "VCT",
-    "users": 2,
-    "density": 19
-  },
-  {
-    "name": "Taiwan",
-    "isoCode": "TWN",
-    "users": 431,
-    "density": 19
+    "users": 1098,
+    "density": 33
   },
   {
     "name": "Ukraine",
     "isoCode": "UKR",
-    "users": 794,
-    "density": 18
+    "users": 940,
+    "density": 50
   },
   {
-    "name": "Hungary",
-    "isoCode": "HUN",
-    "users": 174,
-    "density": 18
-  },
-  {
-    "name": "Maldives",
-    "isoCode": "MDV",
-    "users": 6,
-    "density": 18
-  },
-  {
-    "name": "Serbia",
-    "isoCode": "SRB",
-    "users": 114,
-    "density": 16
-  },
-  {
-    "name": "Romania",
-    "isoCode": "ROU",
-    "users": 295,
-    "density": 15
-  },
-  {
-    "name": "Cyprus",
-    "isoCode": "CYP",
-    "users": 15,
-    "density": 14
-  },
-  {
-    "name": "Japan",
-    "isoCode": "JPN",
-    "users": 1673,
-    "density": 14
-  },
-  {
-    "name": "Slovakia",
-    "isoCode": "SVK",
-    "users": 72,
-    "density": 14
-  },
-  {
-    "name": "Greece",
-    "isoCode": "GRC",
-    "users": 148,
-    "density": 14
-  },
-  {
-    "name": "Moldova",
-    "isoCode": "MDA",
-    "users": 43,
-    "density": 13
-  },
-  {
-    "name": "Uruguay",
-    "isoCode": "URY",
-    "users": 44,
-    "density": 13
+    "name": "Poland",
+    "isoCode": "POL",
+    "users": 934,
+    "density": 39
   },
   {
     "name": "Italy",
     "isoCode": "ITA",
-    "users": 720,
-    "density": 13
+    "users": 791,
+    "density": 23
   },
   {
-    "name": "Argentina",
-    "isoCode": "ARG",
-    "users": 516,
-    "density": 13
-  },
-  {
-    "name": "New Caledonia",
-    "isoCode": "NCL",
-    "users": 3,
-    "density": 12
-  },
-  {
-    "name": "Armenia",
-    "isoCode": "ARM",
-    "users": 35,
-    "density": 12
-  },
-  {
-    "name": "Montenegro",
-    "isoCode": "MNE",
-    "users": 7,
-    "density": 12
+    "name": "Sweden",
+    "isoCode": "SWE",
+    "users": 742,
+    "density": 82
   },
   {
     "name": "South Korea",
     "isoCode": "KOR",
-    "users": 510,
-    "density": 11
+    "users": 574,
+    "density": 14
   },
   {
-    "name": "Russia",
-    "isoCode": "RUS",
-    "users": 1351,
-    "density": 10
+    "name": "Argentina",
+    "isoCode": "ARG",
+    "users": 555,
+    "density": 23
   },
   {
-    "name": "Belize",
-    "isoCode": "BLZ",
-    "users": 3,
-    "density": 10
+    "name": "Israel",
+    "isoCode": "ISR",
+    "users": 492,
+    "density": 87
   },
   {
-    "name": "Macedonia (FYROM)",
-    "isoCode": "MKD",
-    "users": 21,
-    "density": 10
+    "name": "Taiwan",
+    "isoCode": "TWN",
+    "users": 492,
+    "density": 28
   },
   {
-    "name": "Chile",
-    "isoCode": "CHL",
-    "users": 171,
-    "density": 10
-  },
-  {
-    "name": "Trinidad and Tobago",
-    "isoCode": "TTO",
-    "users": 11,
-    "density": 9
-  },
-  {
-    "name": "Macau",
-    "isoCode": "MAC",
-    "users": 5,
-    "density": 9
-  },
-  {
-    "name": "Brazil",
-    "isoCode": "BRA",
-    "users": 1590,
-    "density": 9
-  },
-  {
-    "name": "Mongolia",
-    "isoCode": "MNG",
-    "users": 25,
-    "density": 9
-  },
-  {
-    "name": "Barbados",
-    "isoCode": "BRB",
-    "users": 2,
-    "density": 8
-  },
-  {
-    "name": "Martinique",
-    "isoCode": "MTQ",
-    "users": 3,
-    "density": 8
-  },
-  {
-    "name": "French Guiana",
-    "isoCode": "GUF",
-    "users": 2,
-    "density": 8
-  },
-  {
-    "name": "Bosnia and Herzegovina",
-    "isoCode": "BIH",
-    "users": 25,
-    "density": 7
-  },
-  {
-    "name": "Mauritius",
-    "isoCode": "MUS",
-    "users": 9,
-    "density": 7
-  },
-  {
-    "name": "RÃ©union",
-    "isoCode": "REU",
-    "users": 5,
-    "density": 6
-  },
-  {
-    "name": "Panama",
-    "isoCode": "PAN",
-    "users": 18,
-    "density": 5
-  },
-  {
-    "name": "Dominican Republic",
-    "isoCode": "DOM",
-    "users": 45,
-    "density": 5
-  },
-  {
-    "name": "Colombia",
-    "isoCode": "COL",
-    "users": 194,
-    "density": 5
-  },
-  {
-    "name": "Puerto Rico",
-    "isoCode": "PRI",
-    "users": 15,
-    "density": 5
-  },
-  {
-    "name": "United Arab Emirates",
-    "isoCode": "ARE",
-    "users": 43,
-    "density": 5
-  },
-  {
-    "name": "Tunisia",
-    "isoCode": "TUN",
-    "users": 39,
-    "density": 4
-  },
-  {
-    "name": "South Africa",
-    "isoCode": "ZAF",
-    "users": 205,
-    "density": 4
+    "name": "Belgium",
+    "isoCode": "BEL",
+    "users": 487,
+    "density": 53
   },
   {
     "name": "Mexico",
     "isoCode": "MEX",
-    "users": 409,
-    "density": 4
+    "users": 477,
+    "density": 9
   },
   {
-    "name": "Thailand",
-    "isoCode": "THA",
-    "users": 209,
-    "density": 4
+    "name": "Switzerland",
+    "isoCode": "CHE",
+    "users": 463,
+    "density": 67
   },
   {
-    "name": "Jamaica",
-    "isoCode": "JAM",
-    "users": 9,
-    "density": 4
-  },
-  {
-    "name": "Malaysia",
-    "isoCode": "MYS",
-    "users": 114,
-    "density": 4
+    "name": "Norway",
+    "isoCode": "NOR",
+    "users": 459,
+    "density": 95
   },
   {
     "name": "Vietnam",
     "isoCode": "VNM",
-    "users": 324,
-    "density": 4
+    "users": 447,
+    "density": 12
   },
   {
-    "name": "Kosovo",
-    "isoCode": "XKX",
-    "users": 6,
-    "density": 4
+    "name": "Finland",
+    "isoCode": "FIN",
+    "users": 392,
+    "density": 79
   },
   {
-    "name": "Venezuela",
-    "isoCode": "VEN",
-    "users": 81,
-    "density": 3
-  },
-  {
-    "name": "Georgia",
-    "isoCode": "GEO",
-    "users": 10,
-    "density": 3
-  },
-  {
-    "name": "Jordan",
-    "isoCode": "JOR",
-    "users": 14,
-    "density": 3
-  },
-  {
-    "name": "Turkey",
-    "isoCode": "TUR",
-    "users": 197,
-    "density": 3
-  },
-  {
-    "name": "Bolivia",
-    "isoCode": "BOL",
-    "users": 29,
-    "density": 3
-  },
-  {
-    "name": "Philippines",
-    "isoCode": "PHL",
-    "users": 248,
-    "density": 3
-  },
-  {
-    "name": "Nicaragua",
-    "isoCode": "NIC",
-    "users": 13,
-    "density": 3
-  },
-  {
-    "name": "Sri Lanka",
-    "isoCode": "LKA",
-    "users": 41,
-    "density": 3
-  },
-  {
-    "name": "Ecuador",
-    "isoCode": "ECU",
-    "users": 42,
-    "density": 3
-  },
-  {
-    "name": "Qatar",
-    "isoCode": "QAT",
-    "users": 6,
-    "density": 3
-  },
-  {
-    "name": "Kazakhstan",
-    "isoCode": "KAZ",
-    "users": 45,
-    "density": 3
-  },
-  {
-    "name": "Palestine",
-    "isoCode": "PSE",
-    "users": 9,
-    "density": 3
-  },
-  {
-    "name": "Kyrgyzstan",
-    "isoCode": "KGZ",
-    "users": 9,
-    "density": 2
-  },
-  {
-    "name": "Guatemala",
-    "isoCode": "GTM",
-    "users": 26,
-    "density": 2
+    "name": "Ireland",
+    "isoCode": "IRL",
+    "users": 381,
+    "density": 106
   },
   {
     "name": "Indonesia",
     "isoCode": "IDN",
-    "users": 283,
-    "density": 2
+    "users": 374,
+    "density": 10
   },
   {
-    "name": "China",
-    "isoCode": "CHN",
-    "users": 2161,
-    "density": 2
+    "name": "Denmark",
+    "isoCode": "DNK",
+    "users": 356,
+    "density": 68
   },
   {
-    "name": "Ghana",
-    "isoCode": "GHA",
-    "users": 31,
-    "density": 2
+    "name": "Romania",
+    "isoCode": "ROU",
+    "users": 328,
+    "density": 34
   },
   {
-    "name": "Lebanon",
-    "isoCode": "LBN",
-    "users": 7,
-    "density": 2
+    "name": "Singapore",
+    "isoCode": "SGP",
+    "users": 325,
+    "density": 83
   },
   {
-    "name": "Paraguay",
-    "isoCode": "PRY",
-    "users": 12,
-    "density": 2
+    "name": "Czech Republic",
+    "isoCode": "CZE",
+    "users": 320,
+    "density": 42
   },
   {
-    "name": "Kuwait",
-    "isoCode": "KWT",
-    "users": 4,
-    "density": 2
+    "name": "Philippines",
+    "isoCode": "PHL",
+    "users": 315,
+    "density": 9
   },
   {
-    "name": "Cambodia",
-    "isoCode": "KHM",
-    "users": 15,
-    "density": 2
+    "name": "New Zealand",
+    "isoCode": "NZL",
+    "users": 312,
+    "density": 85
+  },
+  {
+    "name": "South Africa",
+    "isoCode": "ZAF",
+    "users": 292,
+    "density": 12
+  },
+  {
+    "name": "Austria",
+    "isoCode": "AUT",
+    "users": 281,
+    "density": 42
+  },
+  {
+    "name": "Portugal",
+    "isoCode": "PRT",
+    "users": 278,
+    "density": 43
+  },
+  {
+    "name": "Thailand",
+    "isoCode": "THA",
+    "users": 268,
+    "density": 14
+  },
+  {
+    "name": "Bulgaria",
+    "isoCode": "BGR",
+    "users": 255,
+    "density": 67
+  },
+  {
+    "name": "Hong Kong",
+    "isoCode": "HKG",
+    "users": 252,
+    "density": 48
+  },
+  {
+    "name": "Turkey",
+    "isoCode": "TUR",
+    "users": 240,
+    "density": 7
+  },
+  {
+    "name": "Belarus",
+    "isoCode": "BLR",
+    "users": 220,
+    "density": 43
+  },
+  {
+    "name": "Colombia",
+    "isoCode": "COL",
+    "users": 206,
+    "density": 9
+  },
+  {
+    "name": "Hungary",
+    "isoCode": "HUN",
+    "users": 206,
+    "density": 29
+  },
+  {
+    "name": "Chile",
+    "isoCode": "CHL",
+    "users": 200,
+    "density": 18
+  },
+  {
+    "name": "Greece",
+    "isoCode": "GRC",
+    "users": 157,
+    "density": 24
+  },
+  {
+    "name": "Malaysia",
+    "isoCode": "MYS",
+    "users": 155,
+    "density": 8
+  },
+  {
+    "name": "Serbia",
+    "isoCode": "SRB",
+    "users": 132,
+    "density": 36
+  },
+  {
+    "name": "Costa Rica",
+    "isoCode": "CRI",
+    "users": 127,
+    "density": 57
+  },
+  {
+    "name": "Slovakia",
+    "isoCode": "SVK",
+    "users": 100,
+    "density": 24
+  },
+  {
+    "name": "Croatia",
+    "isoCode": "HRV",
+    "users": 94,
+    "density": 34
+  },
+  {
+    "name": "Venezuela",
+    "isoCode": "VEN",
+    "users": 88,
+    "density": 6
+  },
+  {
+    "name": "Slovenia",
+    "isoCode": "SVN",
+    "users": 84,
+    "density": 57
   },
   {
     "name": "Peru",
     "isoCode": "PER",
-    "users": 59,
-    "density": 2
-  },
-  {
-    "name": "Morocco",
-    "isoCode": "MAR",
-    "users": 62,
-    "density": 2
-  },
-  {
-    "name": "Honduras",
-    "isoCode": "HND",
-    "users": 9,
-    "density": 2
-  },
-  {
-    "name": "India",
-    "isoCode": "IND",
-    "users": 1338,
-    "density": 2
-  },
-  {
-    "name": "Afghanistan",
-    "isoCode": "AFG",
-    "users": 2,
-    "density": 1
-  },
-  {
-    "name": "Madagascar",
-    "isoCode": "MDG",
-    "users": 5,
-    "density": 1
-  },
-  {
-    "name": "Sudan",
-    "isoCode": "SDN",
-    "users": 5,
-    "density": 1
-  },
-  {
-    "name": "Tajikistan",
-    "isoCode": "TJK",
-    "users": 5,
-    "density": 1
-  },
-  {
-    "name": "CÃ´te dâIvoire",
-    "isoCode": "CIV",
-    "users": 4,
-    "density": 1
-  },
-  {
-    "name": "Ethiopia",
-    "isoCode": "ETH",
-    "users": 4,
-    "density": 1
-  },
-  {
-    "name": "El Salvador",
-    "isoCode": "SLV",
-    "users": 6,
-    "density": 1
-  },
-  {
-    "name": "Uganda",
-    "isoCode": "UGA",
-    "users": 8,
-    "density": 1
-  },
-  {
-    "name": "Tanzania",
-    "isoCode": "TZA",
-    "users": 8,
-    "density": 1
-  },
-  {
-    "name": "Benin",
-    "isoCode": "BEN",
-    "users": 3,
-    "density": 1
+    "users": 83,
+    "density": 7
   },
   {
     "name": "Pakistan",
     "isoCode": "PAK",
-    "users": 59,
-    "density": 1
+    "users": 80,
+    "density": 3
   },
   {
-    "name": "Haiti",
-    "isoCode": "HTI",
-    "users": 3,
-    "density": 1
+    "name": "Egypt",
+    "isoCode": "EGY",
+    "users": 75,
+    "density": 2
   },
   {
-    "name": "Syria",
-    "isoCode": "SYR",
-    "users": 10,
-    "density": 1
+    "name": "Iran",
+    "isoCode": "IRN",
+    "users": 74,
+    "density": 4
   },
   {
-    "name": "Uzbekistan",
-    "isoCode": "UZB",
-    "users": 14,
+    "name": "Lithuania",
+    "isoCode": "LTU",
+    "users": 74,
+    "density": 37
+  },
+  {
+    "name": "Latvia",
+    "isoCode": "LVA",
+    "users": 68,
+    "density": 45
+  },
+  {
+    "name": "Morocco",
+    "isoCode": "MAR",
+    "users": 67,
+    "density": 4
+  },
+  {
+    "name": "Iceland",
+    "isoCode": "ISL",
+    "users": 64,
+    "density": 206
+  },
+  {
+    "name": "United Arab Emirates",
+    "isoCode": "ARE",
+    "users": 63,
+    "density": 8
+  },
+  {
+    "name": "Estonia",
+    "isoCode": "EST",
+    "users": 61,
+    "density": 58
+  },
+  {
+    "name": "Bangladesh",
+    "isoCode": "BGD",
+    "users": 58,
+    "density": 6
+  },
+  {
+    "name": "Uruguay",
+    "isoCode": "URY",
+    "users": 53,
+    "density": 27
+  },
+  {
+    "name": "Dominican Republic",
+    "isoCode": "DOM",
+    "users": 52,
+    "density": 11
+  },
+  {
+    "name": "Tunisia",
+    "isoCode": "TUN",
+    "users": 47,
+    "density": 10
+  },
+  {
+    "name": "Moldova",
+    "isoCode": "MDA",
+    "users": 42,
+    "density": 25
+  },
+  {
+    "name": "Kazakhstan",
+    "isoCode": "KAZ",
+    "users": 41,
+    "density": 5
+  },
+  {
+    "name": "Nepal",
+    "isoCode": "NPL",
+    "users": 41,
+    "density": 12
+  },
+  {
+    "name": "Sri Lanka",
+    "isoCode": "LKA",
+    "users": 37,
+    "density": 9
+  },
+  {
+    "name": "Ecuador",
+    "isoCode": "ECU",
+    "users": 36,
+    "density": 6
+  },
+  {
+    "name": "Bolivia",
+    "isoCode": "BOL",
+    "users": 35,
+    "density": 9
+  },
+  {
+    "name": "Kenya",
+    "isoCode": "KEN",
+    "users": 35,
+    "density": 3
+  },
+  {
+    "name": "Armenia",
+    "isoCode": "ARM",
+    "users": 34,
+    "density": 25
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "isoCode": "BIH",
+    "users": 33,
+    "density": 13
+  },
+  {
+    "name": "Macedonia (FYROM)",
+    "isoCode": "MKD",
+    "users": 32,
+    "density": 25
+  },
+  {
+    "name": "Luxembourg",
+    "isoCode": "LUX",
+    "users": 31,
+    "density": 61
+  },
+  {
+    "name": "Malta",
+    "isoCode": "MLT",
+    "users": 31,
+    "density": 107
+  },
+  {
+    "name": "Guatemala",
+    "isoCode": "GTM",
+    "users": 30,
+    "density": 10
+  },
+  {
+    "name": "Nigeria",
+    "isoCode": "NGA",
+    "users": 29,
     "density": 1
   },
   {
     "name": "Algeria",
     "isoCode": "DZA",
-    "users": 16,
-    "density": 1
+    "users": 27,
+    "density": 5
+  },
+  {
+    "name": "Mongolia",
+    "isoCode": "MNG",
+    "users": 27,
+    "density": 54
   },
   {
     "name": "Saudi Arabia",
     "isoCode": "SAU",
+    "users": 25,
+    "density": 2
+  },
+  {
+    "name": "Jordan",
+    "isoCode": "JOR",
+    "users": 23,
+    "density": 9
+  },
+  {
+    "name": "Ghana",
+    "isoCode": "GHA",
+    "users": 22,
+    "density": 7
+  },
+  {
+    "name": "Panama",
+    "isoCode": "PAN",
+    "users": 22,
+    "density": 14
+  },
+  {
+    "name": "Nicaragua",
+    "isoCode": "NIC",
+    "users": 20,
+    "density": 22
+  },
+  {
+    "name": "Puerto Rico",
+    "isoCode": "PRI",
+    "users": 20,
+    "density": 8
+  },
+  {
+    "name": "Cambodia",
+    "isoCode": "KHM",
     "users": 18,
-    "density": 1
+    "density": 20
+  },
+  {
+    "name": "Cyprus",
+    "isoCode": "CYP",
+    "users": 18,
+    "density": 25
+  },
+  {
+    "name": "El Salvador",
+    "isoCode": "SLV",
+    "users": 15,
+    "density": 11
+  },
+  {
+    "name": "Kyrgyzstan",
+    "isoCode": "KGZ",
+    "users": 15,
+    "density": 12
+  },
+  {
+    "name": "Uzbekistan",
+    "isoCode": "UZB",
+    "users": 15,
+    "density": 2
+  },
+  {
+    "name": "Lebanon",
+    "isoCode": "LBN",
+    "users": 12,
+    "density": 4
+  },
+  {
+    "name": "Côte d’Ivoire",
+    "isoCode": "CIV",
+    "users": 11,
+    "density": 21
+  },
+  {
+    "name": "Georgia",
+    "isoCode": "GEO",
+    "users": 10,
+    "density": 6
+  },
+  {
+    "name": "Jamaica",
+    "isoCode": "JAM",
+    "users": 10,
+    "density": 10
+  },
+  {
+    "name": "Kosovo",
+    "isoCode": "XKX",
+    "users": 10,
+    "density": 7
+  },
+  {
+    "name": "Tanzania",
+    "isoCode": "TZA",
+    "users": 10,
+    "density": 5
+  },
+  {
+    "name": "Uganda",
+    "isoCode": "UGA",
+    "users": 10,
+    "density": 2
+  },
+  {
+    "name": "Gibraltar",
+    "isoCode": "GIB",
+    "users": 9,
+    "density": 462
+  },
+  {
+    "name": "Montenegro",
+    "isoCode": "MNE",
+    "users": 9,
+    "density": 26
+  },
+  {
+    "name": "Paraguay",
+    "isoCode": "PRY",
+    "users": 9,
+    "density": 4
   },
   {
     "name": "Senegal",
     "isoCode": "SEN",
-    "users": 5,
-    "density": 1
+    "users": 9,
+    "density": 4
   },
   {
     "name": "Albania",
     "isoCode": "ALB",
-    "users": 2,
-    "density": 1
+    "users": 8,
+    "density": 5
   },
   {
-    "name": "Nigeria",
-    "isoCode": "NGA",
-    "users": 20,
-    "density": 1
+    "name": "Réunion",
+    "isoCode": "REU",
+    "users": 8,
+    "density": 26
+  },
+  {
+    "name": "Curaçao",
+    "isoCode": "CUW",
+    "users": 7,
+    "density": 72
+  },
+  {
+    "name": "Honduras",
+    "isoCode": "HND",
+    "users": 7,
+    "density": 5
+  },
+  {
+    "name": "Macau",
+    "isoCode": "MAC",
+    "users": 7,
+    "density": 19
+  },
+  {
+    "name": "Madagascar",
+    "isoCode": "MDG",
+    "users": 7,
+    "density": 14
+  },
+  {
+    "name": "Palestine",
+    "isoCode": "PSE",
+    "users": 7,
+    "density": 4
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "isoCode": "TTO",
+    "users": 7,
+    "density": 9
+  },
+  {
+    "name": "Mauritius",
+    "isoCode": "MUS",
+    "users": 6,
+    "density": 12
+  },
+  {
+    "name": "Barbados",
+    "isoCode": "BRB",
+    "users": 5,
+    "density": 24
   },
   {
     "name": "Cameroon",
     "isoCode": "CMR",
+    "users": 5,
+    "density": 4
+  },
+  {
+    "name": "São Tomé and Príncipe",
+    "isoCode": "STP",
+    "users": 5,
+    "density": 113
+  },
+  {
+    "name": "Tajikistan",
+    "isoCode": "TJK",
+    "users": 5,
+    "density": 4
+  },
+  {
+    "name": "Maldives",
+    "isoCode": "MDV",
+    "users": 4,
+    "density": 27
+  },
+  {
+    "name": "Sudan",
+    "isoCode": "SDN",
+    "users": 4,
+    "density": 1
+  },
+  {
+    "name": "Syria",
+    "isoCode": "SYR",
+    "users": 4,
+    "density": 1
+  },
+  {
+    "name": "Åland Islands",
+    "isoCode": "ALA",
+    "users": 4,
+    "density": null
+  },
+  {
+    "name": "Belize",
+    "isoCode": "BLZ",
+    "users": 3,
+    "density": 29
+  },
+  {
+    "name": "Benin",
+    "isoCode": "BEN",
+    "users": 3,
+    "density": 6
+  },
+  {
+    "name": "Cape Verde",
+    "isoCode": "CPV",
+    "users": 3,
+    "density": 17
+  },
+  {
+    "name": "Faroe Islands",
+    "isoCode": "FRO",
+    "users": 3,
+    "density": 68
+  },
+  {
+    "name": "Kuwait",
+    "isoCode": "KWT",
+    "users": 3,
+    "density": 2
+  },
+  {
+    "name": "U.S. Virgin Islands",
+    "isoCode": "VIR",
+    "users": 3,
+    "density": 64
+  },
+  {
+    "name": "Zimbabwe",
+    "isoCode": "ZWE",
+    "users": 3,
+    "density": 2
+  },
+  {
+    "name": "Andorra",
+    "isoCode": "AND",
+    "users": 2,
+    "density": 27
+  },
+  {
+    "name": "Angola",
+    "isoCode": "AGO",
     "users": 2,
     "density": 1
   },
   {
-    "name": "Nepal",
-    "isoCode": "NPL",
-    "users": 27,
-    "density": 1
+    "name": "Congo (DRC)",
+    "isoCode": "COD",
+    "users": 2,
+    "density": 2
   },
   {
     "name": "Cuba",
@@ -1538,65 +843,1127 @@
     "density": 1
   },
   {
-    "name": "Kenya",
-    "isoCode": "KEN",
-    "users": 32,
-    "density": 1
+    "name": "Ethiopia",
+    "isoCode": "ETH",
+    "users": 2,
+    "density": 2
   },
   {
-    "name": "Bangladesh",
-    "isoCode": "BGD",
-    "users": 68,
-    "density": 1
+    "name": "French Polynesia",
+    "isoCode": "PYF",
+    "users": 2,
+    "density": 13
   },
   {
-    "name": "Egypt",
-    "isoCode": "EGY",
-    "users": 47,
-    "density": 1
+    "name": "Guadeloupe",
+    "isoCode": "GLP",
+    "users": 2,
+    "density": 20
+  },
+  {
+    "name": "Guernsey",
+    "isoCode": "GGY",
+    "users": 2,
+    "density": 42
+  },
+  {
+    "name": "Jersey",
+    "isoCode": "JEY",
+    "users": 2,
+    "density": 50
+  },
+  {
+    "name": "Laos",
+    "isoCode": "LAO",
+    "users": 2,
+    "density": 3
   },
   {
     "name": "Lesotho",
     "isoCode": "LSO",
     "users": 2,
-    "density": 1
+    "density": 20
   },
   {
-    "name": "Libya",
-    "isoCode": "LBY",
+    "name": "Martinique",
+    "isoCode": "MTQ",
     "users": 2,
-    "density": 1
+    "density": 12
+  },
+  {
+    "name": "Monaco",
+    "isoCode": "MCO",
+    "users": 2,
+    "density": 59
   },
   {
     "name": "Mozambique",
     "isoCode": "MOZ",
     "users": 2,
-    "density": 1
+    "density": 2
   },
   {
-    "name": "Myanmar (Burma)",
-    "isoCode": "MMR",
+    "name": "Namibia",
+    "isoCode": "NAM",
     "users": 2,
-    "density": 1
+    "density": 7
   },
   {
-    "name": "Iran",
-    "isoCode": "IRN",
-    "users": 53,
-    "density": 1
-  },
-  {
-    "name": "Zambia",
-    "isoCode": "ZMB",
+    "name": "Qatar",
+    "isoCode": "QAT",
     "users": 2,
-    "density": 1
+    "density": 2
   },
   {
-    "name": "Zimbabwe",
-    "isoCode": "ZWE",
+    "name": "South Sudan",
+    "isoCode": "SSD",
     "users": 2,
     "density": 1
   }
 ], "overview": {
-  "totalPkgs": 13530
-}}
+  "totalPkgs": 16015
+}, "packages": [
+  {
+    "name": "jquery",
+    "installs": [4192, 3987, 3682, 3272, 1926, 2198, 3996, 3994, 3066, 2066, 1197, 765, 931, 1954],
+    "rank": [1, 1],
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
+    "ghUrl": "https://github.com/jquery/jquery",
+    "ghDesc": "jQuery JavaScript Library",
+    "ghStars": 31115,
+    "ghIssues": 24,
+    "ghUpdated": "2014-07-03T14:00:58Z",
+    "ghUpdatedHuman": "6 days"
+  },
+  {
+    "name": "angular",
+    "installs": [2694, 2632, 2458, 2060, 1310, 1468, 2529, 2653, 2198, 1444, 859, 574, 645, 1270],
+    "rank": [2, 2],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/angular.js",
+    "ghDesc": "HTML enhanced for web apps",
+    "ghStars": 25835,
+    "ghIssues": 1107,
+    "ghUpdated": "2014-07-09T05:40:11Z",
+    "ghUpdatedHuman": "an hour"
+  },
+  {
+    "name": "bootstrap",
+    "installs": [2045, 1908, 1750, 1671, 988, 1112, 1988, 2010, 1461, 1022, 604, 375, 507, 902],
+    "rank": [3, 3],
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
+    "ghUrl": "https://github.com/twbs/bootstrap",
+    "ghDesc": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+    "ghStars": 69531,
+    "ghIssues": 89,
+    "ghUpdated": "2014-07-08T23:19:55Z",
+    "ghUpdatedHuman": "7 hours"
+  },
+  {
+    "name": "angular-mocks",
+    "installs": [1878, 1804, 1688, 1363, 848, 950, 1745, 1784, 1461, 889, 520, 339, 397, 774],
+    "rank": [4, 4],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-mocks",
+    "ghDesc": "angular-mocks.js bower repo",
+    "ghStars": 16,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-09T06:00:29Z",
+    "ghUpdatedHuman": "44 minutes"
+  },
+  {
+    "name": "angular-route",
+    "installs": [1757, 1651, 1591, 1264, 837, 904, 1590, 1691, 1271, 814, 483, 325, 353, 693],
+    "rank": [5, 5],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-route",
+    "ghDesc": "angular-route bower repo",
+    "ghStars": 20,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-09T06:00:32Z",
+    "ghUpdatedHuman": "44 minutes"
+  },
+  {
+    "name": "angular-resource",
+    "installs": [1565, 1495, 1398, 1099, 740, 750, 1351, 1454, 1145, 727, 439, 278, 330, 638],
+    "rank": [6, 6],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-resource",
+    "ghDesc": "angular-resource bower repo",
+    "ghStars": 14,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-09T06:00:37Z",
+    "ghUpdatedHuman": "43 minutes"
+  },
+  {
+    "name": "angular-sanitize",
+    "installs": [1374, 1312, 1287, 1011, 630, 699, 1273, 1326, 1094, 725, 471, 266, 320, 590],
+    "rank": [7, 7],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-sanitize",
+    "ghDesc": "angular-sanitize bower repo",
+    "ghStars": 7,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-09T06:00:40Z",
+    "ghUpdatedHuman": "43 minutes"
+  },
+  {
+    "name": "angular-cookies",
+    "installs": [1398, 1289, 1217, 966, 637, 675, 1204, 1262, 1004, 661, 392, 256, 312, 568],
+    "rank": [8, 8],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-cookies",
+    "ghDesc": "angular-cookies bower repo",
+    "ghStars": 10,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-09T06:00:18Z",
+    "ghUpdatedHuman": "44 minutes"
+  },
+  {
+    "name": "angular-scenario",
+    "installs": [1286, 1183, 1119, 888, 602, 598, 1098, 1131, 969, 625, 380, 259, 289, 512],
+    "rank": [10, 9],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-scenario",
+    "ghDesc": "bower repo for angular-scenario.js",
+    "ghStars": 6,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-09T06:00:43Z",
+    "ghUpdatedHuman": "43 minutes"
+  },
+  {
+    "name": "es5-shim",
+    "installs": [1295, 1151, 1131, 925, 579, 599, 1113, 1124, 950, 606, 370, 241, 283, 503],
+    "rank": [9, 10],
+    "ghOwner": "es-shims",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6288429?",
+    "ghUrl": "https://github.com/es-shims/es5-shim",
+    "ghDesc": "ECMAScript 5 compatibility shims for legacy JavaScript engines",
+    "ghStars": 2732,
+    "ghIssues": 21,
+    "ghUpdated": "2014-07-06T19:29:57Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "name": "angular-animate",
+    "installs": [1067, 1078, 1054, 837, 498, 555, 1074, 1036, 906, 628, 384, 219, 275, 521],
+    "rank": [12, 11],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-animate",
+    "ghDesc": "",
+    "ghStars": 18,
+    "ghIssues": 0,
+    "ghUpdated": "2014-07-09T06:00:16Z",
+    "ghUpdatedHuman": "44 minutes"
+  },
+  {
+    "name": "json3",
+    "installs": [1191, 1102, 1040, 817, 564, 579, 1011, 1079, 902, 580, 349, 231, 293, 502],
+    "rank": [11, 12],
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
+    "ghUrl": "https://github.com/bestiejs/json3",
+    "ghDesc": "A modern JSON implementation compatible with nearly all JavaScript platforms.",
+    "ghStars": 587,
+    "ghIssues": 6,
+    "ghUpdated": "2014-06-22T21:23:07Z",
+    "ghUpdatedHuman": "16 days"
+  },
+  {
+    "name": "modernizr",
+    "installs": [823, 649, 702, 607, 322, 370, 764, 798, 585, 432, 256, 137, 165, 419],
+    "rank": [13, 13],
+    "ghOwner": "Modernizr",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/131060?",
+    "ghUrl": "https://github.com/Modernizr/Modernizr",
+    "ghDesc": "Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.",
+    "ghStars": 12592,
+    "ghIssues": 117,
+    "ghUpdated": "2014-07-05T15:55:15Z",
+    "ghUpdatedHuman": "4 days"
+  },
+  {
+    "name": "angular-bootstrap",
+    "installs": [812, 694, 697, 555, 276, 370, 763, 729, 635, 437, 237, 125, 161, 377],
+    "rank": [15, 14],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/bootstrap",
+    "ghDesc": "Native AngularJS (Angular) directives for Bootstrap. Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required!",
+    "ghStars": 5432,
+    "ghIssues": 316,
+    "ghUpdated": "2014-07-08T17:05:07Z",
+    "ghUpdatedHuman": "14 hours"
+  },
+  {
+    "name": "bootstrap-sass",
+    "installs": [754, 657, 630, 591, 373, 414, 779, 710, 527, 370, 209, 185, 184, 326],
+    "rank": [14, 15],
+    "ghOwner": "twbs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2918581?",
+    "ghUrl": "https://github.com/twbs/bootstrap-sass",
+    "ghDesc": "Official Sass port of Bootstrap",
+    "ghStars": 6912,
+    "ghIssues": 15,
+    "ghUpdated": "2014-07-03T10:28:28Z",
+    "ghUpdatedHuman": "6 days"
+  },
+  {
+    "name": "lodash",
+    "installs": [608, 520, 479, 463, 183, 272, 600, 571, 533, 437, 195, 111, 115, 343],
+    "rank": [20, 16],
+    "ghOwner": "lodash",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2565403?",
+    "ghUrl": "https://github.com/lodash/lodash",
+    "ghDesc": "A utility library delivering consistency, customization, performance, & extras.",
+    "ghStars": 5339,
+    "ghIssues": 1,
+    "ghUpdated": "2014-07-08T16:41:11Z",
+    "ghUpdatedHuman": "14 hours"
+  },
+  {
+    "name": "moment",
+    "installs": [734, 593, 633, 501, 164, 241, 623, 571, 522, 388, 190, 100, 126, 360],
+    "rank": [18, 17],
+    "ghOwner": "moment",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4129662?",
+    "ghUrl": "https://github.com/moment/moment",
+    "ghDesc": "Parse, validate, manipulate, and display dates in javascript.",
+    "ghStars": 17178,
+    "ghIssues": 58,
+    "ghUpdated": "2014-07-08T08:05:52Z",
+    "ghUpdatedHuman": "a day"
+  },
+  {
+    "name": "angular-ui-router",
+    "installs": [675, 572, 527, 469, 273, 334, 640, 606, 496, 358, 203, 106, 151, 320],
+    "rank": [17, 18],
+    "ghOwner": "angular-ui",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1530011?",
+    "ghUrl": "https://github.com/angular-ui/ui-router",
+    "ghDesc": "The de-facto solution to flexible routing with nested views",
+    "ghStars": 3491,
+    "ghIssues": 273,
+    "ghUpdated": "2014-07-04T04:19:48Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "font-awesome",
+    "installs": [604, 511, 529, 484, 217, 268, 559, 572, 456, 324, 201, 142, 169, 352],
+    "rank": [19, 19],
+    "ghOwner": "FortAwesome",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1505683?",
+    "ghUrl": "https://github.com/FortAwesome/Font-Awesome",
+    "ghDesc": "The iconic font and CSS toolkit",
+    "ghStars": 24827,
+    "ghIssues": 1505,
+    "ghUpdated": "2014-07-03T23:56:45Z",
+    "ghUpdatedHuman": "5 days"
+  },
+  {
+    "name": "angular-touch",
+    "installs": [633, 658, 614, 526, 331, 345, 630, 624, 500, 287, 211, 129, 162, 234],
+    "rank": [16, 20],
+    "ghOwner": "angular",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/139426?",
+    "ghUrl": "https://github.com/angular/bower-angular-touch",
+    "ghDesc": "",
+    "ghStars": 23,
+    "ghIssues": 2,
+    "ghUpdated": "2014-07-09T06:00:47Z",
+    "ghUpdatedHuman": "43 minutes"
+  },
+  {
+    "name": "jquery-ui",
+    "installs": [470, 387, 402, 415, 161, 210, 536, 473, 375, 223, 140, 100, 100, 222],
+    "rank": [23, 21],
+    "ghOwner": "jquery",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/70142?",
+    "ghUrl": "https://github.com/jquery/jquery-ui",
+    "ghDesc": "The official jQuery user interface library.",
+    "ghStars": 8425,
+    "ghIssues": 46,
+    "ghUpdated": "2014-07-08T13:15:52Z",
+    "ghUpdatedHuman": "17 hours"
+  },
+  {
+    "name": "mocha",
+    "installs": [409, 436, 365, 395, 256, 301, 509, 427, 296, 235, 120, 100, 100, 174],
+    "rank": [21, 22],
+    "ghOwner": "visionmedia",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/25254?",
+    "ghUrl": "https://github.com/visionmedia/mocha",
+    "ghDesc": "mocha - simple, flexible, fun javascript test framework for node.js & the browser. (BDD, TDD, QUnit styles via interfaces)",
+    "ghStars": 4814,
+    "ghIssues": 211,
+    "ghUpdated": "2014-07-08T22:56:49Z",
+    "ghUpdatedHuman": "8 hours"
+  },
+  {
+    "name": "chai",
+    "installs": [412, 434, 339, 376, 247, 292, 486, 417, 290, 232, 115, 100, 100, 161],
+    "rank": [22, 23],
+    "ghOwner": "chaijs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1515293?",
+    "ghUrl": "https://github.com/chaijs/chai",
+    "ghDesc": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
+    "ghStars": 1198,
+    "ghIssues": 36,
+    "ghUpdated": "2014-06-08T03:29:08Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "backbone",
+    "installs": [420, 362, 360, 348, 199, 173, 392, 347, 264, 241, 106, 100, 101, 227],
+    "rank": [26, 24],
+    "ghOwner": "jashkenas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4732?",
+    "ghUrl": "https://github.com/jashkenas/backbone",
+    "ghDesc": "Give your JS App some Backbone with Models, Views, Collections, and Events",
+    "ghStars": 18525,
+    "ghIssues": 26,
+    "ghUpdated": "2014-07-08T18:38:34Z",
+    "ghUpdatedHuman": "12 hours"
+  },
+  {
+    "name": "polymer",
+    "installs": [128, 347, 377, 443, 373, 340, 433, 362, 331, 137, 100, 100, 100, 129],
+    "rank": [24, 25],
+    "ghOwner": "Polymer",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/2159051?",
+    "ghUrl": "https://github.com/Polymer/polymer",
+    "ghDesc": "Leverage the future of the web platform today.",
+    "ghStars": 5120,
+    "ghIssues": 175,
+    "ghUpdated": "2014-06-23T23:00:51Z",
+    "ghUpdatedHuman": "15 days"
+  },
+  {
+    "name": "platform",
+    "installs": [133, 347, 377, 437, 371, 327, 429, 356, 331, 136, 100, 100, 100, 126],
+    "rank": [25, 26],
+    "ghOwner": "bestiejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/802850?",
+    "ghUrl": "https://github.com/bestiejs/platform.js",
+    "ghDesc": "A platform detection library that works on nearly all JavaScript platforms.  ",
+    "ghStars": 473,
+    "ghIssues": 4,
+    "ghUpdated": "2014-07-03T03:06:56Z",
+    "ghUpdatedHuman": "6 days"
+  },
+  {
+    "name": "handlebars",
+    "installs": [291, 290, 339, 263, 146, 147, 309, 276, 299, 160, 100, 100, 100, 147],
+    "rank": [28, 27],
+    "ghOwner": "wycats",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/4?",
+    "ghUrl": "https://github.com/wycats/handlebars.js",
+    "ghDesc": "",
+    "ghStars": 6669,
+    "ghIssues": 23,
+    "ghUpdated": "2014-07-07T05:20:08Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "name": "fastclick",
+    "installs": [275, 219, 222, 164, 100, 118, 221, 245, 239, 201, 100, 100, 100, 159],
+    "rank": [41, 28],
+    "ghOwner": "ftlabs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1432696?",
+    "ghUrl": "https://github.com/ftlabs/fastclick",
+    "ghDesc": "Polyfill to remove click delays on browsers with touch UIs",
+    "ghStars": 6970,
+    "ghIssues": 85,
+    "ghUpdated": "2014-06-19T18:34:14Z",
+    "ghUpdatedHuman": "20 days"
+  },
+  {
+    "name": "core-component-page",
+    "installs": [121, 306, 349, 371, 337, 308, 382, 328, 240, 122, 100, 100, 100, 120],
+    "rank": [27, 29]
+  },
+  {
+    "name": "jquery.cookie",
+    "installs": [271, 213, 247, 195, 100, 100, 255, 241, 241, 127, 100, 100, 100, 177],
+    "rank": [35, 30],
+    "ghOwner": "carhartl",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/21918?",
+    "ghUrl": "https://github.com/carhartl/jquery-cookie",
+    "ghDesc": "A simple, lightweight jQuery plugin for reading, writing and deleting cookies",
+    "ghStars": 5597,
+    "ghIssues": 10,
+    "ghUpdated": "2014-06-02T05:40:43Z",
+    "ghUpdatedHuman": "a month"
+  },
+  {
+    "name": "d3",
+    "installs": [320, 253, 271, 237, 100, 100, 278, 289, 200, 156, 100, 100, 100, 123],
+    "rank": [29, 31],
+    "ghOwner": "mbostock",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/230541?",
+    "ghUrl": "https://github.com/mbostock/d3",
+    "ghDesc": "A JavaScript visualization library for HTML and SVG.",
+    "ghStars": 27753,
+    "ghIssues": 172,
+    "ghUpdated": "2014-07-07T04:39:14Z",
+    "ghUpdatedHuman": "2 days"
+  },
+  {
+    "name": "jquery-placeholder",
+    "installs": [230, 195, 190, 142, 100, 100, 181, 183, 190, 108, 100, 100, 100, 138],
+    "rank": [72, 32],
+    "ghOwner": "mathiasbynens",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/81942?",
+    "ghUrl": "https://github.com/mathiasbynens/jquery-placeholder",
+    "ghDesc": "A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet",
+    "ghStars": 2913,
+    "ghIssues": 101,
+    "ghUpdated": "2014-04-01T13:16:24Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "name": "core-meta",
+    "installs": [100, 176, 209, 256, 227, 189, 253, 221, 160, 100, 100, 100, 100, 100],
+    "rank": [30, 33]
+  },
+  {
+    "name": "requirejs-text",
+    "installs": [243, 196, 181, 182, 100, 100, 166, 195, 138, 139, 100, 100, 100, 100],
+    "rank": [57, 34],
+    "ghOwner": "requirejs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1781835?",
+    "ghUrl": "https://github.com/requirejs/text",
+    "ghDesc": "An AMD loader plugin for loading text resources",
+    "ghStars": 445,
+    "ghIssues": 5,
+    "ghUpdated": "2014-05-18T23:24:46Z",
+    "ghUpdatedHuman": "2 months"
+  },
+  {
+    "name": "core-iconset-svg",
+    "installs": [100, 171, 209, 254, 224, 188, 251, 214, 158, 100, 100, 100, 100, 100],
+    "rank": [32, 35]
+  },
+  {
+    "name": "core-icons",
+    "installs": [100, 171, 209, 254, 226, 190, 251, 215, 157, 100, 100, 100, 100, 100],
+    "rank": [31, 36]
+  },
+  {
+    "name": "core-iconset",
+    "installs": [100, 171, 209, 254, 225, 187, 249, 213, 158, 100, 100, 100, 100, 100],
+    "rank": [34, 37]
+  },
+  {
+    "name": "core-icon",
+    "installs": [100, 170, 209, 254, 225, 187, 251, 214, 157, 100, 100, 100, 100, 100],
+    "rank": [33, 38]
+  },
+  {
+    "name": "foundation",
+    "installs": [193, 155, 170, 110, 100, 100, 158, 173, 167, 100, 100, 100, 100, 128],
+    "rank": [97, 39],
+    "ghOwner": "zurb",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/156122?",
+    "ghUrl": "https://github.com/zurb/foundation",
+    "ghDesc": "The most advanced responsive front-end framework in the world. Quickly create prototypes and production code for sites and apps that work on any kind of device.",
+    "ghStars": 17274,
+    "ghIssues": 236,
+    "ghUpdated": "2014-07-08T23:34:19Z",
+    "ghUpdatedHuman": "7 hours"
+  },
+  {
+    "name": "ember",
+    "installs": [166, 184, 223, 180, 100, 112, 182, 192, 174, 100, 100, 100, 100, 100],
+    "rank": [62, 40],
+    "ghOwner": "emberjs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1253363?",
+    "ghUrl": "https://github.com/emberjs/ember.js",
+    "ghDesc": "Ember.js - A JavaScript framework for creating ambitious web applications",
+    "ghStars": 10700,
+    "ghIssues": 255,
+    "ghUpdated": "2014-07-08T20:51:50Z",
+    "ghUpdatedHuman": "10 hours"
+  },
+  {
+    "name": "core-selector",
+    "installs": [100, 155, 212, 245, 218, 185, 251, 206, 147, 100, 100, 100, 100, 100],
+    "rank": [37, 41]
+  },
+  {
+    "name": "core-selection",
+    "installs": [100, 157, 213, 244, 218, 188, 248, 206, 147, 100, 100, 100, 100, 100],
+    "rank": [36, 42]
+  },
+  {
+    "name": "core-icon-button",
+    "installs": [100, 150, 205, 244, 219, 182, 244, 203, 150, 100, 100, 100, 100, 100],
+    "rank": [38, 43]
+  },
+  {
+    "name": "core-toolbar",
+    "installs": [100, 150, 203, 243, 219, 178, 243, 201, 149, 100, 100, 100, 100, 100],
+    "rank": [39, 44]
+  },
+  {
+    "name": "core-header-panel",
+    "installs": [100, 147, 203, 239, 213, 182, 240, 200, 138, 100, 100, 100, 100, 100],
+    "rank": [40, 45]
+  },
+  {
+    "name": "core-media-query",
+    "installs": [100, 148, 203, 236, 211, 176, 244, 200, 135, 100, 100, 100, 100, 100],
+    "rank": [42, 46]
+  },
+  {
+    "name": "angular-translate",
+    "installs": [184, 156, 169, 100, 100, 100, 130, 174, 149, 110, 100, 100, 100, 100],
+    "rank": [99, 47],
+    "ghOwner": "angular-translate",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/6117835?",
+    "ghUrl": "https://github.com/angular-translate/angular-translate",
+    "ghDesc": "i18n in your Angular apps, made easy.",
+    "ghStars": 1418,
+    "ghIssues": 64,
+    "ghUpdated": "2014-07-08T08:03:48Z",
+    "ghUpdatedHuman": "a day"
+  },
+  {
+    "name": "core-item",
+    "installs": [100, 146, 200, 232, 201, 177, 243, 197, 135, 100, 100, 100, 100, 100],
+    "rank": [46, 48]
+  },
+  {
+    "name": "core-drawer-panel",
+    "installs": [100, 145, 200, 233, 211, 178, 242, 197, 135, 100, 100, 100, 100, 100],
+    "rank": [43, 49]
+  },
+  {
+    "name": "core-menu",
+    "installs": [100, 145, 200, 232, 202, 174, 242, 196, 135, 100, 100, 100, 100, 100],
+    "rank": [47, 50]
+  },
+  {
+    "name": "core-input",
+    "installs": [100, 148, 205, 232, 199, 177, 239, 202, 129, 100, 100, 100, 100, 100],
+    "rank": [45, 51]
+  },
+  {
+    "name": "core-collapse",
+    "installs": [100, 145, 200, 234, 202, 178, 243, 196, 134, 100, 100, 100, 100, 100],
+    "rank": [44, 52]
+  },
+  {
+    "name": "core-transition",
+    "installs": [100, 146, 200, 232, 198, 171, 240, 197, 130, 100, 100, 100, 100, 100],
+    "rank": [48, 53]
+  },
+  {
+    "name": "paper-ripple",
+    "installs": [100, 127, 186, 234, 193, 164, 219, 193, 132, 100, 100, 100, 100, 100],
+    "rank": [52, 54]
+  },
+  {
+    "name": "font-roboto",
+    "installs": [100, 130, 185, 236, 193, 168, 221, 192, 132, 100, 100, 100, 100, 100],
+    "rank": [51, 55]
+  },
+  {
+    "name": "core-overlay",
+    "installs": [100, 144, 199, 233, 199, 168, 238, 194, 130, 100, 100, 100, 100, 100],
+    "rank": [49, 56]
+  },
+  {
+    "name": "core-range",
+    "installs": [100, 145, 197, 225, 197, 166, 236, 193, 124, 100, 100, 100, 100, 100],
+    "rank": [50, 57]
+  },
+  {
+    "name": "paper-shadow",
+    "installs": [100, 122, 185, 232, 192, 165, 218, 185, 131, 100, 100, 100, 100, 100],
+    "rank": [53, 58]
+  },
+  {
+    "name": "paper-focusable",
+    "installs": [100, 122, 184, 230, 191, 163, 216, 185, 129, 100, 100, 100, 100, 100],
+    "rank": [55, 59]
+  },
+  {
+    "name": "paper-button",
+    "installs": [100, 120, 184, 232, 192, 163, 216, 185, 128, 100, 100, 100, 100, 100],
+    "rank": [54, 60]
+  },
+  {
+    "name": "paper-input",
+    "installs": [100, 112, 181, 216, 184, 158, 208, 180, 120, 100, 100, 100, 100, 100],
+    "rank": [59, 61]
+  },
+  {
+    "name": "paper-icon-button",
+    "installs": [100, 115, 183, 226, 190, 163, 215, 177, 122, 100, 100, 100, 100, 100],
+    "rank": [56, 62]
+  },
+  {
+    "name": "paper-radio-button",
+    "installs": [100, 113, 181, 212, 184, 150, 210, 179, 116, 100, 100, 100, 100, 100],
+    "rank": [61, 63]
+  },
+  {
+    "name": "paper-tabs",
+    "installs": [100, 111, 180, 219, 189, 154, 211, 177, 118, 100, 100, 100, 100, 100],
+    "rank": [58, 64]
+  },
+  {
+    "name": "paper-checkbox",
+    "installs": [100, 110, 181, 211, 184, 151, 208, 178, 115, 100, 100, 100, 100, 100],
+    "rank": [64, 65]
+  },
+  {
+    "name": "paper-fab",
+    "installs": [100, 110, 181, 211, 184, 153, 211, 175, 118, 100, 100, 100, 100, 100],
+    "rank": [60, 66]
+  },
+  {
+    "name": "paper-radio-group",
+    "installs": [100, 110, 181, 210, 184, 150, 208, 176, 115, 100, 100, 100, 100, 100],
+    "rank": [69, 67]
+  },
+  {
+    "name": "paper-slider",
+    "installs": [100, 111, 180, 211, 184, 151, 208, 174, 116, 100, 100, 100, 100, 100],
+    "rank": [65, 68]
+  },
+  {
+    "name": "paper-dialog",
+    "installs": [100, 109, 180, 211, 185, 151, 208, 174, 116, 100, 100, 100, 100, 100],
+    "rank": [67, 69]
+  },
+  {
+    "name": "paper-progress",
+    "installs": [100, 111, 181, 211, 184, 150, 209, 174, 115, 100, 100, 100, 100, 100],
+    "rank": [63, 70]
+  },
+  {
+    "name": "paper-elements",
+    "installs": [100, 109, 179, 210, 184, 153, 206, 174, 114, 100, 100, 100, 100, 100],
+    "rank": [71, 71]
+  },
+  {
+    "name": "paper-toast",
+    "installs": [100, 109, 181, 213, 184, 150, 208, 174, 114, 100, 100, 100, 100, 100],
+    "rank": [66, 72]
+  },
+  {
+    "name": "paper-toggle-button",
+    "installs": [100, 110, 180, 211, 184, 150, 207, 174, 113, 100, 100, 100, 100, 100],
+    "rank": [70, 73]
+  },
+  {
+    "name": "core-ajax",
+    "installs": [100, 134, 165, 214, 175, 144, 211, 169, 109, 100, 100, 100, 100, 100],
+    "rank": [68, 74]
+  },
+  {
+    "name": "marked",
+    "installs": [100, 137, 172, 191, 167, 131, 190, 172, 101, 100, 100, 100, 100, 100],
+    "rank": [76, 75],
+    "ghOwner": "chjj",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/470564?",
+    "ghUrl": "https://github.com/chjj/marked",
+    "ghDesc": "A markdown parser and compiler. Built for speed.",
+    "ghStars": 3903,
+    "ghIssues": 194,
+    "ghUpdated": "2014-05-01T22:57:58Z",
+    "ghUpdatedHuman": "2 months"
+  },
+  {
+    "name": "highlightjs",
+    "installs": [100, 146, 184, 196, 161, 125, 192, 170, 100, 100, 100, 100, 100, 100],
+    "rank": [74, 76],
+    "ghOwner": "isagalaev",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/99931?",
+    "ghUrl": "https://github.com/isagalaev/highlight.js",
+    "ghDesc": "Javascript syntax highlighter",
+    "ghStars": 3073,
+    "ghIssues": 40,
+    "ghUpdated": "2014-07-08T21:14:36Z",
+    "ghUpdatedHuman": "9 hours"
+  },
+  {
+    "name": "ember-data",
+    "installs": [120, 145, 177, 149, 100, 100, 158, 142, 122, 100, 100, 100, 100, 100],
+    "rank": [98, 77],
+    "ghOwner": "emberjs",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/1253363?",
+    "ghUrl": "https://github.com/emberjs/data",
+    "ghDesc": "A data persistence library for Ember.js.",
+    "ghStars": 1911,
+    "ghIssues": 192,
+    "ghUpdated": "2014-07-08T19:04:36Z",
+    "ghUpdatedHuman": "12 hours"
+  },
+  {
+    "name": "core-style",
+    "installs": [100, 126, 156, 196, 166, 132, 194, 163, 100, 100, 100, 100, 100, 100],
+    "rank": [78, 78]
+  },
+  {
+    "name": "core-shared-lib",
+    "installs": [100, 132, 169, 187, 173, 129, 184, 159, 100, 100, 100, 100, 100, 100],
+    "rank": [77, 79]
+  },
+  {
+    "name": "core-field",
+    "installs": [100, 130, 164, 203, 170, 139, 199, 158, 100, 100, 100, 100, 100, 100],
+    "rank": [73, 80]
+  },
+  {
+    "name": "core-scroll-header-panel",
+    "installs": [100, 126, 163, 200, 169, 140, 198, 157, 100, 100, 100, 100, 100, 100],
+    "rank": [75, 81]
+  },
+  {
+    "name": "core-list",
+    "installs": [100, 121, 150, 176, 159, 124, 177, 157, 100, 100, 100, 100, 100, 100],
+    "rank": [87, 82]
+  },
+  {
+    "name": "core-elements",
+    "installs": [100, 121, 153, 180, 162, 124, 174, 156, 100, 100, 100, 100, 100, 100],
+    "rank": [80, 83]
+  },
+  {
+    "name": "core-scaffold",
+    "installs": [100, 123, 152, 181, 171, 130, 180, 155, 100, 100, 100, 100, 100, 100],
+    "rank": [79, 84]
+  },
+  {
+    "name": "normalize-css",
+    "installs": [149, 137, 121, 100, 100, 100, 159, 145, 100, 110, 100, 100, 100, 100],
+    "rank": [103, 85],
+    "ghOwner": "necolas",
+    "ghOwnerAvatar": "https://avatars.githubusercontent.com/u/239676?",
+    "ghUrl": "https://github.com/necolas/normalize.css",
+    "ghDesc": "A collection of HTML element and attribute style-normalizations",
+    "ghStars": 12868,
+    "ghIssues": 13,
+    "ghUpdated": "2014-03-27T05:14:06Z",
+    "ghUpdatedHuman": "3 months"
+  },
+  {
+    "name": "core-tests",
+    "installs": [100, 120, 150, 176, 158, 121, 178, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [94, 86]
+  },
+  {
+    "name": "core-pages",
+    "installs": [100, 121, 151, 179, 159, 121, 176, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [86, 87]
+  },
+  {
+    "name": "core-doc-viewer",
+    "installs": [100, 119, 152, 178, 160, 126, 176, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [82, 88]
+  },
+  {
+    "name": "core-layout",
+    "installs": [100, 121, 151, 175, 160, 124, 175, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [90, 89]
+  },
+  {
+    "name": "core-localstorage",
+    "installs": [100, 121, 151, 180, 159, 122, 176, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [84, 90]
+  },
+  {
+    "name": "core-menu-button",
+    "installs": [100, 123, 152, 179, 158, 120, 176, 154, 100, 100, 100, 100, 100, 100],
+    "rank": [85, 91]
+  },
+  {
+    "name": "core-layout-trbl",
+    "installs": [100, 121, 151, 176, 160, 122, 176, 153, 100, 100, 100, 100, 100, 100],
+    "rank": [88, 92]
+  },
+  {
+    "name": "core-splitter",
+    "installs": [100, 121, 151, 176, 161, 121, 175, 153, 100, 100, 100, 100, 100, 100],
+    "rank": [91, 93]
+  },
+  {
+    "name": "core-tooltip",
+    "installs": [100, 122, 153, 175, 160, 121, 175, 153, 100, 100, 100, 100, 100, 100],
+    "rank": [89, 94]
+  },
+  {
+    "name": "core-docs",
+    "installs": [100, 121, 152, 178, 160, 124, 176, 153, 100, 100, 100, 100, 100, 100],
+    "rank": [81, 95]
+  },
+  {
+    "name": "core-drag-drop",
+    "installs": [100, 122, 153, 177, 160, 122, 176, 153, 100, 100, 100, 100, 100, 100],
+    "rank": [83, 96]
+  },
+  {
+    "name": "marked-element",
+    "installs": [100, 120, 151, 175, 160, 123, 174, 152, 100, 100, 100, 100, 100, 100],
+    "rank": [92, 97]
+  },
+  {
+    "name": "core-layout-grid",
+    "installs": [100, 120, 151, 176, 158, 122, 173, 152, 100, 100, 100, 100, 100, 100],
+    "rank": [95, 98]
+  },
+  {
+    "name": "context-free-parser",
+    "installs": [100, 119, 151, 173, 160, 123, 173, 152, 100, 100, 100, 100, 100, 100],
+    "rank": [96, 99]
+  },
+  {
+    "name": "highlightjs-element",
+    "installs": [100, 120, 151, 174, 160, 123, 175, 151, 100, 100, 100, 100, 100, 100],
+    "rank": [93, 100]
+  }
+], "users": [
+  ["N", "20140315", 791],
+  ["N", "20140316", 876],
+  ["N", "20140317", 1425],
+  ["N", "20140318", 1364],
+  ["N", "20140319", 1346],
+  ["N", "20140320", 1259],
+  ["N", "20140321", 1053],
+  ["N", "20140322", 804],
+  ["N", "20140323", 774],
+  ["N", "20140324", 1177],
+  ["N", "20140325", 1210],
+  ["N", "20140326", 1240],
+  ["N", "20140327", 1170],
+  ["N", "20140328", 1040],
+  ["N", "20140329", 832],
+  ["N", "20140330", 742],
+  ["N", "20140331", 1215],
+  ["N", "20140401", 1338],
+  ["N", "20140402", 1251],
+  ["N", "20140403", 1260],
+  ["N", "20140404", 1116],
+  ["N", "20140405", 787],
+  ["N", "20140406", 822],
+  ["N", "20140407", 1260],
+  ["N", "20140408", 1417],
+  ["N", "20140409", 1299],
+  ["N", "20140410", 1250],
+  ["N", "20140411", 1120],
+  ["N", "20140412", 893],
+  ["N", "20140413", 737],
+  ["N", "20140414", 1288],
+  ["N", "20140415", 1304],
+  ["N", "20140416", 1274],
+  ["N", "20140417", 1116],
+  ["N", "20140418", 980],
+  ["N", "20140419", 721],
+  ["N", "20140420", 687],
+  ["N", "20140421", 1087],
+  ["N", "20140422", 1215],
+  ["N", "20140423", 1264],
+  ["N", "20140424", 1237],
+  ["N", "20140425", 1084],
+  ["N", "20140426", 805],
+  ["N", "20140427", 805],
+  ["N", "20140428", 1201],
+  ["N", "20140429", 1240],
+  ["N", "20140430", 1152],
+  ["N", "20140501", 1002],
+  ["N", "20140502", 959],
+  ["N", "20140503", 695],
+  ["N", "20140504", 871],
+  ["N", "20140505", 1274],
+  ["N", "20140506", 1348],
+  ["N", "20140507", 1298],
+  ["N", "20140508", 1233],
+  ["N", "20140509", 1108],
+  ["N", "20140510", 789],
+  ["N", "20140511", 783],
+  ["N", "20140512", 1319],
+  ["N", "20140513", 1342],
+  ["N", "20140514", 1382],
+  ["N", "20140515", 1328],
+  ["N", "20140516", 1157],
+  ["N", "20140517", 893],
+  ["N", "20140518", 891],
+  ["N", "20140519", 1342],
+  ["N", "20140520", 1276],
+  ["N", "20140521", 1250],
+  ["N", "20140522", 1169],
+  ["N", "20140523", 1095],
+  ["N", "20140524", 716],
+  ["N", "20140525", 725],
+  ["N", "20140526", 1135],
+  ["N", "20140527", 1226],
+  ["N", "20140528", 1242],
+  ["N", "20140529", 1129],
+  ["N", "20140530", 948],
+  ["N", "20140531", 712],
+  ["N", "20140601", 795],
+  ["N", "20140602", 1070],
+  ["N", "20140603", 1195],
+  ["N", "20140604", 1143],
+  ["N", "20140605", 1141],
+  ["N", "20140606", 932],
+  ["N", "20140607", 668],
+  ["N", "20140608", 750],
+  ["N", "20140609", 1194],
+  ["N", "20140610", 1177],
+  ["N", "20140611", 1209],
+  ["N", "20140612", 1129],
+  ["N", "20140613", 932],
+  ["N", "20140614", 698],
+  ["N", "20140615", 710],
+  ["N", "20140616", 1171],
+  ["N", "20140617", 1172],
+  ["N", "20140618", 1160],
+  ["N", "20140619", 1110],
+  ["N", "20140620", 973],
+  ["N", "20140621", 645],
+  ["N", "20140622", 774],
+  ["N", "20140623", 1147],
+  ["N", "20140624", 1130],
+  ["N", "20140625", 1147],
+  ["N", "20140626", 1175],
+  ["N", "20140627", 1142],
+  ["N", "20140628", 760],
+  ["N", "20140629", 744],
+  ["N", "20140630", 1307],
+  ["N", "20140701", 1222],
+  ["N", "20140702", 1025],
+  ["N", "20140703", 783],
+  ["N", "20140704", 591],
+  ["N", "20140705", 429],
+  ["N", "20140706", 498],
+  ["N", "20140707", 815],
+  ["E", "20140315", 556],
+  ["E", "20140316", 746],
+  ["E", "20140317", 1304],
+  ["E", "20140318", 1400],
+  ["E", "20140319", 1566],
+  ["E", "20140320", 1625],
+  ["E", "20140321", 1489],
+  ["E", "20140322", 933],
+  ["E", "20140323", 1168],
+  ["E", "20140324", 1920],
+  ["E", "20140325", 1953],
+  ["E", "20140326", 2094],
+  ["E", "20140327", 1980],
+  ["E", "20140328", 1806],
+  ["E", "20140329", 1121],
+  ["E", "20140330", 1278],
+  ["E", "20140331", 2299],
+  ["E", "20140401", 2372],
+  ["E", "20140402", 2446],
+  ["E", "20140403", 2464],
+  ["E", "20140404", 2161],
+  ["E", "20140405", 1218],
+  ["E", "20140406", 1493],
+  ["E", "20140407", 2630],
+  ["E", "20140408", 2738],
+  ["E", "20140409", 2857],
+  ["E", "20140410", 2774],
+  ["E", "20140411", 2425],
+  ["E", "20140412", 1386],
+  ["E", "20140413", 1704],
+  ["E", "20140414", 2969],
+  ["E", "20140415", 3030],
+  ["E", "20140416", 3045],
+  ["E", "20140417", 2844],
+  ["E", "20140418", 2212],
+  ["E", "20140419", 1372],
+  ["E", "20140420", 1553],
+  ["E", "20140421", 2599],
+  ["E", "20140422", 3272],
+  ["E", "20140423", 3290],
+  ["E", "20140424", 3239],
+  ["E", "20140425", 2783],
+  ["E", "20140426", 1595],
+  ["E", "20140427", 1951],
+  ["E", "20140428", 3406],
+  ["E", "20140429", 3399],
+  ["E", "20140430", 3200],
+  ["E", "20140501", 2735],
+  ["E", "20140502", 2845],
+  ["E", "20140503", 1674],
+  ["E", "20140504", 1992],
+  ["E", "20140505", 3459],
+  ["E", "20140506", 3806],
+  ["E", "20140507", 3815],
+  ["E", "20140508", 3576],
+  ["E", "20140509", 3171],
+  ["E", "20140510", 1762],
+  ["E", "20140511", 2096],
+  ["E", "20140512", 3998],
+  ["E", "20140513", 4037],
+  ["E", "20140514", 4132],
+  ["E", "20140515", 3876],
+  ["E", "20140516", 3407],
+  ["E", "20140517", 1825],
+  ["E", "20140518", 2218],
+  ["E", "20140519", 4113],
+  ["E", "20140520", 4193],
+  ["E", "20140521", 4202],
+  ["E", "20140522", 4011],
+  ["E", "20140523", 3529],
+  ["E", "20140524", 1886],
+  ["E", "20140525", 2117],
+  ["E", "20140526", 3627],
+  ["E", "20140527", 4319],
+  ["E", "20140528", 4227],
+  ["E", "20140529", 3922],
+  ["E", "20140530", 3317],
+  ["E", "20140531", 1817],
+  ["E", "20140601", 2191],
+  ["E", "20140602", 4045],
+  ["E", "20140603", 4360],
+  ["E", "20140604", 4432],
+  ["E", "20140605", 4202],
+  ["E", "20140606", 3473],
+  ["E", "20140607", 1925],
+  ["E", "20140608", 2139],
+  ["E", "20140609", 4073],
+  ["E", "20140610", 4424],
+  ["E", "20140611", 4356],
+  ["E", "20140612", 4087],
+  ["E", "20140613", 3595],
+  ["E", "20140614", 1858],
+  ["E", "20140615", 2258],
+  ["E", "20140616", 4415],
+  ["E", "20140617", 4618],
+  ["E", "20140618", 4474],
+  ["E", "20140619", 4297],
+  ["E", "20140620", 3726],
+  ["E", "20140621", 1944],
+  ["E", "20140622", 2389],
+  ["E", "20140623", 4582],
+  ["E", "20140624", 4631],
+  ["E", "20140625", 4535],
+  ["E", "20140626", 4455],
+  ["E", "20140627", 3971],
+  ["E", "20140628", 2106],
+  ["E", "20140629", 2572],
+  ["E", "20140630", 4568],
+  ["E", "20140701", 4571],
+  ["E", "20140702", 4636],
+  ["E", "20140703", 4081],
+  ["E", "20140704", 2726],
+  ["E", "20140705", 1726],
+  ["E", "20140706", 2116],
+  ["E", "20140707", 4161]
+], "dataEndTime": "Tue, 08 Jul 2014 06:59:59 GMT"}
