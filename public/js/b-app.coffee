@@ -8,10 +8,7 @@ app = angular.module 'BApp', [
   # 'B.Templates'
 ]
 
-app.factory 'bApiRoot', ($location) -> "/api/1/data/"
-
-app.factory 'bDataSvc', ($http, bApiRoot) ->
-  fetchAllP: $http.get bApiRoot + 'all'
+app.factory 'bDataSvc', ($http) -> fetchAllP: $http.get "/api/1/data/all"
 
 # period over period helper funcs
 app.factory 'bPoP', ->

@@ -4,13 +4,9 @@
 
   app = angular.module('BApp', ['B.Chart.Users', 'B.Table.Cmds', 'B.Table.Pkgs', 'B.Map', 'B.Delta', 'ui.bootstrap']);
 
-  app.factory('bApiRoot', function($location) {
-    return "/api/1/data/";
-  });
-
-  app.factory('bDataSvc', function($http, bApiRoot) {
+  app.factory('bDataSvc', function($http) {
     return {
-      fetchAllP: $http.get(bApiRoot + 'all')
+      fetchAllP: $http.get("/api/1/data/all")
     };
   });
 

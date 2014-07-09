@@ -65,7 +65,7 @@
           }));
           y = d3.scale.linear().range([h, 0]).domain([0, data.maxUsers]);
           xAxis = d3.svg.axis().scale(x).ticks(d3.time.weeks).orient("bottom");
-          yAxis = d3.svg.axis().scale(y).orient("left").ticks(5).tickSize(-w, 0);
+          yAxis = d3.svg.axis().scale(y).orient("left").ticks(6).tickSize(-w, 0);
           area = d3.svg.area().x(function(d) {
             return x(d[1]);
           }).y0(function(d) {

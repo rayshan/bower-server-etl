@@ -61,7 +61,7 @@ module.directive "bChartUsers", (d3, bChartUserData) ->
       yAxis = d3.svg.axis() # & grid
         .scale y
         .orient "left"
-        .ticks 5
+        .ticks 6
         .tickSize -w, 0
 
       area = d3.svg.area()
