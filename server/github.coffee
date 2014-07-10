@@ -35,22 +35,25 @@ getRepoName = (pkgName) ->
         repoName: urlParsed[2].replace '.git', ''
       .catch (err) ->
         noData.bowerRegistry.push pkgName
-        console.error new Error "Registry entry not found & no manual mapping for pkgName #{pkgName}, err = #{ err }"
-        throw err # rethrow so subsequent steps aren't processed
+        throw new Error "Bower registry entry not found & no manual mapping for [#{pkgName}]."
+        # rethrow so subsequent steps aren't processed
         return
 
 # pkg obj passed from GA module
 appendData = (pkg) ->
   append = (data) ->
-    pkg.ghOwner = data.owner.login
-    pkg.ghOwnerAvatar = data.owner.avatar_url
-    pkg.ghUrl = data.html_url
-    pkg.ghDesc = data.description
-    pkg.ghStars = data.stargazers_count
-    pkg.ghIssues = data.open_issues_count
-    pkg.ghUpdated = data.pushed_at
-    pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
-    pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
+    if !data.owner
+      console.log data
+    else
+      pkg.ghOwner = data.owner.login
+      pkg.ghOwnerAvatar = data.owner.avatar_url
+      pkg.ghUrl = data.html_url
+      pkg.ghDesc = data.description
+      pkg.ghStars = data.stargazers_count
+      pkg.ghIssues = data.open_issues_count
+      pkg.ghUpdated = data.pushed_at
+      pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
+      pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
     return
 
   getRepoName pkg.name
@@ -58,9 +61,11 @@ appendData = (pkg) ->
     .then ((repo) -> repo.getInfo()), null
     .then append, null
     .catch (err) ->
-      noData.github.push pkg.name
-      # console.error new Error "Fetching Github data for #{ pkg.name } via API, msg = #{ err.error.message }"
-      console.log err
+      if err.message.indexOf('Bower registry entry not found') isnt -1
+        console.log err
+      else
+        noData.github.push pkg.name
+        console.error new Error "Can't fetching Github data for #{ pkg.name } via API."
       return
 
 # log GH rate limit warning at certain intervals
