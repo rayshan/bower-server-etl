@@ -29,7 +29,7 @@ processes.json
 # contains newrelic license key
 newrelic.js
 
-# foreman dev env var, contains secrets
+# foreman dev env var, contains API keys & secrets
 .env
 
 # keys (e.g. for GA service account)

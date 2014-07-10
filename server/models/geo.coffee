@@ -29,7 +29,7 @@ model.extract = ->
 model.transform = (data) ->
   util.etlLogger 'transform', modelName
 
-  geoPromises = []
+  geoPromises = [] # TODO shouldn't need promises here anymore
 
   # remove (not set) country & country w/ just 1 user
   current = data.rows.filter (country) ->

@@ -10,22 +10,23 @@ cache = require "cache"
 
 # ==========
 
-# 'package' is a reserved word in JS
-# only want to pull packages w/ >= 5 installs, which is around the 3500th pkg sorted by installs
+# FYI 'package' is a reserved word in JS
+
+_packageInstallsCutoff = 10
 
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   'dimensions': 'ga:pagePathLevel2,ga:nthDay'
   'metrics': 'ga:pageviews'
-  'filters': 'ga:pagePathLevel1=@installed;ga:pageviews>=100'
+  'filters': "ga:pagePathLevel1=@installed;ga:pageviews>=#{_packageInstallsCutoff}"
   'start-date': '14daysAgo'
   'end-date': 'yesterday'
+  'max-results': 10000 # must specify or will return only 1k rows
   # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
   # 'sort': '-ga:pageviews'
-  # 'max-results': 100 # desired result quantity * 2 due to ga:nthWeek dim doubling # of rows returned
 
-model = {}
 modelName = 'packages'
+model = {}
 
 model.extract = ->
   util.etlLogger 'extract', modelName
@@ -37,18 +38,18 @@ model.transform = (data) ->
 
   # TODO: ranking range as arg
 
+  console.info "[INFO] packages model - received #{data.rows.length} / #{data.totalResults} rows."
+
   dataNested = _.groupBy data.rows, (d) -> d[0]
   data = Object.keys(dataNested).map (name) ->
     # extract daily install counts to an array
     installs = []
-    dataNested[name].forEach (d) -> installs[+d[1]] = +d[2]; return
+    dataNested[name].forEach (d) -> installs[+d[1]] = +d[2]; return # 1: nth day, 2: install count
     # ensure array has 14 days of data
-    installs = [0..13].map (i) -> if installs[i] then installs[i] else 100
+    installs = [0..13].map (i) -> if installs[i] then installs[i] else _packageInstallsCutoff
 
     name: util.removeSlash name
     installs: installs
-
-  console.log data['angular']
 
   sortFunc = (period, currentOrPrior) -> (a, b) ->
     reduceFunc = (a, b, i) ->
@@ -57,7 +58,7 @@ model.transform = (data) ->
 
   # find prior period rankings
   data.sort sortFunc 7, 'prior'
-  data.forEach (d, i) -> d.rank = []; d.rank.push i + 1
+  data.forEach (d, i) -> d.rank = [i + 1]
   # find current period rankings
   data.sort sortFunc 7, 'current'
   data.forEach (d, i) -> d.rank.push i + 1
@@ -65,8 +66,7 @@ model.transform = (data) ->
   # TODO: force cache only top 100; to be removed
   data.splice 100
 
-  ghPromises = []
-  data.forEach (pkg) -> ghPromises.push gh.appendData pkg; return
+  ghPromises = (gh.appendData pkg for pkg in data)
   Promise.all(ghPromises).then -> data
 
 model.load = (data) ->

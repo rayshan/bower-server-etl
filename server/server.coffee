@@ -48,7 +48,7 @@ app.use express.static staticAssetPath, {maxAge: 2592000000}
 start = ->
   port = process.env.PORT || config.port
   # heroku dynamically assigns a port, don't set env var if deploying on heroku
-  app.listen port, -> console.info "[INFO] listening on port #{ port }."; return
+  app.listen port, -> console.info "[INFO] server listening on port #{ port }."; return
   return
 
 module.exports =
