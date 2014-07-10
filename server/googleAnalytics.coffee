@@ -37,7 +37,8 @@ authPromise = new Promise (resolve, reject) ->
         reject new Error "[ERROR] OAuth error; err = #{ err }"
       else
         console.info "[SUCCESS] server OAuthed w/ GA."
-        gapi.discover('analytics', 'v3').withAuthClient(authClient).execute (err, client) ->
+
+        discover = gapi.discover('analytics', 'v3').withAuthClient(authClient).execute (err, client) ->
           if err
             reject new Error "[ERROR] gapi.discover.execute, err = #{ err }"
           else
@@ -46,6 +47,8 @@ authPromise = new Promise (resolve, reject) ->
             serviceClient.expireAt = moment().add('days', 1).startOf('day').unix()
             resolve()
           return
+
+        setTimeout discover, 1000
       return
   return
 
