@@ -20,12 +20,15 @@
   <tbody>
   <tr ng-repeat="pkg in packages"
       ng-hide="pkg.name !== 'angular' && pkg.ghOwner === 'angular' && hideAngular">
+
+    <!--rank-->
     <td>
       {{ pkg.rank[1] }} <!--[prior, current]-->
       <br/>
       <b-delta delta="{{pkg.rank[0] - pkg.rank[1]}}" type="num"></b-delta>
     </td>
 
+    <!--name & desc-->
     <td>
       <span class="pull-right b-hide"
             ng-if="pkg.name === 'angular'"
@@ -38,7 +41,13 @@
         </small>
       </span>
       <i ng-if="$index < 3" class="fa fa-trophy"></i>
-      <a ng-href="{{ pkg.ghUrl }}">{{ pkg.name }}</a>
+
+      <!--sometimes package has no github info-->
+      <span ng-switch on="!!pkg.ghUrl">
+        <span ng-switch-when="false">{{ pkg.name }}</span>
+        <a ng-switch-default ng-href="{{ pkg.ghUrl }}">{{ pkg.name }}</a>
+      </span>
+
       <br/>
       <small>{{ pkg.ghDesc }}</small>
     </td>
