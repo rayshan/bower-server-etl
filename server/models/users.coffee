@@ -8,9 +8,10 @@ cache = require "cache"
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   'start-date': '2014-03-15'
-  'end-date': 'yesterday'
+  'end-date': '2daysAgo'
   'metrics': 'ga:users'
   'dimensions': 'ga:userType,ga:date'
+  'max-results': 10000
 
 model = {}
 modelName = 'users'

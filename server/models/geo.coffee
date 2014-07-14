@@ -12,11 +12,12 @@ geo = require "geo"
 _gaQueryObj =
 # monthly active users
   'ids': 'ga:' + config.ga.profile
-  'start-date': '30daysAgo'
+  'start-date': '31daysAgo'
   'end-date': 'yesterday'
   'metrics': 'ga:users'
   'dimensions': 'ga:country'
   'sort': '-ga:users'
+  'max-results': 10000
 
 model = {}
 modelName = 'geo'

@@ -19,8 +19,8 @@ _gaQueryObj =
   'dimensions': 'ga:pagePathLevel2,ga:nthDay'
   'metrics': 'ga:pageviews'
   'filters': "ga:pagePathLevel1=@installed;ga:pageviews>=#{_packageInstallsCutoff}"
-  'start-date': '14daysAgo'
-  'end-date': 'yesterday'
+  'start-date': '15daysAgo'
+  'end-date': '2daysAgo'
   'max-results': 10000 # must specify or will return only 1k rows
   # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
   # 'sort': '-ga:pageviews'

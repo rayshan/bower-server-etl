@@ -13,9 +13,10 @@ _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   'dimensions': 'ga:pagePathLevel1,ga:nthDay'
   'metrics': 'ga:users,ga:pageviews'
-  'start-date': '14daysAgo'
-  'end-date': 'yesterday'
-  'sort': 'ga:nthDay'
+  'start-date': '15daysAgo'
+  'end-date': '2daysAgo'
+  'sort': 'ga:pagePathLevel1,ga:nthDay'
+  'max-results': 10000
 
 model = {}
 modelName = 'commands'
