@@ -102,6 +102,7 @@
         var bubbleOverBorder, bubblePadding, bubbleRBreaks, canvas, force, gravity, h, path, projection, render, svg, tick, transitionDuration, w;
         tick = null;
         scope.chartType = "Density";
+        scope.zoomed = false;
         scope.$watch('chartType', function(chartType, chartTypeOld) {
           var radiusKey;
           if (chartType !== chartTypeOld) {
@@ -147,7 +148,7 @@
           };
         };
         render = function(data) {
-          var countries, countryBubbles, countryContainer, countryLabels, landContainer;
+          var countries, countryBubbles, countryContainer, countryLabels, fitScreen, landContainer, zoom;
           scope.data = data;
           data.countryDataTopo = data.countryDataTopo.map(function(d) {
             var centroid;
@@ -183,6 +184,33 @@
           }).classed("lg", function(d) {
             return d.rDensity > bubbleRBreaks.lg;
           });
+          zoom = function() {
+            var k, x, y;
+            if (!scope.zoomed) {
+              x = d3map.mouse(this)[0];
+              y = d3map.mouse(this)[1];
+              k = 3;
+              scope.zoomed = true;
+            } else {
+              x = w / 2;
+              y = h / 2;
+              k = 1;
+              scope.zoomed = false;
+            }
+            landContainer.transition().duration(750).attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")").style("stroke-width", 1.5 / k + "px");
+            return countryContainer.transition().duration(750).attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")").style("stroke-width", 1.5 / k + "px");
+          };
+          landContainer.selectAll("path").on("click", zoom);
+          countryContainer.selectAll("g").on("click", zoom);
+          fitScreen = function() {
+            w = canvas.clientWidth;
+            h = canvas.clientHeight;
+            d3map.selectAll("svg").attr("width", w).attr("height", h);
+            return d3map.behavior.zoom().center([w / 2, h / 2]);
+          };
+          window.onresize = function() {
+            return fitScreen();
+          };
           tick = function(e) {
             var radiusKey;
             radiusKey = 'r' + scope.chartType;

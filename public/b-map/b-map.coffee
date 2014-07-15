@@ -90,6 +90,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
   link: (scope, ele) ->
     tick = null
     scope.chartType = "Density"
+    scope.zoomed = false
     scope.$watch 'chartType', (chartType, chartTypeOld) ->
       if chartType != chartTypeOld
         radiusKey = 'r' + chartType
@@ -172,6 +173,41 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
         .classed "sm", (d) -> d.rDensity <= bubbleRBreaks.md
         .classed "md", (d) -> d.rDensity > bubbleRBreaks.md and d.rDensity <= bubbleRBreaks.lg
         .classed "lg", (d) -> d.rDensity > bubbleRBreaks.lg
+
+      zoom = () ->
+        if (!scope.zoomed)
+          x = d3map.mouse(this)[0]
+          y = d3map.mouse(this)[1]
+          k = 3
+          scope.zoomed = true
+        else
+          x = w / 2
+          y = h / 2
+          k = 1
+          scope.zoomed = false
+
+        landContainer.transition()
+          .duration(750)
+          .attr "transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")"
+          .style "stroke-width", 1.5 / k + "px"
+
+        countryContainer.transition()
+          .duration(750)
+          .attr "transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")"
+          .style "stroke-width", 1.5 / k + "px"
+
+      landContainer.selectAll("path").on("click", zoom)
+      countryContainer.selectAll("g").on("click", zoom)
+
+      fitScreen = () ->
+        w = canvas.clientWidth
+        h = canvas.clientHeight
+        d3map.selectAll("svg")
+          .attr "width", w
+          .attr "height", h
+        d3map.behavior.zoom().center [ w / 2, h / 2 ]
+
+      window.onresize = -> fitScreen()
 
       tick = (e) ->
         radiusKey = 'r' + scope.chartType
