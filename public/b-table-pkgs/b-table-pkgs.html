@@ -1,3 +1,7 @@
+<style>
+  .b-table-pkgs thead td { min-width: 95px; cursor: pointer; }
+</style>
+
 <!--<h2>Top packages over past <span>7 days <i class="fa fa-caret-down"></i></span></h2>-->
 <h2>Top packages over past 7 days</h2>
 
@@ -5,27 +9,42 @@
 
   <thead>
   <tr>
-    <td>Rank</td>
-    <td>Package</td>
-    <td>Installs</td>
-    <td><i class="fa fa-github-alt"></i> Owner</td>
-    <td>
-      <i class="fa fa-star b-gh"></i> •
-      <i class="fa fa-exclamation-circle b-gh"></i>
+    <td ng-click="setPredicate('currentRank')" style="min-width: 100px;">
+      <span ng-class="{ underline:checkPredicate('currentRank') }">Rank</span>&nbsp;<i class="fa fa-sort-numeric-asc" ng-class="{ 'fa-sort-numeric-desc':checkPredicate('currentRank', reverse) }"></i>
     </td>
-    <td>Last Push</td>
+    <td ng-click="setPredicate('name')">
+      <span ng-class="{ underline:checkPredicate('name') }">Package</span>
+      <i class="fa fa-sort-alpha-asc" ng-class="{ 'fa-sort-alpha-desc':checkPredicate('name', reverse) }"></i>
+    </td>
+    <td ng-click="setPredicate('-currentInstallsSum')">
+      <span ng-class="{ underline:checkPredicate('-currentInstallsSum') }">Installs</span>
+      <i class="fa fa-sort-numeric-asc" ng-class="{ 'fa-sort-numeric-desc':!checkPredicate('-currentInstallsSum', reverse) }"></i>
+    </td>
+    <td ng-click="setPredicate('ghOwner')">
+      <i class="fa fa-github-alt"></i> <span ng-class="{ underline:checkPredicate('ghOwner') }">Owner</span>
+      <i class="fa fa-sort-alpha-asc" ng-class="{ 'fa-sort-alpha-desc':checkPredicate('ghOwner', reverse) }"></i>
+    </td>
+    <td>
+      <i class="fa fa-star b-gh" ng-click="setPredicate('ghStars')"></i> •
+      <i class="fa fa-exclamation-circle b-gh" ng-click="setPredicate('ghIssues')"></i>
+    </td>
+
+    <td ng-click="setPredicate('-ghUpdated')">
+      <span ng-class="{ underline:checkPredicate('-ghUpdated') }">Last Push</span>
+      <i class="fa fa-sort-numeric-asc" ng-class="{ 'fa-sort-numeric-desc':checkPredicate('-ghUpdated', reverse) }"></i>
+    </td>
   </tr>
   </thead>
 
   <tbody>
-  <tr ng-repeat="pkg in packages"
+  <tr ng-repeat="pkg in packages | orderBy:predicate:reverse | predicateFilter:predicate"
       ng-hide="pkg.name !== 'angular' && pkg.ghOwner === 'angular' && hideAngular">
 
     <!--rank-->
     <td>
-      {{ pkg.rank[1] }} <!--[prior, current]-->
+      {{ pkg.currentRank }}
       <br/>
-      <b-delta delta="{{pkg.rank[0] - pkg.rank[1]}}" type="num"></b-delta>
+      <b-delta delta="{{ pkg.rankVelocity }}" type="num"></b-delta>
     </td>
 
     <!--name & desc-->
@@ -40,7 +59,7 @@
           Core Modules
         </small>
       </span>
-      <i ng-if="$index < 3" class="fa fa-trophy"></i>
+      <i ng-if="$index < 3 && predicate === 'currentRank' && reverse === false" class="fa fa-trophy"></i>
 
       <!--sometimes package has no github info-->
       <span ng-switch on="!!pkg.ghUrl">
@@ -54,9 +73,9 @@
 
     <!--installs-->
     <td>
-      {{ pkg.installsSum[1] | round }} <!--[prior, current]-->
+      {{ pkg.currentInstallsSum | round }} <!--[prior, current]-->
       <br/>
-      <b-delta delta="{{ pkg.installsSum[1] / pkg.installsSum[0] - 1 }}" type="pct"></b-delta>
+      <b-delta delta="{{ pkg.currentInstallsSum / pkg.installsSum[0] - 1 }}" type="pct"></b-delta>
     </td>
 
     <!--GH stuff-->

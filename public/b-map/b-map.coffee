@@ -84,7 +84,7 @@ module.factory 'bMapDataSvc', ($filter, $q, d3map, topojson, bDataSvc, bTopojson
 
   $q.all([bDataSvc.fetchAllP, bTopojsonSvc]).then parseData
 
-module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
+module.directive "bMap", (d3map, topojson, bMapDataSvc, $window) ->
   templateUrl: 'b-map/b-map.html'
   restrict: 'E'
   link: (scope, ele) ->
@@ -196,18 +196,20 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc) ->
           .attr "transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")"
           .style "stroke-width", 1.5 / k + "px"
 
+        return
+
       landContainer.selectAll("path").on("click", zoom)
       countryContainer.selectAll("g").on("click", zoom)
 
       fitScreen = () ->
         w = canvas.clientWidth
-        h = canvas.clientHeight
         d3map.selectAll("svg")
           .attr "width", w
           .attr "height", h
         d3map.behavior.zoom().center [ w / 2, h / 2 ]
+        return
 
-      window.onresize = -> fitScreen()
+      $window.onresize = -> fitScreen()
 
       tick = (e) ->
         radiusKey = 'r' + scope.chartType

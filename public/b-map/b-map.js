@@ -94,7 +94,7 @@
     return $q.all([bDataSvc.fetchAllP, bTopojsonSvc]).then(parseData);
   }]);
 
-  module.directive("bMap", ["d3map", "topojson", "bMapDataSvc", function(d3map, topojson, bMapDataSvc) {
+  module.directive("bMap", ["d3map", "topojson", "bMapDataSvc", "$window", function(d3map, topojson, bMapDataSvc, $window) {
     return {
       templateUrl: 'b-map/b-map.html',
       restrict: 'E',
@@ -198,17 +198,16 @@
               scope.zoomed = false;
             }
             landContainer.transition().duration(750).attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")").style("stroke-width", 1.5 / k + "px");
-            return countryContainer.transition().duration(750).attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")").style("stroke-width", 1.5 / k + "px");
+            countryContainer.transition().duration(750).attr("transform", "translate(" + w / 2 + "," + h / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")").style("stroke-width", 1.5 / k + "px");
           };
           landContainer.selectAll("path").on("click", zoom);
           countryContainer.selectAll("g").on("click", zoom);
           fitScreen = function() {
             w = canvas.clientWidth;
-            h = canvas.clientHeight;
             d3map.selectAll("svg").attr("width", w).attr("height", h);
-            return d3map.behavior.zoom().center([w / 2, h / 2]);
+            d3map.behavior.zoom().center([w / 2, h / 2]);
           };
-          window.onresize = function() {
+          $window.onresize = function() {
             return fitScreen();
           };
           tick = function(e) {
