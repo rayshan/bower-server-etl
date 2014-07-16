@@ -174,7 +174,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc, $window) ->
         .classed "md", (d) -> d.rDensity > bubbleRBreaks.md and d.rDensity <= bubbleRBreaks.lg
         .classed "lg", (d) -> d.rDensity > bubbleRBreaks.lg
 
-      zoom = () ->
+      zoom = ->
         if (!scope.zoomed)
           x = d3map.mouse(this)[0]
           y = d3map.mouse(this)[1]
@@ -201,7 +201,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc, $window) ->
       landContainer.selectAll("path").on("click", zoom)
       countryContainer.selectAll("g").on("click", zoom)
 
-      fitScreen = () ->
+      fitScreen = ->
         w = canvas.clientWidth
         d3map.selectAll("svg")
           .attr "width", w
