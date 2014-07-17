@@ -23,3 +23,4 @@ module.exports =
   'bower-jvectormap': 'bjornd/jvectormap'
   'components-font-awesome': 'FortAwesome/Font-Awesome'
   'socket.io-client': 'Automattic/socket.io-client'
+  'react': 'facebook/react'

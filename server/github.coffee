@@ -61,11 +61,11 @@ appendData = (pkg) ->
     .then ((repo) -> repo.getInfo()), null
     .then append, null
     .catch (err) ->
-      if err.message.indexOf('Bower registry entry not found') isnt -1
-        console.log err
+      if err.message? and err.message.indexOf('Bower registry entry not found') isnt -1
+        console.error err
       else
         noData.github.push pkg.name
-        console.error new Error "Can't fetching Github data for #{ pkg.name } via API."
+        console.error new Error "Can't fetching Github data for #{ pkg.name } via API, err = #{err}"
       return
 
 # log GH rate limit warning at certain intervals
