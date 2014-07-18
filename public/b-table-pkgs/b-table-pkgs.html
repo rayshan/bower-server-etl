@@ -9,8 +9,11 @@
 
   <thead>
   <tr>
-    <td ng-click="setPredicate('currentRank')">
-      <span ng-class="{ underline:checkPredicate('currentRank') }">Rank</span>&nbsp;<i class="fa fa-sort-numeric-asc" ng-class="{ 'fa-sort-numeric-desc':checkPredicate('currentRank', reverse) }"></i>
+    <td>
+      <span ng-click="setPredicate('currentRank')">
+        <span ng-class="{ underline:checkPredicate('currentRank') }">Rank</span>&nbsp;<i class="fa fa-sort-numeric-asc" ng-class="{ 'fa-sort-numeric-desc':checkPredicate('currentRank', reverse) }"></i>
+      </span>
+      <i class="fa fa-fw fa-rocket" ng-click="setPredicate('-rankDelta')" ng-class="{ 'fa-flip-vertical':checkPredicate('-rankDelta', reverse), underline:checkPredicate('-rankDelta') }"></i>
     </td>
     <td ng-click="setPredicate('name')">
       <span ng-class="{ underline:checkPredicate('name') }">Package</span>
@@ -44,7 +47,7 @@
     <td>
       {{ pkg.currentRank }}
       <br/>
-      <b-delta delta="{{ pkg.rankVelocity }}" type="num"></b-delta>
+      <b-delta delta="{{ pkg.rankDelta }}" type="num"></b-delta>
     </td>
 
     <!--name & desc-->

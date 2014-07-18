@@ -22,7 +22,7 @@
           data.data.packages.forEach(function(pkgObj) {
             pkgObj.priorRank = pkgObj.rank[0];
             pkgObj.currentRank = pkgObj.rank[1];
-            pkgObj.rankVelocity = pkgObj.currentRank - pkgObj.priorRank;
+            pkgObj.rankDelta = pkgObj.currentRank - pkgObj.priorRank;
             pkgObj.installsSum = bPoP.process(pkgObj.installs, 7);
             pkgObj.currentInstallsSum = pkgObj.installsSum[1];
           });
