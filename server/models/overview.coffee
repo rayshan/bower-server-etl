@@ -10,12 +10,12 @@ cache = require "cache"
 # ==========
 
 model = {}
-modelName = 'overview'
+model.name = 'overview'
 
 model.extract = ->
-  util.etlLogger 'extract', modelName
+  util.etlLogger 'extract', @name
 
-  console.info "[INFO] fetching [#{ modelName }] from GA."
+  console.info "[INFO] fetching [#{@name}] from GA."
   request.getAsync {url: 'https://bower.herokuapp.com/packages', json: true}
     .spread (res, body) -> totalPackages: body.length
     .catch (err) ->
@@ -24,7 +24,7 @@ model.extract = ->
 model.transform = (data) -> data # not needed
 
 model.load = (data) ->
-  util.etlLogger 'load', modelName
-  cache.cache modelName, data
+  util.etlLogger 'load', @name
+  cache.cache @name, data
 
 module.exports = model

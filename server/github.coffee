@@ -54,6 +54,7 @@ appendData = (pkg) ->
       pkg.ghUpdated = data.pushed_at
       pkg.ghUpdatedHuman = moment(data.pushed_at).fromNow()
       pkg.ghUpdatedHuman = pkg.ghUpdatedHuman.slice 0, pkg.ghUpdatedHuman.lastIndexOf ' '
+      # trim ' ago' to ensure as short as possible
     return
 
   getRepoName pkg.name

@@ -18,9 +18,9 @@ execute = ->
 
   _fetchPromises = []
   # need delay to ensure google server knows about auth before executing queries
-  ga.authPromise.delay(3000).then ->
+  ga.authPromise.delay(2000).then ->
     models.modelRegistry.map (modelName) ->
-      fetchPromise = models[modelName].extract()
+      fetchPromise = models[modelName].extract().bind models[modelName]
         .then models[modelName].transform
         .then models[modelName].load
       _fetchPromises.push fetchPromise
