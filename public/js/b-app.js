@@ -84,7 +84,7 @@
   app.controller('BHeaderCtrl', function(bDataSvc) {
     bDataSvc.fetchAllP.then((function(_this) {
       return function(data) {
-        _this.totalPkgs = data.data.overview.totalPkgs;
+        _this.pkgs = data.data.overview.totalPackages;
       };
     })(this));
   });

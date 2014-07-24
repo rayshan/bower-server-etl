@@ -1,6 +1,7 @@
 # vendor
 Promise = require 'bluebird'
 request = Promise.promisifyAll require 'request'
+# using this instead of http.get to not deal w/ streams
 
 # custom
 util = require "bUtil"
@@ -16,7 +17,7 @@ model.extract = ->
 
   console.info "[INFO] fetching [#{ modelName }] from GA."
   request.getAsync {url: 'https://bower.herokuapp.com/packages', json: true}
-    .spread (res, body) -> totalPkgs: body.length
+    .spread (res, body) -> totalPackages: body.length
     .catch (err) ->
       throw new Error "Can't fetch package count from bower registry, err = #{ err }."
 
