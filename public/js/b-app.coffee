@@ -76,7 +76,7 @@ app.factory 'd3', ->
   d3
 
 app.controller 'BHeaderCtrl', (bDataSvc) ->
-  bDataSvc.fetchAllP.then (data) => @totalPkgs = data.data.overview.totalPkgs; return
+  bDataSvc.fetchAllP.then (data) => @pkgs = data.data.overview.totalPackages; return
   return
 
 app.filter 'round', ->

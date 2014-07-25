@@ -54,4 +54,10 @@ api.route p.join config.apiBaseUri, '/data/:type'
       }
     return
 
+# TODO
+# X-RateLimit-Limit: 20
+# X-RateLimit-Remaining: 19
+# X-Rate-Limit-Reset: twitter usex unix epoch seconds
+# res.json 429, {error: 'Too Many Requests, please try again later. See X-RateLimit headers for more info'}
+
 module.exports = api

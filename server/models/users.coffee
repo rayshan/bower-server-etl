@@ -14,15 +14,16 @@ _gaQueryObj =
   'max-results': 10000
 
 model = {}
-modelName = 'users'
+
+model.name = 'users'
 
 model.extract = ->
-  util.etlLogger 'extract', modelName
+  util.etlLogger 'extract', @name
   ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
     .then ga.fetch _gaQueryObj
 
-model.transform = (data) =>
-  util.etlLogger 'transform', modelName
+model.transform = (data) ->
+  util.etlLogger 'transform', @name
   result = data.rows
   result.forEach (d) ->
     d[0] = if d[0].indexOf('New') isnt -1 then 'N' else 'E'
@@ -30,8 +31,8 @@ model.transform = (data) =>
     return
   result
 
-model.load = (data) =>
-  util.etlLogger 'load', modelName
-  cache.cache modelName, data
+model.load = (data) ->
+  util.etlLogger 'load', @name
+  cache.cache @name, data
 
 module.exports = model
