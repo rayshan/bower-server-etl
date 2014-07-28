@@ -5,7 +5,7 @@ spawn = require("child_process").spawn
 streamqueue = require 'streamqueue'
 combine = require 'stream-combiner'
 
-p = require 'path'
+#p = require 'path'
 
 # ==========================
 # TODO: only runs @ root, should run anywhere in proj dir
@@ -28,14 +28,18 @@ htmlminOptions =
 
 gulp.task 'css', ->
   gulp.src './public/css/b-app.less'
+    # TODO: wait for minifyCss to support sourcemaps
+#    .pipe gp.sourcemaps.init()
     # TODO: switch out font-awesome woff path w/ CDN path
     # .pipe replace "../bower_components/font-awesome/fonts", "//cdn.jsdelivr.net/fontawesome/4.1.0/fonts"
     .pipe gp.less paths: './public/b-*/b-*.less' # @import path
     .pipe gp.minifyCss cache: true, keepSpecialComments: 0 # remove all
+#    .pipe gp.sourcemaps.write './'
     .pipe gulp.dest destPath
 
 gulp.task 'html', ->
   gulp.src ['./public/index.html']
+#    .pipe gp.replace "ng-app", "ng-app ng-strict-di"
     .pipe gp.htmlReplace
       js: 'b-app.js'
       css: 'b-app.css'

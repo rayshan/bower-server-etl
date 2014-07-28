@@ -2,7 +2,7 @@
 
 modelRegistry = []
 
-override = # ['geo.coffee']
+override = ['packages.coffee']
 
 modelFiles = if override then override else require('fs').readdirSync __dirname
 

@@ -12,7 +12,7 @@ cache = require "cache"
 
 # FYI 'package' is a reserved word in JS
 
-_packageInstallsCutoff = 10
+_packageInstallsCutoff = 5
 
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
@@ -73,5 +73,9 @@ model.transform = (data) ->
 model.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
+
+  # pluck
+  # hmsetAsync packages:angular, {obj}
+  # sorted set w/ ranking
 
 module.exports = model
