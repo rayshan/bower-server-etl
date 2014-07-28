@@ -57,6 +57,13 @@ gulp.task 'js', ->
     .pipe gp.coffee()
     .pipe gp.ngAnnotate() # ngmin doesn't annotate coffeescript wrapped code
 
+  # compile cs for functional js files
+  gulp.src ['./public/b-*/b-*.coffee']
+    .pipe gp.plumber()
+    .pipe gp.coffee()
+    .pipe gp.ngAnnotate() # ngmin doesn't annotate coffeescript wrapped code
+    .pipe gulp.dest './public'
+
   # src that need min
   otherSrc = ['./public/bower_components/topojson/topojson.js']
   other = gulp.src otherSrc
