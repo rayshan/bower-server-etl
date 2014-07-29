@@ -65,20 +65,20 @@ module.directive "bChartUsers", (d3, bChartUserData) ->
       xScale = new Plottable.Scale.Time().domain([latestSeriesStartDate, firstSeriesEndDate])
       yScaleUsers    = new Plottable.Scale.Linear()
       yScaleInstalls = new Plottable.Scale.Linear()
-      yScaleInstalls.domainer(new Plottable.Domainer().addIncludedValue(0))
+      yScaleInstalls.domainer(new Plottable.Domainer().addIncludedValue(0)) # Make the scale start at 0
       colorScale = new Plottable.Scale.Color() # Only used to generate legend right now
                         .domain(["New Users", "Existing Users", "NPM Installs"])
                         .range(["#00acee", "#ffcc2f", "#EF5734"])
 
-      xAxis = new Plottable.Axis.Time(xScale, "bottom")
+      xAxis         = new Plottable.Axis.Time(xScale, "bottom")
       yAxisUsers    = new Plottable.Axis.Numeric(yScaleUsers, "left")
       yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right")
       yAxisUsers.formatter().precision(0) # hackhack to get the labels to display properly (Plottable #604)
       yAxisInstalls.formatter().precision(0)
 
-      gridlines = new Plottable.Component.Gridlines(xScale, yScaleUsers)
-      legend = new Plottable.Component.Legend(colorScale).xAlign("left")
-      usersLabel = new Plottable.Component.AxisLabel("Daily Active Users", "left")
+      gridlines     = new Plottable.Component.Gridlines(xScale, yScaleUsers)
+      legend        = new Plottable.Component.Legend(colorScale).xAlign("left")
+      usersLabel    = new Plottable.Component.AxisLabel("Daily Active Users", "left")
       installsLabel = new Plottable.Component.AxisLabel("Daily npm Installs", "left")
 
       addY = (d) -> d.y0 + d.y
