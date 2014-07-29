@@ -23,7 +23,7 @@
     "github-fork-ribbon-css": "0.1.1",
     "d3": "~3.4",
     "topojson": "~1.6",
-    "plottable": "0.23.0"
+    "plottable": "0.23.2"
   },
   "devDependencies": {
     "lodash": "2.4.1"

@@ -63,7 +63,7 @@
       link: function(scope, ele) {
         var render;
         render = function(data) {
-          var addY, area_existing, area_new, center, chart, colorScale, existingUsersData, gridlines, legend, newUsersData, npmData, stack, stackedData, usersData, xAxis, xScale, yAxis, yScale;
+          var addY, area_existing, area_new, center, chart, colorScale, existingUsersData, firstSeriesEndDate, gridlines, installsLabel, last, latestSeriesStartDate, legend, line_installs, newUsersData, npmData, stack, stackedData, usersLabel, xAxis, xScale, yAxisInstalls, yAxisUsers, yScaleInstalls, yScaleUsers;
           stack = d3.layout.stack().values(function(d) {
             return d;
           }).x(function(d) {
@@ -71,27 +71,37 @@
           }).y(function(d) {
             return d.movingAvg;
           }).order("reverse");
-          usersData = data.data.slice(0, 2);
-          npmData = data.data[2];
-          stackedData = stack(usersData);
+          stackedData = stack(data.data.slice(0, 2));
           newUsersData = stackedData[0];
           existingUsersData = stackedData[1];
-          xScale = new Plottable.Scale.Time();
-          xScale.domainer(new Plottable.Domainer().pad(0));
-          yScale = new Plottable.Scale.Linear();
-          colorScale = new Plottable.Scale.Color().domain(["New Users", "Existing Users"]).range(["#00acee", "#ffcc2f"]);
+          npmData = data.data[2];
+          latestSeriesStartDate = d3.max([newUsersData[0].date, existingUsersData[0].date, npmData[0].date]);
+          last = function(arr) {
+            return arr[arr.length - 1];
+          };
+          firstSeriesEndDate = d3.min([last(newUsersData).date, last(existingUsersData).date, last(npmData).date]);
+          xScale = new Plottable.Scale.Time().domain([latestSeriesStartDate, firstSeriesEndDate]);
+          yScaleUsers = new Plottable.Scale.Linear();
+          yScaleInstalls = new Plottable.Scale.Linear();
+          yScaleInstalls.domainer(new Plottable.Domainer().addIncludedValue(0));
+          colorScale = new Plottable.Scale.Color().domain(["New Users", "Existing Users", "NPM Installs"]).range(["#00acee", "#ffcc2f", "#EF5734"]);
           xAxis = new Plottable.Axis.Time(xScale, "bottom");
-          yAxis = new Plottable.Axis.Numeric(yScale, "left");
+          yAxisUsers = new Plottable.Axis.Numeric(yScaleUsers, "left");
+          yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right");
+          yAxisUsers.formatter().precision(0);
+          yAxisInstalls.formatter().precision(0);
+          gridlines = new Plottable.Component.Gridlines(xScale, yScaleUsers);
+          legend = new Plottable.Component.Legend(colorScale);
+          usersLabel = new Plottable.Component.AxisLabel("Daily Active Users", "left");
+          installsLabel = new Plottable.Component.AxisLabel("Daily npm Installs", "left");
           addY = function(d) {
             return d.y0 + d.y;
           };
-          area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScale).project("x", "date", xScale).project("y0", "y0", yScale).project("y", addY, yScale).classed("existing-users", true);
-          area_new = new Plottable.Plot.Area(newUsersData, xScale, yScale).project("x", "date", xScale).project("y0", "y0", yScale).project("y", addY, yScale).classed("new-users", true);
-          gridlines = new Plottable.Component.Gridlines(xScale, yScale);
-          legend = new Plottable.Component.Legend(colorScale);
-          center = area_existing.merge(area_new).merge(gridlines);
-          chart = new Plottable.Component.Table([[null, legend], [yAxis, center], [null, xAxis]]);
-          chart.renderTo("#users-chart");
+          area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("existing-users", true);
+          area_new = new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("new-users", true);
+          line_installs = new Plottable.Plot.Line(npmData, xScale, yScaleInstalls).project("x", "date", xScale).project("y", "movingAvg", yScaleInstalls).classed("npm-installs", true);
+          center = area_existing.merge(area_new).merge(line_installs).merge(gridlines);
+          chart = new Plottable.Component.Table([[null, null, legend, null, null], [usersLabel, yAxisUsers, center, yAxisInstalls, installsLabel], [null, null, xAxis, null, null]]).renderTo("#users-chart");
         };
         bChartUserData.then(render);
       }
