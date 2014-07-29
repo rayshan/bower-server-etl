@@ -91,7 +91,7 @@
           yAxisUsers.formatter().precision(0);
           yAxisInstalls.formatter().precision(0);
           gridlines = new Plottable.Component.Gridlines(xScale, yScaleUsers);
-          legend = new Plottable.Component.Legend(colorScale);
+          legend = new Plottable.Component.Legend(colorScale).xAlign("left");
           usersLabel = new Plottable.Component.AxisLabel("Daily Active Users", "left");
           installsLabel = new Plottable.Component.AxisLabel("Daily npm Installs", "left");
           addY = function(d) {
