@@ -15,8 +15,6 @@ build
 node_modules
 bower_components
 
-.idea
-
 # redis db dump
 *.rdb
 
