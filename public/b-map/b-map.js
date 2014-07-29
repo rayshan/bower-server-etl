@@ -137,7 +137,7 @@
         canvas = ele[0].querySelector(".b-map");
         w = canvas.clientWidth;
         h = canvas.clientHeight;
-        svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h);
+        svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h).classed("svg-map", true);
         projection = d3map.geo.equirectangular().scale(160).translate([w / 2.1, h / 1.55]);
         path = d3map.geo.path().projection(projection);
         force = d3map.layout.force().gravity(0).size([w * 2, h * 2]);
@@ -204,7 +204,7 @@
           countryContainer.selectAll("g").on("click", zoom);
           fitScreen = function() {
             w = canvas.clientWidth;
-            d3map.selectAll("svg").attr("width", w).attr("height", h);
+            d3map.select(".svg-map").attr("width", w).attr("height", h);
             d3map.behavior.zoom().center([w / 2, h / 2]);
           };
           $window.onresize = function() {

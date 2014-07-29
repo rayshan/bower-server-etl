@@ -22,7 +22,8 @@
     "lesshat": "~3.0",
     "github-fork-ribbon-css": "0.1.1",
     "d3": "~3.4",
-    "topojson": "~1.6"
+    "topojson": "~1.6",
+    "plottable": "0.23.0"
   },
   "devDependencies": {
     "lodash": "2.4.1"

@@ -122,7 +122,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc, $window) ->
     # d3.select(canvas).node().offsetWidth doesn't work in FF
     w = canvas.clientWidth
     h = canvas.clientHeight
-    svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h)
+    svg = d3map.select(canvas).append("svg").attr("width", w).attr("height", h).classed("svg-map", true)
 
     projection = d3map.geo.equirectangular()
       .scale 160 # default to 150
@@ -203,7 +203,7 @@ module.directive "bMap", (d3map, topojson, bMapDataSvc, $window) ->
 
       fitScreen = ->
         w = canvas.clientWidth
-        d3map.selectAll("svg")
+        d3map.select(".svg-map")
           .attr "width", w
           .attr "height", h
         d3map.behavior.zoom().center [ w / 2, h / 2 ]
