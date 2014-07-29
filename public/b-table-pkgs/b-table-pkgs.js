@@ -8,16 +8,6 @@
       templateUrl: 'b-table-pkgs/b-table-pkgs.html',
       restrict: 'E',
       link: function(scope) {
-        var reduceFunc;
-        reduceFunc = function(period, currentOrPrior) {
-          return function(a, b, i) {
-            if ((currentOrPrior === 'current' ? i >= period : i < period)) {
-              return a + b;
-            } else {
-              return a;
-            }
-          };
-        };
         bDataSvc.fetchAllP.then(function(data) {
           data.data.packages.forEach(function(pkgObj) {
             pkgObj.priorRank = pkgObj.rank[0];

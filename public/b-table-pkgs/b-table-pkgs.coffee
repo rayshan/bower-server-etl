@@ -4,9 +4,6 @@ module.directive "bTablePkgs", (bDataSvc, bPoP) ->
   templateUrl: 'b-table-pkgs/b-table-pkgs.html'
   restrict: 'E'
   link: (scope) ->
-    reduceFunc = (period, currentOrPrior) -> (a, b, i) ->
-      if (if currentOrPrior is 'current' then i >= period else i < period) then a + b else a
-
     bDataSvc.fetchAllP.then (data) ->
       # calc period over period totals
       data.data.packages.forEach (pkgObj) ->
