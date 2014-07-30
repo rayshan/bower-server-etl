@@ -1,6 +1,7 @@
 # vendor
 Promise = require 'bluebird'
-downloadCounts = Promise.promisify require('npm-download-counts')
+downloadCounts = Promise.promisify require 'npm-download-counts'
+moment = require 'moment'
 
 # custom
 util = require "bUtil"
@@ -11,6 +12,7 @@ cache = require "cache"
 
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
+  # date range should be the same as npm query
   'start-date': '2014-03-15'
   'end-date': '2daysAgo'
   'metrics': 'ga:users'
@@ -29,8 +31,9 @@ model.extract = ->
     .then ga.fetch _gaQueryObj
 
   # npm download stats for bower
-  _npmStatStart = new Date 2014, 2, 15 # month is 0-indexed
-  _npmStatEnd = new Date()
+  # date range should be the same as gaQueryObj
+  _npmStatStart = moment [2014, 2, 15] # 0-based month
+  _npmStatEnd = moment().subtract('days', 2).toDate()
   npmPromise = downloadCounts 'bower', _npmStatStart, _npmStatEnd
 
   Promise.all [gaPromise, npmPromise]
