@@ -1,27 +1,10 @@
 (function() {
-  var module, movingAverage;
+  var module;
 
   module = angular.module('B.Chart.Users', []);
 
-  movingAverage = function(dataArr, numDaysToAverage, accessor) {
-    var avg, d, out, stack, x, _i, _len;
-    stack = [];
-    out = [];
-    for (_i = 0, _len = dataArr.length; _i < _len; _i++) {
-      d = dataArr[_i];
-      x = accessor != null ? accessor(d) : d;
-      stack.unshift(x);
-      if (stack.length === numDaysToAverage) {
-        avg = d3.sum(stack) / numDaysToAverage;
-        out.push(avg);
-        stack.pop();
-      }
-    }
-    return out;
-  };
-
   module.service('bChartUserData', ["$q", "bDataSvc", "d3", function($q, bDataSvc, d3) {
-    var parseArray, parseData;
+    var movingAverage, parseArray, parseData;
     parseArray = function(dataArr) {
       var mAvg, parseDate;
       mAvg = movingAverage(dataArr, 7, function(d) {
@@ -53,6 +36,22 @@
       });
       return _deferred.promise;
     };
+    movingAverage = function(dataArr, numDaysToAverage, accessor) {
+      var avg, d, out, stack, x, _i, _len;
+      stack = [];
+      out = [];
+      for (_i = 0, _len = dataArr.length; _i < _len; _i++) {
+        d = dataArr[_i];
+        x = accessor != null ? accessor(d) : d;
+        stack.unshift(x);
+        if (stack.length === numDaysToAverage) {
+          avg = d3.sum(stack) / numDaysToAverage;
+          out.push(avg);
+          stack.pop();
+        }
+      }
+      return out;
+    };
     return bDataSvc.fetchAllP.then(parseData);
   }]);
 
@@ -63,7 +62,7 @@
       link: function(scope, ele) {
         var render;
         render = function(data) {
-          var addY, area_existing, area_new, center, chart, colorScale, existingUsersData, firstSeriesEndDate, gridlines, installsLabel, last, latestSeriesStartDate, legend, line_installs, newUsersData, npmData, stack, stackedData, usersLabel, xAxis, xScale, yAxisInstalls, yAxisUsers, yScaleInstalls, yScaleUsers;
+          var addY, area_existing, area_new, center, chart, colorScale, domainer, existingUsersData, format, gridlines, installsLabel, legend, line_installs, newUsersData, npmData, stack, stackedData, usersLabel, xAxis, xScale, yAxisInstalls, yAxisUsers, yScaleInstalls, yScaleUsers;
           stack = d3.layout.stack().values(function(d) {
             return d;
           }).x(function(d) {
@@ -75,21 +74,20 @@
           newUsersData = stackedData[0];
           existingUsersData = stackedData[1];
           npmData = data.data[2];
-          latestSeriesStartDate = d3.max([newUsersData[0].date, existingUsersData[0].date, npmData[0].date]);
-          last = function(arr) {
-            return arr[arr.length - 1];
-          };
-          firstSeriesEndDate = d3.min([last(newUsersData).date, last(existingUsersData).date, last(npmData).date]);
-          xScale = new Plottable.Scale.Time().domain([latestSeriesStartDate, firstSeriesEndDate]);
+          xScale = new Plottable.Scale.Time();
           yScaleUsers = new Plottable.Scale.Linear();
           yScaleInstalls = new Plottable.Scale.Linear();
-          yScaleInstalls.domainer(new Plottable.Domainer().addIncludedValue(0));
+          xScale.domainer(new Plottable.Domainer().pad(0));
+          domainer = new Plottable.Domainer().addIncludedValue(0).pad(0.2).addPaddingException(0);
+          yScaleUsers.domainer(domainer).ticks(5);
+          yScaleInstalls.domainer(domainer).ticks(5);
           colorScale = new Plottable.Scale.Color().domain(["New Users", "Existing Users", "NPM Installs"]).range(["#00acee", "#ffcc2f", "#EF5734"]);
           xAxis = new Plottable.Axis.Time(xScale, "bottom");
-          yAxisUsers = new Plottable.Axis.Numeric(yScaleUsers, "left");
-          yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right");
-          yAxisUsers.formatter().precision(0);
-          yAxisInstalls.formatter().precision(0);
+          format = function(n) {
+            return Math.round(n / 1000).toString() + "k";
+          };
+          yAxisUsers = new Plottable.Axis.Numeric(yScaleUsers, "left", format);
+          yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right", format);
           gridlines = new Plottable.Component.Gridlines(xScale, yScaleUsers);
           legend = new Plottable.Component.Legend(colorScale).xAlign("left");
           usersLabel = new Plottable.Component.AxisLabel("Daily Active Users", "left");

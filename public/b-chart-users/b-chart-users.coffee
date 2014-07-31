@@ -1,16 +1,5 @@
 module = angular.module 'B.Chart.Users', []
 
-movingAverage = (dataArr, numDaysToAverage, accessor) ->
-  stack = []
-  out = []
-  for d in dataArr
-    x = if accessor? then accessor(d) else d
-    stack.unshift(x)
-    if stack.length == numDaysToAverage
-      avg = d3.sum(stack) / numDaysToAverage
-      out.push(avg)
-      stack.pop()
-  out
 
 module.service 'bChartUserData', ($q, bDataSvc, d3) ->
   parseArray = (dataArr) ->
@@ -18,12 +7,11 @@ module.service 'bChartUserData', ($q, bDataSvc, d3) ->
     # out: {key: str, date: date, val: num, movingAvg: num}
     mAvg = movingAverage(dataArr, 7, (d) -> d[2])
     parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
-    dataArr.slice(6).map((d, i) -> {
+    dataArr.slice(6).map (d, i) ->
       key: d[0],
       date: parseDate(d[1]),
       val: d[2],
-      movingAvg: mAvg[i]}
-    )
+      movingAvg: mAvg[i]
 
   parseData = (data) ->
     _deferred = $q.defer()
@@ -37,6 +25,18 @@ module.service 'bChartUserData', ($q, bDataSvc, d3) ->
     _deferred.resolve
       data: data
     _deferred.promise
+
+  movingAverage = (dataArr, numDaysToAverage, accessor) ->
+    stack = []
+    out = []
+    for d in dataArr
+      x = if accessor? then accessor(d) else d
+      stack.unshift(x)
+      if stack.length == numDaysToAverage
+        avg = d3.sum(stack) / numDaysToAverage
+        out.push(avg)
+        stack.pop()
+    out
 
   bDataSvc.fetchAllP.then parseData
 
@@ -56,25 +56,25 @@ module.directive "bChartUsers", (d3, bChartUserData) ->
       existingUsersData = stackedData[1]
       npmData = data.data[2]
 
-      # Manually compute xScale domain since npm installs and user data may be arrays of different length
-      # (otherwise Plottable would handle this automatically)
-      latestSeriesStartDate = d3.max([newUsersData[0].date, existingUsersData[0].date, npmData[0].date])
-      last = (arr) -> arr[arr.length-1]
-      firstSeriesEndDate = d3.min([last(newUsersData).date, last(existingUsersData).date, last(npmData).date])
-
-      xScale = new Plottable.Scale.Time().domain([latestSeriesStartDate, firstSeriesEndDate])
+      xScale = new Plottable.Scale.Time()
       yScaleUsers    = new Plottable.Scale.Linear()
       yScaleInstalls = new Plottable.Scale.Linear()
-      yScaleInstalls.domainer(new Plottable.Domainer().addIncludedValue(0)) # Make the scale start at 0
+
+      # disable auto-padding on the date axis since it looks ugly when compared with areaPlots
+      xScale.domainer(new Plottable.Domainer().pad(0))
+      # Make sure the yScales both include 0 and add padding on top. Also, they look better w/ fewer ticks
+      domainer = new Plottable.Domainer().addIncludedValue(0).pad(0.2).addPaddingException(0)
+      yScaleUsers   .domainer(domainer).ticks(5)
+      yScaleInstalls.domainer(domainer).ticks(5)
+
       colorScale = new Plottable.Scale.Color() # Only used to generate legend right now
                         .domain(["New Users", "Existing Users", "NPM Installs"])
                         .range(["#00acee", "#ffcc2f", "#EF5734"])
 
       xAxis         = new Plottable.Axis.Time(xScale, "bottom")
-      yAxisUsers    = new Plottable.Axis.Numeric(yScaleUsers, "left")
-      yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right")
-      yAxisUsers.formatter().precision(0) # hackhack to get the labels to display properly (Plottable #604)
-      yAxisInstalls.formatter().precision(0)
+      format = (n) -> Math.round(n/1000).toString() + "k"
+      yAxisUsers    = new Plottable.Axis.Numeric(yScaleUsers, "left", format)
+      yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right", format)
 
       gridlines     = new Plottable.Component.Gridlines(xScale, yScaleUsers)
       legend        = new Plottable.Component.Legend(colorScale).xAlign("left")
