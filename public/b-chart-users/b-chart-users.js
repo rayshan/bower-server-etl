@@ -98,8 +98,8 @@
           area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("existing-users", true);
           area_new = new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("new-users", true);
           line_installs = new Plottable.Plot.Line(npmData, xScale, yScaleInstalls).project("x", "date", xScale).project("y", "movingAvg", yScaleInstalls).classed("npm-installs", true);
-          center = area_existing.merge(area_new).merge(line_installs).merge(gridlines);
-          chart = new Plottable.Component.Table([[null, null, legend, null, null], [usersLabel, yAxisUsers, center, yAxisInstalls, installsLabel], [null, null, xAxis, null, null]]).renderTo("#users-chart");
+          center = area_existing.merge(area_new).merge(line_installs).merge(gridlines).merge(legend);
+          chart = new Plottable.Component.Table([[usersLabel, yAxisUsers, center, yAxisInstalls, installsLabel], [null, null, xAxis, null, null]]).renderTo("#users-chart");
         };
         bChartUserData.then(render);
       }

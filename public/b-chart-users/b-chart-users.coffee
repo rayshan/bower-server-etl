@@ -99,9 +99,8 @@ module.directive "bChartUsers", (d3, bChartUserData) ->
         .project("y", "movingAvg", yScaleInstalls)
         .classed("npm-installs", true);
 
-      center = area_existing.merge(area_new).merge(line_installs).merge(gridlines)
+      center = area_existing.merge(area_new).merge(line_installs).merge(gridlines).merge(legend)
       chart = new Plottable.Component.Table([
-          [null      , null      , legend     , null         , null         ],
           [usersLabel, yAxisUsers, center     , yAxisInstalls, installsLabel],
           [null      , null      , xAxis      , null         , null         ]
         ]).renderTo("#users-chart");
