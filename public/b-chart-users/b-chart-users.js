@@ -4,37 +4,53 @@
   module = angular.module('B.Chart.Users', []);
 
   module.service('bChartUserData', ["$q", "bDataSvc", "d3", function($q, bDataSvc, d3) {
-    var parseData;
+    var movingAverage, parseArray, parseData;
+    parseArray = function(dataArr) {
+      var mAvg, parseDate;
+      mAvg = movingAverage(dataArr, 7, function(d) {
+        return d[2];
+      });
+      parseDate = d3.time.format("%Y%m%d").parse;
+      return dataArr.slice(6).map(function(d, i) {
+        return {
+          key: d[0],
+          date: parseDate(d[1]),
+          val: d[2],
+          movingAvg: mAvg[i]
+        };
+      });
+    };
     parseData = function(data) {
-      var maxUsers, maxUsersDayI, parseDate, totalUsersByDay, _deferred;
+      var existingUsersData, newUsersData, npmInstallsData, _deferred;
       _deferred = $q.defer();
       data = data.data.users;
-      parseDate = d3.time.format("%Y%m%d").parse;
-      data.forEach(function(d) {
-        d[1] = parseDate(d[1]);
-      });
       data = d3.nest().key(function(d) {
         return d[0];
       }).entries(data);
-      totalUsersByDay = data[0].values.map(function(ele, i, arr) {
-        return {
-          day: arr[i][1],
-          users: ele[2] + data[1].values[i][2]
-        };
-      });
-      maxUsers = d3.max(totalUsersByDay, function(d) {
-        return d.users;
-      });
-      maxUsersDayI = null;
-      totalUsersByDay.filter(function(ele, i) {
-        return ele.users === maxUsers && (maxUsersDayI = i);
-      });
+      newUsersData = parseArray(data[0].values);
+      existingUsersData = parseArray(data[1].values);
+      npmInstallsData = parseArray(data[2].values);
+      data = [newUsersData, existingUsersData, npmInstallsData];
       _deferred.resolve({
-        data: data,
-        maxUsers: maxUsers,
-        maxUsersDayI: maxUsersDayI
+        data: data
       });
       return _deferred.promise;
+    };
+    movingAverage = function(dataArr, numDaysToAverage, accessor) {
+      var avg, d, out, stack, x, _i, _len;
+      stack = [];
+      out = [];
+      for (_i = 0, _len = dataArr.length; _i < _len; _i++) {
+        d = dataArr[_i];
+        x = accessor != null ? accessor(d) : d;
+        stack.unshift(x);
+        if (stack.length === numDaysToAverage) {
+          avg = d3.sum(stack) / numDaysToAverage;
+          out.push(avg);
+          stack.pop();
+        }
+      }
+      return out;
     };
     return bDataSvc.fetchAllP.then(parseData);
   }]);
@@ -46,71 +62,44 @@
       link: function(scope, ele) {
         var render;
         render = function(data) {
-          var area, canvas, h, hOrig, legend, margin, marginBase, stack, svg, users, w, wOrig, x, xAxis, y, yAxis;
-          canvas = ele[0].querySelector(".b-chart.b-users").children[0];
-          wOrig = ele.children()[1].clientWidth;
-          hOrig = ele.children()[1].clientHeight;
-          marginBase = 30;
-          margin = {
-            t: marginBase * 1.5,
-            l: marginBase * 1.5,
-            r: marginBase,
-            b: marginBase
-          };
-          w = wOrig - margin.l - margin.r;
-          h = hOrig - margin.t - margin.b;
-          x = d3.time.scale().range([0, w]).domain(d3.extent(data.data[1].values, function(d) {
-            return d[1];
-          }));
-          y = d3.scale.linear().range([h, 0]).domain([0, data.maxUsers]);
-          xAxis = d3.svg.axis().scale(x).ticks(d3.time.weeks).orient("bottom");
-          yAxis = d3.svg.axis().scale(y).orient("left").ticks(6).tickSize(-w, 0);
-          area = d3.svg.area().x(function(d) {
-            return x(d[1]);
-          }).y0(function(d) {
-            return y(d.y0);
-          }).y1(function(d) {
-            return y(d.y0 + d.y);
-          }).interpolate("cardinal");
+          var addY, area_existing, area_new, center, chart, colorScale, domainer, existingUsersData, format, gridlines, installsLabel, legend, line_installs, newUsersData, npmData, stack, stackedData, usersLabel, xAxis, xScale, yAxisInstalls, yAxisUsers, yScaleInstalls, yScaleUsers;
           stack = d3.layout.stack().values(function(d) {
-            return d.values;
+            return d;
           }).x(function(d) {
-            return d[1];
+            return d.date;
           }).y(function(d) {
-            return d[2];
+            return d.movingAvg;
           }).order("reverse");
-          svg = d3.select(canvas).attr("width", w + margin.l + margin.r).attr("height", h + margin.t + margin.b).append("g").attr("transform", "translate(" + margin.l + ", " + margin.t + ")");
-          users = svg.selectAll(".users").data(stack(data.data)).enter().append("g").attr("class", function(d) {
-            return "users " + d.key;
-          });
-          users.append("path").attr("class", "area").attr("d", function(d) {
-            return area(d.values);
-          }).attr("data-legend", function(d) {
-            return d.key;
-          });
-          users.selectAll("text").data(function(d) {
-            return d.values.filter(function(ele, i) {
-              return i === data.maxUsersDayI;
-            });
-          }).enter().append("text").attr("x", function(d) {
-            return x(d[1]);
-          }).attr("y", function(d) {
-            return y(d.y + d.y0);
-          }).attr("transform", "translate(0, -15)").text(function(d) {
-            return d3.format('0,000')(d[2]);
-          });
-          users.selectAll("circle").data(function(d) {
-            return d.values.filter(function(ele, i) {
-              return i === data.maxUsersDayI;
-            });
-          }).enter().append("circle").attr("cx", function(d) {
-            return x(d[1]);
-          }).attr("cy", function(d) {
-            return y(d.y + d.y0);
-          }).attr("r", "0.4em");
-          svg.append("g").attr("class", "axis x").attr("transform", "translate(0, " + h + ")").call(xAxis);
-          svg.append("g").attr("class", "axis y").call(yAxis);
-          legend = svg.append("g").attr("class", "legend").attr("transform", "translate(0, " + (-marginBase / 2) + ")").call(d3.legend);
+          stackedData = stack(data.data.slice(0, 2));
+          newUsersData = stackedData[0];
+          existingUsersData = stackedData[1];
+          npmData = data.data[2];
+          xScale = new Plottable.Scale.Time();
+          yScaleUsers = new Plottable.Scale.Linear();
+          yScaleInstalls = new Plottable.Scale.Linear();
+          xScale.domainer(new Plottable.Domainer().pad(0));
+          domainer = new Plottable.Domainer().addIncludedValue(0).pad(0.2).addPaddingException(0);
+          yScaleUsers.domainer(domainer).ticks(5);
+          yScaleInstalls.domainer(domainer).ticks(5);
+          colorScale = new Plottable.Scale.Color().domain(["New Users", "Existing Users", "NPM Installs"]).range(["#00acee", "#ffcc2f", "#EF5734"]);
+          xAxis = new Plottable.Axis.Time(xScale, "bottom");
+          format = function(n) {
+            return Math.round(n / 1000).toString() + "k";
+          };
+          yAxisUsers = new Plottable.Axis.Numeric(yScaleUsers, "left", format);
+          yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right", format);
+          gridlines = new Plottable.Component.Gridlines(xScale, yScaleUsers);
+          legend = new Plottable.Component.Legend(colorScale).xAlign("left");
+          usersLabel = new Plottable.Component.AxisLabel("Daily Active Users", "left");
+          installsLabel = new Plottable.Component.AxisLabel("Daily npm Installs", "left");
+          addY = function(d) {
+            return d.y0 + d.y;
+          };
+          area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("existing-users", true);
+          area_new = new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("new-users", true);
+          line_installs = new Plottable.Plot.Line(npmData, xScale, yScaleInstalls).project("x", "date", xScale).project("y", "movingAvg", yScaleInstalls).classed("npm-installs", true);
+          center = area_existing.merge(area_new).merge(line_installs).merge(gridlines).merge(legend);
+          chart = new Plottable.Component.Table([[usersLabel, yAxisUsers, center, yAxisInstalls, installsLabel], [null, null, xAxis, null, null]]).renderTo("#users-chart");
         };
         bChartUserData.then(render);
       }

@@ -69,7 +69,7 @@ gulp.task 'js', ->
     .pipe gulp.dest './public'
 
   # src that need min
-  otherSrc = ['./public/bower_components/topojson/topojson.js']
+  otherSrc = ['./public/bower_components/topojson/topojson.js', './public/bower_components/plottable/plottable.js']
   other = gulp.src otherSrc
 
   # min above

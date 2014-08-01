@@ -1,48 +1,30 @@
 .b-chart.b-users {
   height: 300px;
   background: @b-yellow-2;
-
-  .area {stroke: none}
-
-  text {
-    .lh-user-select(none);
-    font-size: 0.8em;
-    fill: @b-brown;
-  }
-
-  .axis {
-    path, line {
-      fill: none;
-      stroke: @b-gray;
-      shape-rendering: crispEdges;
+  .plottable {
+    .y-gridlines line {
+      stroke-dasharray: 1 0;
+      stroke: #cecece;
     }
-    &.y {
-      line {opacity: .5}
-      path {display: none}
+    .x-gridlines line {
+      opacity: 0;
     }
-  }
-
-  .users {
-    text {
-      text-anchor: middle;
-      font-size: 1.2em;
-    }
-    &.N {
-      .area {fill: @b-blue}
-      text {fill: @b-blue}
-      circle {
-        stroke: @b-blue;
-        fill: white;
-        stroke-width: 2;
+    .existing-users {
+      .area {
+        fill: @b-yellow;
+        fill-opacity: 1;
       }
     }
-
-    &.E {
-      .area {fill: @b-yellow}
-      circle {
-        stroke: @b-yellow;
-        fill: white;
-        stroke-width: 2;
+    .new-users {
+      .area {
+        fill: @b-blue;
+        fill-opacity: 1;
+      }
+    }
+    .npm-installs {
+      .line {
+         stroke: @b-red;
+         stroke-width: 4px;
       }
     }
   }

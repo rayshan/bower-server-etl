@@ -1,31 +1,42 @@
 module = angular.module 'B.Chart.Users', []
 
+
 module.service 'bChartUserData', ($q, bDataSvc, d3) ->
+  parseArray = (dataArr) ->
+    # in: [key, dateStr, val]
+    # out: {key: str, date: date, val: num, movingAvg: num}
+    mAvg = movingAverage(dataArr, 7, (d) -> d[2])
+    parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
+    dataArr.slice(6).map (d, i) ->
+      key: d[0],
+      date: parseDate(d[1]),
+      val: d[2],
+      movingAvg: mAvg[i]
+
   parseData = (data) ->
     _deferred = $q.defer()
 
     data = data.data.users
-    parseDate = d3.time.format("%Y%m%d").parse # e.g. 20140301
-    data.forEach (d) -> d[1] = parseDate d[1]; return # date
     data = d3.nest().key((d) -> d[0]).entries data # group by key; apply to data
-
-    totalUsersByDay = data[0].values.map (ele, i, arr) ->
-      day: arr[i][1]
-      users: ele[2] + data[1].values[i][2]
-    maxUsers = d3.max totalUsersByDay, (d) -> d.users
-    maxUsersDayI = null
-    totalUsersByDay.filter (ele, i) -> ele.users is maxUsers && maxUsersDayI = i
-#    minUsers = d3.min totalUsersByDay, (d) -> d.users
-#    minUsersDayI = null
-#    totalUsersByDay.filter (ele, i) -> ele.users is minUsers && minUsersDayI = i
-
+    newUsersData      = parseArray data[0].values
+    existingUsersData = parseArray data[1].values
+    npmInstallsData   = parseArray data[2].values
+    data = [newUsersData, existingUsersData, npmInstallsData]
     _deferred.resolve
       data: data
-      maxUsers: maxUsers
-      maxUsersDayI: maxUsersDayI
-#      minUsers: minUsers
-#      minUsersDayI: minUsersDayI
     _deferred.promise
+
+  movingAverage = (dataArr, numDaysToAverage, accessor) ->
+    stack = []
+    out = []
+    for d in dataArr
+      x = if accessor? then accessor(d) else d
+      stack.unshift(x)
+      if stack.length == numDaysToAverage
+        avg = d3.sum(stack) / numDaysToAverage
+        out.push(avg)
+        stack.pop()
+    out
 
   bDataSvc.fetchAllP.then parseData
 
@@ -34,91 +45,65 @@ module.directive "bChartUsers", (d3, bChartUserData) ->
   restrict: 'E'
   link: (scope, ele) ->
     render = (data) ->
-      canvas = ele[0].querySelector(".b-chart.b-users").children[0]
-      # d3.select(canvas).node().offsetWidth doesn't work in FF
-      wOrig = ele.children()[1].clientWidth
-      hOrig = ele.children()[1].clientHeight
-      marginBase = 30
-      margin =
-        t: marginBase * 1.5 # accommodate for maxUsers label
-        l: marginBase * 1.5 # accommodate for y axis
-        r: marginBase
-        b: marginBase
-      w = wOrig - margin.l - margin.r
-      h = hOrig - margin.t - margin.b
-
-      x = d3.time.scale()
-        .range [0, w]
-        .domain d3.extent data.data[1].values, (d) -> d[1]
-      y = d3.scale.linear()
-        .range [h, 0]
-        .domain [0, data.maxUsers]
-
-      xAxis = d3.svg.axis()
-        .scale x
-        .ticks d3.time.weeks
-        .orient "bottom"
-      yAxis = d3.svg.axis() # & grid
-        .scale y
-        .orient "left"
-        .ticks 6
-        .tickSize -w, 0
-
-      area = d3.svg.area()
-        .x (d) -> x d[1]
-        .y0 (d) -> y d.y0
-        .y1 (d) -> y d.y0 + d.y
-        .interpolate "cardinal"
-
       stack = d3.layout.stack()
-        .values (d) -> d.values
-        .x (d) -> d[1]
-        .y (d) -> d[2]
+        .values (d) -> d
+        .x (d) -> d.date
+        .y (d) -> d.movingAvg
         .order "reverse"
 
-      svg = d3.select(canvas)
-          .attr "width", w + margin.l + margin.r
-          .attr "height", h + margin.t + margin.b
-        .append "g" # need to wrap in g to transform
-          .attr "transform", "translate(#{ margin.l }, #{ margin.t })"
+      stackedData = stack data.data.slice(0, 2)
+      newUsersData = stackedData[0]
+      existingUsersData = stackedData[1]
+      npmData = data.data[2]
 
-      users = svg.selectAll ".users"
-          .data stack data.data # , (d) -> d.key
-        .enter().append "g"
-          .attr "class", (d) -> "users " + d.key
+      xScale = new Plottable.Scale.Time()
+      yScaleUsers    = new Plottable.Scale.Linear()
+      yScaleInstalls = new Plottable.Scale.Linear()
 
-      users.append "path"
-        .attr "class", "area"
-        .attr "d", (d) -> area(d.values)
-        .attr "data-legend", (d) -> d.key
+      # disable auto-padding on the date axis since it looks ugly when compared with areaPlots
+      xScale.domainer(new Plottable.Domainer().pad(0))
+      # Make sure the yScales both include 0 and add padding on top. Also, they look better w/ fewer ticks
+      domainer = new Plottable.Domainer().addIncludedValue(0).pad(0.2).addPaddingException(0)
+      yScaleUsers   .domainer(domainer).ticks(5)
+      yScaleInstalls.domainer(domainer).ticks(5)
 
-      users.selectAll "text"
-          .data (d) -> d.values.filter (ele, i) -> i is data.maxUsersDayI # or i is data.minUsersDayI
-        .enter().append "text"
-          .attr "x", (d) -> x d[1]
-          .attr "y", (d) -> y d.y + d.y0
-          .attr "transform", "translate(0, -15)"
-          .text (d) -> d3.format('0,000') d[2]
+      colorScale = new Plottable.Scale.Color() # Only used to generate legend right now
+                        .domain(["New Users", "Existing Users", "NPM Installs"])
+                        .range(["#00acee", "#ffcc2f", "#EF5734"])
 
-      users.selectAll "circle"
-          .data (d) -> d.values.filter (ele, i) -> i is data.maxUsersDayI # or i is data.minUsersDayI
-        .enter().append "circle"
-          .attr "cx", (d) -> x d[1]
-          .attr "cy", (d) -> y d.y + d.y0
-          .attr "r", "0.4em"
+      xAxis         = new Plottable.Axis.Time(xScale, "bottom")
+      format = (n) -> Math.round(n/1000).toString() + "k"
+      yAxisUsers    = new Plottable.Axis.Numeric(yScaleUsers, "left", format)
+      yAxisInstalls = new Plottable.Axis.Numeric(yScaleInstalls, "right", format)
 
-      svg.append "g"
-        .attr "class", "axis x"
-        .attr "transform", "translate(0, #{ h })"
-        .call xAxis
-      svg.append "g"
-        .attr "class", "axis y"
-        .call yAxis
+      gridlines     = new Plottable.Component.Gridlines(xScale, yScaleUsers)
+      legend        = new Plottable.Component.Legend(colorScale).xAlign("left")
+      usersLabel    = new Plottable.Component.AxisLabel("Daily Active Users", "left")
+      installsLabel = new Plottable.Component.AxisLabel("Daily npm Installs", "left")
 
-      legend = svg.append "g"
-        .attr "class", "legend"
-        .attr "transform", "translate(0, #{-marginBase / 2})"
-        .call d3.legend
+      addY = (d) -> d.y0 + d.y
+      area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers)
+        .project("x", "date", xScale)
+        .project("y0", "y0", yScaleUsers)
+        .project("y", addY, yScaleUsers)
+        .classed("existing-users", true)
+
+      area_new = new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers)
+        .project("x", "date", xScale)
+        .project("y0", "y0", yScaleUsers)
+        .project("y", addY, yScaleUsers)
+        .classed("new-users", true);
+
+      line_installs = new Plottable.Plot.Line(npmData, xScale, yScaleInstalls)
+        .project("x", "date", xScale)
+        .project("y", "movingAvg", yScaleInstalls)
+        .classed("npm-installs", true);
+
+      center = area_existing.merge(area_new).merge(line_installs).merge(gridlines).merge(legend)
+      chart = new Plottable.Component.Table([
+          [usersLabel, yAxisUsers, center     , yAxisInstalls, installsLabel],
+          [null      , null      , xAxis      , null         , null         ]
+        ]).renderTo("#users-chart");
 
       return
 
