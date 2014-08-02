@@ -1,6 +1,6 @@
 # vendor
 Promise = require 'bluebird'
-downloadCounts = Promise.promisify require 'npm-download-counts'
+downloadCountsAsync = Promise.promisify require 'npm-download-counts'
 moment = require 'moment'
 
 # custom
@@ -26,28 +26,31 @@ model.name = 'users'
 model.extract = ->
   util.etlLogger 'extract', @name
 
-  # GA new / existing user data
+  # extract GA new / existing user data
   gaPromise = ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
     .then ga.fetch _gaQueryObj
 
-  # npm download stats for bower
+  # extract npm download stats for bower
   # date range should be the same as gaQueryObj
   _npmStatStart = moment [2014, 2, 15] # 0-based month
   _npmStatEnd = moment().subtract('days', 2).toDate()
-  npmPromise = downloadCounts 'bower', _npmStatStart, _npmStatEnd
+  npmPromise = downloadCountsAsync 'bower', _npmStatStart, _npmStatEnd
 
   Promise.all [gaPromise, npmPromise]
 
 model.transform = (data) ->
   util.etlLogger 'transform', @name
 
+  uniformLength = data[0].rows.length / 2
   gaData = data[0].rows
   gaData.forEach (d) ->
     d[0] = if d[0].indexOf('New') isnt -1 then 'N' else 'E'
     d[2] = +d[2]
     return
 
-  npmData = data[1].map (day) -> [
+  # GA 2daysAgo may not always return the same final day depending on when query rans
+  npmData = data[1][0..(uniformLength - 1)]
+  npmData = npmData.map (day) -> [
     'npm'
     day.day.replace(/-/g, '')
     day.count
