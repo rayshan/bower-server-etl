@@ -59,7 +59,7 @@
     return {
       templateUrl: 'b-chart-users/b-chart-users.html',
       restrict: 'E',
-      link: function(scope, ele) {
+      compile: function() {
         var render;
         render = function(data) {
           var addY, area_existing, area_new, center, chart, colorScale, domainer, existingUsersData, format, gridlines, installsLabel, legend, line_installs, newUsersData, npmData, stack, stackedData, usersLabel, xAxis, xScale, yAxisInstalls, yAxisUsers, yScaleInstalls, yScaleUsers;
@@ -81,7 +81,7 @@
           domainer = new Plottable.Domainer().addIncludedValue(0).pad(0.2).addPaddingException(0);
           yScaleUsers.domainer(domainer).ticks(5);
           yScaleInstalls.domainer(domainer).ticks(5);
-          colorScale = new Plottable.Scale.Color().domain(["New Users", "Existing Users", "NPM Installs"]).range(["#00acee", "#ffcc2f", "#EF5734"]);
+          colorScale = (new Plottable.Scale.Color()).domain(["New Users", "Existing Users", "npm Installs"]).range(["#00acee", "#ffcc2f", "#EF5734"]);
           xAxis = new Plottable.Axis.Time(xScale, "bottom");
           format = function(n) {
             return Math.round(n / 1000).toString() + "k";
@@ -95,9 +95,9 @@
           addY = function(d) {
             return d.y0 + d.y;
           };
-          area_existing = new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("existing-users", true);
-          area_new = new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("new-users", true);
-          line_installs = new Plottable.Plot.Line(npmData, xScale, yScaleInstalls).project("x", "date", xScale).project("y", "movingAvg", yScaleInstalls).classed("npm-installs", true);
+          area_existing = (new Plottable.Plot.Area(existingUsersData, xScale, yScaleUsers)).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("existing-users", true);
+          area_new = (new Plottable.Plot.Area(newUsersData, xScale, yScaleUsers)).project("x", "date", xScale).project("y0", "y0", yScaleUsers).project("y", addY, yScaleUsers).classed("new-users", true);
+          line_installs = (new Plottable.Plot.Line(npmData, xScale, yScaleInstalls)).project("x", "date", xScale).project("y", "movingAvg", yScaleInstalls).classed("npm-installs", true);
           center = area_existing.merge(area_new).merge(line_installs).merge(gridlines).merge(legend);
           chart = new Plottable.Component.Table([[usersLabel, yAxisUsers, center, yAxisInstalls, installsLabel], [null, null, xAxis, null, null]]).renderTo("#users-chart");
         };
