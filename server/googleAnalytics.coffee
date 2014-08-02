@@ -8,7 +8,7 @@ GAPI = require "googleapis"
 GA = GAPI.analytics 'v3'
 
 RateLimiter = require('limiter').RateLimiter
-gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 3000
+gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 2000
 # don't hammer GA server w/ too many concurrent reqs
 
 # Custom

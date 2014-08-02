@@ -26,3 +26,4 @@ module.exports =
   'react': 'facebook/react'
   'hammerjs': 'hammerjs/hammer.js'
   'highcharts': 'highslide-software/highcharts.com'
+  'slamdata': 'https://github.com/slamdata/slamdata'

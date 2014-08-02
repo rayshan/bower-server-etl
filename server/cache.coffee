@@ -48,7 +48,7 @@ cache = (key, data) ->
 
 # defaults to db 0
 if process.env.NODE_ENV is 'development'
-  db = redis.createClient config.db
+  db = redis.createClient config.db, socket_keepalive: false # default of true may create multiple connect events
 else
   # using Redis Labs Redis Cloud, req auth
   db = redis.createClient config.db.port, config.db.hostname, no_ready_check: true
