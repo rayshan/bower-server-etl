@@ -12,13 +12,20 @@ cache = require "cache"
 
 # FYI 'package' is a reserved word in JS
 
-_packageInstallsCutoff = 5
+_packageInstallsCutoff = 3
+
+_gaFilters =
+  installed: 'ga:pagePathLevel1=@installed'
+  polymerPrivateComponents: 'ga:pagePathLevel2!~(\/core-)|(\/paper-)'
+  packageInstallsCutoff: "ga:pageviews>=#{_packageInstallsCutoff}"
+
+# TODO remove _packageInstallsCutoff once caching everything, need to paginate through GA results
 
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   'dimensions': 'ga:pagePathLevel2,ga:nthDay'
   'metrics': 'ga:pageviews'
-  'filters': "ga:pagePathLevel1=@installed;ga:pageviews>=#{_packageInstallsCutoff}"
+  'filters': "#{_gaFilters.installed};#{_gaFilters.polymerPrivateComponents};#{_gaFilters.packageInstallsCutoff}"
   'start-date': '15daysAgo'
   'end-date': '2daysAgo'
   'max-results': 10000 # must specify or will return only 1k rows
@@ -36,8 +43,6 @@ model.extract = ->
 
 model.transform = (data) ->
   util.etlLogger 'transform', @name
-
-  # TODO: ranking range as arg
 
   console.info "[INFO] packages model - received #{data.rows.length} / #{data.totalResults} rows."
 
