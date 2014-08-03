@@ -1,26 +1,26 @@
 {
-  "name": "stats.bower.io",
+  "name": "bower-server-etl",
   "version": "1.0.0",
   "engines": {
     "node": "0.10.x"
   },
-  "description": "",
+  "description": "Bower ETL service, integrates 3rd-party data with bower data.",
   "main": "index.coffee",
-  "scripts": {
-    "start": "./scripts/start.sh",
-    "stop": "./scripts/stop.sh",
-    "test": "echo \"Error: no tests yet\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git://github.com/bower/stats.bower.io.git"
+    "url": "git://github.com/rayshan/bower-server-etl"
   },
-  "author": "Ray Shan",
+  "author": {
+    "name": "Ray Shan",
+    "email": "ray@shan.io",
+    "url": "shan.io"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bower/stats.bower.io/issues"
+    "url": "https://github.com/rayshan/bower-server-etl/issues"
   },
-  "homepage": "https://github.com/bower/stats.bower.io",
+  "homepage": "https://github.com/rayshan/bower-server-etl",
   "dependencies": {
     "bluebird": "~2.2",
     "bower-registry-client": "0.2",

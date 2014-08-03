@@ -1,12 +1,7 @@
-[stats.bower.io](http://stats.bower.io)
+Bower ETL service
 ===
 
-Insights into Bower, the best package manager for the web.
-
-v1 planning here:
-https://github.com/bower/bower/issues/1164#issuecomment-38207751
-
-v2 & beyond planning done in this repo's issues.
+Integrates 3rd-party data with bower data.
 
 ## Development
 

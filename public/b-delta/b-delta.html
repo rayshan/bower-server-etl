@@ -1,7 +1,0 @@
-<div class="b-delta"
-     ng-class="delta > 0 ? 'b-up' : 'b-down'"
-     ng-if="delta != 0" ng-switch on="type">
-  <i class="fa" ng-class="'fa-caret-' + (delta > 0 ? 'up' : 'down')"></i>
-  <span ng-switch-when="num">{{ delta | abs }}</span>
-  <span ng-switch-when="pct">{{ delta | pct }}</span>
-</div>
