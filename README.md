@@ -3,6 +3,11 @@ Bower ETL service
 
 Integrates 3rd-party data with bower data.
 
+## Issues & Feature Requests
+
+- For http://bower.io/stats related issues, please use: https://github.com/bower/stats/issues
+- For data & registry server related issues, please use: https://github.com/bower/registry
+
 ## Development
 
 System Dependencies
