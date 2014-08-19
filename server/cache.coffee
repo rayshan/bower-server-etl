@@ -32,14 +32,14 @@ fetch = (opType, models) ->
       db.mgetAsync(models).then (res) ->
         result = {}
         models.forEach (modelName, i) -> result[modelName] = JSON.parse res[i]; return
-        result.dataEndTime = moment().subtract('days', 1).endOf('day').utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
+        result.dataEndTime = moment().subtract(1, 'days').endOf('day').utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
         # yesterday
         result
 
 cache = (key, data) ->
   cacheData = db.setAsync key, JSON.stringify data
   # delete key at start of next day
-  expireAt = db.expireatAsync key, moment().add('days', 1).startOf('day').unix()
+  expireAt = db.expireatAsync key, moment().add(1, 'days').startOf('day').unix()
 
   Promise.join cacheData, expireAt, ->
     console.info "[SUCCESS] fetched / cached [#{ key }] data."; return

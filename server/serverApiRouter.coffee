@@ -37,7 +37,7 @@ api.route p.join config.apiBaseUri, '/data/:type'
       Promise.join getData, getTime, (data, lastCachedTime) ->
         # enable caching
         res.set 'cache-control', 'public, max-age=86400' # 1 day
-        res.set 'expires', moment().add('days', 1).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]' # RFC2616, +1 day from now
+        res.set 'expires', moment().add(1, 'days').utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]' # RFC2616, +1 day from now
         res.set 'last-modified', moment.unix(lastCachedTime).utc().format 'ddd, DD MMM YYYY HH:mm:ss [GMT]'
 
         # enable CORS so other websites can embed API results

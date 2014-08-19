@@ -33,7 +33,7 @@ model.extract = ->
   # extract npm download stats for bower
   # date range should be the same as gaQueryObj
   _npmStatStart = moment [2014, 2, 15] # 0-based month
-  _npmStatEnd = moment().subtract('days', 2).toDate()
+  _npmStatEnd = moment().subtract(2, 'days').toDate()
   npmPromise = downloadCountsAsync 'bower', _npmStatStart, _npmStatEnd
 
   Promise.all [gaPromise, npmPromise]

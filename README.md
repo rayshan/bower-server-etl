@@ -27,10 +27,12 @@ View app @ `localhost:3000`
 
 ## Contribution
 
+Issues should be submitted to [`bower-server-registry` repo](https://github.com/bower/registry).
+
 Due to package owners using Bower-specific GitHub repos, e.g. https://github.com/angular/bower-angular, GitHub stats sometimes look funny. Please submit a PR for [`githubMapping.coffee`](server/githubMapping.coffee) if you discover one.
 
 ## Deployment
 
 Current deployment target is Heroku. Data is all cached in Redis via Redis Labs. Also tested on DigitalOcean VPS.
 
-Server time zone: `America/Los_Angeles` (API returned times are RFC2616 UTC)
+Server time zone: UTC (API returned times are RFC2616 UTC)
