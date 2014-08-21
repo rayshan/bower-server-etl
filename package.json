@@ -6,7 +6,9 @@
   },
   "description": "Bower ETL service, integrates 3rd-party data with bower data.",
   "main": "index.coffee",
-  "scripts": {},
+  "scripts": {
+    "test": "gulp test"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/rayshan/bower-server-etl"
@@ -41,8 +43,9 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
-    "gulp": "~3.8",
-    "gulp-load-plugins": "~0.5",
+    "gulp": "^3.8",
+    "gulp-load-plugins": "^0.5",
+    "gulp-mocha": "^1.0.0",
     "mocha": "^1.21.4"
   }
 }

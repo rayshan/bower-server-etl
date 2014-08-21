@@ -37,7 +37,7 @@ authPromise = new Promise (resolve, reject) ->
       reject new Error "[ERROR] OAuth error; err = #{ err }"
     else
       console.info "[SUCCESS] server OAuthed w/ GA."
-      resolve()
+      resolve(token)
     return
   return
 

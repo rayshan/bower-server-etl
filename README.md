@@ -3,11 +3,6 @@ Bower ETL service
 
 Integrates 3rd-party data with bower data.
 
-## Issues & Feature Requests
-
-- For http://bower.io/stats related issues, please use: https://github.com/bower/stats/issues
-- For data & registry server related issues, please use: https://github.com/bower/registry
-
 ## Development
 
 System Dependencies
@@ -17,13 +12,11 @@ System Dependencies
 
 Please ask repo owners for foreman's `.env` file containing API keys
 
-Install back-end dependencies: `npm install`
+Install dependencies - `npm install`
 
-Install front-end dependencies: `bower install`
+Ensure tests pass - `npm test`
 
-Compile assets & start dev server, with live-watch: `gulp`
-
-View app @ `localhost:3000`
+Run API service - `gulp`
 
 ## Contribution
 
@@ -35,4 +28,4 @@ Due to package owners using Bower-specific GitHub repos, e.g. https://github.com
 
 Current deployment target is Heroku. Data is all cached in Redis via Redis Labs. Also tested on DigitalOcean VPS.
 
-Server time zone: UTC (API returned times are RFC2616 UTC)
+API service time zone: UTC
