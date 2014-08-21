@@ -16,7 +16,6 @@ _packageInstallsCutoff = 3
 
 _gaFilters =
   installed: 'ga:pagePathLevel1=@installed'
-  polymerPrivateComponents: 'ga:pagePathLevel2!~(\/core-)|(\/paper-)'
   packageInstallsCutoff: "ga:pageviews>=#{_packageInstallsCutoff}"
 
 # TODO remove _packageInstallsCutoff once caching everything, need to paginate through GA results
@@ -25,7 +24,7 @@ _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   'dimensions': 'ga:pagePathLevel2,ga:nthDay'
   'metrics': 'ga:pageviews'
-  'filters': "#{_gaFilters.installed};#{_gaFilters.polymerPrivateComponents};#{_gaFilters.packageInstallsCutoff}"
+  'filters': "#{_gaFilters.installed};#{_gaFilters.packageInstallsCutoff}"
   'start-date': '15daysAgo'
   'end-date': '2daysAgo'
   'max-results': 10000 # must specify or will return only 1k rows
