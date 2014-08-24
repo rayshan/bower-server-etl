@@ -24,8 +24,7 @@ model.name = 'geo'
 
 model.extract = ->
   util.etlLogger 'extract', @name
-  ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
-    .then ga.fetch _gaQueryObj
+  ga.fetch _gaQueryObj
 
 model.transform = (data) ->
   util.etlLogger 'transform', @name

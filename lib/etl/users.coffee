@@ -27,8 +27,7 @@ model.extract = ->
   util.etlLogger 'extract', @name
 
   # extract GA new / existing user data
-  gaPromise = ga.gaRateLimiter.removeTokensAsync 1 # don't hammer GA server w/ too many concurrent reqs
-    .then ga.fetch _gaQueryObj
+  gaPromise = ga.fetch _gaQueryObj
 
   # extract npm download stats for bower
   # date range should be the same as gaQueryObj

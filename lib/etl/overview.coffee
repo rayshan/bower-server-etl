@@ -15,11 +15,10 @@ model.name = 'overview'
 model.extract = ->
   util.etlLogger 'extract', @name
 
-  console.info "[INFO] fetching [#{@name}] from GA."
   request.getAsync {url: 'https://bower.herokuapp.com/packages', json: true}
     .spread (res, body) -> totalPackages: body.length
     .catch (err) ->
-      throw new Error "Can't fetch package count from bower registry, err = #{ err }."
+      throw new Error "Can't extract package count from bower registry, err = #{ err }."
 
 model.transform = (data) -> data # not needed
 

@@ -5,7 +5,7 @@ moment = require 'moment'
 Promise = require 'bluebird'
 
 GAPI = require "googleapis"
-GA = GAPI.analytics 'v3'
+ga = Promise.promisifyAll GAPI.analytics('v3').data.ga
 
 RateLimiter = require('limiter').RateLimiter
 gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 2000
@@ -41,15 +41,12 @@ authPromise = new Promise (resolve, reject) ->
 fetch = (queryObj) ->
   queryObj.auth = authClient # inserting authClient into queryObj b/c GA.data.ga.get takes 1 object as param
 
-  (xRateLimitRemaining) ->
-    new Promise (resolve, reject) ->
-      GA.data.ga.get queryObj, (err, result) ->
-        if err
-          reject new Error "[ERROR] client.analytics.data.ga.get, err = #{ err.message }"
-        else
-          resolve result
-        return
-      return
+  # don't hammer GA server w/ too many concurrent reqs
+  gaRateLimiter.removeTokensAsync(1)
+    .then -> ga.getAsync queryObj
+    .catch (err) -> throw new Error "[ERROR] GA.data.ga.get, err = #{ err.message }"
+    .get 0 # for some reason data[1] is whole object returned by request again
+
 
 # ==========
 

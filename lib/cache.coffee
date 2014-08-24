@@ -37,12 +37,13 @@ fetch = (opType, models) ->
         result
 
 cache = (key, data) ->
-  cacheData = db.setAsync key, JSON.stringify data
+  cacheDataP = db.setAsync key, JSON.stringify data
   # delete key at start of next day
-  expireAt = db.expireatAsync key, moment().add(1, 'days').startOf('day').unix()
+  expireAtP = db.expireatAsync key, moment().add(1, 'days').startOf('day').unix()
 
-  Promise.join cacheData, expireAt, ->
-    console.info "[SUCCESS] fetched / cached [#{ key }] data."; return
+  Promise.join cacheDataP, expireAtP, ->
+    console.info "[SUCCESS] ETL complete for [#{ key }]."
+    return
 
 # ==========
 
