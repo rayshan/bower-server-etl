@@ -6,7 +6,7 @@ express = require 'express'
 
 # Custom
 cache = require 'cache'
-modelRegistry = require('models').modelRegistry
+modelRegistry = require('etl').modelRegistry
 
 # ==========
 

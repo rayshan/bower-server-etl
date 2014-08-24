@@ -1,5 +1,5 @@
 # global
-GLOBAL.config = require 'config'
+GLOBAL.config = require('config')[process.env.NODE_ENV ? 'development']
 
 # vendor
 if process.env.NODE_ENV is 'production'

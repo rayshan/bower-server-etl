@@ -6,9 +6,31 @@ later = require 'later'
 moment = require 'moment'
 
 # custom
-models = require 'models'
 cache = require 'cache'
 ga = require 'googleAnalytics'
+
+# ==========
+
+# load all files under models dir
+
+modelRegistry = []
+models = {}
+
+override = # ['packages.coffee']
+
+modelFiles = if override then override else require('fs').readdirSync __dirname
+
+# register & export models
+modelFiles
+  .filter (fileName) ->
+    fileName.match(/.+\.coffee/g) isnt null && fileName isnt 'index.coffee'
+  .forEach (fileName) ->
+    name = fileName.replace '.coffee', ''
+    modelRegistry.push name
+    models[name] = require './' + fileName
+    return
+
+console.info "modelRegistry = #{modelRegistry}"
 
 # ==========
 
@@ -19,7 +41,7 @@ execute = ->
   _fetchPromises = []
   # need delay to ensure google server knows about auth before executing queries
   ga.authPromise.delay(2000).then ->
-    models.modelRegistry.map (modelName) ->
+    modelRegistry.map (modelName) ->
       fetchPromise = models[modelName].extract().bind models[modelName]
         .then models[modelName].transform
         .then models[modelName].load
@@ -31,8 +53,8 @@ execute = ->
         lastCachedTimeUnix = JSON.stringify moment().unix()
         cache.db.setAsync "lastCachedTimeUnix", lastCachedTimeUnix
         console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTimeUnix).format 'LLLL' }"
-#        console.log gh.noData.bowerRegistry
-#        console.log gh.noData.github
+        # console.log gh.noData.bowerRegistry
+        # console.log gh.noData.github
         cache.allCached.set true
         return
       .catch (err) -> console.error err; return
@@ -55,4 +77,5 @@ timer = later.setInterval execute, schedule # execute init on schedule
 # ==========
 
 module.exports =
+  modelRegistry: modelRegistry
   execute: execute

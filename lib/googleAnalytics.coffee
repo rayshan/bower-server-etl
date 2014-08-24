@@ -11,9 +11,6 @@ RateLimiter = require('limiter').RateLimiter
 gaRateLimiter = Promise.promisifyAll new RateLimiter 1, 2000
 # don't hammer GA server w/ too many concurrent reqs
 
-# Custom
-config = require "config"
-
 # ==========
 
 # define auth obj; used for init auth & fetches
