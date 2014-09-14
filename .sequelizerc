@@ -1,0 +1,10 @@
+// only used for sequelize CLI
+
+module.exports = {
+  //"env": process.env.NODE_ENV, // wait for fix https://github.com/sequelize/cli/issues/42
+  "env": 'development',
+  "coffee": true,
+  "config": "./db/config.json",
+  "migrationsPath": "./db/migrations",
+  "modelsPath": ".lib/models"
+};

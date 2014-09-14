@@ -13,7 +13,6 @@ results
 build
 
 node_modules
-bower_components
 
 # redis db dump
 *.rdb
@@ -24,11 +23,11 @@ dev.sh
 # pm2 conf, contains api secrets & tokens, need manual upload
 processes.json
 
-# contains newrelic license key
-newrelic.js
-
 # foreman dev env var, contains API keys & secrets
 .env
+
+# only used for sequelize CLI; contains prod db auth info
+db/config.json
 
 # keys (e.g. for GA service account)
 *.p12

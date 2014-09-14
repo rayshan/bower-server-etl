@@ -14,7 +14,7 @@ api = express.Router()
 
 # invoked when /:type present in path
 api.param 'type', (req, res, next, id) ->
-  # add 'all' to valid query types b/c all isn't used for caching
+  # consider 'all' as valid query types b/c 'all' isn't used for caching
   if modelRegistry.indexOf(id) is -1 and id isnt 'all'
     err = new Error "Wrong request data type."
     console.error err
@@ -31,6 +31,8 @@ api.route p.join config.apiBaseUri, '/data/:type'
   .get (req, res) ->
     if cache.allCached.get()
       opType = if req.type is 'all' then 'multi' else 'single'
+      # manually override modelRegistry to only pull the ones cached in redis
+      modelRegistry = ['commands', 'geo', 'overview', 'packages', 'users']
       models = if req.type is 'all' then modelRegistry else req.type
       getData = cache.fetch opType, models
       getTime = cache.db.getAsync("lastCachedTimeUnix")

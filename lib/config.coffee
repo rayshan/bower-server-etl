@@ -14,11 +14,12 @@ config =
       profile: '75972512'
       scopeUri: 'https://www.googleapis.com/auth/analytics.readonly'
     db:
-      host: 'localhost'
-      port: 5432
+      host: process.env.DB_DEV_HOST
+      port: process.env.DB_DEV_PORT
       username: process.env.DB_DEV_USER
       password: process.env.DB_DEV_PASSWORD
       database: process.env.DB_DEV_DATABASE
+      dialect: process.env.DB_DEV_DIALECT
     cache: '/tmp/redis-stats.bower.io.sock'
 
   production:
@@ -29,7 +30,13 @@ config =
       privateKeyContent: process.env.APP_GA_KEY_CONTENT
       profile: '75972512'
       scopeUri: 'https://www.googleapis.com/auth/analytics.readonly'
-    db: null
+    db:
+      host: process.env.DB_PROD_HOST
+      port: process.env.DB_PROD_PORT
+      username: process.env.DB_PROD_USER
+      password: process.env.DB_PROD_PASSWORD
+      database: process.env.DB_PROD_DATABASE
+      dialect: process.env.DB_PROD_DIALECT
     cache: url.parse process.env.REDISCLOUD_URL
 
 module.exports = config

@@ -1,7 +1,7 @@
 spawn = require("child_process").spawn
 
 gulp = require 'gulp'
-gp = do require "gulp-load-plugins"
+mocha = require 'gulp-mocha'
 
 # ==========================
 
@@ -13,4 +13,4 @@ gulp.task 'server', -> spawn 'foreman', ['start'], {stdio: 'inherit'} # foreman
 gulp.task 'default', ['redis', 'server']
 gulp.task 'test', ->
   gulp.src 'test/*.coffee', read: false
-    .pipe gp.mocha()
+    .pipe mocha()
