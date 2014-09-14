@@ -28,3 +28,5 @@ module.exports =
   'highcharts': 'highslide-software/highcharts.com'
   'slamdata': 'slamdata/slamdata'
   'web-animations-js': 'web-animations/web-animations-js'
+  'ember-cli-shims': 'stefanpenner/ember-cli-shims'
+  'ember-jj-abrams-resolver': 'stefanpenner/ember-jj-abrams-resolver'

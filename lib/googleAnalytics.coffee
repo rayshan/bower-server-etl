@@ -1,7 +1,6 @@
 # Vendor
 p = require 'path'
 
-moment = require 'moment'
 Promise = require 'bluebird'
 
 GAPI = require "googleapis"

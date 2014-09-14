@@ -1,6 +1,7 @@
 # data ETL
 
 # vendor
+fs = require 'fs'
 Promise = require 'bluebird'
 later = require 'later'
 moment = require 'moment'
@@ -16,9 +17,9 @@ ga = require 'googleAnalytics'
 modelRegistry = []
 models = {}
 
-override = # ['packages.coffee']
+override = # ['stats_env.coffee']
 
-modelFiles = if override then override else require('fs').readdirSync __dirname
+modelFiles = if override then override else fs.readdirSync __dirname
 
 # register & export models
 modelFiles
