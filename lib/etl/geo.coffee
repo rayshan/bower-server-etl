@@ -13,7 +13,7 @@ _gaQueryObj =
 # monthly active users
   'ids': 'ga:' + config.ga.profile
   'start-date': '31daysAgo'
-  'end-date': 'yesterday'
+  'end-date': '2daysAgo'
   'metrics': 'ga:users'
   'dimensions': 'ga:country'
   'sort': '-ga:users'
@@ -29,7 +29,7 @@ model.extract = ->
 model.transform = (data) ->
   util.etlLogger 'transform', @name
 
-  geoPromises = [] # TODO shouldn't need promises here anymore
+  geoPromises = []
 
   # remove (not set) country & country w/ just 1 user
   current = data.rows.filter (country) ->
@@ -41,7 +41,7 @@ model.transform = (data) ->
     users: +d[1]
 
   result.forEach (country) ->
-    geoPromise = geo.getPop(country.isoCode)
+    geoPromise = geo.getPop country.isoCode
       .then (pop) ->
         country.density = Math.ceil(country.users / pop * 1000000) # per 1mil internet users
         return

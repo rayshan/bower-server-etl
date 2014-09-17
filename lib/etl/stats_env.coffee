@@ -12,6 +12,7 @@ db = require "models"
 
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
+  # not doing 15 days / 2 days ago b/c always restating previous 14 days of history in db
   'start-date': '14daysAgo' # first day w/ significant env data # 2014-08-05
   'end-date': 'yesterday'
   'metrics': 'ga:users'

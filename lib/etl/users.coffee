@@ -13,7 +13,7 @@ cache = require "cache"
 _gaQueryObj =
   'ids': 'ga:' + config.ga.profile
   # date range should be the same as npm query
-  'start-date': '2014-03-11' # 1st day w/ significant data
+  'start-date': '2014-03-15' # 2014-03-11 - 1st day w/ significant data
   'end-date': '2daysAgo'
   'metrics': 'ga:users'
   'dimensions': 'ga:userType,ga:date'
