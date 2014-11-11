@@ -4,28 +4,25 @@ Promise = require 'bluebird'
 
 # custom
 util = require "bUtil"
-ga = require "googleAnalytics"
+gaExtractor = require "googleAnalytics"
 cache = require "cache"
 
 # ==========
 
-_gaQueryObj =
-  'ids': 'ga:' + config.ga.profile
+etl = {}
+etl.name = 'commands'
+etl.gaQueryObj =
   'dimensions': 'ga:pagePathLevel1,ga:nthDay'
   'metrics': 'ga:users,ga:pageviews'
   'start-date': '15daysAgo'
   'end-date': '2daysAgo'
   'sort': 'ga:pagePathLevel1,ga:nthDay'
-  'max-results': 10000
 
-model = {}
-model.name = 'commands'
-
-model.extract = ->
+etl.extract = ->
   util.etlLogger 'extract', @name
-  ga.fetch _gaQueryObj
+  gaExtractor.extract @gaQueryObj
 
-model.transform = (data) ->
+etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
   cmdIcons = # define font awesome icons
@@ -44,14 +41,14 @@ model.transform = (data) ->
   commands.forEach (cmd, i) -> order[cmd] = i; return
 
   # reformat command name
-  data.rows.forEach (d) ->
+  data.forEach (d) ->
     cmdName = util.removeSlash d[0]
     cmdName = cmdName.charAt(0).toUpperCase() + cmdName.slice 1 # Cap Case
     d[0] = cmdName
     return
 
   # remove garbage data from GA e.g. (not set), FakeXMLHttpRequest, Pretender, Route-recognizer...
-  data = data.rows.filter (d) -> commands.indexOf(d[0]) isnt -1
+  data = data.filter (d) -> commands.indexOf(d[0]) isnt -1
 
   # filter for current data
   dataCurrent = data.filter (d) -> d[0].indexOf("ed") is -1 # no "-ed"
@@ -61,7 +58,7 @@ model.transform = (data) ->
   dataPrior = data.filter (d) -> d[0].indexOf("ed") isnt -1
   dataPrior = _.groupBy dataPrior, (d) -> d[0]
 
-  # construct model schema
+  # construct etl schema
   result = Object.keys(dataCurrent).map (name) -> # can't use _.mapValues due to want an arr in the end
     # extract daily install counts to an array
     users = []
@@ -92,8 +89,8 @@ model.transform = (data) ->
 
   result
 
-model.load = (data) ->
+etl.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
 
-module.exports = model
+module.exports = etl

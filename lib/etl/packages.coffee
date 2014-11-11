@@ -4,7 +4,7 @@ Promise = require 'bluebird'
 
 # custom
 util = require "bUtil"
-ga = require "googleAnalytics"
+gaExtractor = require "googleAnalytics"
 gh = require 'github'
 cache = require "cache"
 
@@ -20,31 +20,27 @@ _gaFilters =
 
 # TODO remove _packageInstallsCutoff once caching everything, need to paginate through GA results
 
-_gaQueryObj =
-  'ids': 'ga:' + config.ga.profile
+etl = {}
+etl.name = 'packages'
+etl.gaQueryObj =
   'dimensions': 'ga:pagePathLevel2,ga:nthDay'
   'metrics': 'ga:pageviews'
   'filters': "#{_gaFilters.installed};#{_gaFilters.packageInstallsCutoff}"
   'start-date': '15daysAgo'
   'end-date': '2daysAgo'
-  'max-results': 10000 # must specify or will return only 1k rows
   # =@ contains substring, don't use url encoding '%3D@'; test for specific pkg, add ;ga:pagePathLevel2==/video.js/ (; = AND)
   # 'sort': '-ga:pageviews'
 
-model = {}
-
-model.name = 'packages'
-
-model.extract = ->
+etl.extract = ->
   util.etlLogger 'extract', @name
-  ga.fetch _gaQueryObj
+  gaExtractor.extract @gaQueryObj
 
-model.transform = (data) ->
+etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
-  console.info "[INFO] packages model - received #{data.rows.length} / #{data.totalResults} rows."
+  console.info "[INFO] packages etl - received #{data.length} / #{data.totalResults} rows."
 
-  dataNested = _.groupBy data.rows, (d) -> d[0]
+  dataNested = _.groupBy data, (d) -> d[0]
   data = Object.keys(dataNested).map (name) ->
     # extract daily install counts to an array
     installs = []
@@ -73,7 +69,7 @@ model.transform = (data) ->
   ghPromises = (gh.appendData pkg for pkg in data)
   Promise.all(ghPromises).then -> data
 
-model.load = (data) ->
+etl.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
 
@@ -81,4 +77,4 @@ model.load = (data) ->
   # hmsetAsync packages:angular, {obj}
   # sorted set w/ ranking
 
-module.exports = model
+module.exports = etl

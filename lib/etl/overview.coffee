@@ -9,10 +9,10 @@ cache = require "cache"
 
 # ==========
 
-model = {}
-model.name = 'overview'
+etl = {}
+etl.name = 'overview'
 
-model.extract = ->
+etl.extract = ->
   util.etlLogger 'extract', @name
 
   request.getAsync {url: 'https://bower.herokuapp.com/packages', json: true}
@@ -20,10 +20,10 @@ model.extract = ->
     .catch (err) ->
       throw new Error "Can't extract package count from bower registry, err = #{ err }."
 
-model.transform = (data) -> data # not needed
+etl.transform = (data) -> data # nothing to transform
 
-model.load = (data) ->
+etl.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
 
-module.exports = model
+module.exports = etl

@@ -3,36 +3,33 @@ Promise = require 'bluebird'
 
 # custom
 util = require "bUtil"
-ga = require "googleAnalytics"
+gaExtractor = require "googleAnalytics"
 cache = require "cache"
 geo = require "geo"
 
 # ==========
 
-_gaQueryObj =
+etl = {}
+etl.name = 'geo'
+etl.gaQueryObj =
 # monthly active users
-  'ids': 'ga:' + config.ga.profile
   'start-date': '31daysAgo'
   'end-date': '2daysAgo'
   'metrics': 'ga:users'
   'dimensions': 'ga:country'
   'sort': '-ga:users'
-  'max-results': 10000
 
-model = {}
-model.name = 'geo'
-
-model.extract = ->
+etl.extract = ->
   util.etlLogger 'extract', @name
-  ga.fetch _gaQueryObj
+  gaExtractor.extract @gaQueryObj
 
-model.transform = (data) ->
+etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
   geoPromises = []
 
   # remove (not set) country & country w/ just 1 user
-  current = data.rows.filter (country) ->
+  current = data.filter (country) ->
     country[0] isnt "(not set)" and +country[1] > 1
 
   result = current.map (d) ->
@@ -53,8 +50,8 @@ model.transform = (data) ->
     .call 'sort', (a, b) -> b.density - a.density
     .then -> result
 
-model.load = (data) ->
+etl.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
 
-module.exports = model
+module.exports = etl

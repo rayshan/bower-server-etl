@@ -4,40 +4,37 @@ moment = require 'moment'
 
 # custom
 util = require "bUtil"
-ga = require "googleAnalytics"
+gaExtractor = require "googleAnalytics"
 cache = require "cache"
 geo = require "geo"
 db = require "models"
 
 # ==========
 
+# 14 / 1 gets 14 days of data; 20 / 1 gets 20 days
+_gaStartDate = moment().subtract(20, 'days').format "YYYY-MM-DD"
+_gaEndDate = moment().subtract(1, 'days').format "YYYY-MM-DD"
+
 etl = {}
 etl.name = 'stats_env'
-etl.dataRefreshDays = 14
-
-_gaStartDate = moment().subtract(14, 'days').format "YYYY-MM-DD"
-_gaEndDate = moment().subtract(1, 'days').format "YYYY-MM-DD"
 etl.gaQueryObj =
-  'ids': 'ga:' + config.ga.profile
   # not doing 15 days / 2 days ago to be safe b/c always restating previous 14 days of history
   # first day w/ significant env data # 2014-08-05
-  # gets 14 days of data
   'start-date': _gaStartDate
   'end-date': _gaEndDate
   'metrics': 'ga:users'
   'dimensions': 'ga:date,ga:dimension1,ga:dimension2,ga:dimension3'
   'sort': 'ga:date'
-  'max-results': 10000
 
 etl.extract = ->
   util.etlLogger 'extract', @name
-  ga.fetch @gaQueryObj
+  gaExtractor.extract @gaQueryObj
 
 etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
   # assign a key to each row array's item
-  result = data.rows.map (row) ->
+  result = data.map (row) ->
     date: row[0] # YYYYMMDD; Postgres parses date
     os: row[1]
     version_node: row[2]

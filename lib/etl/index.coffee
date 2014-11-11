@@ -8,7 +8,6 @@ moment = require 'moment'
 
 # custom
 cache = require 'cache'
-ga = require 'googleAnalytics'
 
 # ==========
 
@@ -40,25 +39,23 @@ execute = ->
   cache.db.flushdb() # if process.env.NODE_ENV is 'development'
 
   _fetchPromises = []
-  # need delay to ensure google server knows about auth before executing queries
-  ga.authPromise.delay(2000).then ->
-    modelRegistry.map (modelName) ->
-      fetchPromise = models[modelName].extract().bind models[modelName]
-        .then models[modelName].transform
-        .then models[modelName].load
-      _fetchPromises.push fetchPromise
-      return
 
-    Promise.all _fetchPromises
-      .then ->
-        lastCachedTimeUnix = JSON.stringify moment().unix()
-        cache.db.setAsync "lastCachedTimeUnix", lastCachedTimeUnix
-        console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTimeUnix).format 'LLLL' }"
-        # console.log gh.noData.bowerRegistry
-        # console.log gh.noData.github
-        cache.allCached.set true
-        return
-      .catch (err) -> console.error err; return
+  modelRegistry.map (modelName) ->
+    fetchPromise = models[modelName]
+      .extract().bind models[modelName]
+      .then models[modelName].transform
+      .then models[modelName].load
+    _fetchPromises.push fetchPromise
+    return
+
+  Promise.all _fetchPromises
+    .then ->
+      lastCachedTimeUnix = JSON.stringify moment().unix()
+      cache.db.setAsync "lastCachedTimeUnix", lastCachedTimeUnix
+      console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTimeUnix).format 'LLLL' }"
+      cache.allCached.set true
+      return
+    .catch (err) -> console.error err; return
 
   return
 

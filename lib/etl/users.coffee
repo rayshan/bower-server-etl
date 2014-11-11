@@ -5,29 +5,25 @@ moment = require 'moment'
 
 # custom
 util = require "bUtil"
-ga = require "googleAnalytics"
+gaExtractor = require "googleAnalytics"
 cache = require "cache"
 
 # ==========
 
-_gaQueryObj =
-  'ids': 'ga:' + config.ga.profile
+etl = {}
+etl.name = 'users'
+etl.gaQueryObj =
   # date range should be the same as npm query
   'start-date': '2014-03-15' # 2014-03-11 - 1st day w/ significant data
   'end-date': '2daysAgo'
   'metrics': 'ga:users'
   'dimensions': 'ga:userType,ga:date'
-  'max-results': 10000
 
-model = {}
-
-model.name = 'users'
-
-model.extract = ->
+etl.extract = ->
   util.etlLogger 'extract', @name
 
   # extract GA new / existing user data
-  gaPromise = ga.fetch _gaQueryObj
+  gaPromise = gaExtractor.extract @gaQueryObj
 
   # extract npm download stats for bower
   # date range should be the same as gaQueryObj
@@ -37,11 +33,11 @@ model.extract = ->
 
   Promise.all [gaPromise, npmPromise]
 
-model.transform = (data) ->
+etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
-  uniformLength = data[0].rows.length / 2
-  gaData = data[0].rows
+  uniformLength = data[0].length / 2
+  gaData = data[0]
   gaData.forEach (d) ->
     d[0] = if d[0].indexOf('New') isnt -1 then 'N' else 'E'
     d[2] = +d[2]
@@ -57,8 +53,8 @@ model.transform = (data) ->
 
   gaData.concat npmData
 
-model.load = (data) ->
+etl.load = (data) ->
   util.etlLogger 'load', @name
   cache.cache @name, data
 
-module.exports = model
+module.exports = etl
