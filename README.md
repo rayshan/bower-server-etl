@@ -16,6 +16,10 @@ Install dependencies - `npm install`
 
 Ensure tests pass - `npm test`
 
+Spin up Postgres instance
+
+Run Sequelize migrations, e.g. `seq db:migrate`
+
 Run API service - `gulp`
 
 ## Contribution

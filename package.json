@@ -27,27 +27,28 @@
     "bluebird": "~2.3",
     "bower-registry-client": "0.2",
     "coffee-script": "~1.8",
-    "compression": "~1.1",
+    "compression": "~1.2",
     "csv-parse": "~0.0.5",
-    "express": "~4.9",
+    "express": "~4.10",
+    "ga-extractor": "^0.1.1",
     "googleapis": "~1.0",
     "later": "~1.1.6",
     "limiter": "~1.0.5",
     "lodash-node": "~2.4",
     "moment": "~2.8",
-    "newrelic": "~1.11",
+    "newrelic": "~1.13",
     "npm-download-counts": "~0.1.1",
     "octokit": "~0.10",
     "pg": "^3.4.1",
     "redis": "~0.12",
     "request": "^2.37",
-    "sequelize": "git://github.com/sequelize/sequelize.git#0b9ddfa471f4d3c7bfa515caa2e63d5d5af376f3",
-    "sequelize-cli": "^0.2.4"
+    "sequelize": "2.0.0-rc2",
+    "sequelize-cli": "^0.3"
   },
   "devDependencies": {
     "chai": "^1.9.1",
     "gulp": "^3.8",
     "gulp-mocha": "^1.0.0",
-    "mocha": "^1.21.4"
+    "mocha": "^2.0"
   }
 }
