@@ -31,7 +31,6 @@
     "csv-parse": "~0.0.5",
     "express": "~4.10",
     "ga-extractor": "^0.1.1",
-    "googleapis": "~1.0",
     "later": "~1.1.6",
     "limiter": "~1.0.5",
     "lodash-node": "~2.4",
