@@ -38,7 +38,7 @@ etl.extract = ->
 etl.transform = (data) ->
   util.etlLogger 'transform', @name
 
-  console.info "[INFO] packages etl - received #{data.length} / #{data.totalResults} rows."
+  console.info "[INFO] packages etl - received #{data.length} rows."
 
   dataNested = _.groupBy data, (d) -> d[0]
   data = Object.keys(dataNested).map (name) ->

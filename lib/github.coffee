@@ -17,9 +17,12 @@ noData =
   github: []
 
 # ==========
-
-_token = process.env.GITHUB_OAUTH_TOKEN_BOWER
+if process.env.NODE_ENV is 'development'
+  _token = process.env.GITHUB_OAUTH_TOKEN_DEVELOPMENT
+else
+  _token = process.env.GITHUB_OAUTH_TOKEN_PRODUCTION
 console.error "[ERROR] GITHUB_OAUTH_TOKEN_BOWER env var not set" if !_token
+
 _gh = new Octokit.new {token: _token}
 
 # get github repo info from bower register

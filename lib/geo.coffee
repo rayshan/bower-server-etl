@@ -30,10 +30,11 @@ getCode = (name) ->
     "N/A"
 
 # ==========
-getPop = (code) -> loadPopData.then (data) ->
-  try (_.find data, (d) -> d[0] is code)[1]
-  catch err
-    throw new Error "[#{code}] has no internet user data in csv file."
+getPop = (code) ->
+  loadPopData.then (data) ->
+    try (_.find data, (d) -> d[0] is code)[1]
+    catch err
+      throw new Error "[#{code}] has no internet user data in csv file."
 
 # ==========
 module.exports =

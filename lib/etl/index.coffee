@@ -16,9 +16,16 @@ cache = require 'cache'
 modelRegistry = []
 models = {}
 
-override = # ['stats_env.coffee']
+override = [
+  'commands.coffee'
+  'geo.coffee'
+  'overview.coffee'
+  'packages.coffee'
+  'users.coffee'
+#  'stats_env.coffee'
+]
 
-modelFiles = if override then override else fs.readdirSync __dirname
+modelFiles = if override.length isnt 0 then override else fs.readdirSync __dirname
 
 # register & export models
 modelFiles
@@ -42,7 +49,8 @@ execute = ->
 
   modelRegistry.map (modelName) ->
     fetchPromise = models[modelName]
-      .extract().bind models[modelName]
+      .extract()
+      .bind models[modelName]
       .then models[modelName].transform
       .then models[modelName].load
     _fetchPromises.push fetchPromise
@@ -55,9 +63,8 @@ execute = ->
       console.info "[SUCCESS] cached all data @ #{ moment.unix(lastCachedTimeUnix).format 'LLLL' }"
       cache.allCached.set true
       return
-    .catch (err) -> console.error err; return
-
-  return
+    .catch (err) ->
+      console.error "Error during ETL, err = #{err}"
 
 # ==========
 

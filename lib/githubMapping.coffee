@@ -30,3 +30,6 @@ module.exports =
   'web-animations-js': 'web-animations/web-animations-js'
   'ember-cli-shims': 'stefanpenner/ember-cli-shims'
   'ember-jj-abrams-resolver': 'stefanpenner/ember-jj-abrams-resolver'
+  'select2': 'select2/select2'
+  'webcomponentsjs': 'webcomponents/webcomponentsjs'
+  'core-component-page': 'Polymer/core-component-page'

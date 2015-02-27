@@ -146,7 +146,7 @@ module.exports = [
     "country-code": "535"
   }
   {
-    name: "Bosnia and Herzegovina"
+    name: "Bosnia & Herzegovina"
     "alpha-3": "BIH"
     "country-code": "070"
   }
@@ -1149,7 +1149,7 @@ module.exports = [
     "country-code": "776"
   }
   {
-    name: "Trinidad and Tobago"
+    name: "Trinidad & Tobago"
     "alpha-3": "TTO"
     "country-code": "780"
   }
